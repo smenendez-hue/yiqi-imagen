@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YiQi — Módulos fijados y orden alfabético</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0a0a0b;
+      --bg-elev:#0f1013;
+      --bg-elev-2:#14161b;
+      --bg-soft:#181b21;
+      --line:rgba(255,255,255,.08);
+      --line-strong:rgba(255,255,255,.14);
+      --text:#f3f5f7;
+      --muted:#98a2b3;
+      --muted-2:#6f7785;
+      --cyan:#00ccff;
+      --cyan-soft:rgba(0,204,255,.10);
+      --cyan-soft-2:rgba(0,204,255,.16);
+      --green:#15d49c;
+      --amber:#ffb020;
+      --radius-sm:10px;
+      --radius:14px;
+      --radius-md:16px;
+      --radius-lg:18px;
+      --radius-pill:999px;
+      --glow:0 0 0 1px rgba(0,204,255,.14) inset;
+      --sans:'Inter', ui-sans-serif, system-ui, sans-serif;
+      --mono:'IBM Plex Mono', ui-monospace, monospace;
+      --sidebar-w:308px;
+      --topbar-h:58px;
+    }
+
+    html[data-theme="light"] {
+      --bg:#eeece7;
+      --bg-elev:#f6f4ef;
+      --bg-elev-2:#ffffff;
+      --bg-soft:#ece9e2;
+      --line:rgba(0,0,0,.08);
+      --line-strong:rgba(0,0,0,.13);
+      --text:#17191c;
+      --muted:#586170;
+      --muted-2:#7f8896;
+      --cyan:#009fc7;
+      --cyan-soft:rgba(0,159,199,.10);
+      --cyan-soft-2:rgba(0,159,199,.14);
+      --green:#0c9b6d;
+      --amber:#c78000;
+      --glow:0 0 0 1px rgba(0,159,199,.14) inset;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--sans);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    button,input{font:inherit}
+    .app{min-height:100vh;display:grid;grid-template-columns:var(--sidebar-w) 1fr}
+    .sidebar{
+      background:var(--bg-elev);
+      border-right:1px solid var(--line);
+      padding:16px 14px;
+      position:sticky;top:0;height:100vh;overflow:auto;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      padding:10px 10px 14px;margin-bottom:10px;
+      border-bottom:1px solid var(--line);
+      text-decoration:none;color:inherit;
+    }
+    .brand svg{width:88px;height:auto;display:block;flex:none}
+    .brand-meta{display:flex;flex-direction:column;gap:3px}
+    .brand-kicker{font:700 9px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
+    .brand-sub{font-size:11px;color:var(--muted)}
+    .nav-label{font:700 10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);padding:10px 8px 8px}
+    .nav-item{
+      display:flex;align-items:center;gap:10px;
+      padding:11px 12px;border-radius:var(--radius-md);
+      color:var(--muted);text-decoration:none;border:1px solid transparent;
+      transition:.18s ease;
+    }
+    .nav-item:hover{background:var(--bg-soft);color:var(--text)}
+    .nav-item.active{background:linear-gradient(180deg,var(--cyan-soft),rgba(0,204,255,.06));border-color:rgba(0,204,255,.22);color:var(--cyan);box-shadow:var(--glow)}
+    .nav-icon{width:22px;height:22px;border-radius:8px;background:rgba(0,204,255,.09);display:grid;place-items:center;color:currentColor;flex:none}
+    .nav-icon svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .nav-badge{margin-left:auto;padding:3px 7px;border-radius:var(--radius-pill);border:1px solid var(--line);background:var(--bg-elev-2);font:700 10px var(--mono);color:var(--muted)}
+
+    .main{min-width:0}
+    .topbar{
+      position:sticky;top:0;z-index:10;
+      height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:0 22px;border-bottom:1px solid var(--line);background:color-mix(in srgb, var(--bg-elev) 88%, transparent);
+      backdrop-filter:blur(12px);
+    }
+    .topbar-title{display:flex;align-items:center;gap:10px}
+    .topbar-title h1{margin:0;font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+    .live{display:flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid var(--line);border-radius:var(--radius-pill);background:var(--bg-elev-2);font:700 10px var(--mono);color:var(--green)}
+    .live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb, var(--green) 12%, transparent);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+    .top-actions{display:flex;align-items:center;gap:10px}
+    .ghost-btn,.chip-btn{
+      display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:var(--radius-pill);
+      border:1px solid var(--line);background:var(--bg-elev-2);color:var(--muted);cursor:pointer;transition:.18s ease;
+    }
+    .ghost-btn:hover,.chip-btn:hover{border-color:var(--line-strong);color:var(--text);background:var(--bg-soft)}
+    .ghost-btn svg,.chip-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+    .page{padding:22px;display:grid;gap:16px}
+    .hero{
+      background:var(--bg-elev);border:1px solid var(--line);border-radius:24px;padding:20px 20px 18px;
+      display:grid;gap:14px;
+    }
+    .hero-kicker{font:700 10px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+    .hero h2{margin:0;font-size:28px;line-height:1;letter-spacing:-.04em}
+    .hero p{margin:0;max-width:760px;font-size:13px;line-height:1.65;color:var(--muted)}
+
+    .toolbar{
+      display:grid;grid-template-columns:minmax(280px,1fr) auto auto;gap:10px;align-items:center;
+    }
+    .input-wrap{position:relative}
+    .input{
+      width:100%;height:42px;padding:0 14px 0 40px;background:var(--bg-elev-2);color:var(--text);
+      border:1px solid var(--line);border-radius:var(--radius);outline:none;transition:.18s ease;
+    }
+    .input::placeholder{color:var(--muted-2)}
+    .input:focus{border-color:rgba(0,204,255,.28);box-shadow:var(--glow)}
+    .input-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted-2);fill:none;stroke-width:1.8;pointer-events:none}
+    .switch{
+      display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 14px;border-radius:var(--radius);
+      border:1px solid var(--line);background:var(--bg-elev-2);color:var(--text);cursor:pointer;
+    }
+    .switch-track{width:34px;height:20px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--line);position:relative;transition:.2s ease;flex:none}
+    .switch-track.on{background:rgba(0,204,255,.2);border-color:rgba(0,204,255,.28)}
+    .switch-thumb{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--muted-2);transition:.2s ease}
+    .switch-track.on .switch-thumb{transform:translateX(14px);background:var(--cyan)}
+    .switch-label{font-size:12px;font-weight:600}
+
+    .panel{
+      background:var(--bg-elev);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
+    }
+    .panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+    .panel-title{display:flex;flex-direction:column;gap:4px}
+    .panel-title strong{font-size:14px}
+    .panel-title span{font-size:12px;color:var(--muted)}
+    .panel-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .meta-pill{padding:5px 9px;border:1px solid var(--line);border-radius:var(--radius-pill);background:var(--bg-elev-2);font:700 10px var(--mono);color:var(--muted)}
+
+    .module-list{padding:10px;display:grid;gap:8px}
+    .section-caption{padding:6px 8px 2px;font:700 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)}
+    .module{
+      border:1px solid var(--line);border-radius:var(--radius-md);background:var(--bg-elev-2);overflow:hidden;
+      transition:.18s ease;
+    }
+    .module:hover{border-color:var(--line-strong)}
+    .module.pinned{border-color:rgba(0,204,255,.22);box-shadow:var(--glow)}
+    .module-head{
+      display:flex;align-items:center;gap:10px;padding:12px 12px 12px 14px;
+    }
+    .module-icon{width:28px;height:28px;border-radius:10px;background:var(--cyan-soft);display:grid;place-items:center;color:var(--cyan);flex:none}
+    .module-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .module-copy{min-width:0;display:flex;flex-direction:column;gap:2px;flex:1}
+    .module-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .module-meta{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .module-actions{display:flex;align-items:center;gap:8px;margin-left:auto;flex:none}
+    .count-badge{padding:3px 7px;border-radius:var(--radius-pill);border:1px solid var(--line);background:var(--bg-soft);font:700 10px var(--mono);color:var(--muted)}
+    .pin-btn{
+      width:24px;height:24px;border-radius:8px;border:1px solid transparent;background:transparent;color:var(--muted-2);
+      display:grid;place-items:center;cursor:pointer;transition:.18s ease;flex:none;
+    }
+    .pin-btn:hover{background:var(--bg-soft);border-color:var(--line);color:var(--text)}
+    .pin-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .pin-btn.active{background:var(--cyan-soft);border-color:rgba(0,204,255,.22);color:var(--cyan)}
+    .chev{color:var(--muted-2);font-size:15px;transition:transform .18s ease}
+    .module.open .chev{transform:rotate(90deg);color:var(--cyan)}
+    .module-body{display:none;padding:0 12px 12px 52px}
+    .module.open .module-body{display:grid;gap:6px}
+    .sub-item{
+      display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:var(--radius-sm);color:var(--muted);font-size:12px;
+      transition:.15s ease;
+    }
+    .sub-item:hover{background:var(--bg-soft);color:var(--text)}
+    .sub-item.active{background:var(--cyan-soft);color:var(--cyan)}
+    .sub-item svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+    .sub-count{margin-left:auto;padding:2px 6px;border-radius:var(--radius-pill);border:1px solid var(--line);background:var(--bg-soft);font:700 10px var(--mono);color:var(--muted)}
+
+    .empty{
+      padding:18px;border:1px dashed var(--line);border-radius:var(--radius-md);background:linear-gradient(180deg, rgba(0,204,255,.04), transparent);
+      color:var(--muted);font-size:12px;
+    }
+
+    @media (max-width: 980px){
+      .app{grid-template-columns:1fr}
+      .sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--line)}
+      .toolbar{grid-template-columns:1fr;}
+      .topbar{padding:0 14px}
+      .page{padding:14px}
+      .hero h2{font-size:24px}
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Ir a Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 65" style="color:var(--text)">
+          <rect fill="none" width="100" height="65"/>
+          <g>
+            <path fill="currentColor" d="M20.44,48.34l2.57-6.15-6.79-16.91c-.14-.39.07-.61.46-.61h4.97c.29,0,.57.14.68.43l3.58,10.08,3.61-10.08c.11-.29.39-.43.68-.43h4.97c.39,0,.57.21.43.61l-9.26,23.27c-.11.29-.39.43-.68.43h-4.75c-.43,0-.68-.21-.47-.64Z"/>
+            <path fill="currentColor" d="M38.5,18.99c0-1.77,1.35-3.19,3.23-3.19s3.23,1.42,3.23,3.19-1.38,3.23-3.23,3.23-3.23-1.42-3.23-3.23ZM38.72,25.24c0-.32.25-.57.57-.57h4.89c.32,0,.57.25.57.57v16.24c0,.32-.25.57-.57.57h-4.89c-.32,0-.57-.25-.57-.57v-16.24Z"/>
+            <path fill="var(--cyan)" d="M57.91,44.78v-2.66c-2.18-.53-4.21-1.66-5.92-3.36-4.97-4.97-5.09-13.02-.03-18.08,5.09-5.09,13.14-4.97,18.11,0s5.09,13.02,0,18.11c-1.78,1.78-3.94,2.93-6.22,3.46v2.51c0,.35-.18.53-.58.53h-4.82c-.3,0-.55-.2-.55-.5ZM56.28,34.47c.5.5,1.05.9,1.65,1.2v-3.36c0-.35.18-.53.53-.53h4.87c.25,0,.53.18.53.53v3.36c.63-.33,1.23-.78,1.78-1.33,2.73-2.73,2.78-6.75.15-9.38s-6.67-2.61-9.41.13c-2.71,2.71-2.73,6.75-.1,9.38Z"/>
+            <path fill="currentColor" d="M77.22,18.99c0-1.77,1.35-3.19,3.23-3.19s3.23,1.42,3.23,3.19-1.38,3.23-3.23,3.23-3.23-1.42-3.23-3.23ZM77.44,25.24c0-.32.25-.57.57-.57h4.89c.32,0,.57.25.57.57v16.24c0,.32-.25.57-.57.57h-4.89c-.32,0-.57-.25-.57-.57v-16.24Z"/>
+          </g>
+        </svg>
+        <div class="brand-meta">
+          <span class="brand-kicker">Módulos</span>
+          <span class="brand-sub">Orden + fijados por usuario</span>
+        </div>
+      </a>
+
+      <div class="nav-label">Navegación</div>
+      <a class="nav-item active" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+        <span>Dashboard</span>
+      </a>
+      <a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+        <span>Módulos</span>
+        <span class="nav-badge">12</span>
+      </a>
+      <a class="nav-item" href="#">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+        <span>API+</span>
+      </a>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-title">
+          <div class="live"><span class="live-dot"></span>LIVE</div>
+          <h1>Prioridad de módulos</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-btn" id="themeToggle" type="button">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+            Tema
+          </button>
+        </div>
+      </header>
+
+      <section class="page">
+        <div class="hero">
+          <div class="hero-kicker">YiQi · UX de navegación</div>
+          <h2>Orden alfabético + módulos fijados arriba</h2>
+          <p>Los módulos se pueden ordenar por A–Z o mantener el orden base. Los fijados quedan siempre arriba y persisten por usuario. El pin ahora es más chico y va integrado en la misma línea del módulo, no en un bloque aparte.</p>
+          <div class="toolbar">
+            <div class="input-wrap">
+              <svg class="input-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.35-4.35"/></svg>
+              <input id="searchInput" class="input" type="text" placeholder="Buscar módulo..." />
+            </div>
+            <button class="switch" id="sortToggle" type="button" aria-pressed="false">
+              <span class="switch-track" id="sortTrack"><span class="switch-thumb"></span></span>
+              <span class="switch-label">Ordenar A → Z</span>
+            </button>
+            <button class="chip-btn" id="resetBtn" type="button">
+              <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>
+              Resetear vista
+            </button>
+          </div>
+        </div>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">
+              <strong>Módulos del sistema</strong>
+              <span>Los fijados siempre quedan arriba. El resto respeta búsqueda y orden A–Z.</span>
+            </div>
+            <div class="panel-meta">
+              <span class="meta-pill" id="metaPinned">0 fijados</span>
+              <span class="meta-pill" id="metaTotal">0 módulos</span>
+            </div>
+          </div>
+          <div class="module-list" id="moduleList"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'yiqi-module-preferences-v2';
+    const THEME_KEY = 'yiqi-theme-v1';
+
+    const iconSet = {
+      compras:`<svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+      ventas:`<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+      finanzas:`<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>`,
+      stock:`<svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m7.5 4.21 9 5.19"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>`,
+      crm:`<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+      rrhh:`<svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg>`,
+      produccion:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1 .6 1.65 1.65 0 0 0-.4 1V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-.4-1 1.65 1.65 0 0 0-1-.6"/><path d="M4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.04 4.3l.06.06A1.65 1.65 0 0 0 9 4.6c.38 0 .74-.13 1-.37.28-.25.4-.61.4-.98V3a2 2 0 1 1 4 0v.09c0 .37.12.73.4.98.26.24.62.37 1 .37.7 0 1.37-.28 1.86-.78l.06-.06A2 2 0 1 1 19.7 7.04l-.06.06c-.5.49-.78 1.16-.78 1.86 0 .38.13.74.37 1 .25.28.61.4.98.4H21a2 2 0 1 1 0 4h-.09c-.37 0-.73.12-.98.4-.24.26-.37.62-.37 1"/></svg>`,
+      tesoreria:`<svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14.5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+      reportes:`<svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+      integraciones:`<svg viewBox="0 0 24 24"><path d="M8 12h8"/><path d="M12 8v8"/><rect x="2" y="2" width="6" height="6" rx="2"/><rect x="16" y="2" width="6" height="6" rx="2"/><rect x="2" y="16" width="6" height="6" rx="2"/><rect x="16" y="16" width="6" height="6" rx="2"/></svg>`,
+      soporte:`<svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0v7a3 3 0 0 0 3 3h1"/><path d="M14 18h1a3 3 0 0 0 3-3V8"/><path d="M12 18v3"/><path d="M9 21h6"/></svg>`
+    };
+
+    const modules = [
+      { id:'compras', name:'Compras', meta:'Proveedores · órdenes · recepción', count:12, items:['Órdenes de compra','Factura de compra','Solicitud de compra'] },
+      { id:'ventas', name:'Ventas', meta:'Clientes · pedidos · facturación', count:9, items:['Pedido','Factura','Recibo'] },
+      { id:'finanzas', name:'Finanzas', meta:'Indicadores · caja · movimientos', count:8, items:['Indicadores financieros','Reporte de caja y cuenta','Movimientos E/Cajas o Cuentas'] },
+      { id:'stock', name:'Stock', meta:'Inventario · depósitos · alertas', count:7, items:['Stock actual','Movimientos','Alertas críticas'] },
+      { id:'crm', name:'CRM', meta:'Oportunidades · agenda · campañas', count:6, items:['Oportunidades','Agenda comercial','Campañas'] },
+      { id:'rrhh', name:'RRHH', meta:'Legajos · permisos · novedades', count:5, items:['Legajos','Novedades','Capacitaciones'] },
+      { id:'produccion', name:'Producción', meta:'Órdenes · calidad · seguimiento', count:4, items:['Órdenes de producción','Control de calidad','Trazabilidad'] },
+      { id:'tesoreria', name:'Tesorería', meta:'Cobros · pagos · conciliaciones', count:6, items:['Cobros','Pagos','Conciliación bancaria'] },
+      { id:'reportes', name:'Reportes', meta:'Dashboards · exportación · métricas', count:5, items:['Reportes operativos','Reportes financieros','Exportar Excel'] },
+      { id:'integraciones', name:'Integraciones', meta:'API+ · marketplaces · conectores', count:10, items:['Mercado Libre','Interbanking','API+'] },
+      { id:'soporte', name:'Soporte', meta:'Tickets · incidencias · seguimiento', count:3, items:['Tickets abiertos','Base de ayuda','Incidencias'] }
+    ];
+
+    const state = {
+      search: '',
+      sortAZ: false,
+      pinned: [],
+      open: ['compras']
+    };
+
+    function loadState(){
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        if(Array.isArray(saved.pinned)) state.pinned = saved.pinned;
+        if(Array.isArray(saved.open)) state.open = saved.open;
+        if(typeof saved.sortAZ === 'boolean') state.sortAZ = saved.sortAZ;
+      } catch(e){}
+      const theme = localStorage.getItem(THEME_KEY);
+      if(theme === 'light' || theme === 'dark') document.documentElement.setAttribute('data-theme', theme);
+    }
+
+    function saveState(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ pinned: state.pinned, open: state.open, sortAZ: state.sortAZ }));
+    }
+
+    function toggleTheme(){
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', current);
+      localStorage.setItem(THEME_KEY, current);
+    }
+
+    function togglePin(id){
+      if(state.pinned.includes(id)) state.pinned = state.pinned.filter(x => x !== id);
+      else state.pinned.push(id);
+      saveState();
+      render();
+    }
+
+    function toggleOpen(id){
+      if(state.open.includes(id)) state.open = state.open.filter(x => x !== id);
+      else state.open.push(id);
+      saveState();
+      render();
+    }
+
+    function getVisibleModules(){
+      const filtered = modules.filter(m => (`${m.name} ${m.meta} ${m.items.join(' ')}`).toLowerCase().includes(state.search.toLowerCase()));
+      const pinned = filtered.filter(m => state.pinned.includes(m.id)).sort((a,b) => state.pinned.indexOf(a.id) - state.pinned.indexOf(b.id));
+      let unpinned = filtered.filter(m => !state.pinned.includes(m.id));
+      if(state.sortAZ) unpinned = [...unpinned].sort((a,b) => a.name.localeCompare(b.name, 'es'));
+      return { pinned, unpinned, total: filtered.length };
+    }
+
+    function subItemTemplate(label, active=false){
+      return `<div class="sub-item ${active ? 'active' : ''}"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>${label}<span class="sub-count">•</span></div>`;
+    }
+
+    function moduleTemplate(module){
+      const isPinned = state.pinned.includes(module.id);
+      const isOpen = state.open.includes(module.id);
+      return `
+        <article class="module ${isPinned ? 'pinned' : ''} ${isOpen ? 'open' : ''}">
+          <div class="module-head">
+            <div class="module-icon">${iconSet[module.id] || iconSet.reportes}</div>
+            <div class="module-copy" role="button" tabindex="0" onclick="toggleOpen('${module.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleOpen('${module.id}')}" aria-expanded="${isOpen}">
+              <div class="module-name">${module.name}</div>
+              <div class="module-meta">${module.meta}</div>
+            </div>
+            <div class="module-actions">
+              <span class="count-badge">${module.count}</span>
+              <button class="pin-btn ${isPinned ? 'active' : ''}" type="button" onclick="event.stopPropagation(); togglePin('${module.id}')" aria-label="${isPinned ? 'Quitar de fijados' : 'Fijar arriba'}" title="${isPinned ? 'Quitar de fijados' : 'Fijar arriba'}">
+                <svg viewBox="0 0 24 24"><path d="M12 17v5"/><path d="M8 3h8l-1 6 3 3H6l3-3-1-6z"/></svg>
+              </button>
+              <span class="chev">›</span>
+            </div>
+          </div>
+          <div class="module-body">
+            ${module.items.map((item, idx) => subItemTemplate(item, idx === 0)).join('')}
+          </div>
+        </article>`;
+    }
+
+    function render(){
+      const { pinned, unpinned, total } = getVisibleModules();
+      const container = document.getElementById('moduleList');
+      const sections = [];
+      if(pinned.length){
+        sections.push(`<div class="section-caption">Fijados</div>`);
+        sections.push(pinned.map(moduleTemplate).join(''));
+      }
+      if(unpinned.length){
+        sections.push(`<div class="section-caption">Todos los módulos</div>`);
+        sections.push(unpinned.map(moduleTemplate).join(''));
+      }
+      if(!pinned.length && !unpinned.length){
+        sections.push(`<div class="empty">No hay módulos que coincidan con la búsqueda. Probá con otro término.</div>`);
+      }
+      container.innerHTML = sections.join('');
+      document.getElementById('metaPinned').textContent = `${pinned.length} fijados`;
+      document.getElementById('metaTotal').textContent = `${total} módulos`;
+      document.getElementById('sortTrack').classList.toggle('on', state.sortAZ);
+      document.getElementById('sortToggle').setAttribute('aria-pressed', String(state.sortAZ));
+    }
+
+    loadState();
+    document.getElementById('searchInput').addEventListener('input', e => { state.search = e.target.value; render(); });
+    document.getElementById('sortToggle').addEventListener('click', () => { state.sortAZ = !state.sortAZ; saveState(); render(); });
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      state.search = '';
+      state.sortAZ = false;
+      state.pinned = [];
+      state.open = ['compras'];
+      document.getElementById('searchInput').value = '';
+      saveState();
+      render();
+    });
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    render();
+  </script>
+</body>
+</html>
