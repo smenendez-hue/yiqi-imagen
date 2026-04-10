@@ -1,7 +1,7 @@
 # YiQi Design System — Receta v1.2.4
 
 > Referencia canónica para implementación de UI en productos YiQi ERP.  
-> Fuente: `yiqi-design-system-v1.2.4-mobile-phosphor-fix.html`
+> Fuente: `yiqi-design-system-v1.2.4.html`
 
 ---
 
