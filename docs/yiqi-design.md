@@ -35,3 +35,8 @@ Ejemplo base:
 
 - Espanol neutro
 - Mensajes claros, accionables y breves
+
+## Login
+
+- El acceso debe verse como una pantalla independiente de la aplicacion autenticada.
+- Reusar el patron definido en `docs/yiqi-login.md` para estructura, copy y estados.

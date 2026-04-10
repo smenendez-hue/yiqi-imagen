@@ -5,6 +5,7 @@
 - Obtener token via endpoint de seguridad definido en OpenAPI.
 - Si aplica, completar contexto de usuario con endpoint de login information.
 - No almacenar credenciales en codigo.
+- Implementar el flujo visual y de estados segun `docs/yiqi-login.md`.
 
 ## Patron de implementacion sugerido
 
