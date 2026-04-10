@@ -1,0 +1,56 @@
+Vas a actuar como un experto en UI implementando estrictamente el YiQi Design System v1.2.4.
+Contexto (obligatorio)
+	•	"YiQi_DS_v1_2_4.md" → fuente de verdad
+	•	"YiQi_DS_v1_2_4_Recipe.md" → guía de implementación
+	•	HTML del DS → referencia visual exacta
+	•	Logos → usar SIEMPRE como SVG inline (nunca usar <img>)
+Objetivo
+Transformar el documento en una interfaz (no texto plano), usando componentes del Design System.
+Reglas estrictas
+	•	Usar únicamente tokens del DS (ej: --bg, --text, --cyan)
+	•	Prohibido usar colores hardcodeados
+	•	Tipografía:
+	◦	Inter → contenido
+	◦	IBM Plex Mono → datos / labels
+	•	Estética limpia, técnica (sin decoración)
+	•	No usar sombras con offset
+	•	Spacing en múltiplos de 4
+Estructura del contenido
+Cada sección debe tener:
+	•	Kicker (opcional)
+	•	Título
+	•	Subtexto breve
+Convertir contenido en:
+	•	Cards
+	•	Listas
+	•	Tablas (si aplica, ordenables)
+	•	KPIs (si hay datos)
+Evitar:
+	•	Bloques largos de texto
+	•	Párrafos densos
+Layout
+	•	Contenedor central
+	•	Secciones bien separadas
+	•	Uso consistente de grid + cards
+Branding
+	•	Topbar con logo YiQi (SVG inline)
+	•	CTA: "Reserva tu demo"
+	•	Español neutro
+Responsive (obligatorio)
+	•	Breakpoint: 980px
+	•	Layout a una columna en mobile
+	•	Mantener jerarquía visual
+Versionado (obligatorio)
+	•	Incluir en el footer la versión del Design System
+	•	Formato: "YiQi Design System v1.2.4"
+	•	Debe ser visible pero discreto
+	•	Usar tipografía secundaria (mono o tamaño reducido)
+Output
+	•	HTML standalone completo
+	•	Incluir <head> completo (meta viewport, fonts, styles)
+	•	Dark mode por defecto
+	•	Responsive funcional
+	•	Visualmente alineado al YiQi Design System
+Importante
+No expliques nada. No justifiques decisiones. No entregues texto fuera del HTML. Entregá únicamente el HTML completo.
+Ahora voy a darte el documento.
