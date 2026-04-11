@@ -1,5 +1,10 @@
 # Integracion con API YiQi
 
+## Documentacion oficial
+
+- La documentacion completa de la API de YiQi se encuentra en https://apidoc.yiqi.com.ar.
+- En ese portal esta la documentacion general de uso y los Swagger de cada modulo.
+
 ## Autenticacion
 
 - Obtener token via endpoint de seguridad definido en OpenAPI.
