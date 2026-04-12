@@ -18,6 +18,7 @@
 - [ ] Tokens YiQi usados (sin hardcode innecesario)
 - [ ] Tipografia y estilo alineados
 - [ ] Responsive <= 980px validado
+- [ ] Contraste WCAG 2.1 AA validado (texto y controles por estado)
 - [ ] Copy en espanol neutro
 
 ## Mantenibilidad

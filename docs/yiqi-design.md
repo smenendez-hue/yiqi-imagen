@@ -31,6 +31,29 @@ Ejemplo base:
 - Mantener contraste y legibilidad.
 - CTA principales con color de token primario.
 
+## Contraste AA (Obligatorio)
+
+- Todo texto e icono funcional debe cumplir contraste minimo WCAG 2.1 AA:
+  - texto normal: 4.5:1
+  - texto grande (>= 24px o 18px bold): 3:1
+  - componentes de UI y bordes activos: 3:1
+- No usar color hardcodeado en componentes para resolver contraste puntual.
+- Definir y usar tokens por estado para componentes interactivos:
+  - base
+  - hover
+  - active
+  - focus
+- En componentes de navegacion lateral, el estandar minimo incluye tokens separados por tema:
+  - `--nav-item-text`
+  - `--nav-item-bg`
+  - `--nav-item-border`
+  - `--nav-item-hover-text`
+  - `--nav-item-hover-bg`
+  - `--nav-item-hover-border`
+  - `--nav-item-active-text`
+  - `--nav-item-active-bg`
+  - `--nav-item-active-border`
+
 ## Copy
 
 - Espanol neutro
