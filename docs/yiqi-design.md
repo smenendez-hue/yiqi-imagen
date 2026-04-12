@@ -63,6 +63,9 @@ Ejemplo base:
 
 - El acceso debe verse como una pantalla independiente de la aplicacion autenticada.
 - Reusar el patron definido en `docs/yiqi-login.md` para estructura, copy y estados.
+- En modo claro, el bloque de estado superior del login debe mantener contraste AA (minimo 4.5:1) contra su fondo.
+- El contenedor con bordes redondeados del login debe renderizarse sin cortes visuales: usar clipping (`overflow: hidden`) y evitar dobles bordes que rompan la curva.
+- Las superficies de login (status/gate/card) deben resolverse con tokens, no con colores hardcodeados.
 
 ## Tema Dark / Light (Obligatorio)
 
