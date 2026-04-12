@@ -40,3 +40,30 @@ Ejemplo base:
 
 - El acceso debe verse como una pantalla independiente de la aplicacion autenticada.
 - Reusar el patron definido en `docs/yiqi-login.md` para estructura, copy y estados.
+
+## Tema Dark / Light (Obligatorio)
+
+Todas las aplicaciones YiQi con dominio `*.yiqi.com.ar` deben incluir selector visible de tema (Dark / Light) y respetar el mismo comportamiento.
+
+Reglas obligatorias:
+
+- Mostrar el selector en la zona superior derecha de la aplicacion autenticada.
+- Aplicar tema mediante atributo global (`data-theme="dark|light"`) en `html`.
+- Persistir preferencia en cookie compartida con `domain=.yiqi.com.ar`, `path=/`, `max-age=31536000`, `samesite=lax`.
+- Mantener fallback en `localStorage` para entornos locales o dominios no `yiqi.com.ar`.
+- Si no hay preferencia guardada, usar `prefers-color-scheme` del sistema operativo.
+- El cambio de tema debe aplicar inmediatamente sin recargar la pagina.
+
+Implementacion de referencia:
+
+```js
+const THEME_COOKIE_KEY = "yiqi_theme";
+
+function setThemePreference(theme) {
+  const isYiqiDomain = window.location.hostname.endsWith("yiqi.com.ar");
+  const domainPart = isYiqiDomain ? "; domain=.yiqi.com.ar" : "";
+  document.cookie = `${THEME_COOKIE_KEY}=${theme}; path=/; max-age=31536000; samesite=lax${domainPart}`;
+  localStorage.setItem("yiqi-theme", theme);
+  document.documentElement.setAttribute("data-theme", theme);
+}
+```

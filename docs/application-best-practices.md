@@ -34,3 +34,10 @@
 
 - Cada funcionalidad debe cerrar con build + tests verdes.
 - Registrar decisiones relevantes en README/ADR breve.
+
+## Estandar Transversal de Tema (Obligatorio)
+
+- Toda app en `*.yiqi.com.ar` debe implementar selector Dark / Light visible para usuario.
+- La preferencia de tema debe compartirse entre subdominios usando cookie `yiqi_theme` con `domain=.yiqi.com.ar`.
+- No se acepta persistencia solo local (solo `localStorage`) para aplicaciones productivas YiQi.
+- Debe existir fallback local para desarrollo local, pero en produccion prevalece cookie compartida.
