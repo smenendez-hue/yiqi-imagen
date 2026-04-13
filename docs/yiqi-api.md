@@ -24,6 +24,7 @@
 - Validar campos requeridos antes de usar en UI.
 - No asumir estructura exacta sin normalizacion.
 - Agregar mensajes de error de usuario en espanol neutro.
+- Convencion obligatoria de paths: las entidades YiQi deben consumirse en MAYUSCULAS (ej: `/PEDIDO/query`, `/REPORTE_VENTAS_RES/query`).
 
 ## Versionado y contratos
 
