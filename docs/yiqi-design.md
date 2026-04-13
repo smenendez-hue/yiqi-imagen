@@ -1,95 +1,396 @@
-# Lineamientos de Diseno Estandar YiQi
+# YiQi Design — UI/UX System
 
-## Tokens
+Guía oficial de experiencia para YiQi Platform.
+Define cómo se diseñan interfaces claras, rápidas y orientadas a decisión.
 
-Usar variables CSS del sistema en lugar de colores hardcodeados.
+---
 
-Ejemplo base:
+# 🧠 0. Definición
 
-```css
-:root {
-  --cyan: #00ccff;
-  --bg: #0a0e27;
-  --accent-blue: #1a5299;
-  --accent-green: #10b981;
-}
-```
+YiQi Design no es estética.
 
-## Tipografias
+Es:
 
-- UI general: Inter
-- Datos, tablas tecnicas y codigo: IBM Plex Mono
+> diseño de superficies de decisión sobre datos de negocio
 
-## Responsive
+---
 
-- Breakpoint principal: `max-width: 980px`
-- Todo componente nuevo debe contemplar mobile first o fallback mobile.
+# 🎯 1. Principio central
 
-## Consistencia visual
+Toda interfaz debe responder:
 
-- Reusar estilos y componentes existentes.
-- Mantener contraste y legibilidad.
-- CTA principales con color de token primario.
+> ¿Qué tiene que decidir el usuario ahora?
 
-## Contraste AA (Obligatorio)
+---
 
-- Todo texto e icono funcional debe cumplir contraste minimo WCAG 2.1 AA:
-  - texto normal: 4.5:1
-  - texto grande (>= 24px o 18px bold): 3:1
-  - componentes de UI y bordes activos: 3:1
-- No usar color hardcodeado en componentes para resolver contraste puntual.
-- Definir y usar tokens por estado para componentes interactivos:
-  - base
-  - hover
-  - active
-  - focus
-- En componentes de navegacion lateral, el estandar minimo incluye tokens separados por tema:
-  - `--nav-item-text`
-  - `--nav-item-bg`
-  - `--nav-item-border`
-  - `--nav-item-hover-text`
-  - `--nav-item-hover-bg`
-  - `--nav-item-hover-border`
-  - `--nav-item-active-text`
-  - `--nav-item-active-bg`
-  - `--nav-item-active-border`
+# 🧩 2. Marco de decisión
 
-## Copy
+Toda pantalla debe permitir responder:
 
-- Espanol neutro
-- Mensajes claros, accionables y breves
+1. ¿Qué está pasando?
+2. ¿Por qué está pasando?
+3. ¿Qué debería hacer ahora?
 
-## Login
+---
 
-- El acceso debe verse como una pantalla independiente de la aplicacion autenticada.
-- Reusar el patron definido en `docs/yiqi-login.md` para estructura, copy y estados.
-- En modo claro, el bloque de estado superior del login debe mantener contraste AA (minimo 4.5:1) contra su fondo.
-- El contenedor con bordes redondeados del login debe renderizarse sin cortes visuales: usar clipping (`overflow: hidden`) y evitar dobles bordes que rompan la curva.
-- Las superficies de login (status/gate/card) deben resolverse con tokens, no con colores hardcodeados.
+# 🏗️ 3. Arquitectura de la interfaz
 
-## Tema Dark / Light (Obligatorio)
+## Capas obligatorias
 
-Todas las aplicaciones YiQi con dominio `*.yiqi.com.ar` deben incluir selector visible de tema (Dark / Light) y respetar el mismo comportamiento.
+1. Contexto (Hero)
+2. Estado (KPIs)
+3. Dirección (Tendencias)
+4. Diagnóstico (Detalle)
+5. Acción (Decisión)
 
-Reglas obligatorias:
+---
 
-- Mostrar el selector en la zona superior derecha de la aplicacion autenticada.
-- Aplicar tema mediante atributo global (`data-theme="dark|light"`) en `html`.
-- Persistir preferencia en cookie compartida con `domain=.yiqi.com.ar`, `path=/`, `max-age=31536000`, `samesite=lax`.
-- Mantener fallback en `localStorage` para entornos locales o dominios no `yiqi.com.ar`.
-- Si no hay preferencia guardada, usar `prefers-color-scheme` del sistema operativo.
-- El cambio de tema debe aplicar inmediatamente sin recargar la pagina.
+## Regla estructural
 
-Implementacion de referencia:
+> arriba → decisión
+> abajo → explicación
 
-```js
-const THEME_COOKIE_KEY = "yiqi_theme";
+---
 
-function setThemePreference(theme) {
-  const isYiqiDomain = window.location.hostname.endsWith("yiqi.com.ar");
-  const domainPart = isYiqiDomain ? "; domain=.yiqi.com.ar" : "";
-  document.cookie = `${THEME_COOKIE_KEY}=${theme}; path=/; max-age=31536000; samesite=lax${domainPart}`;
-  localStorage.setItem("yiqi-theme", theme);
-  document.documentElement.setAttribute("data-theme", theme);
-}
-```
+# 👤 4. Diseño por rol
+
+## Owner (dueño)
+
+* ingresos
+* margen
+* riesgo
+* oportunidades
+
+## Operaciones
+
+* flujo
+* estados
+* bloqueos
+
+## Comercial
+
+* conversión
+* canales
+* performance
+
+---
+
+## Regla
+
+> no mezclar múltiples roles en una misma interfaz
+
+---
+
+# ⚡ 5. Jerarquía cognitiva
+
+El usuario escanea, no lee.
+
+Diseñar para:
+
+* foco
+* significado
+* acción
+
+---
+
+# 🎨 6. Sistema visual
+
+## Uso del color
+
+* cyan → foco / acción
+* green → positivo
+* amber → alerta
+* red → crítico
+* muted → secundario
+
+---
+
+## Regla
+
+> el color es semántico, no decorativo
+
+---
+
+# 📐 7. Layout
+
+* máximo 2 columnas en desktop
+* 1 columna en mobile
+* separación clara entre bloques
+
+---
+
+# 📱 8. Responsive
+
+* breakpoint principal: `max-width: 980px`
+* mobile no es adaptación: es simplificación
+
+---
+
+# 📦 9. Componentes (criterio UX)
+
+## Panel
+
+* agrupa información
+* no mezclar contextos
+
+---
+
+## KPI
+
+* entendible en <1 segundo
+* siempre con contexto
+
+---
+
+## Badge
+
+* estado claro
+* corto
+
+---
+
+## Button
+
+* 1 acción principal por vista
+* evitar múltiples CTAs dominantes
+
+---
+
+# 📊 10. Tablas (Data Table)
+
+Las tablas son:
+
+> herramientas de análisis, no elementos visuales
+
+---
+
+## Capacidades obligatorias
+
+* sorting por columnas
+* búsqueda en tiempo real
+* scroll horizontal
+* estados: loading / empty / error
+
+---
+
+## Sorting
+
+* visible
+* explícito
+* aplicable a datos relevantes
+
+---
+
+## Layout
+
+* contenidas en `.table-wrap`
+* nunca rompen layout
+* scroll horizontal si es necesario
+
+---
+
+## Jerarquía
+
+* columnas importantes primero
+* números a la derecha
+* texto a la izquierda
+
+---
+
+## UX
+
+* evitar más de 6–7 columnas
+* priorizar escaneo
+
+---
+
+## Accesibilidad
+
+* `<th>` correcto
+* navegación por teclado
+* contraste AA
+
+---
+
+# 🔁 11. Estados de UI
+
+Toda pantalla debe contemplar:
+
+* Loading
+* Empty
+* Error
+
+---
+
+# 🧠 12. Data UX
+
+Los datos deben tener:
+
+* comparación temporal
+* variación (%)
+* contexto
+
+---
+
+# 🖱️ 13. Interacción
+
+* hover sutil
+* feedback inmediato
+* estados claros
+
+---
+
+# ♿ 14. Accesibilidad (AA obligatorio)
+
+Cumplir WCAG 2.1 AA:
+
+* texto normal → 4.5:1
+* texto grande → 3:1
+* UI interactiva → 3:1
+
+---
+
+## Componentes interactivos deben:
+
+* tener focus visible
+* ser navegables por teclado
+* respetar contraste en todos los estados
+
+---
+
+# 🎨 15. Consistencia visual
+
+* reutilizar componentes existentes
+* no inventar estilos nuevos
+* usar tokens siempre
+
+---
+
+# ✍️ 16. Copy
+
+* español neutro
+* claro
+* accionable
+* breve
+
+Ejemplo:
+
+❌ Error en API
+✅ No se pudieron cargar las ventas
+
+---
+
+# 🔐 17. Login (contrato UX)
+
+* pantalla independiente
+* no mezclar con app autenticada
+
+---
+
+## Obligatorio
+
+* reutilizar el patrón definido en `docs/yiqi-login.md` para:
+
+  * estructura
+  * copy
+  * estados
+
+---
+
+## Reglas
+
+* contraste AA en bloque superior
+* bordes sin cortes (`overflow: hidden`)
+* evitar dobles bordes
+* usar tokens
+
+---
+
+# 🌗 18. Dark / Light
+
+* selector visible
+* persistencia de preferencia
+* cambio inmediato
+
+---
+
+# ⚙️ 19. Comportamiento UI
+
+* feedback inmediato
+* estados visibles
+* interacción predecible
+
+---
+
+# 🚫 20. Anti-patrones
+
+* dashboards genéricos
+* exceso de métricas
+* múltiples focos
+* UI decorativa
+* datos sin contexto
+
+---
+
+# 🤖 21. Uso con IA
+
+## La IA debe:
+
+* respetar estructura
+* usar tokens
+* mantener jerarquía
+* no cambiar contenido
+
+---
+
+## La IA no puede:
+
+* inventar componentes
+* alterar layout base
+* redefinir tokens
+
+---
+
+# 🧩 22. Modelo mental
+
+Una UI YiQi es:
+
+* clara
+* rápida
+* confiable
+
+No es:
+
+* un ERP complejo
+* un reporte estático
+* una demo visual
+
+---
+
+# 🚀 23. Nivel de calidad
+
+1 → UI bonita
+2 → usable
+3 → informa
+4 → guía
+5 → hace decidir ✅
+
+---
+
+# 🔥 24. Regla final
+
+Si el usuario duda:
+
+* qué está viendo
+* qué significa
+* qué hacer
+
+👉 la interfaz falló
+
+---
+
+# 🧠 25. Definición final
+
+YiQi Design es:
+
+> claridad aplicada a decisiones de negocio
