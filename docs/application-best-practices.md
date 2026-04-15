@@ -35,6 +35,19 @@
 - Cada funcionalidad debe cerrar con build + tests verdes.
 - Registrar decisiones relevantes en README/ADR breve.
 
+## Estandar de Campos Query (Obligatorio)
+
+- No se permite hardcodear nombres de campos en requests a endpoints `/query` de YiQi.
+- Los nombres de campos deben provenir de una fuente de verdad versionada en el repo (ej: `schema-fields`).
+- La fuente de verdad debe generarse automaticamente desde OpenAPI/Swagger oficial (o catalogo tecnico controlado cuando OpenAPI no expone enums).
+- Todo builder de query debe consumir constantes de campos; no strings literales en `field` ni `columnName`.
+- Si el schema cambia, el cambio debe incluir en el mismo PR:
+	- regeneracion de campos
+	- ajuste de mapeos
+	- ajuste de tests
+	- ajuste de documentacion tecnica
+- Debe existir al menos una validacion automatica (test o script CI) que detecte campos no definidos.
+
 ## Estandar Transversal de Tema (Obligatorio)
 
 - Toda app en `*.yiqi.com.ar` debe implementar selector Dark / Light visible para usuario.

@@ -18,4 +18,7 @@ Este repositorio aplica los lineamientos globales definidos en YiQi Agent Standa
 
 - <regla local 1>
 - <regla local 2>
+- Endpoints `/query`: usar exclusivamente constantes de campos generadas desde Swagger (`FIELDS.*`).
+- Prohibido hardcodear `field`/`columnName` como string literal en builders de query.
+- Si cambia schema OpenAPI/campos, actualizar en el mismo cambio: generador, mapeos, tests y documentacion.
 ```
