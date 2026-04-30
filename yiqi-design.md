@@ -452,6 +452,10 @@ YiQi Design no es estética. Es diseño de **superficies de decisión sobre dato
 
 **Color semántico:** cyan = foco/acción · green = positivo · amber = alerta · red = crítico · muted = secundario.
 
+**Trazabilidad obligatoria de indicadores:** todo KPI o métrica visible debe exponer origen validable en UI.
+Formato mínimo obligatorio: `Fuente: <modulo>.<campo(s)> · <agregado o formula> · <periodo>`.
+Si es cálculo, incluir fórmula explícita en tooltip o ayuda contextual.
+
 **Anti-patrones:** dashboards genéricos · exceso de métricas · múltiples focos · UI decorativa · datos sin contexto.
 
 ---
@@ -484,6 +488,7 @@ Persistencia: `localStorage` + cookie `yiqi_theme` para dominio `.yiqi.com.ar`.
 6. **Spacing múltiplos de 4** — nunca valores arbitrarios.
 7. **Archivos self-contained** — fuentes, scripts, SVGs embebidos inline. Sin dependencias externas.
 8. **Convención de nombres** — `[proyecto]-v1_0_0.html` (puntos → guiones bajos).
+9. **Indicadores auditables** — cada indicador debe incluir origen de datos validable (módulo, campo, agregado/fórmula, periodo).
 
 
 
@@ -520,6 +525,7 @@ La IA **no puede:**
 - [ ] Colores hardcodeados reemplazados por custom properties
 - [ ] CTA canónica: **"Reserva tu demo"** (sin voseo)
 - [ ] Nombre de marca: **YiQi**
+- [ ] Cada KPI/indicador muestra origen validable: módulo + campo + agregado/fórmula + periodo
 
 ---
 

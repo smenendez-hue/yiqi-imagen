@@ -338,6 +338,61 @@ button{font:inherit;cursor:pointer}
 .delta-up { color: var(--green); }
 .delta-down { color: var(--amber); }
 
+.kpi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.kpi-source-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0,204,255,.24);
+  background: var(--cyan-soft);
+  color: var(--cyan);
+  font: 600 10px var(--mono);
+  letter-spacing: .05em;
+}
+
+.kpi-source-row {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.kpi-source-text {
+  min-width: 0;
+  color: var(--muted);
+  font: 500 10px var(--mono);
+  letter-spacing: .03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kpi-source-help {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  color: var(--muted-2);
+  background: var(--bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 10px var(--mono);
+  cursor: help;
+  flex-shrink: 0;
+}
+
 /* KPI mini */
 .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 
@@ -726,11 +781,11 @@ img, svg { max-width: 100%; height: auto; }
 </style>
 </head>
 <body>
-<div class="ds-overlay" onclick="closeNav()"></div>
+<div class="ds-overlay" id="ds-overlay"></div>
 <!-- TOPBAR -->
 <header class="ds-topbar">
 <div class="topbar-brand">
-<button class="mobile-menu-btn" aria-label="Abrir navegación" onclick="toggleNav()"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+<button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir navegación"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 <!-- YiQi Logo SVG full -->
 <svg id="Layer_1" style="color:var(--text)" viewbox="0 0 100 65" xmlns="http://www.w3.org/2000/svg">
 <rect fill="none" height="65" width="100"></rect>
@@ -745,7 +800,7 @@ img, svg { max-width: 100%; height: auto; }
 </div>
 <div class="topbar-right">
 <span style="font:500 12px var(--mono);color:var(--muted-2)">ERP · Enterprise UI</span>
-<button class="theme-btn" onclick="toggleTheme()">
+<button class="theme-btn" id="theme-btn">
 <svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"></path></svg>
       Modo claro / oscuro
     </button>
@@ -1491,24 +1546,61 @@ img, svg { max-width: 100%; height: auto; }
 <div class="subsection-title">KPI cards (grid 4 col)</div>
 <div class="kpi-grid" style="margin-bottom:24px">
 <div class="card-accent">
+<div class="kpi-head">
 <div class="card-kicker">Facturación MTD</div>
+<span class="kpi-source-chip">REAL</span>
+</div>
 <div class="card-value" style="color:var(--cyan)">$2.84M</div>
 <div class="card-delta delta-up">↑ +18.4% vs mes anterior</div>
+<div class="kpi-source-row">
+<span class="kpi-source-text">Fuente: REPORTE_VENTAS_RES.TOTAL</span>
+<span class="kpi-source-help" title="Origen validable: módulo REPORTE_VENTAS_RES, campo TOTAL, agregado SUM, periodo MTD.">i</span>
+</div>
 </div>
 <div class="card">
+<div class="kpi-head">
 <div class="card-kicker">Pedidos activos</div>
+<span class="kpi-source-chip">REAL</span>
+</div>
 <div class="card-value">1,247</div>
 <div class="card-delta delta-up">↑ +6.2%</div>
+<div class="kpi-source-row">
+<span class="kpi-source-text">Fuente: PEDIDO.PEDI_ESTADO_DEL_ENVIO</span>
+<span class="kpi-source-help" title="Origen validable: módulo PEDIDO, filtro de estados activos y conteo COUNT por periodo.">i</span>
+</div>
 </div>
 <div class="card">
+<div class="kpi-head">
 <div class="card-kicker">Tasa conversión</div>
+<span class="kpi-source-chip">CALC</span>
+</div>
 <div class="card-value">68.3%</div>
 <div class="card-delta" style="color:var(--muted)">→ Sin cambio</div>
+<div class="kpi-source-row">
+<span class="kpi-source-text">Fuente: PEDIDO / LEADS (fórmula)</span>
+<span class="kpi-source-help" title="Origen validable: conversión = pedidos confirmados / leads calificados x 100.">i</span>
+</div>
 </div>
 <div class="card">
+<div class="kpi-head">
 <div class="card-kicker">Pagos pendientes</div>
+<span class="kpi-source-chip">REAL</span>
+</div>
 <div class="card-value">$341K</div>
 <div class="card-delta delta-down">↑ +12% (atención)</div>
+<div class="kpi-source-row">
+<span class="kpi-source-text">Fuente: FACTURA.FACT_PENDIENTE_CANCELACIO</span>
+<span class="kpi-source-help" title="Origen validable: módulo FACTURA, campo FACT_PENDIENTE_CANCELACIO, agregado SUM del periodo.">i</span>
+</div>
+</div>
+</div>
+<div class="card" style="margin-bottom:14px">
+<div class="card-kicker">Regla obligatoria de trazabilidad</div>
+<div style="margin-top:8px;font-size:13px;line-height:1.6;color:var(--muted)">
+Todo indicador debe declarar origen validable en el propio componente: <strong>módulo + campo(s) + agregado/fórmula + periodo</strong>.
+</div>
+<div style="margin-top:8px;font-size:12px;line-height:1.6;color:var(--muted)">
+Formato recomendado: <span class="code-chip">Fuente: PEDIDO.PEDI_FECHA_DE_ENTREGA · COUNT · MTD</span>
 </div>
 </div>
 <div class="subsection-title">Panel card</div>
@@ -1880,6 +1972,22 @@ function closeNav() {
   nav.classList.remove('open');
   overlay.classList.remove('show');
   document.body.classList.remove('nav-open');
+}
+
+const themeBtn = document.getElementById('theme-btn');
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const dsOverlay = document.getElementById('ds-overlay');
+
+if (themeBtn) {
+  themeBtn.addEventListener('click', toggleTheme);
+}
+
+if (mobileMenuBtn) {
+  mobileMenuBtn.addEventListener('click', toggleNav);
+}
+
+if (dsOverlay) {
+  dsOverlay.addEventListener('click', closeNav);
 }
 
 // Nav active on scroll

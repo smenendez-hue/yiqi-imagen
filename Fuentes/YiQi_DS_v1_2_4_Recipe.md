@@ -175,6 +175,28 @@ background: linear-gradient(180deg, rgba(0,204,255,.05), transparent);
 
 ---
 
+## 5.1 · Trazabilidad obligatoria de indicadores
+
+Todo KPI o indicador visible debe incluir origen de datos validable en el propio componente.
+
+Formato mínimo obligatorio:
+
+`Fuente: <modulo>.<campo(s)> · <agregado o formula> · <periodo>`
+
+Ejemplos válidos:
+
+- `Fuente: REPORTE_VENTAS_RES.TOTAL · SUM · MTD`
+- `Fuente: PEDIDO.PEDI_ESTADO_DEL_ENVIO · COUNT · Últimos 7 días`
+- `Fuente: PEDIDO + LEADS · pedidos_confirmados / leads_calificados * 100 · MTD`
+
+Reglas:
+
+- Si es cálculo, declarar fórmula explícita en tooltip o ayuda contextual (`i`).
+- Si el dato es mixto o estimado, indicar el componente no real (`CALC`, `EST`, `MIX`).
+- No publicar KPIs sin origen visible y verificable.
+
+---
+
 ## 6 · Motion
 
 | Nombre | Duration | Easing | Uso |

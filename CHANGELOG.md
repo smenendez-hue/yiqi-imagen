@@ -43,7 +43,7 @@ Mobile responsiveness refinado, fixes de accesibilidad, componentes de tabla mej
 - Plantillas mejoradas para reportes y dashboards
 
 ### 🔗 Archivos
-- `yiqi-design-system-v1_2_4-mobile-phosphor-fix.html` (referencia completa)
+- `yiqi-design-system-v1.2.4.html` (referencia completa)
 - `YiQi_DS_v1_2_4_Recipe.md` (receta canónica)
 - `CHANGELOG.md` (este archivo)
 
@@ -124,6 +124,15 @@ Foundations iniciales: tokens, color, tipografía, spacing.
 ---
 
 ## [Unreleased]
+
+### ✨ Added
+
+- Regla obligatoria de trazabilidad para KPIs/indicadores: declarar origen validable (`módulo + campo(s) + agregado/fórmula + periodo`).
+- Ejemplo visual en cards KPI con `Fuente` y ayuda contextual (`i`) para validar el dato.
+
+### 📚 Docs
+
+- Actualización de guía maestra y receta con checklist explícito de indicadores auditables.
 
 ### 🔮 Roadmap para 1.3.0
 
