@@ -329,7 +329,42 @@ code{font-family:var(--mono);font-size:11px;background:var(--bg-soft);border:1px
     </div>
   </div>
 
-  <!-- Module grid -->
+  <!-- Info box 3 — Buena práctica para consumir smarties -->
+  <div class="info-box" style="border-color:rgba(21,212,156,.22);margin-bottom:28px">
+    <div class="info-box-header" onclick="this.closest('.info-box').classList.toggle('open')">
+      <div class="info-box-left">
+        <svg viewBox="0 0 256 256"><polyline points="40 144 96 200 224 64" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <span class="info-box-label" style="color:var(--green)">Buena práctica para consumir smarties</span>
+      </div>
+      <svg class="info-box-chevron" viewBox="0 0 256 256"><polyline points="96 48 176 128 96 208" stroke="currentColor" stroke-width="18" fill="none"/></svg>
+    </div>
+    <div class="info-box-body">
+      <div class="info-body">
+        <p><strong>Orden recomendado:</strong> ordenar por <strong>fecha de modificación descendente</strong> para traer primero lo más reciente.</p>
+        <p><strong>Estrategia de paginado eficiente:</strong> paginar desde <code>page=1</code> y detenerse cuando se alcance la <strong>última fecha ya sincronizada</strong> por tu proceso.</p>
+        <p><strong>Objetivo:</strong> evitar paginado exhaustivo innecesario, reducir tráfico y proteger el rendimiento general del sistema.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info box 4 — Uso responsable de la API -->
+  <div class="info-box" style="border-color:rgba(255,176,32,.22);margin-bottom:28px">
+    <div class="info-box-header" onclick="this.closest('.info-box').classList.toggle('open')">
+      <div class="info-box-left">
+        <svg viewBox="0 0 256 256"><path d="M142.74,40l93.19,160A16,16,0,0,1,222.19,224H33.81A16,16,0,0,1,20.07,200l93.19-160A16,16,0,0,1,142.74,40Z" stroke="currentColor" stroke-width="18" fill="none"/><line x1="128" y1="136" x2="128" y2="104" stroke="currentColor" stroke-width="18" stroke-linecap="round"/><circle cx="128" cy="168" r="10" fill="currentColor"/></svg>
+        <span class="info-box-label" style="color:var(--amber)">Uso responsable de la API</span>
+      </div>
+      <svg class="info-box-chevron" viewBox="0 0 256 256"><polyline points="96 48 176 128 96 208" stroke="currentColor" stroke-width="18" fill="none"/></svg>
+    </div>
+    <div class="info-box-body">
+      <div class="info-body">
+        <p><strong>Responsabilidad de uso:</strong> el consumo de la API debe realizarse con criterios de eficiencia, control de volumen y frecuencia de llamadas.</p>
+        <p><strong>Riesgos operativos:</strong> un uso intensivo o sin límites puede saturar tráfico, degradar tiempos de respuesta y afectar a otros usuarios.</p>
+        <p><strong>Cuenta técnica recomendada:</strong> utilizar usuarios de API con el <strong>menor privilegio posible</strong>, otorgando solo permisos estrictamente necesarios.</p>
+        <p><strong>Riesgo asumido por el integrador:</strong> la implementación, su impacto operativo y los riesgos asociados son responsabilidad del usuario que consume la API.</p>
+      </div>
+    </div>
+  </div>
   <div class="section-head">
     <span class="section-title">Módulos disponibles</span>
     <button onclick="toggleAll()" id="toggleAllBtn" style="font:600 11px var(--mono);color:var(--muted);padding:4px 10px;border-radius:var(--radius-pill);border:1px solid var(--line);background:var(--bg-elev-2);transition:all 180ms ease;cursor:pointer" onmouseenter="this.style.color='var(--text)'" onmouseleave="this.style.color='var(--muted)'">Expandir todos</button>
@@ -592,20 +627,15 @@ ${modules}
 https://apidoc.yiqi.com.ar/modules.json`;
 
   navigator.clipboard.writeText(text).then(()=>{
-    const orig=btn.innerHTML;
-    btn.innerHTML=`<svg width="13" height="13" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><polyline points="40 144 96 200 224 64"/></svg> Copiado`;
-    btn.style.background='var(--green-soft)';
-    btn.style.borderColor='rgba(21,212,156,.3)';
-    btn.style.color='var(--green)';
-    setTimeout(()=>{
-      btn.innerHTML=orig;
-      btn.style.background='var(--bg-elev-2)';
-      btn.style.borderColor='var(--line)';
-      btn.style.color='var(--muted)';
-    },2500);
+    showSuccess();
   }).catch(()=>{
-    btn.textContent='Sin permiso de clipboard';
-    setTimeout(()=>{ btn.innerHTML=`<svg width="13" height="13" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="80" width="136" height="136" rx="10"/><path d="M80,80V56a10,10,0,0,1,10-10H200a10,10,0,0,1,10,10V176a10,10,0,0,1-10,10H176"/></svg> Copiar para LLMs`; },2000);
+    // Fallback: descarga como .txt
+    const blob=new Blob([text],{type:'text/plain'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='yiqi-api-docs-llm.txt';
+    a.click();
+    showSuccess('Descargado');
   });
 }
 
