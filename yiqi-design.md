@@ -43,8 +43,8 @@
 
   /* Text */
   --text:    #f0f1f3;
-  --muted:   #8a8d94;
-  --muted-2: #5a5d66;
+  --muted:   #908e8e;
+  --muted-2: #625f5f;
 
   /* Brand — Cyan */
   --cyan:            #00ccff;
@@ -128,8 +128,8 @@ html[data-theme="light"] {
 
   /* Text */
   --text:    #1a1a1e;
-  --muted:   #6b6e78;
-  --muted-2: #9b9ea8;
+  --muted:   #5e5a57;
+  --muted-2: #8a8580;
 
   /* Brand — Cyan (shifted para fondo claro) */
   --cyan:            #009fc7;
