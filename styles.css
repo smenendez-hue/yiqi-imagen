@@ -19,8 +19,8 @@
 
   /* Texto */
   --text:    #f0f1f3;
-  --muted:   #8a8d94;
-  --muted-2: #5a5d66;
+  --muted:   #908e8e;
+  --muted-2: #625f5f;
 
   /* Marca — acento principal */
   --cyan:        #00ccff;
@@ -47,6 +47,22 @@
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.18);
   --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.22);
 
+  /* Interacción */
+  --tr: 180ms ease;
+
+  /* Semánticos soft */
+  --red-soft:   rgba(242, 95, 92, 0.12);
+  --green-soft: rgba(0, 196, 140, 0.12);
+
+  /* Type scale */
+  --fs-placeholder-title: 30px;   /* 30 / 700 / ls -.04em — Placeholder title */
+  --fs-section-hero:  24px;   /* 24 / 700 / ls -.03em — Section hero   */
+  --fs-panel-title:   14px;   /* 14 / 700             — Panel title     */
+  --fs-module-title:  13px;   /* 13 / 600             — Module title    */
+  --fs-body:          13px;   /* 13 / 400             — Body            */
+  --fs-meta:          12px;   /* 12 / 400 / muted     — Meta text       */
+  --fs-caption:       11px;   /* 11 / 400 / muted     — Helper/caption  */
+
   /* Tipografía */
   --sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
   --mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
@@ -66,8 +82,8 @@
   --radius-pill: 999px;
 
   /* Tokens de componente — Navegación */
-  --nav-label-color:        #5a5d66;
-  --nav-item-text:          #8a8d94;
+  --nav-label-color:        #625f5f;
+  --nav-item-text:          #908e8e;
   --nav-item-bg:            rgba(24, 24, 28, 0.82);
   --nav-item-border:        rgba(255, 255, 255, 0.08);
   --nav-item-hover-text:    #f0f1f3;
@@ -79,7 +95,7 @@
 
   /* Tokens de componente — Login / Auth */
   --login-status-bg:     rgba(24, 24, 28, 0.72);
-  --login-status-text:   #8a8d94;
+  --login-status-text:   #908e8e;
   --login-status-border: rgba(255, 255, 255, 0.08);
   --login-gate-bg:       linear-gradient(145deg, rgba(24, 24, 28, 0.96), rgba(12, 12, 14, 0.90));
   --login-card-bg:       rgba(255, 255, 255, 0.03);
@@ -100,8 +116,8 @@ html[data-theme="light"] {
 
   /* Texto */
   --text:    #17191c;
-  --muted:   #586170;
-  --muted-2: #7f8896;
+  --muted:   #5e5a57;
+  --muted-2: #8a8580;
 
   /* v1.2.5 — Texto con tinte cyan, vibe muted (light) */
   --text-cyan-muted: rgba(0, 140, 175, 0.48);
@@ -125,8 +141,12 @@ html[data-theme="light"] {
   --shadow-md: 0 8px 24px rgba(16, 36, 54, 0.12);
   --shadow-lg: 0 16px 32px rgba(16, 36, 54, 0.16);
 
+  --tr: 180ms ease;
+  --red-soft:   rgba(212, 72, 94, 0.12);
+  --green-soft: rgba(12, 155, 109, 0.12);
+
   /* Tokens de componente — Navegación */
-  --nav-label-color:        #586170;
+  --nav-label-color:        #5e5a57;
   --nav-item-text:          #17191c;
   --nav-item-bg:            #f6f4ef;
   --nav-item-border:        rgba(0, 0, 0, 0.10);
@@ -1427,3 +1447,166 @@ html[data-theme="light"] .skeleton-line {
 
 /* ── FOOTER CANÓNICO ──────────────────────────────────────── */
 /* © 2026 YiQi S.A. · styles.css · DS v1.2.5 · 30/04/2026  */
+
+/* ── 42. INPUTS — COMPONENTES DS (v1.2.5) ────────────────── */
+/* Borderless: sin border, fondo elevado, focus ring cyan.    */
+/* Altura estándar 40px. border-radius 14px en todos.         */
+
+.ds-input,
+.ds-textarea,
+.ds-select {
+  width: 100%;
+  background: var(--bg-soft);
+  border: none;
+  border-radius: 14px;
+  color: var(--text);
+  font: 400 var(--fs-body)/1 var(--sans);
+  outline: none;
+  -webkit-appearance: none;
+  transition: box-shadow var(--tr);
+}
+
+.ds-input,
+.ds-select {
+  height: 40px;
+  padding: 0 14px;
+}
+
+.ds-input::placeholder { color: var(--muted-2); }
+
+.ds-input:focus,
+.ds-select:focus,
+.ds-textarea:focus {
+  box-shadow: 0 0 0 3px var(--cyan-soft);
+}
+
+.ds-input.err,
+.ds-textarea.err {
+  box-shadow: 0 0 0 3px var(--red-soft);
+}
+
+/* Textarea */
+.ds-textarea {
+  height: auto;
+  padding: 10px 14px;
+  resize: vertical;
+  min-height: 96px;
+  line-height: 1.5;
+}
+.ds-textarea::placeholder { color: var(--muted-2); }
+
+/* Select */
+.ds-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236f7785' stroke-width='2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 34px;
+}
+
+/* Input con ícono interno */
+.ds-input-wrap { position: relative; }
+.ds-input-wrap .ds-input { padding-left: 38px; }
+.ds-input-icon {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 16px; stroke: var(--muted-2); fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  pointer-events: none;
+}
+.ds-input-shortcut {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  height: 22px; padding: 0 8px; border-radius: 8px;
+  border: 1px solid var(--line);
+  display: flex; align-items: center;
+  font: 600 10px var(--mono); color: var(--muted); background: var(--bg);
+}
+
+/* Label */
+.ds-label {
+  display: block;
+  font: 500 var(--fs-meta)/1 var(--sans);
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.ds-label .req { color: var(--cyan); margin-left: 2px; }
+
+/* Field error */
+.ds-field-err {
+  font: 400 var(--fs-caption)/1 var(--sans);
+  color: var(--red);
+  display: none;
+  margin-top: 4px;
+}
+.ds-field-err.show { display: block; }
+
+/* Alias para compatibilidad con páginas existentes */
+.field-err { font: 400 var(--fs-caption)/1 var(--sans); color: var(--red); display: none; margin-top: 4px; }
+.field-err.show { display: block; }
+
+/* ── 43. BACKGROUND GRID — CUADRÍCULA (v1.2.5) ───────────── */
+/* Patrón de grilla cuadriculada para uso en cards, banners,   */
+/* heroes y secciones de énfasis. Siempre vía ::before o       */
+/* elemento dedicado — nunca sobre texto directamente.          */
+
+/* Clase utilitaria — aplica la grilla al elemento mismo       */
+/* Requiere position: relative en el contenedor                */
+.bg-grid {
+  --grid-size:   36px;
+  --grid-color:  rgba(255, 255, 255, 0.045);
+  background-image:
+    linear-gradient(90deg,  var(--grid-color) 1px, transparent 1px),
+    linear-gradient(180deg, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+html[data-theme="light"] .bg-grid {
+  --grid-color: rgba(0, 159, 199, 0.18);
+}
+
+/* Variante — grilla más fina */
+.bg-grid-sm {
+  --grid-size:  20px;
+  --grid-color: rgba(255, 255, 255, 0.04);
+  background-image:
+    linear-gradient(90deg,  var(--grid-color) 1px, transparent 1px),
+    linear-gradient(180deg, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+html[data-theme="light"] .bg-grid-sm {
+  --grid-color: rgba(0, 159, 199, 0.16);
+}
+
+/* Variante — grilla más amplia */
+.bg-grid-lg {
+  --grid-size:  64px;
+  --grid-color: rgba(255, 255, 255, 0.04);
+  background-image:
+    linear-gradient(90deg,  var(--grid-color) 1px, transparent 1px),
+    linear-gradient(180deg, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+html[data-theme="light"] .bg-grid-lg {
+  --grid-color: rgba(0, 159, 199, 0.16);
+}
+
+/* Máscara de fade — para suavizar bordes de la grilla         */
+/* Usar junto con .bg-grid en un ::before                      */
+.bg-grid-fade-b  { mask-image: linear-gradient(180deg, rgba(0,0,0,.55), transparent 80%); }
+.bg-grid-fade-t  { mask-image: linear-gradient(0deg,   rgba(0,0,0,.55), transparent 80%); }
+.bg-grid-fade-c  { mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.55), transparent 72%); }
+
+/* Convención: usar como overlay en ::before del contenedor     */
+/*                                                              */
+/* .mi-hero { position: relative; }                            */
+/* .mi-hero::before {                                          */
+/*   content: ""; position: absolute; inset: 0;               */
+/*   pointer-events: none;                                      */
+/*   background-image:                                         */
+/*     linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px), */
+/*     linear-gradient(180deg, rgba(255,255,255,.045) 1px, transparent 1px); */
+/*   background-size: 36px 36px;                               */
+/*   mask-image: linear-gradient(180deg, rgba(0,0,0,.5), transparent 80%); */
+/* }                                                            */
+

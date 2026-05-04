@@ -239,7 +239,7 @@ html[data-theme="light"] body {
   --bg: #0c0c0e;  --bg-elev: #111114;  --bg-elev-2: #18181c;
   --bg-soft: rgba(255,255,255,.04);
   --line: rgba(255,255,255,.08);  --line-strong: rgba(255,255,255,.14);
-  --text: #f0f1f3;  --muted: #8a8d94;  --muted-2: #5a5d66;
+  --text: #f0f1f3;  --muted: #908e8e;  --muted-2: #625f5f;
   --cyan: #00ccff;  --cyan-soft: rgba(0,204,255,.12);
   --cyan-soft-2: rgba(0,204,255,.18);
   --text-cyan-muted: rgba(0,195,240,.45);
