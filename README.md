@@ -61,10 +61,9 @@ yiqi-imagen-1/
 ### 1. Incorporar estilos al proyecto
 
 ```html
-<!-- Opción A: archivo local -->
-<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href=" https://diguardia.github.io/yiqi-imagen/styles.css">
 
-<!-- Opción B: copiar contenido inline en <style> -->
+<!-- Evitar copiar el contenido localmente -->
 ```
 
 ### 2. Activar tema
