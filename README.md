@@ -33,7 +33,6 @@ yiqi-imagen-1/
 ├── execution.md                  # ★ Guía de ejecución v1.2.5
 │
 ├── api-docs.html                 # Documentación de API (HTML interactivo)
-├── YiQi API Docs.html            # Documentación de API (versión alternativa)
 │
 ├── Fuentes/
 │   ├── LOGO YiQi 100x65 NEGATIVO.svg   # Logo negativo (dark mode)
@@ -50,8 +49,6 @@ yiqi-imagen-1/
     ├── testing-jest.md
     ├── yiqi-api.md
     ├── yiqi-login.md
-    └── archive/
-        └── yiqi-design-v1.2.4.md
 ```
 
 ---
@@ -61,7 +58,7 @@ yiqi-imagen-1/
 ### 1. Incorporar estilos al proyecto
 
 ```html
-<link rel="stylesheet" href=" https://diguardia.github.io/yiqi-imagen/styles.css">
+<link rel="stylesheet" href="https://diguardia.github.io/yiqi-imagen/styles.css">
 
 <!-- Evitar copiar el contenido localmente -->
 ```

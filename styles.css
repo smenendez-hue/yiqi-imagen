@@ -1599,9 +1599,10 @@ html[data-theme="light"] .skeleton-line {
 .field-err.show { display: block; }
 
 /* ── 43. BACKGROUND GRID — CUADRÍCULA (v1.2.5) ───────────── */
-/* Patrón de grilla cuadriculada para uso en cards, banners,   */
-/* heroes y secciones de énfasis. Siempre vía ::before o       */
-/* elemento dedicado — nunca sobre texto directamente.          */
+/* Patrón de grilla cuadriculada para piezas de marketing y    */
+/* landing pages. En dashboards y apps funcionales se prefiere */
+/* solo el fondo radial definido arriba. Siempre vía ::before  */
+/* o elemento dedicado — nunca sobre texto directamente.      */
 
 /* Clase utilitaria — aplica la grilla al elemento mismo       */
 /* Requiere position: relative en el contenedor                */
