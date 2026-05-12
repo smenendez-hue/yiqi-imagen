@@ -13,6 +13,12 @@
 - Evitar side effects ocultos.
 - Manejar errores con contexto util.
 
+## Redaccion de UI
+
+- Todo texto visible al usuario debe mantener ortografia y sintaxis correctas en espanol (incluyendo tildes).
+- Mantener terminologia funcional consistente entre pantallas e indicadores.
+- Reservar MAYUSCULAS para siglas tecnicas o de negocio (API, POS, SLA, SKU).
+
 ## Seguridad
 
 - No exponer secretos en cliente.
