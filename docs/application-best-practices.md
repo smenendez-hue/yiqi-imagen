@@ -1,25 +1,25 @@
-# Buenas Practicas Generales de Aplicaciones YiQi
+# Buenas Prácticas Generales de Aplicaciones YiQi
 
 ## Arquitectura
 
-- Separar capa de presentacion, dominio y acceso a datos.
-- Minimizar dependencias cruzadas entre modulos.
+- Separar capa de presentación, dominio y acceso a datos.
+- Minimizar dependencias cruzadas entre módulos.
 - Favorecer funciones puras y componentes reutilizables.
 
-## Calidad de codigo
+## Calidad de código
 
-- Codigo legible antes que ingenioso.
-- Nombres explicitos para funciones y variables.
-- Preferir TypeScript como lenguaje por defecto para nueva logica de negocio, integraciones y estado.
-- Si un modulo legacy sigue en JavaScript, favorecer migraciones incrementales a TypeScript durante cambios sustanciales.
+- Código legible antes que ingenioso.
+- Nombres explícitos para funciones y variables.
+- Preferir TypeScript como lenguaje por defecto para nueva lógica de negocio, integraciones y estado.
+- Si un módulo legacy sigue en JavaScript, favorecer migraciones incrementales a TypeScript durante cambios sustanciales.
 - Evitar side effects ocultos.
-- Manejar errores con contexto util.
+- Manejar errores con contexto útil.
 
-## Redaccion de UI
+## Redacción de UI
 
-- Todo texto visible al usuario debe mantener ortografia y sintaxis correctas en espanol (incluyendo tildes).
-- Mantener terminologia funcional consistente entre pantallas e indicadores.
-- Reservar MAYUSCULAS para siglas tecnicas o de negocio (API, POS, SLA, SKU).
+- Todo texto visible al usuario debe mantener ortografía y sintaxis correctas en español (incluyendo tildes).
+- Mantener terminología funcional consistente entre pantallas e indicadores.
+- Reservar MAYÚSCULAS para siglas técnicas o de negocio (API, POS, SLA, SKU).
 - Redactar en español neutro latinoamericano, sin voseo ni regionalismos.
 
 ## Seguridad
@@ -36,7 +36,7 @@
 
 ## Observabilidad
 
-- Logs utiles para diagnostico (sin datos sensibles).
+- Logs útiles para diagnóstico (sin datos sensibles).
 - Mensajes de error consistentes y accionables.
 
 ## Entrega
