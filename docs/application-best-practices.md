@@ -10,6 +10,8 @@
 
 - Codigo legible antes que ingenioso.
 - Nombres explicitos para funciones y variables.
+- Preferir TypeScript como lenguaje por defecto para nueva logica de negocio, integraciones y estado.
+- Si un modulo legacy sigue en JavaScript, favorecer migraciones incrementales a TypeScript durante cambios sustanciales.
 - Evitar side effects ocultos.
 - Manejar errores con contexto util.
 

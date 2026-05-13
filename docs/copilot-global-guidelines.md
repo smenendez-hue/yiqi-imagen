@@ -45,6 +45,8 @@
 
 - Modulos pequenos, con funciones puras cuando sea posible.
 - Evitar logica de negocio dentro de componentes visuales.
+- TypeScript debe ser el estandar por defecto para codigo nuevo y refactors relevantes.
+- En repositorios legacy en JavaScript, priorizar migracion gradual a TypeScript antes de seguir ampliando logica critica.
 - Definir tipos/interfaces claros en TypeScript.
 - Reducir duplicacion con utilidades compartidas.
 - Incluir manejo consistente de estados: loading/success/error.
