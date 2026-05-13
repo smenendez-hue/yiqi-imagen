@@ -20,6 +20,7 @@
 - Todo texto visible al usuario debe mantener ortografia y sintaxis correctas en espanol (incluyendo tildes).
 - Mantener terminologia funcional consistente entre pantallas e indicadores.
 - Reservar MAYUSCULAS para siglas tecnicas o de negocio (API, POS, SLA, SKU).
+- Redactar en español neutro latinoamericano, sin voseo ni regionalismos.
 
 ## Seguridad
 
