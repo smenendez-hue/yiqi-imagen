@@ -2,7 +2,7 @@
 
 > Fuente única de verdad para implementación de UI en productos YiQi ERP.
 > Este archivo reemplaza cualquier versión anterior de `yiqi-design.md`.
-> Referencias completas: `YiQi_DS_v1_2_4.md` · `YiQi_DS_v1_2_4_Recipe.md`
+> Referencias completas: `YiQi_DS_v1_2_4.md` · `YiQi_DS_v1_2_4_Recipe.md` · `YiQi_DS_v1_2_5_Recipe.md`
 
 ---
 
@@ -30,6 +30,30 @@
 - **Light mode / positivo:** letras `#231f20`, símbolo Q `#009fc7`
 - **Topbar universal:** letras `var(--text)`, símbolo Q `var(--cyan)`
 - No rotar, deformar, recolorear ni aplicar efectos
+- **Tamaño canónico en topbar:** `height: 39px; width: auto` — nunca tamaño fijo por ancho
+
+### Logo iA Ready
+
+- Siempre como **SVG inline** — nunca `<img src="iAready.svg">`
+- Letras "iready" → `var(--text)` · letra "A" → `var(--cyan)`
+- No rotar, deformar, recolorear ni aplicar efectos
+- Uso habitual: footer, sección de certificaciones, landing de producto
+- **Tamaño canónico:** `height: 32px; width: auto`
+- Clases helper: `.iar { fill: var(--text) }` · `.iar-a { fill: var(--cyan) }`
+
+```html
+<style>.iar{fill:var(--text)}.iar-a{fill:var(--cyan)}</style>
+<svg viewBox="0 0 256 68" xmlns="http://www.w3.org/2000/svg" aria-label="iA ready" style="height:32px;width:auto">
+  <path class="iar" d="M225.626 67.89C224.75 67.89 224.239 67.452 224.677 66.576L229.933 54.02L216.063 19.491C215.771 18.688 216.209 18.25 217.012 18.25H227.159C227.743 18.25 228.327 18.542 228.546 19.126L235.846 39.712L243.219 19.126C243.438 18.542 244.022 18.25 244.606 18.25H254.753C255.556 18.25 255.921 18.688 255.629 19.491L236.722 67.014C236.503 67.598 235.919 67.89 235.335 67.89H225.626Z"/>
+  <path class="iar" d="M190.294 54.896C180.439 54.896 173.65 46.7199 173.65 36.1349C173.65 25.6229 180.439 17.3739 190.294 17.3739C194.747 17.3739 197.886 18.688 200.222 21.243V2.99295C200.222 2.33595 200.733 1.82495 201.39 1.82495H211.391C212.048 1.82495 212.559 2.33595 212.559 2.99295V52.852C212.559 53.509 211.975 54.02 211.318 54.02H202.339C201.682 54.02 201.171 53.509 201.171 52.852L201.025 49.8589C198.616 52.9979 195.185 54.896 190.294 54.896ZM185.622 36.1349C185.622 40.8069 188.834 43.7999 193.068 43.7999C197.375 43.7999 200.368 40.734 200.368 36.062C200.368 31.463 197.375 28.4699 193.068 28.4699C188.834 28.4699 185.622 31.5359 185.622 36.1349Z"/>
+  <path class="iar" d="M147.515 54.896C137.66 54.896 130.871 46.72 130.871 36.135C130.871 25.623 137.66 17.374 147.515 17.374C152.552 17.374 155.983 19.199 158.246 22.338L158.392 19.418C158.392 18.761 158.903 18.25 159.56 18.25H168.612C169.269 18.25 169.78 18.761 169.78 19.418V52.852C169.78 53.509 169.196 54.02 168.539 54.02H159.56C158.903 54.02 158.392 53.509 158.392 52.852L158.246 49.859C155.837 52.998 152.406 54.896 147.515 54.896ZM142.843 36.135C142.843 40.807 146.055 43.8 150.289 43.8C154.596 43.8 157.589 40.734 157.589 36.062C157.589 31.463 154.596 28.47 150.289 28.47C146.055 28.47 142.843 31.536 142.843 36.135Z"/>
+  <path class="iar" d="M112.868 54.896C101.115 54.896 93.0117 47.012 93.0117 35.989C93.0117 25.477 100.385 17.374 111.554 17.374C122.504 17.374 128.855 25.331 128.855 34.529C128.855 38.398 127.906 40.807 124.329 40.807H104.984C106.298 44.092 109.437 45.333 113.89 45.333C115.934 45.333 118.27 45.26 121.263 43.654C121.847 43.362 122.212 43.508 122.577 44.092L125.935 48.764C126.227 49.202 126.3 49.786 125.57 50.443C122.577 53.509 117.978 54.896 112.868 54.896ZM104.765 32.412H117.978C117.248 28.616 114.62 27.375 111.627 27.375C108.488 27.375 105.714 28.762 104.765 32.412Z"/>
+  <path class="iar" d="M69.2676 54.02C68.6106 54.02 68.0996 53.509 68.0996 52.852V19.418C68.0996 18.761 68.6106 18.25 69.2676 18.25H78.9036C79.4876 18.25 79.9256 18.542 79.9986 19.491L80.3636 24.309C81.5316 20.294 83.7216 17.374 87.8096 17.374C89.6346 17.374 90.5836 17.885 91.0946 18.323C91.6786 18.761 91.8246 19.272 91.8246 19.929V28.032C91.8246 28.908 91.3136 29.2 90.2916 28.981C89.5616 28.762 88.8316 28.616 87.5906 28.616C83.2836 28.616 80.3636 30.879 80.3636 36.427V52.852C80.3636 53.509 79.8526 54.02 79.1956 54.02H69.2676Z"/>
+  <path class="iar-a" d="M17.7429 54.0199C16.9399 54.0199 16.5019 53.5089 16.7939 52.7789L33.5839 3.79593C33.8029 3.21192 34.3869 2.91992 34.9709 2.91992H45.9939C46.5779 2.91992 47.2349 3.21192 47.4539 3.79593L64.2439 52.7789C64.5359 53.5089 64.0979 54.0199 63.2949 54.0199H52.4179C51.8339 54.0199 51.3229 53.8009 51.1039 53.1439L49.2059 47.0119H31.7589L29.8609 53.1439C29.6419 53.8009 29.2039 54.0199 28.6199 54.0199H17.7429ZM35.2629 35.7699H45.7019L40.5189 19.0529L35.2629 35.7699Z"/>
+  <path class="iar" d="M6.64301 13.213C2.774 13.213 0 10.293 0 6.57C0 2.92 2.774 0 6.64301 0C10.439 0 13.286 2.92 13.286 6.57C13.286 10.293 10.439 13.213 6.64301 13.213ZM0.438004 52.852V19.418C0.438004 18.761 0.949003 18.25 1.606 18.25H11.68C12.337 18.25 12.848 18.761 12.848 19.418V52.852C12.848 53.509 12.337 54.02 11.68 54.02H1.606C0.949003 54.02 0.438004 53.509 0.438004 52.852Z"/>
+</svg>
+```
+
 
 ---
 
@@ -52,7 +76,7 @@
   /* Text */
   --text:    #f0f1f3;
   --muted:   #908e8e;
-  --muted-2: #625f5f;
+  --muted-2: #7d7c82;  /* WCAG AA 4.6:1 */
 
   /* Brand — Cyan */
   --cyan:            #00ccff;
@@ -137,7 +161,7 @@ html[data-theme="light"] {
   /* Text */
   --text:    #1a1a1e;
   --muted:   #5e5a57;
-  --muted-2: #8a8580;
+  --muted-2: #636875;  /* WCAG AA 4.8:1 */
 
   /* Brand — Cyan (shifted para fondo claro) */
   --cyan:            #009fc7;
@@ -193,6 +217,25 @@ html[data-theme="light"] {
 | Label / meta | `--sans` | 12px | 500 | — |
 | Kicker / section label | `--mono` | 10–11px | 600–700 | .10em–.16em, uppercase |
 | Valor numérico / ID | `--mono` | 10–13px | 500 | — |
+
+### Interlinea (line-height) — escala canónica
+
+**Default del sistema: `1.4` (compact)** — aplica al `body` base.
+
+| Nombre | Valor | Uso |
+|---|---|---|
+| tight | `1.1` | Títulos display, hero headlines |
+| snug | `1.35` | Subtítulos, headings de panel |
+| **compact** *(default)* | **`1.4`** | **Body UI, descripciones, app-desc, bajadas** |
+| normal | `1.55` | Texto de ayuda, prose más largo |
+| relaxed | `1.7` | Notas al pie, tooltips |
+| loose | `2.0` | Código mono, logs |
+
+```css
+body { line-height: 1.4; }  /* compact — default del sistema */
+```
+
+**Anti-patrón:** usar `1.6` o `1.7` en texto de interfaz estándar — se ve con demasiado aire.
 
 ---
 
@@ -369,7 +412,7 @@ html[data-theme="light"] .topbar {
 ### Mobile frame fix (obligatorio)
 
 ```css
-html, body { overflow-x: hidden; }
+html, body { overflow-x: clip; }  /* clip en lugar de hidden — no rompe position:sticky */
 .app-layout, .content, .card, .panel,
 .kpi-grid, .table-wrap { min-width: 0; }
 img, svg { max-width: 100%; }
@@ -409,6 +452,30 @@ img, svg { max-width: 100%; }
 .badge-red    { background: var(--red-soft);    color: var(--red); }
 .badge-purple { background: var(--purple-soft); color: var(--purple); }
 ```
+
+### Feature tags — `.tag`
+
+Etiquetas de capacidad del producto. Usan `cyan-soft` background sin dot. Para módulos, funcionalidades, atributos.
+
+```html
+<span class="tag">Facturación</span>
+<span class="tag">Real-time</span>
+<a href="#modulos" class="tag">Stock</a>
+```
+
+```css
+.tag {
+  display: inline-flex; align-items: center;
+  padding: 5px 10px; border-radius: var(--radius-pill);
+  background: var(--cyan-soft); color: var(--cyan);
+  font: 700 10px var(--mono); text-decoration: none;
+}
+@media (hover: hover) { a.tag:hover { background: var(--cyan); color: #fff; } }
+```
+
+**Diferencia con `.badge`:** el badge es para estados (activo, pendiente, error) y lleva dot. El `.tag` es para atributos de producto/módulo, sin dot.
+
+---
 
 ### Cards / KPIs — sin borde
 
@@ -622,6 +689,131 @@ Badge de estado para tablas de coherencia contable — compara totales entre com
 - `.is-good` → verde, diferencia < umbral aceptable
 - `.is-alert` → ámbar, diferencia supera el umbral
 
+
+### Toggle switch — borderless
+
+```html
+<label class="switch-label">
+  <div class="switch-track on"><div class="switch-thumb"></div></div>
+  <span class="switch-text">Notificaciones por email</span>
+</label>
+<label class="switch-label">
+  <div class="switch-track"><div class="switch-thumb"></div></div>
+  <span class="switch-text" style="color:var(--muted)">Modo mantenimiento</span>
+</label>
+```
+
+```css
+.switch-label { display:flex; align-items:center; gap:12px; cursor:pointer; user-select:none; }
+.switch-track {
+  position:relative; width:40px; height:22px; flex-shrink:0;
+  background:var(--bg-soft);
+  border-radius:999px;
+  box-shadow:var(--shadow-sm);   /* profundidad por sombra, no borde */
+  transition:background 200ms ease;
+}
+.switch-track.on { background:var(--cyan); }
+.switch-thumb {
+  position:absolute; top:3px; left:3px;
+  width:16px; height:16px;
+  background:var(--text); border-radius:50%;
+  box-shadow:0 1px 4px rgba(0,0,0,.28);
+  transition:transform 200ms cubic-bezier(.4,0,.2,1), background 200ms ease;
+}
+.switch-track.on .switch-thumb { transform:translateX(18px); background:#fff; }
+.switch-text { font:500 13px var(--sans); color:var(--text); }
+```
+
+- **Filosofía:** borderless — el track usa `box-shadow` en lugar de `border`
+- Estado on: `var(--cyan)` como fondo, thumb blanco
+- Estado off: `var(--bg-soft)`, thumb en `var(--text)`
+
+### Checkbox — borderless
+
+```html
+<label class="checkbox-label">
+  <div class="checkbox checked">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  Importar datos al guardar
+</label>
+<label class="checkbox-label">
+  <div class="checkbox"></div>
+  <span style="color:var(--muted)">Enviar notificación al proveedor</span>
+</label>
+```
+
+```css
+.checkbox-label { display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; font:500 13px var(--sans); color:var(--text); }
+.checkbox {
+  width:18px; height:18px; flex-shrink:0;
+  background:var(--bg-soft);
+  border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-sm);   /* profundidad por sombra, no borde */
+  display:grid; place-items:center;
+  transition:background 180ms ease, box-shadow 180ms ease;
+}
+.checkbox.checked { background:var(--cyan); box-shadow:none; }
+.checkbox svg {
+  width:11px; height:11px; fill:none; stroke:#fff;
+  stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;
+  opacity:0; transition:opacity 150ms ease;
+}
+.checkbox.checked svg { opacity:1; }
+```
+
+- **Filosofía:** borderless — unchecked usa `box-shadow`, nunca `border`
+- Checked: `var(--cyan)` + checkmark SVG blanco inline
+
+### Search Input
+
+Componente de búsqueda borderless. Implementado en `site.css`.
+
+```html
+<div class="search-wrap">
+  <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+  </svg>
+  <input class="search-input" type="text" placeholder="Buscar…">
+  <button class="search-clear" aria-label="Limpiar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" width="14" height="14">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <kbd class="search-kbd">⌘K</kbd>  <!-- opcional -->
+</div>
+```
+
+```css
+.search-wrap  { position: relative; display: block; }
+.search-icon  { position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+                width: 15px; height: 15px; color: var(--muted-2); pointer-events: none; }
+.search-input { width: 100%; height: 44px; padding: 0 40px;
+                background: var(--bg-elev-2); border: 1px solid transparent;
+                border-radius: var(--radius); color: var(--text);
+                font: 400 13px var(--sans); outline: none; caret-color: var(--cyan); }
+.search-input::placeholder { color: var(--muted-2); }
+.search-input:focus { border-color: rgba(0,204,255,.3);
+                      box-shadow: 0 0 0 3px var(--cyan-soft); }
+.search-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+                background: none; border: none; cursor: pointer;
+                color: var(--muted-2); display: none; }
+.search-clear.visible { display: block; }
+.search-kbd   { position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+                font: 500 10px var(--mono); color: var(--muted-2);
+                background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+                border-radius: 4px; padding: 1px 5px; pointer-events: none; }
+.search-kbd.hidden { opacity: 0; }
+/* Sin ícono izquierdo */
+.search-input--no-icon { padding-left: 14px; }
+```
+
+- `search-clear` se muestra/oculta con `.visible` según si hay texto
+- `search-kbd` se oculta con `.hidden` cuando el input tiene foco
+- Sin borde por defecto, focus ring cyan
+
 ---
 
 ## 9. Iconografía
@@ -672,6 +864,17 @@ YiQi Design no es estética. Es diseño de **superficies de decisión sobre dato
 5. Acción — CTA / decisión
 
 **Regla:** arriba → decisión / abajo → explicación.
+
+**Touch behavior:** envolver `:hover` en `@media (hover: hover)` para evitar el "doble tap" en móvil. Agregar `touch-action: manipulation` en elementos clickeables (divs con onclick, cards accordion, etc.).
+
+```css
+@media (hover: hover) {
+  .card:hover { background: var(--cyan-soft-2); }
+}
+.card { touch-action: manipulation; cursor: pointer; }
+```
+
+**Anti-patrón:** títulos bicolor (texto + `em` en cyan) — recurso genérico sobreusado. Usar siempre `var(--text)` en títulos.
 
 **Color semántico:** cyan = foco/acción · green = positivo · amber = alerta · red = crítico · muted = secundario.
 
@@ -761,7 +964,7 @@ applyTheme(resolveTheme());
 - [ ] Token `--text-cyan-muted` declarado en ambos modos
 - [ ] Logo YiQi en SVG inline (nunca `<img>`)
 - [ ] Fuentes Plus Jakarta Sans + Inter + IBM Plex Mono cargadas
-- [ ] `overflow-x: hidden` en `html, body`
+- [ ] `overflow-x: clip` en `html, body` — no `hidden` (rompe `position: sticky`)
 - [ ] `min-width: 0` en todos los containers del grid
 - [ ] Toggle 3 pasos: `setTheme()` + `resolveTheme()` + listener `prefers-color-scheme`
 - [ ] Cards, panels, badges sin `border` — profundidad por `box-shadow`
@@ -790,5 +993,5 @@ applyTheme(resolveTheme());
 
 ---
 
-*YiQi ERP · Design System v1.2.5 · Última actualización: 30/04/2026*
+*YiQi ERP · Design System v1.2.5 · Última actualización: 14/05/2026*
 *Reemplaza todas las versiones anteriores de yiqi-design.md*
