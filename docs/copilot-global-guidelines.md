@@ -3,7 +3,7 @@
 ## 1. Principios base
 
 - Priorizar seguridad, mantenibilidad y legibilidad.
-- Evitar codigo acoplado a una sola pantalla/modulo si puede abstraerse.
+- Evitar código acoplado a una sola pantalla/módulo si puede abstraerse.
 - No hardcodear secretos ni credenciales.
 - Documentar decisiones tecnicas no obvias.
 - Preservar estilos y convenciones existentes del repositorio.
@@ -43,7 +43,7 @@
 
 ## 5. Buenas practicas de arquitectura
 
-- Modulos pequenos, con funciones puras cuando sea posible.
+- Módulos pequeños, con funciones puras cuando sea posible.
 - Evitar logica de negocio dentro de componentes visuales.
 - TypeScript debe ser el estandar por defecto para codigo nuevo y refactors relevantes.
 - En repositorios legacy en JavaScript, priorizar migracion gradual a TypeScript antes de seguir ampliando logica critica.

@@ -9,14 +9,14 @@ Esta guia define el minimo operativo para integrar una app con YiQi sin depender
 El flujo base de autenticacion YiQi es:
 
 1. `POST /token` para obtener el access token.
-2. `GET /api/accountapi/GetLoginInformation` para resolver identidad y contexto de sesion.
+2. `GET /api/accountapi/GetLoginInformation` para resolver identidad y contexto de sesión.
 3. Reutilizar el token como `Bearer` en el header `Authorization` para el resto de los modulos.
 
 `GetLoginInformation` no es un paso accesorio. Es el healthcheck canonico post-login y el origen primario de los datos que la aplicacion necesita para operar con consistencia.
 
-## Contexto minimo por sesion
+## Contexto mínimo por sesión
 
-Toda sesion de trabajo deberia poder reconstruirse, como minimo, con:
+Toda sesión de trabajo debería poder reconstruirse, como mínimo, con:
 
 - `accessToken`
 - `userId`
@@ -37,7 +37,7 @@ Si un endpoint de negocio requiere `schemaId`, ese valor debe salir de `GetLogin
 ## Identidad y esquema
 
 - La identidad operativa del usuario se resuelve desde `GetLoginInformation`.
-- `userId` debe considerarse la referencia primaria para acciones de usuario, autoria, responsable actual o trazabilidad.
+- `userId` debe considerarse la referencia primaria para acciones de usuario, autoría, responsable actual o trazabilidad.
 - `schemaId` debe considerarse el metodo primario para determinar el esquema de trabajo.
 - Si hay configuracion complementaria por ambiente, debe estar controlada y documentada; no debe contradecir la respuesta de login.
 
@@ -53,8 +53,8 @@ Si un endpoint de negocio requiere `schemaId`, ese valor debe salir de `GetLogin
 Separar responsabilidades reduce acoplamiento y hace mas claro el manejo de errores y mapeos.
 
 - `http-client`: transporte HTTP, timeout, headers base y parseo de errores remotos.
-- `auth-service`: `login`, `getLoginInformation`, cierre de sesion y normalizacion de contexto autenticado.
-- `yiqi-api`: funciones por endpoint o modulo de negocio.
+- `auth-service`: `login`, `getLoginInformation`, cierre de sesión y normalización de contexto autenticado.
+- `yiqi-api`: funciones por endpoint o módulo de negocio.
 - `mappers`: conversion entre payload remoto, modelo interno y DTO de UI.
 
 ## Estructura minima sugerida
@@ -79,7 +79,7 @@ const client = createYiqiClient({
 })
 ```
 
-La creacion del cliente debe suceder despues de resolver `schemaId`. Crear un cliente solo con token deja incompleto el contexto de negocio cuando el modulo requiere esquema.
+La creación del cliente debe suceder después de resolver `schemaId`. Crear un cliente solo con token deja incompleto el contexto de negocio cuando el módulo requiere esquema.
 
 ## Reglas de robustez
 
@@ -93,7 +93,7 @@ La creacion del cliente debe suceder despues de resolver `schemaId`. Crear un cl
 
 | Codigo | Significado habitual | Accion recomendada |
 | --- | --- | --- |
-| `401` | token invalido, ausente o expirado | limpiar sesion local y forzar nueva autenticacion |
+| `401` | token inválido, ausente o expirado | limpiar sesión local y forzar nueva autenticación |
 | `403` | usuario autenticado sin permisos suficientes | informar restriccion y evitar reintentos ciegos |
 | `409` | conflicto de clave unica o estado de negocio incompatible | mostrar conflicto funcional y revisar payload |
 | `5xx` | error remoto en YiQi o dependencia intermedia | reintentar con criterio y registrar detalle tecnico |

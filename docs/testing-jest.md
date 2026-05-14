@@ -8,7 +8,7 @@ Asegurar regresion controlada y calidad funcional en todas las aplicaciones YiQi
 
 - Nombrado: `*.test.ts` / `*.test.tsx`
 - Ubicacion sugerida:
-  - Unit: junto al modulo o en `src/**`
+  - Unit: junto al módulo o en `src/**`
   - Integration: `src/test/`
 - Estructura AAA (Arrange, Act, Assert).
 
