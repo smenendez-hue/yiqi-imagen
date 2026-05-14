@@ -6,6 +6,24 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.2.5] - 2026-05-14
+
+### Agregado
+- **Documentación:** Guía maestra v1.2.5 (`yiqi-design.md`) con filosofía borderless confirmada
+- **Estándares:** Ortografía en español neutro con acentos completos en toda documentación
+- **Sincronización:** API Docs sincronizado con tokens de diseño en `styles.css`
+- **Execution:** Checklist de implementación con receta master
+
+### Corregido
+- Acentuación en todos los archivos de documentación (`docs/`)
+- Sincronización de colores semánticos (`--green`, `--amber`, `--red`) entre `api-docs.html` y `styles.css`
+- Inconsistencias de terminología técnica en documentación
+
+### Pendiente
+- [ ] **Component library:** Storybook integrando todos los componentes (sin fecha asignada)
+
+---
+
 ## [1.2.4] - 2026-04-15
 
 ### 🎯 Focus

@@ -1,24 +1,24 @@
-# Estandar de Login YiQi
+# Estándar de Login YiQi
 
 ## Objetivo
 
-Definir un patron comun de autenticacion para todas las aplicaciones YiQi, de modo que el acceso, la experiencia visual y el manejo tecnico de sesion sean consistentes y usen el flujo oficial de seguridad.
+Definir un patrón común de autenticación para todas las aplicaciones YiQi, de modo que el acceso, la experiencia visual y el manejo técnico de sesión sean consistentes y usen el flujo oficial de seguridad.
 
 ## Estructura de pantalla
 
-- El login y la aplicacion autenticada deben ser dos pantallas distintas.
-- Si la app usa una sola pagina HTML, se deben renderizar en contenedores separados y mostrar solo uno a la vez.
-- No mezclar sidebar, topbar ni contenido del dashboard con la pantalla de acceso cuando no hay sesion.
+- El login y la aplicación autenticada deben ser dos pantallas distintas.
+- Si la app usa una sola página HTML, se deben renderizar en contenedores separados y mostrar solo uno a la vez.
+- No mezclar sidebar, topbar ni contenido del dashboard con la pantalla de acceso cuando no hay sesión.
 - El estado visual esperado es:
-  - sin sesion: solo pantalla de login
+  - sin sesión: solo pantalla de login
   - autenticando: login visible con estado de carga
-  - con sesion: solo aplicacion autenticada
+  - con sesión: solo aplicación autenticada
 
 ## Layout visual
 
 - Usar una tarjeta de acceso centrada y sobria.
-- Tipografia UI: Inter.
-- Tipografia de datos o etiquetas tecnicas: IBM Plex Mono.
+- Tipografía UI: Inter.
+- Tipografía de datos o etiquetas técnicas: IBM Plex Mono.
 - Usar tokens YiQi existentes; evitar colores hardcodeados por pantalla.
 - CTA principal con color de token primario.
 - Copy en espanol neutro, breve y accionable.
@@ -26,22 +26,22 @@ Definir un patron comun de autenticacion para todas las aplicaciones YiQi, de mo
 
 ## Campos y copy base
 
-- Titulo recomendado: `Iniciar sesion`.
+- Título recomendado: `Iniciar sesión`.
 - Campo usuario: label `Usuario`.
 - Campo password: label `Clave`.
-- Boton principal: `Entrar` o `Iniciar sesion`.
+- Botón principal: `Entrar` o `Iniciar sesión`.
 - Mensaje idle recomendado: `Ingresa con tu usuario YiQi para abrir la aplicacion.`
-- Mensajes de error: claros, sin detalles tecnicos sensibles.
+- Mensajes de error: claros, sin detalles técnicos sensibles.
 
 ## Flujo oficial YiQi
 
-El patron correcto de login YiQi no termina en la obtencion del token. La secuencia oficial es:
+El patrón correcto de login YiQi no termina en la obtención del token. La secuencia oficial es:
 
 1. `POST /token`
 2. `GET /api/accountapi/GetLoginInformation`
-3. crear o actualizar la sesion interna de la app
+3. crear o actualizar la sesión interna de la app
 
-Este segundo paso no es opcional en una implementacion real. `GetLoginInformation` actua como healthcheck canonico post-login y es la fuente primaria para resolver identidad y contexto de sesion.
+Este segundo paso no es opcional en una implementación real. `GetLoginInformation` actúa como healthcheck canónico post-login y es la fuente primaria para resolver identidad y contexto de sesión.
 
 ## Datos minimos que deben salir de GetLoginInformation
 
@@ -53,7 +53,7 @@ La app debe asumir que de `GET /api/accountapi/GetLoginInformation` salen, como 
 - `schemaName`
 - `host`
 
-Con eso se resuelve la identidad autenticada y el esquema operativo base de la sesion.
+Con eso se resuelve la identidad autenticada y el esquema operativo base de la sesión.
 
 ## Backend propio recomendado
 
@@ -64,13 +64,13 @@ Con eso se resuelve la identidad autenticada y el esquema operativo base de la s
   - ejecutar `GetLoginInformation`
   - centralizar headers y errores
   - normalizar respuestas
-  - emitir una sesion interna de aplicacion desacoplada del contrato crudo de YiQi
+  - emitir una sesión interna de aplicación desacoplada del contrato crudo de YiQi
 
 ## Que persistir y que no persistir
 
 El backend propio puede persistir:
 
-- sesion interna de la aplicacion
+- sesión interna de la aplicación
 - token YiQi solo si la arquitectura lo requiere y en almacenamiento controlado del servidor
 - datos minimos normalizados de identidad para reconstruir contexto
 
@@ -79,13 +79,13 @@ El cliente no debe persistir:
 - credenciales del usuario
 - secretos de integracion
 - payloads completos e innecesarios de YiQi
-- cualquier dato sensible que no sea estrictamente necesario para reanudar la sesion local
+- cualquier dato sensible que no sea estrictamente necesario para reanudar la sesión local
 
-En cliente, persistir solo lo minimo para sostener la experiencia. Si la sesion persistida es invalida, limpiar storage y volver a login sin dejar UI intermedia inconsistente.
+En cliente, persistir solo lo mínimo para sostener la experiencia. Si la sesión persistida es inválida, limpiar storage y volver a login sin dejar UI intermedia inconsistente.
 
 ## Respuesta normalizada minima
 
-Un backend propio puede exponer una respuesta de sesion simplificada como esta:
+Un backend propio puede exponer una respuesta de sesión simplificada como esta:
 
 ```json
 {
@@ -126,7 +126,7 @@ Si la app necesita conocer el responsable actual, debe usar el `userId` obtenido
 
 El logout minimo debe:
 
-1. invalidar la sesion interna de la app
+1. invalidar la sesión interna de la app
 2. limpiar storage local relacionado con autenticacion
 3. volver a la pantalla de login
 
@@ -135,7 +135,7 @@ La navegacion posterior al logout no debe dejar restos de contexto autenticado e
 ## Implementacion sugerida
 
 1. `services/http-client`: wrapper HTTP con timeout y error base.
-2. `services/auth`: `login`, `getLoginInformation`, `logout` y manejo de sesion.
+2. `services/auth`: `login`, `getLoginInformation`, `logout` y manejo de sesión.
 3. `state/auth-controller`: coordinacion de estados de autenticacion.
 4. `ui/render-auth`: render de pantalla de acceso y mensajes.
 5. `main`: bootstrap de sesion persistida y cambio de pantalla.

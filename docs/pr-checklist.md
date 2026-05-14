@@ -1,6 +1,6 @@
 # PR Checklist - YiQi
 
-## Calidad tecnica
+## Calidad técnica
 
 - [ ] Build exitoso
 - [ ] Lint sin errores criticos
