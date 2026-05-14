@@ -954,6 +954,9 @@ applyTheme(resolveTheme());
 10. **Spacing múltiplos de 4** — sin valores arbitrarios.
 11. **Archivos self-contained** — fuentes y scripts embebidos o desde CDN confiable.
 12. **Convención de nombres** — `[proyecto]-v1_0_0.html` (puntos → guiones bajos).
+13. **Trazabilidad obligatoria de KPIs** — cada indicador visible debe incluir origen validable: módulo + campo(s) + agregado/fórmula + periodo.
+14. **Composición de cuentas visible** — cuando un indicador represente una cuenta o total compuesto, debe aclarar qué incluye, qué excluye y con qué criterio.
+15. **No inventar datos faltantes** — si la fuente no está disponible, mostrar estado "No disponible" o "Dato de ejemplo" explícitamente.
 
 ---
 
@@ -973,6 +976,9 @@ applyTheme(resolveTheme());
 - [ ] CTA canónica: **"Reserva tu demo"** (sin voseo)
 - [ ] Nombre de marca: **YiQi**
 - [ ] Footer con versión DS: `· DS v1.2.5`
+- [ ] Todo KPI visible muestra fuente validable (módulo + campo(s) + agregado/fórmula + periodo)
+- [ ] KPIs derivados o cuentas compuestas incluyen fórmula/composición en ayuda contextual
+- [ ] KPIs sin fuente disponible se muestran como no disponibles o demo, nunca como reales
 
 ---
 
