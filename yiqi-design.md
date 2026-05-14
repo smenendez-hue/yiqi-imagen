@@ -1,4 +1,4 @@
-# YiQi Design System — Guía maestra v1.2.5
+# YiQi Design System — Guía maestra v1.2.6
 
 > Fuente única de verdad para implementación de UI en productos YiQi ERP.
 > Este archivo reemplaza cualquier versión anterior de `yiqi-design.md`.
@@ -64,34 +64,34 @@
 ```css
 :root {
   /* Backgrounds */
-  --bg:        #0c0c0e;
-  --bg-elev:   #111114;
-  --bg-elev-2: #18181c;
-  --bg-soft:   rgba(255,255,255,.04);
+  --bg:        #0a0a0b;
+  --bg-elev:   #0f1013;
+  --bg-elev-2: #14161b;
+  --bg-soft:   #181b21;
 
   /* Borders */
   --line:        rgba(255,255,255,.08);
   --line-strong: rgba(255,255,255,.14);
 
   /* Text */
-  --text:    #f0f1f3;
+  --text:    #f3f5f7;
   --muted:   #908e8e;
   --muted-2: #7d7c82;  /* WCAG AA 4.6:1 */
 
   /* Brand — Cyan */
   --cyan:            #00ccff;
-  --cyan-soft:       rgba(0,204,255,.12);
-  --cyan-soft-2:     rgba(0,204,255,.18);
-  --cyan-label:      rgba(0,204,255,.7);
+  --cyan-soft:       rgba(0,204,255,.10);
+  --cyan-soft-2:     rgba(0,204,255,.16);
+  --cyan-label:      rgba(0,204,255,.52);
   --text-cyan-muted: rgba(0,195,240,.45);  /* subtítulos activos, labels acento */
 
   /* Semantic */
-  --green:       #00c48c;
-  --green-soft:  rgba(0,196,140,.12);
-  --amber:       #f6a623;
-  --amber-soft:  rgba(246,166,35,.12);
-  --red:         #f25f5c;
-  --red-soft:    rgba(242,95,92,.12);
+  --green:       #15d49c;
+  --green-soft:  rgba(21,212,156,.10);
+  --amber:       #ffb020;
+  --amber-soft:  rgba(255,176,32,.10);
+  --red:         #ff637d;
+  --red-soft:    rgba(255,99,125,.10);
   --purple:      #a78bfa;
   --purple-soft: rgba(167,139,250,.12);
 
@@ -100,7 +100,7 @@
 
   /* Typography */
   --sans:    "Inter", system-ui, sans-serif;
-  --display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --display: "Greycliff CF", "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --mono:    "IBM Plex Mono", monospace;
 
   /* Font weights */
@@ -120,15 +120,15 @@
   --space-8: 48px;
 
   /* Border radius */
-  --radius-xs:   5px;
-  --radius-sm:   7px;
-  --radius:      10px;
-  --radius-pill: 99px;
+  --radius-xs:   6px;
+  --radius-sm:   10px;
+  --radius:      14px;
+  --radius-pill: 999px;
 
   /* Elevation / Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.35), 0 1px 8px rgba(0,0,0,.18);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.4), 0 1px 4px rgba(0,0,0,.2);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.25);
+  --shadow-sm: 0 1px 3px rgba(0,18,28,.30);
+  --shadow-md: 0 4px 14px rgba(0,20,30,.26);
+  --shadow-lg: 0 12px 40px rgba(0,26,40,.34), 0 2px 12px rgba(0,204,255,.06);
 
   /* Transitions */
   --transition-fast: 120ms ease;
@@ -149,17 +149,17 @@
 ```css
 html[data-theme="light"] {
   /* Backgrounds */
-  --bg:        #f5f4f0;
-  --bg-elev:   #eeece7;
-  --bg-elev-2: #e6e4df;
-  --bg-soft:   rgba(0,0,0,.04);
+  --bg:        #eeece7;
+  --bg-elev:   #f6f4ef;
+  --bg-elev-2: #ffffff;
+  --bg-soft:   #ece9e2;
 
   /* Borders */
   --line:        rgba(0,0,0,.08);
-  --line-strong: rgba(0,0,0,.14);
+  --line-strong: rgba(0,0,0,.13);
 
   /* Text */
-  --text:    #1a1a1e;
+  --text:    #17191c;
   --muted:   #5e5a57;
   --muted-2: #636875;  /* WCAG AA 4.8:1 */
 
@@ -167,23 +167,23 @@ html[data-theme="light"] {
   --cyan:            #009fc7;
   --cyan-soft:       rgba(0,159,199,.1);
   --cyan-soft-2:     rgba(0,159,199,.16);
-  --cyan-label:      rgba(0,159,199,.65);
+  --cyan-label:      rgba(0,159,199,.52);
   --text-cyan-muted: rgba(0,140,175,.48);
 
   /* Semantic */
-  --green:       #007a58;
-  --green-soft:  rgba(0,122,88,.1);
-  --amber:       #c47c00;
-  --amber-soft:  rgba(196,124,0,.1);
-  --red:         #c93c39;
-  --red-soft:    rgba(201,60,57,.1);
+  --green:       #0c9b6d;
+  --green-soft:  rgba(12,155,109,.10);
+  --amber:       #c78000;
+  --amber-soft:  rgba(199,128,0,.10);
+  --red:         #d4485e;
+  --red-soft:    rgba(212,72,94,.10);
   --purple:      #7c3aed;
-  --purple-soft: rgba(124,58,237,.1);
+  --purple-soft: rgba(124,58,237,.12);
 
   /* Shadows (más suaves en fondo claro) */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 8px rgba(0,0,0,.05);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.1), 0 1px 4px rgba(0,0,0,.06);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,.15), 0 2px 8px rgba(0,0,0,.08);
+  --shadow-sm: 0 1px 3px rgba(16,36,54,.06);
+  --shadow-md: 0 4px 14px rgba(16,36,54,.08);
+  --shadow-lg: 0 8px 24px rgba(0,80,110,.09), 0 1px 4px rgba(0,80,110,.05);
 }
 ```
 
@@ -975,7 +975,7 @@ applyTheme(resolveTheme());
 - [ ] Colores hardcodeados reemplazados por custom properties
 - [ ] CTA canónica: **"Reserva tu demo"** (sin voseo)
 - [ ] Nombre de marca: **YiQi**
-- [ ] Footer con versión DS: `· DS v1.2.5`
+- [ ] Footer con versión DS: `· DS v1.2.6`
 - [ ] Todo KPI visible muestra fuente validable (módulo + campo(s) + agregado/fórmula + periodo)
 - [ ] KPIs derivados o cuentas compuestas incluyen fórmula/composición en ayuda contextual
 - [ ] KPIs sin fuente disponible se muestran como no disponibles o demo, nunca como reales
