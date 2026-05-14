@@ -40,6 +40,9 @@ Vas a actuar como un experto en UI implementando estrictamente el YiQi Design Sy
 - `data-theme="system"` en `<html>` — nunca "dark" ni "light" hardcodeado
 - Toggle 3 pasos: Oscuro / Sistema / Claro — usar `setTheme(v)`, no `toggleTheme()`
 - Responsive obligatorio (≤ 980px)
+- Todo KPI visible debe declarar origen validable: modulo + campo(s) + agregado/formula + periodo
+- Si un KPI es derivado o una cuenta compuesta, la ayuda contextual debe explicar formula/composicion en lenguaje funcional
+- Si no hay fuente real disponible, el KPI debe mostrarse como "No disponible" o "Dato de ejemplo" (nunca como real)
 
 **Output:**
 - 1 archivo HTML completo con `<head>` incluido
@@ -77,6 +80,7 @@ Sidebar:
 
 KPI cards (borderless — box-shadow únicamente):
 - accent-cyan · accent-green · accent-amber · accent-muted
+- cada card KPI debe incluir linea de fuente o ayuda contextual auditable
 
 Charts: Chart.js con colores desde CSS vars
 

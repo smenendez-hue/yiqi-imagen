@@ -151,6 +151,8 @@ Foundations iniciales: tokens, color, tipografía, spacing.
 ### 📚 Docs
 
 - Actualización de guía maestra y receta con checklist explícito de indicadores auditables.
+- Estandarización de buenas prácticas generales para apps orientadas a datos: origen validable, composición de cuentas, fallback explícito y criterio de no inventar valores.
+- PR checklist ampliado con validaciones obligatorias de trazabilidad para KPIs.
 
 ### 🔮 Roadmap para 1.3.0
 

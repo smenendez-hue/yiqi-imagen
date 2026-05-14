@@ -22,6 +22,28 @@
 - Reservar MAYÚSCULAS para siglas técnicas o de negocio (API, POS, SLA, SKU).
 - Redactar en español neutro latinoamericano, sin voseo ni regionalismos.
 
+## Aplicaciones orientadas a datos e indicadores
+
+- Todo KPI o indicador visible debe declarar origen validable en el propio componente o en su ayuda contextual.
+- Formato mínimo recomendado de origen: modulo + campo(s) + agregado o formula + periodo.
+- La fuente visible al usuario debe expresarse en lenguaje funcional (negocio), no como ruta técnica cruda.
+- Si el indicador es derivado, debe explicar formula, unidad y criterios de calculo de forma entendible.
+- Si el indicador representa una cuenta, debe exponer composicion: componentes incluidos, exclusiones y filtros relevantes.
+- Si una fuente no esta disponible o llega incompleta, el indicador debe quedar como no disponible; no inventar valores locales.
+- Cuando exista degradacion a mock o fallback, se debe explicitar el estado para evitar confundir dato real con dato de ejemplo.
+- Todo indicador debe mostrar contexto temporal (periodo y/o fecha de corte) para evitar lecturas ambiguas.
+- El contrato de datos debe validarse y normalizarse antes de renderizar indicadores.
+- Los cambios de payload que afecten indicadores deben actualizar en el mismo cambio: mapeo, tests y documentacion.
+
+## Checklist minimo por indicador
+
+- [ ] Fuente funcional declarada y verificable.
+- [ ] Formula o regla de calculo explicada (si aplica).
+- [ ] Composicion de cuenta aclarada (si aplica).
+- [ ] Periodo o fecha de corte visible.
+- [ ] Estado no disponible/fallback correctamente comunicado.
+- [ ] Cobertura de test para camino feliz y error path.
+
 ## Seguridad
 
 - No exponer secretos en cliente.
