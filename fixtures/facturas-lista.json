@@ -1,0 +1,53 @@
+{
+  "source": {
+    "module": "Ventas",
+    "endpoint": "/FACTURA/search",
+    "detailEndpoint": "/FACTURA/{id}",
+    "openApi": "https://apidoc.yiqi.com.ar/erpdemo.schema-Ventas-api.json"
+  },
+  "identity": {
+    "field": "id",
+    "type": "integer",
+    "rule": "Usar items[].id para navegar a /FACTURA/{id}."
+  },
+  "items": [
+    {
+      "id": 120184,
+      "ESTA_NOMBRE": "Emitida",
+      "ESTA_CODIGO": 20,
+      "AUDI_FECHA_ALTA": "2026-05-20T13:45:10Z",
+      "AUDI_FECHA_MODIF": "2026-05-21T09:18:44Z",
+      "CLIE_ID_CLIE": 4302,
+      "PUVE_ID_PUVE": 3,
+      "TIFA_ID_TIFA": 1,
+      "FACT_NUMERO": 58721,
+      "FACT_CONCEPTO": "Servicios profesionales mayo",
+      "MONE_ID_MON1": 1,
+      "FACT_FECHA_EMISION": "2026-05-20",
+      "FACT_FECHA_VENCIMIENTO": "2026-06-19",
+      "FACT_NETO": 185000.0,
+      "FACT_IVA": 38850.0,
+      "FACT_TOTAL": 223850.0,
+      "FACT_PENDIENTE_CANCELACIO": 223850.0
+    },
+    {
+      "id": 120185,
+      "ESTA_NOMBRE": "Cobrada parcial",
+      "ESTA_CODIGO": 30,
+      "AUDI_FECHA_ALTA": "2026-05-22T11:05:32Z",
+      "AUDI_FECHA_MODIF": "2026-05-24T16:22:07Z",
+      "CLIE_ID_CLIE": 4316,
+      "PUVE_ID_PUVE": 3,
+      "TIFA_ID_TIFA": 1,
+      "FACT_NUMERO": 58722,
+      "FACT_CONCEPTO": "Licencias y soporte",
+      "MONE_ID_MON1": 1,
+      "FACT_FECHA_EMISION": "2026-05-22",
+      "FACT_FECHA_VENCIMIENTO": "2026-06-21",
+      "FACT_NETO": 98000.0,
+      "FACT_IVA": 20580.0,
+      "FACT_TOTAL": 118580.0,
+      "FACT_PENDIENTE_CANCELACIO": 58580.0
+    }
+  ]
+}
