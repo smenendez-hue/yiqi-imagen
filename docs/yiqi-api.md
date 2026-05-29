@@ -89,6 +89,62 @@ La creación del cliente debe suceder después de resolver `schemaId`. Crear un 
 - Agregar mensajes de error de usuario en espanol neutro.
 - Registrar suficiente contexto tecnico en logs del backend sin exponer datos sensibles al usuario final.
 
+## Regla fuerte de ids para detalle
+
+Toda UI que navegue a detalle debe usar `item.id`. No usar `ID` ni inferir nombres alternativos. Si `id` no viene, corregir el query/smartie, no agregar fallbacks.
+
+El `id` canonico debe identificarse desde el fixture real o el OpenAPI del endpoint consumido. No se debe construir una ruta de detalle con valores `undefined`, con campos de negocio como numero/codigo/nombre, ni con cadenas de fallback sin validacion explicita del contrato.
+
+## Convencion UI para listados
+
+En listados, navegar al detalle con click en fila. Reservar botones solo para acciones secundarias como descargar, y cortar propagacion del click.
+
+```tsx
+<tr onClick={() => navigate(`/facturas/${item.id}`)}>
+  <td>{item.FACT_NUMERO}</td>
+  <td>
+    <button
+      type="button"
+      onClick={(event) => {
+        event.stopPropagation()
+        downloadFactura(item.id)
+      }}
+    >
+      Descargar
+    </button>
+  </td>
+</tr>
+```
+
+Antes de navegar, validar que `item.id` exista y sea del tipo documentado. Si no existe, el bug esta en el contrato consumido o en la consulta que arma el listado.
+
+## Checklist para agentes
+
+- [ ] Identificar campo `id` desde fixture/OpenAPI.
+- [ ] No navegar con valores `undefined`.
+- [ ] No usar fallbacks multiples para ids sin validacion.
+- [ ] Agregar E2E que haga click en fila y verifique URL final.
+
+## Fixtures reales de lista
+
+Los fixtures de referencia viven en:
+
+- `fixtures/facturas-lista.json`
+- `fixtures/ordenes-compra-lista.json`
+- `fixtures/ordenes-pago-lista.json`
+
+Cada fixture conserva campos reales del OpenAPI publicado y expone `items[].id` como identidad canonica para navegacion a detalle.
+
+## Regla simple de lint/test
+
+Ejecutar:
+
+```bash
+npm run test:detail-navigation
+```
+
+La regla busca patrones de riesgo como `/undefined`, `item.ID`, `dataset.id` sin validacion evidente y rutas construidas con campos no documentados para navegacion de detalle. Si el chequeo falla, corregir el mapeo/query o agregar una validacion explicita antes de navegar.
+
 ## Errores frecuentes
 
 | Codigo | Significado habitual | Accion recomendada |

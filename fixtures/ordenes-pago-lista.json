@@ -1,0 +1,57 @@
+{
+  "source": {
+    "module": "Compras",
+    "endpoint": "/ORDEN_PAGO/search",
+    "detailEndpoint": "/ORDEN_PAGO/{id}",
+    "openApi": "https://apidoc.yiqi.com.ar/erpdemo.schema-Compras-api.json"
+  },
+  "identity": {
+    "field": "id",
+    "type": "integer",
+    "rule": "Usar items[].id para navegar a /ORDEN_PAGO/{id}."
+  },
+  "items": [
+    {
+      "id": 77104,
+      "ESTA_NOMBRE": "Autorizada",
+      "ESTA_CODIGO": 20,
+      "AUDI_FECHA_ALTA": "2026-05-17T15:40:03Z",
+      "AUDI_FECHA_MODIF": "2026-05-20T12:10:27Z",
+      "OBLI_NUMERO_DE_PAGO": 44018,
+      "OBLI_NUMERO": 18327,
+      "CLIE_ID_CLIE": 782,
+      "OBLI_DESCRIPCION": "Pago factura proveedor 0001-00023891",
+      "OBLI_FECHAESPERADA": "2026-05-24",
+      "OBLI_INSTRUCCIONES": "Transferencia bancaria",
+      "MONE_ID_MONE": 1,
+      "MONE_ID_FACO": 1,
+      "OBLI_MONTO": 550550.0,
+      "OBLI_TOTAL_CANCELADO_MD": 0.0,
+      "OBLI_TOTAL_ASIGNADO": 550550.0,
+      "OBLI_TOTAL_PAGADO_MD": 550550.0,
+      "OBLI_PENDIENTE_CANCELACIO": 0.0,
+      "OBLI_FALTANTE_DE_ASIGNACI": 0.0
+    },
+    {
+      "id": 77105,
+      "ESTA_NOMBRE": "Pendiente",
+      "ESTA_CODIGO": 10,
+      "AUDI_FECHA_ALTA": "2026-05-25T09:11:55Z",
+      "AUDI_FECHA_MODIF": "2026-05-25T09:11:55Z",
+      "OBLI_NUMERO_DE_PAGO": 44019,
+      "OBLI_NUMERO": 18328,
+      "CLIE_ID_CLIE": 816,
+      "OBLI_DESCRIPCION": "Anticipo de servicio de mantenimiento",
+      "OBLI_FECHAESPERADA": "2026-05-30",
+      "OBLI_INSTRUCCIONES": "Emitir despues de aprobacion",
+      "MONE_ID_MONE": 1,
+      "MONE_ID_FACO": 1,
+      "OBLI_MONTO": 151250.0,
+      "OBLI_TOTAL_CANCELADO_MD": 0.0,
+      "OBLI_TOTAL_ASIGNADO": 0.0,
+      "OBLI_TOTAL_PAGADO_MD": 0.0,
+      "OBLI_PENDIENTE_CANCELACIO": 151250.0,
+      "OBLI_FALTANTE_DE_ASIGNACI": 151250.0
+    }
+  ]
+}
