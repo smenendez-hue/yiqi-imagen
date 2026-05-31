@@ -1,0 +1,59 @@
+{
+  "source": {
+    "module": "Compras",
+    "endpoint": "/ORDEN_DE_COMPRA/search",
+    "detailEndpoint": "/ORDEN_DE_COMPRA/{id}",
+    "openApi": "https://apidoc.yiqi.com.ar/erpdemo.schema-Compras-api.json"
+  },
+  "identity": {
+    "field": "id",
+    "type": "integer",
+    "rule": "Usar items[].id para navegar a /ORDEN_DE_COMPRA/{id}."
+  },
+  "items": [
+    {
+      "id": 64091,
+      "ESTA_NOMBRE": "Aprobada",
+      "ESTA_CODIGO": 20,
+      "AUDI_FECHA_ALTA": "2026-05-18T10:12:41Z",
+      "AUDI_FECHA_MODIF": "2026-05-19T14:07:35Z",
+      "ORDC_NRO_OC": 9182,
+      "ORDC_ASUNTO": "Reposicion de insumos",
+      "CLIE_ID_CLIE": 782,
+      "COVE_ID_COVE": 5,
+      "ORDC_COMPRA_POR_EXCEPCION": false,
+      "ORDC_FECHA": "2026-05-18",
+      "ORDC_SOLICITADA_POR": 127,
+      "ORDC_FECHA_DE_ENTREGA": "2026-06-03",
+      "MONE_ID_MONE": 1,
+      "ORDC_TOTAL_NETO": 455000.0,
+      "ORDC_IMPORTE_TOTAL": 550550.0,
+      "ORDC_TOTAL_CANTIDADES": 240.0,
+      "ORDC_TOTAL_ENTREGADO": 0.0,
+      "ORDC_TOTAL_PENDIENTE": 240.0,
+      "ORDC_TOTAL_FACTURADO": 0.0
+    },
+    {
+      "id": 64092,
+      "ESTA_NOMBRE": "Pendiente",
+      "ESTA_CODIGO": 10,
+      "AUDI_FECHA_ALTA": "2026-05-23T08:34:19Z",
+      "AUDI_FECHA_MODIF": "2026-05-23T08:34:19Z",
+      "ORDC_NRO_OC": 9183,
+      "ORDC_ASUNTO": "Servicio de mantenimiento",
+      "CLIE_ID_CLIE": 816,
+      "COVE_ID_COVE": 2,
+      "ORDC_COMPRA_POR_EXCEPCION": true,
+      "ORDC_FECHA": "2026-05-23",
+      "ORDC_SOLICITADA_POR": 141,
+      "ORDC_FECHA_DE_ENTREGA": "2026-05-30",
+      "MONE_ID_MONE": 1,
+      "ORDC_TOTAL_NETO": 125000.0,
+      "ORDC_IMPORTE_TOTAL": 151250.0,
+      "ORDC_TOTAL_CANTIDADES": 1.0,
+      "ORDC_TOTAL_ENTREGADO": 0.0,
+      "ORDC_TOTAL_PENDIENTE": 1.0,
+      "ORDC_TOTAL_FACTURADO": 0.0
+    }
+  ]
+}

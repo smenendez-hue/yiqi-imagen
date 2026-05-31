@@ -18,6 +18,7 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+
 ## [1.2.5] - 2026-05-14
 
 ### Agregado
