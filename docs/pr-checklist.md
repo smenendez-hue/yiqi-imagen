@@ -36,3 +36,9 @@
 - [ ] Sin duplicacion evitable
 - [ ] Documentacion actualizada si aplica
 - [ ] `npm run test:detail-navigation` ejecutado si hay UI con listados o detalle
+
+## Deploy Azure + Next.js
+
+- [ ] Si aplica Azure App Service + Next.js: artifact incluye `.next/BUILD_ID`.
+- [ ] Si se usa `actions/upload-artifact@v4`: `include-hidden-files: true` y exclusiones explícitas de `.git`, `.git/**`, `.env`, `.env.*`.
+- [ ] Si aplica Next.js 16 en Azure: `next build --webpack` en build y fallback, con log `Production build not found. Running next build --webpack before start...`.
