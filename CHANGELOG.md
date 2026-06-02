@@ -6,6 +6,18 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.2.6] - 2026-05-31
+
+### Cambiado
+- **Tokens:** Sincronizados con la fuente canónica del sitio (single source of truth). Sombras recalibradas a navy/cyan suave (menos negro) en `--shadow-sm/md/lg`; `--glow` unificado a anillo de foco de 3px.
+- **Paleta:** Backgrounds y semánticos alineados (`--bg #0a0a0b`, `--green #15d49c`, `--amber #ffb020`, `--red #ff637d`); radios a la escala vigente (`--radius 14px`).
+- **Texto:** `--text-cyan-muted` y `--muted-2` ajustados (contraste AA).
+
+### Agregado
+- Tokens `--blue-soft`, `--purple-soft`, `--amber-soft`, `--gridline` para cobertura completa de la paleta.
+
+---
+
 ## [1.2.5] - 2026-05-14
 
 ### Agregado
