@@ -6,7 +6,6 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
-<<<<<<< HEAD
 ## [1.2.6] - 2026-05-31
 
 ### Cambiado
@@ -19,8 +18,6 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
-=======
->>>>>>> ee45004 (docs: update documentation for consistency and clarity in Spanish)
 ## [1.2.5] - 2026-05-14
 
 ### Agregado
