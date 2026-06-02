@@ -31,6 +31,8 @@
 - **Topbar universal:** letras `var(--text)`, símbolo Q `var(--cyan)`
 - No rotar, deformar, recolorear ni aplicar efectos
 - **Tamaño canónico en topbar:** `height: 39px; width: auto` — nunca tamaño fijo por ancho
+- **Wordmark en displays estáticos:** sin animación — solo SVG inline sin `data-yiqi-logo`
+- **Animación canónica (único eje aprobado):** `data-axis="y"` (flip vertical). Los ejes `x` y `z` están descartados.
 
 ### Logo iA Ready
 
@@ -999,5 +1001,102 @@ applyTheme(resolveTheme());
 
 ---
 
-*YiQi ERP · Design System v1.2.5 · Última actualización: 14/05/2026*
+---
+
+## 16. Patrón — Tabla de implementación
+
+Combina un **timeline de 4 pasos numerados** con una **infografía de plazos por fases**. Se usa en propuestas e informes para comunicar el proceso de puesta en marcha.
+
+### Clases
+
+Prefijo `impl-` en todas las clases para evitar colisiones.
+
+| Clase | Elemento |
+|---|---|
+| `.impl-timeline` | Grid de 4 columnas para los pasos |
+| `.impl-tl-step` | Contenedor de cada paso (nodo + contenido) |
+| `.impl-tl-node` | Círculo numerado en `var(--cyan)` |
+| `.impl-tl-content` | Título + descripción centrados bajo el nodo |
+| `.impl-plazos-card` | Card de plazos con barra + detalle |
+| `.impl-plazos-bar` | Barra de 3 fases: cyan · green · amber |
+| `.impl-plazos-phases` | Grid de 3 columnas con descripción por fase |
+| `.impl-plazos-note` | Nota al pie con íconos y lista de aclaraciones |
+
+### Tokens usados
+
+`--bg-elev-2` · `--radius-lg` · `--shadow-sm` · `--cyan` · `--green` · `--amber` · `--mono` · `--display` · `--line`
+
+### Fases de la barra (colores)
+
+| Fase | Color | Semanas orientativas |
+|---|---|---|
+| Configuración | `--cyan` (25%) | Sem 1–3 |
+| Módulos e integraciones | `--green` (42%) | Sem 4–8 |
+| Ajuste · Go live | `--amber` (33%) | Sem 9–12 |
+
+### Reglas
+
+- El total de semanas se destaca con `font-size: 18px` en `var(--text)`, antecedido por el número en negrita.
+- La nota al pie usa flex con ícono SVG inline alineado al tope + lista con `›` en `var(--cyan)`.
+- Responsive: en `≤ 760px` el timeline pasa a 2 columnas; en `≤ 480px` a 1 columna y la línea conectora desaparece.
+
+---
+
+## 17. Patrón — Contador animado
+
+Función `runCounters()` que anima cifras de `0` al valor destino con easing cúbico en 900 ms. Sin dependencias. Activación por `IntersectionObserver`.
+
+### Atributos HTML
+
+| Atributo | Tipo | Descripción |
+|---|---|---|
+| `data-count` | number | Valor destino. Requerido. |
+| `data-prefix` | string | Texto antes de la cifra. Ej: `$` |
+| `data-suffix` | string | Texto después de la cifra. Ej: `%`, ` ped.` |
+
+### Función canónica
+
+```js
+function runCounters(root = document) {
+  root.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const isInt  = Number.isInteger(target);
+    const dur    = 900;
+    let start = null;
+    function fmt(v) {
+      return isInt
+        ? prefix + Math.round(v) + suffix
+        : prefix + v.toFixed(1).replace('.', ',') + suffix;
+    }
+    el.textContent = fmt(0);
+    function step(ts) {
+      if (!start) start = ts;
+      const p    = Math.min((ts - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3); // ease-out-cubic
+      el.textContent = fmt(ease * target);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+// Activación por IntersectionObserver
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { runCounters(e.target); io.unobserve(e.target); } });
+}, { threshold: 0.3 });
+document.querySelectorAll('.kpi-block').forEach(b => io.observe(b));
+```
+
+### Reglas
+
+- Siempre inicializar los elementos en `0` antes de que el usuario los vea (evitar flash del valor final).
+- Decimales: usar coma como separador decimal (`toFixed(1).replace('.', ',')`).
+- Activar por `IntersectionObserver` cuando la cifra está fuera del viewport inicial.
+- Tipografía canónica para cifras: `IBM Plex Mono`, `font-variant-numeric: tabular-nums`.
+
+---
+
+*YiQi ERP · Design System v1.2.6 · Última actualización: 02/06/2026*
 *Reemplaza todas las versiones anteriores de yiqi-design.md*
