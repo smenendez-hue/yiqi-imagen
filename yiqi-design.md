@@ -1098,5 +1098,59 @@ document.querySelectorAll('.kpi-block').forEach(b => io.observe(b));
 
 ---
 
-*YiQi ERP · Design System v1.2.6 · Última actualización: 02/06/2026*
+## 18. Patrón — Pantalla de acceso (Login) *(nuevo en v1.2.7)*
+
+Login centrado para apps YiQi (ERP, Analytics Pro). Card única, sin recuadros superfluos.
+
+### Estructura
+- **Logo animado** (≤260px) en loop (ver "Logo animado en loop" abajo).
+- Línea de marca en una sola línea, muted: `Analytics Pro. Tu negocio en 5 segundos.`
+- **Slot de estado** (`.auth-status`) con altura reservada (no desplaza la card al aparecer).
+- **Card** (`background: var(--bg-elev-2)`, `border: 1px solid var(--line)`, `radius-xl`) con el formulario.
+- **Footer**: `www.yiqi.com.ar` (link centrado).
+
+### Terminología canónica
+`Usuario o correo electrónico` · `Contraseña` · `Mantener sesión iniciada` · `Iniciar sesión` · `¿Olvidaste tu contraseña?`
+
+### Formulario
+- Campo contraseña con botón **ojo** (`#i-eye` / `#i-eye-slash`) para mostrar/ocultar.
+- **Mantener sesión iniciada**: checkbox `accent-color: var(--cyan)` (persiste el usuario).
+- **¿Olvidaste tu contraseña?**: link muted, **dentro de la card, debajo del botón, alineado a la izquierda** (`justify-self: start`).
+
+### Estado de acceso sin reflow
+El mensaje (validando / error / éxito) aparece **sin mover la card**: reservar espacio con `min-height` y alternar `visibility`, nunca `display`.
+
+```css
+.auth-status { min-height: 18px; text-align: center; border: none; background: none; }
+.auth-status[data-state="idle"]    { visibility: hidden; }
+.auth-status[data-state="loading"] { color: var(--cyan); }
+.auth-status[data-state="success"] { color: var(--green); }
+.auth-status[data-state="error"]   { color: var(--red); }
+```
+
+### Override de autofill
+El navegador pinta los campos autocompletados de celeste; forzar tokens DS:
+
+```css
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-elev) inset;
+  caret-color: var(--text);
+  transition: background-color 9999s ease-in-out 0s;
+}
+```
+
+### Logo animado en loop *(nuevo en v1.2.7)*
+Variante del motor `YiQiLogo` (§0): animar **solo el flip de la Q y los dos puntos** (sin el "rise" de las letras), en loop, con `data-loop="<gapMs>"`:
+
+```html
+<svg data-yiqi-logo data-axis="y" data-loop="2600" ...> … </svg>
+```
+
+- Reproduce el flip al cargar y lo repite cada `~1450ms + gap`.
+- Respeta `prefers-reduced-motion` (no loopea).
+
+---
+
+*YiQi ERP · Design System v1.2.7 · Última actualización: 04/06/2026*
 *Reemplaza todas las versiones anteriores de yiqi-design.md*

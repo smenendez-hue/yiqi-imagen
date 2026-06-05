@@ -6,6 +6,19 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [1.2.7] - 2026-06-04
+
+### Agregado
+- **Patrón Login (§18 en `yiqi-design.md`):** pantalla de acceso centrada — card única, ojo para contraseña, "Mantener sesión iniciada", "¿Olvidaste tu contraseña?" dentro de la card (debajo del botón, a la izquierda), footer con `www.yiqi.com.ar`, terminología canónica (`Usuario o correo electrónico`, `Contraseña`, etc.).
+- **Estado de acceso sin reflow:** patrón `.auth-status` con `min-height` + `visibility` (no desplaza la card al mostrar validando/error/éxito).
+- **Override de autofill:** fuerza tokens DS sobre el autocompletado del navegador.
+- **Logo animado en loop:** variante del motor `YiQiLogo` con `data-loop` y flip-only (solo Q + puntos, sin el "rise" de las letras).
+
+### Pendiente
+- Formalizar en el catálogo (`yiqi-design-system.html`) los componentes del panel gerencial: cockpit (headline, heat ribbon, ranking de sucursales), modal de gráfico con cifras animadas, card "sin datos" discreta, chip de usuario/esquema.
+
+---
+
 ## [1.2.6] - 2026-05-31
 
 ### Cambiado
