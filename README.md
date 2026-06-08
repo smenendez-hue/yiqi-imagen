@@ -159,6 +159,7 @@ border: 1px solid var(--border);
 | `docs/yiqi-api.md` | API endpoints y autenticación |
 | `docs/yiqi-login.md` | Flujo de login y sesión |
 | `docs/application-best-practices.md` | Convenciones de código |
+| `docs/azure-nextjs-app-service.md` | Diagnóstico Azure App Service + Next.js |
 | `docs/copilot-global-guidelines.md` | Guías para IA/Copilot |
 | `docs/pr-checklist.md` | Checklist de Pull Request |
 | `docs/testing-jest.md` | Testing con Jest |

@@ -65,3 +65,4 @@
 
 - Cada funcionalidad debe cerrar con build + tests verdes.
 - Registrar decisiones relevantes en README/ADR breve.
+- En apps Next.js desplegadas en Azure App Service, si falla el arranque revisar primero el artifact (`.next/BUILD_ID`), la subida de archivos ocultos y el uso de Webpack documentados en `docs/azure-nextjs-app-service.md`.

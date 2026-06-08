@@ -178,6 +178,7 @@ Foundations iniciales: tokens, color, tipografía, spacing.
 - Actualización de guía maestra y receta con checklist explícito de indicadores auditables.
 - Estandarización de buenas prácticas generales para apps orientadas a datos: origen validable, composición de cuentas, fallback explícito y criterio de no inventar valores.
 - PR checklist ampliado con validaciones obligatorias de trazabilidad para KPIs.
+- Guía operativa para diagnosticar arranques fallidos de Next.js en Azure App Service antes de modificar código de aplicación.
 
 ### 🔮 Roadmap para 1.3.0
 
