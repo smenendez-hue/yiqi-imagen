@@ -1,6 +1,6 @@
 /* ============================================================
    YiQi Design System — styles.css
-   Versión: DS v1.2.5
+   Versión: DS v1.2.7
    Fecha: 30/04/2026
    Fuente canónica: yiqi-design-system.html
    ============================================================ */
@@ -1368,7 +1368,7 @@ html[data-theme="light"] .skeleton-line {
 .card-reveal.visible { opacity: 1; transform: none; }
 
 /* ── FOOTER CANÓNICO ──────────────────────────────────────── */
-/* © 2026 YiQi S.A. · styles.css · DS v1.2.5 · 30/04/2026  */
+/* © 2026 YiQi S.A. · styles.css · DS v1.2.7 · 04/06/2026  */
 
 /* ── 42. INPUTS — COMPONENTES DS (v1.2.5) ────────────────── */
 /* Borderless: sin border, fondo elevado, focus ring cyan.    */
