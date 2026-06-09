@@ -1,10 +1,12 @@
 # YiQi Design System — imagen-1
 
-Repositorio de referencia de diseño para el equipo de desarrollo de **YiQi ERP**. Contiene la hoja de estilos canónica, la documentación de componentes y las guías de implementación.
+Repositorio de referencia de diseño para el equipo de desarrollo de **YiQi ERP**. Empaqueta y publica al CDN la hoja de estilos de consumo, y contiene la documentación de componentes y las guías de implementación.
 
-![Version](https://img.shields.io/badge/version-1.2.5-00ccff?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.2.7-00ccff?style=flat-square)
 ![Status](https://img.shields.io/badge/status-stable-green?style=flat-square)
 ![License](https://img.shields.io/badge/license-proprietary-blue?style=flat-square)
+
+> ⚠️ **Fuente canónica del DS:** repositorio **`www.yiqi`** (`diguardia/www.yiqi`) — ver [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md). Este repo (`yiqi-imagen`) **no es la fuente**: empaqueta y publica al CDN el `styles.css` de consumo. Los cambios de tokens/componentes se hacen en `www.yiqi` y se propagan.
 
 ---
 
@@ -12,8 +14,8 @@ Repositorio de referencia de diseño para el equipo de desarrollo de **YiQi ERP*
 
 | Archivo | Para quién | Propósito |
 |---------|-----------|-----------|
-| `styles.css` | Desarrollador | Hoja de estilos completa — copiar al proyecto |
-| `yiqi-design.md` | IA / Claude | Guía maestra de componentes y patrones v1.2.5 |
+| `styles.css` | Desarrollador | Hoja de estilos completa — consumir vía CDN (no copiar) |
+| `yiqi-design.md` | IA / Claude | Guía maestra de componentes y patrones v1.2.7 |
 | `execution.md` | IA / Claude | Checklist de implementación paso a paso |
 | `CHANGELOG.md` | Todos | Historial de cambios por versión |
 | `version.json` | CI / scripts | Versión legible por máquina |
@@ -26,11 +28,11 @@ Repositorio de referencia de diseño para el equipo de desarrollo de **YiQi ERP*
 yiqi-imagen-1/
 ├── README.md                     # Este archivo
 ├── CHANGELOG.md                  # Historial de cambios
-├── version.json                  # { ds_version: "1.2.5" }
+├── version.json                  # { ds_version: "1.2.7" }
 │
-├── styles.css                    # ★ Hoja de estilos principal v1.2.5
-├── yiqi-design.md                # ★ Guía maestra de diseño v1.2.5
-├── execution.md                  # ★ Guía de ejecución v1.2.5
+├── styles.css                    # ★ Hoja de estilos principal v1.2.7
+├── yiqi-design.md                # ★ Guía maestra de diseño v1.2.7
+├── execution.md                  # ★ Guía de ejecución v1.2.7
 │
 ├── api-docs.html                 # Documentación de API (HTML interactivo)
 │
@@ -98,7 +100,7 @@ body::after {
 
 ---
 
-## Tokens principales — v1.2.5
+## Tokens principales — v1.2.7
 
 ### Backgrounds
 ```css
@@ -170,7 +172,7 @@ border: 1px solid var(--border);
 
 ```
 MAJOR.MINOR.PATCH
-1.2.5
+1.2.7
 │ │ └─ Bug fixes / refinamientos (retrocompatible)
 │ └─── Nuevos componentes / features (retrocompatible)
 └───── Cambios breaking (requiere migración)
@@ -178,11 +180,13 @@ MAJOR.MINOR.PATCH
 
 | Versión | Estado | Cambios principales |
 |---------|--------|-------------------|
-| **1.2.5** | ✅ Estable | Tokens corregidos, borderless, toggle 3 estados, yiqi-runtime.js |
+| **1.2.7** | ✅ Estable | Sección Aplicaciones (kit de apps), inputs borderless, consolidación fuente única |
+| 1.2.6 | 🏛️ | Greycliff CF display, tokens sincronizados con el sitio |
+| 1.2.5 | 🏛️ | Tokens corregidos, borderless, toggle 3 estados, yiqi-runtime.js |
 | 1.2.4 | 🏛️ Archive | Mobile fix, Phosphor icons, tabla sortable |
 
 ---
 
-**Última actualización:** Mayo 2026
-**Versión DS:** 1.2.5
+**Última actualización:** Junio 2026
+**Versión DS:** 1.2.7
 **Estado:** ✅ Stable

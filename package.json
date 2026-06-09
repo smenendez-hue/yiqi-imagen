@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "test:detail-navigation": "node scripts/check-detail-navigation.js"
+    "test:detail-navigation": "node scripts/check-detail-navigation.js",
+    "test": "node scripts/check-detail-navigation.js",
+    "sync": "node scripts/sync-from-www.mjs"
   },
   "devDependencies": {
     "@types/node": "^25.7.0",

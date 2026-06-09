@@ -1,4 +1,4 @@
-# YiQi Design System — Master Recipe + Prompt v1.2.5
+# YiQi Design System — Master Recipe + Prompt v1.2.7
 
 Fuente única de verdad para:
 - Generación de UI con IA
@@ -21,7 +21,7 @@ Este documento es ejecutable. Cumple 3 funciones:
 
 ## 1 · Prompt Maestro (usar directamente con IA)
 
-Vas a actuar como un experto en UI implementando estrictamente el YiQi Design System v1.2.5.
+Vas a actuar como un experto en UI implementando estrictamente el YiQi Design System v1.2.7.
 
 **Contexto obligatorio:**
 - Este documento es la única fuente de verdad
@@ -109,7 +109,7 @@ Opcionales: prioridad · responsable · fecha_creacion · fecha_cierre
 ## 4 · Core JS obligatorio
 
 ```js
-/* ── Theme system DS v1.2.5 ── */
+/* ── Theme system DS v1.2.7 ── */
 function resolveTheme() {
   const s = localStorage.getItem('yiqi-theme') || 'system';
   return s === 'system'
@@ -352,7 +352,7 @@ KPI value: `font: 700 28px/1 var(--display); letter-spacing: -.03em;`
 Incluir en footer:
 
 ```
-© 2026 YiQi S.A. · [Nombre entregable] · DS v1.2.5
+© 2026 YiQi S.A. · [Nombre entregable] · DS v1.2.7
 ```
 
 ---
@@ -397,7 +397,7 @@ Si algo no está definido:
 
 ---
 
-*YiQi ERP · Design System v1.2.5 · Master Recipe · 30/04/2026*
+*YiQi ERP · Design System v1.2.7 · Master Recipe · 30/04/2026*
 
 
 ---

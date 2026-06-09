@@ -1,5 +1,5 @@
 /**
- * YiQi Runtime — v1.2.5
+ * YiQi Runtime — v1.2.7
  * Utilidades JS compartidas para entregables HTML standalone.
  *
  * Uso:  <script src="/system/sdk/yiqi-runtime.js"></script>
@@ -18,7 +18,7 @@
  *   YiQi.fmt.date(d)          — 30/04/2026
  *   YiQi.fmt.dateShort(d)     — 30 abr
  *
- * © 2026 YiQi S.A. — DS v1.2.5
+ * © 2026 YiQi S.A. — DS v1.2.7
  */
 
 (function (global) {
@@ -348,7 +348,7 @@
     fmt: fmt,
 
     /* Meta */
-    version: '1.2.5',
+    version: '1.2.7',
   };
 
 }(window));

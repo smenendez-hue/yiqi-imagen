@@ -1,4 +1,4 @@
-# YiQi Design System — Guía maestra v1.2.6
+# YiQi Design System — Guía maestra v1.2.7
 
 > Fuente única de verdad para implementación de UI en productos YiQi ERP.
 > Este archivo reemplaza cualquier versión anterior de `yiqi-design.md`.
@@ -977,7 +977,7 @@ applyTheme(resolveTheme());
 - [ ] Colores hardcodeados reemplazados por custom properties
 - [ ] CTA canónica: **"Reserva tu demo"** (sin voseo)
 - [ ] Nombre de marca: **YiQi**
-- [ ] Footer con versión DS: `· DS v1.2.6`
+- [ ] Footer con versión DS: `· DS v1.2.7`
 - [ ] Todo KPI visible muestra fuente validable (módulo + campo(s) + agregado/fórmula + periodo)
 - [ ] KPIs derivados o cuentas compuestas incluyen fórmula/composición en ayuda contextual
 - [ ] KPIs sin fuente disponible se muestran como no disponibles o demo, nunca como reales

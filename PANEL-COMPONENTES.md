@@ -20,7 +20,7 @@ Para reuso real hacen falta **tres capas, en una sola fuente**:
 | Documentación viva | `yiqi-design-system.html` | preview + snippet + API de cada componente | consume las dos de arriba |
 
 **Principios**
-- Fuente única (recomendado: **este repo, yiqi-imagen**). Las apps importan, no copian.
+- Fuente única: **`www.yiqi`** (`diguardia/www.yiqi`), según `LEEME-FUENTE-DS.md`. Las apps importan, no copian.
 - Tokens siempre vía `var(--token)`. Nunca hex hardcodeado.
 - **Flat + borderless:** profundidad por fondo/sombra, nunca por borde. Sin degradés ni glows en datos.
 - Acento único **cyan**. El neutral semántico va en `--muted` (gris), nunca azul.
@@ -203,5 +203,5 @@ Cards de áreas pendientes. **Borderless**, con **pill de estado** (Planeado / E
 ## 5. Pendiente (para completar el reuso)
 - [x] **`ds-components.js` creado** (v1): tooltip "i", tablas sortables, mover-controles-al-drawer. Expone `window.YiQiDS`, auto-init. Falta v2: charts/modal/comparación (dependen de datos → necesitan API de inyección).
 - [ ] Migrar el panel a **importar** `ds-styles.css` (hoy tiene copia en `styles.css`).
-- [ ] Consolidar la fuente única (este repo) y retirar las copias divergentes.
+- [ ] Consolidar hacia la fuente única (**`www.yiqi`**) y retirar las copias divergentes (incluida la de este repo).
 - [ ] Conectar a datos reales: Embudo operativo y Backlog (hoy hardcodeados).
