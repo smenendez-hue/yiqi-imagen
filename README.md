@@ -17,6 +17,7 @@ Design System YiQi, más la documentación de componentes y las guías de implem
 |---------|-----------|------|
 | 🧑‍💻 **Desarrollador que consume el DS** | [`docs/quickstart.md`](./docs/quickstart.md) + `styles.css` vía CDN | Incorporar estilos a tu app |
 | 🎨 **Quien implementa UI con el DS** | [`yiqi-design.md`](./yiqi-design.md) y [`execution.md`](./execution.md) | Componentes, tokens, patrones, checklist |
+| 🧩 **Quien necesita un template** | [`template/INDEX.md`](./template/INDEX.md) | Copiar pantallas o módulos base aprobados |
 | 🤖 **Agente de IA / Copilot** | [`Agent/README.md`](./Agent/README.md) → [`Agent/INDEX.md`](./Agent/INDEX.md) | Router de contexto: leer solo lo necesario |
 | 🛠️ **Mantenedor del repo** | [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md) + [`scripts/INDEX.md`](./scripts/INDEX.md) | Fuente única, sync y publicación |
 | 📚 **Buscás un documento puntual** | [`docs/INDEX.md`](./docs/INDEX.md) | Índice de guías técnicas |
@@ -41,6 +42,7 @@ yiqi-imagen-1/
 │   └── INDEX.md                  #    Router de documentación
 │
 ├── docs/        → docs/INDEX.md       # Guías técnicas para el equipo
+├── template/    → template/INDEX.md   # Templates copy/paste para proyectos
 ├── Fuentes/     → Fuentes/INDEX.md    # Logos, íconos y archivo histórico
 ├── fixtures/    → fixtures/INDEX.md   # Datos JSON de ejemplo
 └── scripts/     → scripts/INDEX.md    # Automatizaciones (test, sync)
@@ -57,6 +59,7 @@ Cada carpeta tiene su propio `INDEX.md` con una tabla de contenido legible por h
 | `styles.css` | Desarrollador | Hoja de estilos completa — consumir vía CDN (no copiar) |
 | `yiqi-design.md` | IA / Claude | Guía maestra de componentes y patrones v1.2.7 |
 | `execution.md` | IA / Claude | Checklist de implementación paso a paso |
+| `template/` | Dev / IA | Templates reutilizables por pantalla o módulo |
 | `version.json` | CI / scripts | Versión legible por máquina |
 
 ---
@@ -64,6 +67,24 @@ Cada carpeta tiene su propio `INDEX.md` con una tabla de contenido legible por h
 ## Uso rápido
 
 Ver [`docs/quickstart.md`](./docs/quickstart.md).
+
+---
+
+## Templates reutilizables
+
+La carpeta [`template/`](./template/INDEX.md) contiene componentes aprobados para
+copiar y pegar en proyectos nuevos o existentes. Un agente debe usar estos
+templates como base legitima antes de inventar una pantalla equivalente desde
+cero. La adaptacion esperada es conectar datos, rutas, copy del proyecto y
+detalles de integracion; no rehacer la estructura visual si el template cubre el
+caso de uso.
+
+Para login Next.js, empezar por [`template/login/README.md`](./template/login/README.md).
+
+Cuando este repo se use para iniciar o guiar otro proyecto, el agente tambien
+debe importar el indice de errores de [`Agent/error-memory/errors/INDEX.md`](./Agent/error-memory/errors/INDEX.md)
+y solo las categorias relevantes. Eso evita repetir errores conocidos desde la
+primera tarea sin copiar logs, secretos ni historial innecesario.
 
 ---
 

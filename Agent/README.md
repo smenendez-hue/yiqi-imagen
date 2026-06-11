@@ -59,6 +59,13 @@ This repository is the **canonical source** of the YiQi Design System (since
    external API limits, and actions that require explicit user approval.
 11. For recurring errors, start with `error-memory/errors/INDEX.md`. Do not read
     every error file by default.
+12. In derived projects, import the relevant `error-memory/` index and category
+    files at project setup so recurring mistakes are available before work
+    starts. Keep only root causes and fixes; never import secrets or raw logs.
+13. When a routed template exists in `../template/`, copy/paste it as the
+    legitimate starting point and adapt it to the project. Do not redesign the
+    same component from scratch unless the route says not to use the template or
+    the user gives a project-specific reason.
 
 ## Next step
 
