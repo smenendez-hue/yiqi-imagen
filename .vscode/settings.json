@@ -1,3 +1,13 @@
 {
-    "git.ignoreLimitWarning": true
+    // Encoding y fin de línea consistentes para evitar mojibake (ver docs/convenciones-documentacion.md)
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+
+    // No ocultar las advertencias de Git: queremos ver si hay demasiados cambios
+    // o ruido en el árbol de trabajo (p. ej. archivos basura sin ignorar).
+    "git.ignoreLimitWarning": false,
+    "git.untrackedChanges": "mixed"
 }

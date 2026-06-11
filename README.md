@@ -1,12 +1,53 @@
 # YiQi Design System — imagen-1
 
-Repositorio de referencia de diseño para el equipo de desarrollo de **YiQi ERP**. Empaqueta y publica al CDN la hoja de estilos de consumo, y contiene la documentación de componentes y las guías de implementación.
+Repositorio de **empaquetado y publicación al CDN** de la hoja de estilos de consumo del
+Design System YiQi, más la documentación de componentes y las guías de implementación.
 
 ![Version](https://img.shields.io/badge/version-1.2.7-00ccff?style=flat-square)
 ![Status](https://img.shields.io/badge/status-stable-green?style=flat-square)
 ![License](https://img.shields.io/badge/license-proprietary-blue?style=flat-square)
 
-> ⚠️ **Fuente canónica del DS:** repositorio **`www.yiqi`** (`diguardia/www.yiqi`) — ver [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md). Este repo (`yiqi-imagen`) **no es la fuente**: empaqueta y publica al CDN el `styles.css` de consumo. Los cambios de tokens/componentes se hacen en `www.yiqi` y se propagan.
+> ⚠️ **Fuente canónica del DS:** repositorio **`www.yiqi`** (`diguardia/www.yiqi`) — ver [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md). Este repo **no es la fuente**: empaqueta y publica al CDN el `styles.css` de consumo. Los tokens/componentes se editan en `www.yiqi` y se propagan.
+
+---
+
+## ¿Por dónde empiezo? (según quién seas)
+
+| Si sos… | Empezá por | Para |
+|---------|-----------|------|
+| 🧑‍💻 **Desarrollador que consume el DS** | [Uso rápido](#uso-rápido) + [`styles.css` vía CDN](#1-incorporar-estilos-al-proyecto) | Incorporar estilos a tu app |
+| 🎨 **Quien implementa UI con el DS** | [`yiqi-design.md`](./yiqi-design.md) y [`execution.md`](./execution.md) | Componentes, tokens, patrones, checklist |
+| 🤖 **Agente de IA / Copilot** | [`Agent/README.md`](./Agent/README.md) → [`Agent/INDEX.md`](./Agent/INDEX.md) | Router de contexto: leer solo lo necesario |
+| 🛠️ **Mantenedor del repo** | [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md) + [`scripts/INDEX.md`](./scripts/INDEX.md) | Fuente única, sync y publicación |
+| 📚 **Buscás un documento puntual** | [`docs/INDEX.md`](./docs/INDEX.md) | Índice de guías técnicas |
+
+---
+
+## Mapa del repositorio
+
+```
+yiqi-imagen-1/
+├── README.md                     # Este archivo (puerta de entrada)
+├── LEEME-FUENTE-DS.md            # ⚠️ La fuente del DS es www.yiqi
+├── CHANGELOG.md                  # Historial de cambios
+├── version.json                  # { ds_version: "1.2.7" }
+│
+├── styles.css                    # ★ Hoja de estilos de consumo (CDN)
+├── yiqi-design.md                # ★ Guía maestra de diseño v1.2.7
+├── execution.md                  # ★ Guía de ejecución v1.2.7
+├── api-docs.html                 # Documentación de API (HTML interactivo)
+│
+├── Agent/                        # 🤖 Instrucciones para agentes de IA
+│   ├── README.md                 #    Entrada corta
+│   └── INDEX.md                  #    Router de documentación
+│
+├── docs/        → docs/INDEX.md       # Guías técnicas para el equipo
+├── Fuentes/     → Fuentes/INDEX.md    # Logos, íconos y archivo histórico
+├── fixtures/    → fixtures/INDEX.md   # Datos JSON de ejemplo
+└── scripts/     → scripts/INDEX.md    # Automatizaciones (test, sync)
+```
+
+Cada carpeta tiene su propio `INDEX.md` con una tabla de contenido legible por humanos y agentes.
 
 ---
 
@@ -19,39 +60,6 @@ Repositorio de referencia de diseño para el equipo de desarrollo de **YiQi ERP*
 | `execution.md` | IA / Claude | Checklist de implementación paso a paso |
 | `CHANGELOG.md` | Todos | Historial de cambios por versión |
 | `version.json` | CI / scripts | Versión legible por máquina |
-
----
-
-## Estructura del repositorio
-
-```
-yiqi-imagen-1/
-├── README.md                     # Este archivo
-├── CHANGELOG.md                  # Historial de cambios
-├── version.json                  # { ds_version: "1.2.7" }
-│
-├── styles.css                    # ★ Hoja de estilos principal v1.2.7
-├── yiqi-design.md                # ★ Guía maestra de diseño v1.2.7
-├── execution.md                  # ★ Guía de ejecución v1.2.7
-│
-├── api-docs.html                 # Documentación de API (HTML interactivo)
-│
-├── Fuentes/
-│   ├── LOGO YiQi 100x65 NEGATIVO.svg   # Logo negativo (dark mode)
-│   ├── iAready.svg                      # Ícono iAready
-│   └── archive/                         # Versiones anteriores (solo referencia)
-│       ├── YiQi_DS_v1_2_4.md
-│       ├── YiQi_DS_v1_2_4_Recipe.md
-│       └── yiqi-design-system-v1.2.4.html
-│
-└── docs/                         # Guías técnicas para el equipo
-    ├── application-best-practices.md
-    ├── copilot-global-guidelines.md
-    ├── pr-checklist.md
-    ├── testing-jest.md
-    ├── yiqi-api.md
-    ├── yiqi-login.md
-```
 
 ---
 
@@ -154,6 +162,8 @@ border: 1px solid var(--border);
 
 ## Documentación de referencia
 
+Índice completo en [`docs/INDEX.md`](./docs/INDEX.md). Atajos:
+
 | Documento | Contenido |
 |-----------|-----------|
 | `yiqi-design.md` | Componentes, tokens, patrones, layout |
@@ -165,6 +175,7 @@ border: 1px solid var(--border);
 | `docs/copilot-global-guidelines.md` | Guías para IA/Copilot |
 | `docs/pr-checklist.md` | Checklist de Pull Request |
 | `docs/testing-jest.md` | Testing con Jest |
+| `docs/convenciones-documentacion.md` | Encoding (UTF-8/LF) y estilo documental |
 
 ---
 
