@@ -42,7 +42,8 @@
   position: relative;
   z-index: 1;
   display: flex;
-  width: min(100%, 420px);
+  width: 100%;
+  max-width: min(420px, calc(100vw - 48px));
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -63,10 +64,12 @@
 }
 
 .yiqi-login-description {
+  max-width: 100%;
   margin: 0;
   color: var(--yiqi-login-muted);
   font-size: 14px;
   line-height: 1.45;
+  overflow-wrap: break-word;
   text-align: center;
 }
 
@@ -92,6 +95,7 @@
 }
 
 .yiqi-login-card {
+  max-width: 100%;
   display: grid;
   width: 100%;
   gap: 16px;
@@ -272,6 +276,10 @@
 @media (max-width: 520px) {
   .yiqi-login-shell {
     padding: 18px;
+  }
+
+  .yiqi-login-panel {
+    max-width: min(420px, calc(100vw - 36px));
   }
 
   .yiqi-login-card {

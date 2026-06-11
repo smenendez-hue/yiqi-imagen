@@ -29,6 +29,8 @@ The template is intentionally UI-only. The consuming project must wire
 - `template/login/yiqi-logo-animated.tsx`
 - `template/login/README.md`
 - `template/login/preview.html`
+- `template/login/assets/login-template-preview.png`
+- `template/login/assets/login-template-preview-mobile.png`
 
 ## Contracts and assumptions
 
@@ -48,7 +50,8 @@ The template is intentionally UI-only. The consuming project must wire
 ## Verification
 
 - Run repo tests.
-- Run visual QA from `template/login/preview.html`.
+- Run visual QA from `template/login/preview.html` in light theme for desktop
+  and a narrow viewport.
 - Search for credentials or project-specific copy before publishing.
 
 ## Last reviewed

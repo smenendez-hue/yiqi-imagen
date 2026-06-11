@@ -4,7 +4,15 @@ Reusable login screen extracted from a real YiQi app and generalized for future
 projects. It keeps the approved visual structure while making app-specific text
 and submit behavior configurable.
 
-![Login template preview](./assets/login-template-preview.png)
+## Preview
+
+Desktop, light theme:
+
+![Login template desktop preview](./assets/login-template-preview.png)
+
+Narrow viewport, light theme:
+
+![Login template responsive preview](./assets/login-template-preview-mobile.png)
 
 ## What this includes
 
@@ -14,6 +22,8 @@ and submit behavior configurable.
 | `yiqi-login-template.css` | Plain CSS for the login screen. Import it from your app layout or global CSS entry. |
 | `yiqi-logo-animated.tsx` | Inline animated YiQi logo. No image asset required. |
 | `preview.html` | Static preview used for visual QA. |
+| `assets/login-template-preview.png` | Desktop light-theme screenshot. |
+| `assets/login-template-preview-mobile.png` | Narrow viewport light-theme screenshot. |
 
 ## When to use
 
@@ -100,7 +110,11 @@ compras unless the project passes that copy explicitly.
 
 ## Visual QA
 
-The preview was generated from `preview.html` with the same CSS classes used by
-the template. Re-run visual QA after changing layout, spacing, logo, colors, or
-state rendering.
+The previews were generated from `preview.html` with the same CSS classes used
+by the template.
 
+- Desktop: 1280 x 900, light theme.
+- Narrow viewport: 520 x 844, light theme.
+
+Re-run visual QA after changing layout, spacing, logo, colors, breakpoints, or
+state rendering.
