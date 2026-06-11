@@ -1,5 +1,11 @@
 # CHANGELOG
 
+> **Rol de este archivo (decisión 2026-06):** el CHANGELOG es un registro **para humanos**.
+> La **fuente de verdad de la versión es `version.json`** y, para tokens/componentes, el repo
+> fuente `www.yiqi` (ver `LEEME-FUENTE-DS.md`). **Los agentes de IA no deben tomar el CHANGELOG
+> como fuente** de versión ni de contrato: leer `version.json` / la fuente. Se mantiene a mano;
+> si en el futuro se migra a GitHub Releases, actualizar esta nota.
+
 Todos los cambios notables en el YiQi Design System están documentados en este archivo.
 
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/) y este proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/).

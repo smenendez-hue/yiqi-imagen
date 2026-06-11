@@ -22,6 +22,8 @@ Leé **solo** las filas que correspondan a tu tarea. Esto evita cargar contexto 
 | Scripts del repo | `../scripts/README.md` | — |
 | Convenciones de código | `../docs/application-best-practices.md`, `../docs/copilot-global-guidelines.md` | — |
 | Encoding / estilo de docs | `../docs/convenciones-documentacion.md` | — |
+| Qué es obligatorio vs. recomendado / alcance del DS | `../docs/gobernanza-y-alcance.md` | — |
+| Frontera fuente privada vs. catálogo público | `../docs/fuente-privada-y-catalogo-publico.md` | — |
 
 ## 2. Índices por carpeta
 

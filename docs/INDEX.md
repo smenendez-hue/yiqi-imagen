@@ -18,6 +18,8 @@ Guías técnicas y políticas para el equipo y agentes. Leer solo el documento q
 | Documento | Para quién | Cuándo leerlo |
 |-----------|-----------|---------------|
 | `convenciones-documentacion.md` | Todos | Encoding (UTF-8/LF) y estilo documental — evitar mojibake |
+| `gobernanza-y-alcance.md` | Todos | Qué es obligatorio vs. recomendado y alcance flexible del DS |
+| `fuente-privada-y-catalogo-publico.md` | Todos | Frontera entre fuente interna y catálogo público |
 | `seguridad-integraciones-api.md` | Dev / IA | Seguridad operacional al consumir la API YiQi |
 | `politica-errores.md` | Dev / IA | Mensajes de error de usuario vs. logs técnicos |
 | `politica-dependencias.md` | Dev / Mantenedor | Gestor de paquetes (npm), dependencias y auditoría |

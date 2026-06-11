@@ -1,5 +1,7 @@
 # Lineamientos Globales para Agentes Codificadores YiQi
 
+> Niveles de exigencia (obligatorio vs. recomendado) y alcance del DS: ver `gobernanza-y-alcance.md`.
+
 ## 1. Principios base
 
 - Priorizar seguridad, mantenibilidad y legibilidad.
@@ -8,9 +10,10 @@
 - Documentar decisiones tecnicas no obvias.
 - Preservar estilos y convenciones existentes del repositorio.
 
-## 2. Testing obligatorio
+## 2. Testing requerido (runner recomendado: Jest)
 
-- Framework por defecto: Jest.
+- Testear es obligatorio; el runner es recomendado, no impuesto.
+- Runner recomendado por defecto: **Jest**. Se permite Vitest / node:test si cumple el mismo nivel (ver `testing-jest.md`).
 - Cada cambio funcional debe incluir o ajustar tests.
 - Priorizar tests de:
   - Reglas de negocio
@@ -41,7 +44,9 @@
 - Mantener copy en espanol neutro.
 - Reutilizar componentes de sistema antes de crear nuevos.
 
-## 5. Buenas practicas de arquitectura
+## 5. Buenas practicas de arquitectura (recomendadas)
+
+> La estructura de referencia es recomendada, no obligatoria. Ver `gobernanza-y-alcance.md` §3.
 
 - Módulos pequeños, con funciones puras cuando sea posible.
 - Evitar logica de negocio dentro de componentes visuales.
