@@ -323,6 +323,9 @@ body.preview-open .ds-layout { display: none !important; }
 <span class="ds-nav-label">Aplicaciones</span>
 <a class="ds-nav-item" href="#pro-banner">Analytics Pro <span class="ds-nav-badge ds-nav-badge-amber">PRO</span></a>
 <a class="ds-nav-item" href="#panel-gerencial">Panel Gerencial <span class="ds-nav-badge ds-nav-badge-amber">NEW</span></a>
+<a class="ds-nav-item" href="#app-overview">Apps · Overview</a>
+<a class="ds-nav-item" href="#app-shell">Apps · Shell</a>
+<a class="ds-nav-item" href="#chart-anim">Animación de gráficos <span class="ds-nav-badge">NEW</span></a>
 </div>
 </div>
 </nav>
@@ -2436,6 +2439,354 @@ document.querySelectorAll(<span style="color:var(--green)">'.kpi-block'</span>).
 })();
 </script>
 
+
+<!-- ▼ Migrado desde www.yiqi (2026-06-11): catálogo consolidado ▼ -->
+<style id="code-copy-style">
+.code-block-wrap{position:relative}
+.code-copy-btn{position:absolute;top:10px;right:10px;display:inline-flex;align-items:center;gap:5px;font:600 11px var(--mono);color:var(--muted-2);background:var(--bg-elev-2);border:1px solid var(--line);padding:3px 10px;border-radius:var(--radius-pill);cursor:pointer;transition:all var(--tr);opacity:0;pointer-events:none;white-space:nowrap;z-index:2}
+.code-block-wrap:hover .code-copy-btn{opacity:1;pointer-events:auto}
+.code-copy-btn:hover{color:var(--text);border-color:var(--line-strong)}
+.code-copy-btn.copied{color:var(--green);border-color:rgba(21,212,156,.28);background:var(--green-soft)}
+.code-copy-btn svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<section class="ds-section" id="app-overview">
+<div class="ds-section-header">
+<div class="ds-section-kicker">26 · Aplicaciones · Overview</div>
+<h2 class="ds-section-title">Apps del marketplace</h2>
+<p class="ds-section-sub">Componentes y convenciones para construir apps de YiQi con un lenguaje visual consistente. Base para apps propias y de partners.</p>
+</div>
+
+<div class="subsection-title">Convenciones de apps</div>
+<p style="font:400 13px/1.6 var(--sans);color:var(--muted);max-width:64ch;margin:-4px 0 14px">Las apps comparten tokens, paleta, radios y sombras con la web. Lo que cambia es intencional, no deriva:</p>
+<table class="table-demo" style="max-width:720px;margin-bottom:28px">
+<thead><tr><th>Aspecto</th><th>Web (www.yiqi)</th><th>Apps (marketplace)</th></tr></thead>
+<tbody>
+<tr><td>Display font (<code>--display</code>)</td><td>Greycliff CF</td><td><strong>Plus Jakarta Sans</strong></td></tr>
+<tr><td>Sans / Mono</td><td colspan="2" style="text-align:center">Inter / IBM Plex Mono (compartidos)</td></tr>
+<tr><td>Tokens · paleta · radios · sombras</td><td colspan="2" style="text-align:center">compartidos — mismos <code>var(--*)</code>, <strong>no redefinir</strong></td></tr>
+<tr><td>Fondo</td><td>radiales + grilla</td><td>solo radiales</td></tr>
+<tr><td>Tema</td><td colspan="2" style="text-align:center">toggle 3 pasos (Oscuro · Sistema · Claro), default <code>system</code></td></tr>
+<tr><td>Logo</td><td colspan="2" style="text-align:center">SVG inline (letras <code>--text</code>, Q <code>--cyan</code>) — nunca texto ni <code>&lt;img&gt;</code></td></tr>
+</tbody>
+</table>
+
+<div class="subsection-title">Cómo empezar (dev externo)</div>
+<table class="table-demo" style="max-width:720px;margin-bottom:8px">
+<thead><tr><th>#</th><th>Paso</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Cargá el DS: <code>&lt;link href="https://diguardia.github.io/yiqi-imagen/styles.css"&gt;</code> + fonts (Plus Jakarta, Inter, IBM Plex Mono).</td></tr>
+<tr><td>2</td><td>No redefinas tokens. Consumí <code>var(--*)</code> del DS.</td></tr>
+<tr><td>3</td><td>Armá la app con los componentes del <strong>Kit base (shell)</strong>: topbar, sidebar, estados de carga, etc. (sección siguiente).</td></tr>
+<tr><td>4</td><td>Para publicar en el marketplace, la app pasa por <strong>certificación</strong>.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="ds-section" id="app-shell">
+<div class="ds-section-header">
+<div class="ds-section-kicker">27 · Aplicaciones · Kit base</div>
+<h2 class="ds-section-title">Shell de app</h2>
+<p class="ds-section-sub">El marco que comparten todas las apps: <strong>topbar + sidebar + área de contenido</strong>. Se toma del DS; cada app solo construye lo de adentro.</p>
+</div>
+
+<div class="subsection-title">El shell</div>
+<div style="border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--bg);margin-bottom:24px;max-width:760px">
+  <div style="display:flex;align-items:center;gap:12px;height:50px;padding:0 14px;background:var(--bg-elev);border-bottom:1px solid var(--line)">
+    <svg viewBox="0 0 100 65" style="height:26px;width:auto;color:var(--text)" aria-label="YiQi"><g><path style="fill:currentColor" d="M20.44,48.34l2.57-6.15-6.79-16.91c-.14-.39.07-.61.46-.61h4.97c.29,0,.57.14.68.43l3.58,10.08,3.61-10.08c.11-.29.39-.43.68-.43h4.97c.39,0,.57.21.43.61l-9.26,23.27c-.11.29-.39.43-.68.43h-4.75c-.43,0-.68-.21-.47-.64Z"/><path style="fill:currentColor" d="M38.72,25.24c0-.32.25-.57.57-.57h4.89c.32,0,.57.25.57.57v16.24c0,.32-.25.57-.57.57h-4.89c-.32,0-.57-.25-.57-.57v-16.24Z"/><path style="fill:var(--cyan)" d="M57.91,44.78v-2.66c-2.18-.53-4.21-1.66-5.92-3.36-4.97-4.97-5.09-13.02-.03-18.08,5.09-5.09,13.14-4.97,18.11,0s5.09,13.02,0,18.11c-1.78,1.78-3.94,2.93-6.22,3.46v2.51c0,.35-.18.53-.58.53h-4.82c-.3,0-.55-.2-.55-.5ZM56.28,34.47c.5.5,1.05.9,1.65,1.2v-3.36c0-.35.18-.53.53-.53h4.87c.25,0,.53.18.53.53v3.36c.63-.33,1.23-.78,1.78-1.33,2.73-2.73,2.78-6.75.15-9.38s-6.67-2.61-9.41.13c-2.71,2.71-2.73,6.75-.1,9.38Z"/><path style="fill:currentColor" d="M77.44,25.24c0-.32.25-.57.57-.57h4.89c.32,0,.57.25.57.57v16.24c0,.32-.25.57-.57.57h-4.89c-.32,0-.57-.25-.57-.57v-16.24Z"/><path style="fill:currentColor" d="M38.5,18.99c0-1.77,1.35-3.19,3.23-3.19s3.23,1.42,3.23,3.19-1.38,3.23-3.23,3.23-3.23-1.42-3.23-3.23Z"/><path style="fill:currentColor" d="M77.22,18.99c0-1.77,1.35-3.19,3.23-3.19s3.23,1.42,3.23,3.19-1.38,3.23-3.23,3.23-3.23-1.42-3.23-3.23Z"/></g></svg>
+    <span style="font:700 9px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);background:var(--bg-elev-2);border-radius:var(--radius-pill);padding:5px 10px">Mi App</span>
+    <span style="margin-left:auto"></span>
+    <span style="display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 11px 0 5px;border-radius:var(--radius-pill);background:var(--bg-elev-2)"><span style="width:20px;height:20px;border-radius:50%;background:var(--cyan-soft);display:grid;place-items:center;font:700 8px var(--mono);color:var(--cyan)">DV</span><span style="font:500 11px var(--sans);color:var(--muted)">Dev Externo</span></span>
+    <button style="height:30px;padding:0 11px;border:none;border-radius:var(--radius-pill);background:var(--cyan-soft-2);color:var(--cyan);font:600 11px var(--sans);cursor:pointer">Actualizar</button>
+    <button style="height:30px;padding:0 12px;border:none;border-radius:var(--radius-pill);background:var(--bg-elev-2);color:var(--muted);font:600 11px var(--sans);cursor:pointer">Cerrar sesión</button>
+  </div>
+  <div style="display:flex;min-height:170px">
+    <div style="width:178px;flex-shrink:0;border-right:1px solid var(--line);padding:12px 10px;display:flex;flex-direction:column;gap:2px">
+      <div style="font:700 9px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);padding:6px 8px 2px">Sección</div>
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:var(--radius-sm);font:500 12px var(--sans);color:var(--cyan);background:var(--cyan-soft)"><span style="width:22px;height:22px;border-radius:var(--radius-xs);background:var(--cyan-soft-2);display:grid;place-items:center"><svg viewBox="0 0 256 256" style="width:13px;height:13px;fill:none;stroke:var(--cyan);stroke-width:18"><path d="M56 32h144v192l-24-16-24 16-24-16-24 16-24-16-24 16Z"/></svg></span>Inicio</div>
+      <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:var(--radius-sm);font:500 12px var(--sans);color:var(--muted)"><span style="width:22px;height:22px;border-radius:var(--radius-xs);background:var(--bg-soft);display:grid;place-items:center"><svg viewBox="0 0 256 256" style="width:13px;height:13px;fill:none;stroke:var(--muted);stroke-width:18"><path d="M40 76 128 36l88 40v104l-88 40-88-40Z"/></svg></span>Otra vista</div>
+      <div style="margin-top:auto;padding-top:10px;border-top:1px solid var(--line)">
+        <div style="display:flex;gap:2px;padding:3px;border:1px solid var(--line);background:var(--bg-elev-2);border-radius:var(--radius-pill);margin-bottom:8px">
+          <span style="flex:1;height:24px;display:grid;place-items:center;color:var(--muted)"><svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.9"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg></span>
+          <span style="flex:1;height:24px;display:grid;place-items:center;background:var(--cyan-soft);color:var(--cyan);border-radius:var(--radius-pill)"><svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.9"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+          <span style="flex:1;height:24px;display:grid;place-items:center;color:var(--muted)"><svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.9"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></span>
+        </div>
+        <div style="font:500 9px/1.4 var(--mono);color:var(--muted-2)">© 2026 YiQi S.A.<br>Mi App · DS v1.2.7</div>
+      </div>
+    </div>
+    <div style="flex:1;padding:16px;color:var(--muted);font:400 12px var(--sans)">Área de contenido — acá va lo propio de cada app.</div>
+  </div>
+</div>
+
+<div class="subsection-title">Topbar</div>
+<table class="table-demo" style="max-width:720px;margin-bottom:24px">
+<thead><tr><th>Parte</th><th>Clase</th><th>Regla</th></tr></thead>
+<tbody>
+<tr><td>Barra</td><td><code>.topbar</code></td><td>Sticky, alto 56px, fondo translúcido + <code>backdrop-filter:blur(16px)</code>, borde inferior <code>--line</code>.</td></tr>
+<tr><td>Logo</td><td>SVG inline</td><td>Letras <code>--text</code>, Q <code>--cyan</code>. Opcional animado al cargar.</td></tr>
+<tr><td>Pill de producto</td><td><code>.t-pill</code></td><td>Mono 10px mayúsculas, borde <code>--line</code>, fondo <code>--bg-elev-2</code>, color <code>--muted</code>. <em>(nuevo)</em></td></tr>
+<tr><td>Chip de cuenta</td><td><code>.account-chip</code></td><td>Avatar inicial + usuario (<code>--muted</code>) + esquema (<code>--text</code>) en sans. <em>(compartido)</em></td></tr>
+<tr><td>Selector de esquema</td><td><code>.schema-toggle</code></td><td>Botón <code>aria-haspopup</code> con menú de esquemas borderless. Para apps multi-esquema (ej. panel). <em>(compartido)</em></td></tr>
+<tr><td>Actualizar</td><td><code>.btn-refresh</code></td><td>Pill <code>--cyan-soft-2</code>/<code>--cyan</code>; re-renderiza la vista. <em>(nuevo)</em></td></tr>
+<tr><td>Cerrar sesión</td><td><code>.btn-exit</code></td><td>Pill <code>--bg-elev-2</code>/<code>--muted</code>; hover <code>--red</code>. <em>(nuevo)</em></td></tr>
+</tbody>
+</table>
+
+<div class="subsection-title">Sidebar</div>
+<table class="table-demo" style="max-width:720px;margin-bottom:24px">
+<thead><tr><th>Parte</th><th>Clase</th><th>Regla</th></tr></thead>
+<tbody>
+<tr><td>Contenedor</td><td><code>.sidebar</code></td><td>Sticky, altura <code>100vh − topbar</code>, scroll propio, flex column.</td></tr>
+<tr><td>Item</td><td><code>.nav-item</code></td><td>Alto 40px, sans 13px. Activo: fondo <code>--cyan-soft</code>, texto <code>--cyan</code>. <em>(base en §12)</em></td></tr>
+<tr><td>Caja de ícono</td><td><code>.nav-icon</code></td><td>26px, <code>--radius-xs</code>, SVG stroke (nunca emoji). Activo: <code>--cyan-soft-2</code>/<code>--cyan</code>.</td></tr>
+<tr><td>Switch de tema</td><td><code>.sb-theme-switch</code></td><td>Píldora con 3 íconos (luna/monitor/sol), default <code>system</code>. <em>(compartido)</em></td></tr>
+<tr><td>Footer</td><td><code>.sb-footer</code> / <code>.sb-copy</code></td><td>Mono 10px <code>--muted-2</code>: <code>© año YiQi S.A. · App · DS v1.2.7</code>. <em>(nuevo)</em></td></tr>
+</tbody>
+</table>
+
+<div class="subsection-title">Estados de carga</div>
+<p style="font:400 13px/1.6 var(--sans);color:var(--muted);max-width:64ch;margin:-4px 0 12px">Usar <code>.load-progress</code> <strong>a todo ancho</strong>, dentro de un contenedor transparente (<code>.card-flush</code>) para no boxear ni deformar la vista. Etiqueta + % mono cyan, barra de 4px, y línea de estado con dot.</p>
+<div style="display:grid;gap:12px;max-width:720px"><div style="display:grid;gap:12px">
+
+  <!-- Estado: cargando (65%) -->
+  <div class="load-progress">
+    <div class="load-progress-track">
+      <div class="load-progress-fill" id="lp-demo-1" style="width:65%"></div>
+    </div>
+    <div class="load-progress-meta">
+      <span>Conectando con el servidor...</span>
+      <strong>65%</strong>
+    </div>
+  </div>
+
+  <!-- Estado: completo (100%) -->
+  <div class="load-progress">
+    <div class="load-progress-track">
+      <div class="load-progress-fill" style="width:100%"></div>
+    </div>
+    <div class="load-progress-meta">
+      <span>Listo</span>
+      <strong>100%</strong>
+    </div>
+  </div>
+
+</div>
+<div class="comp-row" style="margin-top:10px">
+  <button class="btn btn-primary btn-sm" onclick="animateLP()">Reiniciar demo</button>
+</div></div>
+</section>
+
+<section class="ds-section" id="chart-anim">
+<div class="ds-section-header">
+<div class="ds-section-kicker">25 · Patrón</div>
+<h2 class="ds-section-title">Animación de gráficos</h2>
+<p class="ds-section-sub">Configuración canónica de <code>animation</code> en Chart.js 4 y sparklines SVG. Consistencia de timing y easing en todos los entregables.</p>
+</div>
+
+
+<div class="subsection-title" style="margin-top:32px">Demo</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:end" id="chart-anim-demo">
+
+  <!-- Barras -->
+  <div style="background:var(--bg-elev-2);border-radius:var(--radius-md);padding:18px 20px">
+    <div style="font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:12px">Barras · 900ms easeOutQuart</div>
+    <div style="position:relative;height:140px"><canvas id="demoBar"></canvas></div>
+  </div>
+
+  <!-- Línea -->
+  <div style="background:var(--bg-elev-2);border-radius:var(--radius-md);padding:18px 20px">
+    <div style="font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:12px">Línea · 1000ms easeOutQuart</div>
+    <div style="position:relative;height:140px"><canvas id="demoLine"></canvas></div>
+  </div>
+
+  <!-- Donut -->
+  <div style="background:var(--bg-elev-2);border-radius:var(--radius-md);padding:18px 20px">
+    <div style="font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:12px">Donut · 1000ms easeOutQuart</div>
+    <div style="position:relative;height:140px"><canvas id="demoDonut"></canvas></div>
+  </div>
+
+</div>
+<div style="margin-top:12px">
+  <button onclick="dsChartReplay()" style="height:34px;padding:0 16px;background:var(--bg-elev-2);border:1px solid var(--line);border-radius:var(--radius-sm);font:600 12px var(--mono);color:var(--muted);cursor:pointer;transition:all var(--tr)" onmouseenter="this.style.color='var(--text)'" onmouseleave="this.style.color='var(--muted)'">↺ Repetir animación</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+  var barInst, lineInst, donutInst;
+
+  function getCSSVar(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+  function buildDemoCharts(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var dur = reduce ? 0 : null;
+
+    // Barras
+    if(barInst) barInst.destroy();
+    barInst = new Chart(document.getElementById('demoBar'),{
+      type:'bar',
+      data:{
+        labels:['Ene','Feb','Mar','Abr','May','Jun'],
+        datasets:[{
+          data:[42,58,51,74,68,89],
+          backgroundColor:getCSSVar('--cyan-soft-2')||'rgba(0,204,255,.16)',
+          borderRadius:4, barPercentage:.7, categoryPercentage:.8
+        }]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        animation:{ duration: dur!==null ? dur : 900, easing:'easeOutQuart' },
+        plugins:{legend:{display:false},tooltip:{enabled:false}},
+        scales:{
+          x:{ grid:{display:false}, border:{display:false}, ticks:{color:getCSSVar('--muted-2'),font:{family:getCSSVar('--mono'),size:9}} },
+          y:{ display:false, beginAtZero:true }
+        }
+      }
+    });
+
+    // Línea
+    if(lineInst) lineInst.destroy();
+    lineInst = new Chart(document.getElementById('demoLine'),{
+      type:'line',
+      data:{
+        labels:['Ene','Feb','Mar','Abr','May','Jun'],
+        datasets:[{
+          data:[28,45,39,61,55,78],
+          borderColor:getCSSVar('--cyan')||'#00ccff',
+          borderWidth:2.5, pointRadius:0, pointHoverRadius:4,
+          tension:.35, fill:false
+        }]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        animation:{ duration: dur!==null ? dur : 1000, easing:'easeOutQuart' },
+        plugins:{legend:{display:false},tooltip:{enabled:false}},
+        scales:{
+          x:{ grid:{display:false}, border:{display:false}, ticks:{color:getCSSVar('--muted-2'),font:{family:getCSSVar('--mono'),size:9}} },
+          y:{ display:false }
+        }
+      }
+    });
+
+    // Donut
+    if(donutInst) donutInst.destroy();
+    var cyan    = getCSSVar('--cyan')    ||'#00ccff';
+    var green   = getCSSVar('--green')   ||'#15d49c';
+    var amber   = getCSSVar('--amber')   ||'#ffb020';
+    donutInst = new Chart(document.getElementById('demoDonut'),{
+      type:'doughnut',
+      data:{
+        labels:['Ventas','Stock','CRM'],
+        datasets:[{
+          data:[52,31,17],
+          backgroundColor:[cyan,green,amber],
+          borderWidth:0, hoverOffset:4
+        }]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false, cutout:'68%',
+        animation:{ duration: dur!==null ? dur : 1000, easing:'easeOutQuart' },
+        plugins:{
+          legend:{
+            position:'bottom',
+            labels:{color:getCSSVar('--muted'),font:{family:getCSSVar('--mono'),size:9},padding:10,usePointStyle:true,pointStyle:'circle',boxWidth:6,boxHeight:6}
+          },
+          tooltip:{enabled:false}
+        }
+      }
+    });
+  }
+
+  window.dsChartReplay = function(){ buildDemoCharts(); };
+
+  // Auto-play al entrar en viewport
+  if('IntersectionObserver' in window){
+    var played = false;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting && !played){ played=true; io.disconnect(); buildDemoCharts(); }
+      });
+    },{threshold:0.25});
+    var sec = document.getElementById('chart-anim-demo');
+    if(sec) io.observe(sec);
+  }
+})();
+</script>
+
+<div class="subsection-title" style="margin-top:32px">Chart.js — configuración por tipo</div>
+<table class="table-demo">
+  <thead><tr><th>Tipo</th><th>duration</th><th>easing</th><th>Notas</th></tr></thead>
+  <tbody>
+    <tr><td>Barras (<code>bar</code>)</td><td><code>900</code></td><td><code>easeOutQuart</code></td><td>Sube desde la base, impacto rápido</td></tr>
+    <tr><td>Línea / mixto</td><td><code>1000</code></td><td><code>easeOutQuart</code></td><td>Dibuja punto a punto de izq. a der.</td></tr>
+    <tr><td>Donut / pie</td><td><code>1000</code></td><td><code>easeOutQuart</code></td><td>Giro desde las 12 h, sentido horario</td></tr>
+  </tbody>
+</table>
+
+<div class="code-block-wrap"><button class="code-copy-btn" onclick="dsCopyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span class="copy-lbl">Copiar</span></button>
+<pre style="background:var(--bg-elev-2);border-radius:var(--radius-md);padding:20px 22px;font:13px/1.7 var(--mono);color:var(--muted);overflow-x:auto;border:1px solid var(--line);margin-top:16px"><code><span style="color:var(--muted-2)">// Patrón canónico — pegar en options{} de cualquier chart</span>
+<span style="color:var(--cyan)">const</span> chartAnim = {
+  duration: 900,               <span style="color:var(--muted-2)">// 900 barras · 1000 línea · 1000 donut</span>
+  easing:   <span style="color:var(--green)">'easeOutQuart'</span>
+};
+
+<span style="color:var(--muted-2)">// Respetar prefers-reduced-motion</span>
+<span style="color:var(--cyan)">const</span> reduce = window.matchMedia(<span style="color:var(--green)">'(prefers-reduced-motion: reduce)'</span>).matches;
+<span style="color:var(--cyan)">if</span> (reduce) chartAnim.duration = 0;
+
+<span style="color:var(--muted-2)">// Uso en new Chart()</span>
+options: {
+  animation: chartAnim,
+  <span style="color:var(--muted-2)">// ...</span>
+}</code></pre>
+</div>
+
+<div class="subsection-title" style="margin-top:32px">Activación diferida — IntersectionObserver</div>
+<p class="ds-section-sub" style="margin-bottom:12px">Los gráficos <strong>no se inicializan al cargar</strong>. Se crean solo cuando el contenedor entra en el viewport (threshold 0.25). Evita animar charts fuera de pantalla.</p>
+
+<div class="code-block-wrap"><button class="code-copy-btn" onclick="dsCopyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span class="copy-lbl">Copiar</span></button>
+<pre style="background:var(--bg-elev-2);border-radius:var(--radius-md);padding:20px 22px;font:13px/1.7 var(--mono);color:var(--muted);overflow-x:auto;border:1px solid var(--line)"><code><span style="color:var(--cyan)">let</span> played = <span style="color:var(--amber)">false</span>;
+<span style="color:var(--cyan)">const</span> io = <span style="color:var(--cyan)">new</span> IntersectionObserver(entries => {
+  <span style="color:var(--cyan)">if</span> (entries[0].isIntersecting &amp;&amp; !played) {
+    played = <span style="color:var(--amber)">true</span>;
+    io.disconnect();
+    buildCharts(); <span style="color:var(--muted-2)">// inicializar aquí, no antes</span>
+    runCounters();
+  }
+}, { threshold: 0.25 });
+io.observe(document.querySelector(<span style="color:var(--green)">'#dashboard-section'</span>));</code></pre>
+</div>
+
+<div class="subsection-title" style="margin-top:32px">Sparklines SVG — animación CSS</div>
+<p class="ds-section-sub" style="margin-bottom:12px">Líneas SVG animadas con <code>stroke-dashoffset</code>. Solo se activan si <code>prefers-reduced-motion: no-preference</code>.</p>
+
+<div class="code-block-wrap"><button class="code-copy-btn" onclick="dsCopyCode(this)" aria-label="Copiar código"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span class="copy-lbl">Copiar</span></button>
+<pre style="background:var(--bg-elev-2);border-radius:var(--radius-md);padding:20px 22px;font:13px/1.7 var(--mono);color:var(--muted);overflow-x:auto;border:1px solid var(--line)"><code><span style="color:var(--muted-2)">/* Estado inicial */</span>
+<span style="color:var(--cyan)">@media</span> (prefers-reduced-motion: no-preference) {
+  .sparkline polyline {
+    stroke-dasharray:  1;
+    stroke-dashoffset: 1;
+  }
+  body.anim-in .sparkline polyline {
+    animation: sparkDraw 1.1s cubic-bezier(.6,.04,.2,1) forwards;
+  }
+  .sparkline polygon  { opacity: 0; }
+  body.anim-in .sparkline polygon {
+    animation: sparkFade .5s ease .8s forwards;
+  }
+}
+<span style="color:var(--cyan)">@keyframes</span> sparkDraw { to { stroke-dashoffset: 0 } }
+<span style="color:var(--cyan)">@keyframes</span> sparkFade  { to { opacity: 1 } }
+
+<span style="color:var(--muted-2)">/* Activar: agregar clase al body */</span>
+document.body.classList.add(<span style="color:var(--green)">'anim-in'</span>);</code></pre>
+</div>
+
+<div class="subsection-title" style="margin-top:32px">Reglas</div>
+<p class="ds-section-sub">Siempre usar <code>easeOutQuart</code> — nunca <code>linear</code> ni <code>easeInOut</code> en gráficos de datos. Respetar <code>prefers-reduced-motion</code> con <code>duration:0</code>. No animar en carga inicial si el chart está fuera del viewport. Los gráficos secundarios o de fondo pueden usar <code>duration:0</code> directamente.</p>
+
+</section>
+
+<!-- ▲ fin migrado desde www.yiqi ▲ -->
 </main>
 </div>
 <script>
