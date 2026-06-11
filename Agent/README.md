@@ -28,11 +28,11 @@ loading too much documentation.
 
 ## Repository role
 
-This repository packages and publishes the YiQi Design System CDN stylesheet.
-The canonical DS source is the private repository `diguardia/www.yiqi`; see
-`../LEEME-FUENTE-DS.md`. If you do not have access to that private source, use
-the published artifacts and this repository's public documentation. Do not block
-the task trying to read the private source.
+This repository is the **canonical source** of the YiQi Design System (since
+2026-06-11). DS tokens, components, catalog, and docs are edited **here**; see
+`../LEEME-FUENTE-DS.md`. The website repo `diguardia/www.yiqi` **consumes** the DS
+(loads the published `styles.css` from the CDN) and receives synced artifacts via
+`../scripts/sync-to-www.mjs` (`npm run sync`).
 
 ## Minimal rules
 

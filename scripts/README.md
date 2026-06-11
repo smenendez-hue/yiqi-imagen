@@ -6,7 +6,7 @@ No editar a mano los archivos que un script genera.
 | Script | Comando npm | Responsabilidad | Genera / toca |
 |--------|-------------|-----------------|---------------|
 | `check-detail-navigation.js` | `npm test` · `npm run test:detail-navigation` | **Guard de calidad.** Escanea código (`.js/.jsx/.ts/.tsx`) buscando rutas de detalle inseguras: `/undefined`, `item.ID`, `dataset.id` sin validar, rutas armadas con campos de negocio. | Nada (solo lee y sale 0/1) |
-| `sync-from-www.mjs` | `npm run sync` | **Sincronización del DS.** Regenera `ds-styles.css` y `styles.css` desde la fuente canónica `www.yiqi`. | **Sobrescribe** `ds-styles.css` y `styles.css` |
+| `sync-to-www.mjs` | `npm run sync` | **Propagación del DS.** Copia los artefactos canónicos del DS de este repo hacia el sitio `www.yiqi`. | **Sobrescribe** archivos en `../www.yiqi` |
 
 ## Detalle por responsabilidad
 
@@ -16,12 +16,13 @@ No editar a mano los archivos que un script genera.
 - **Cuándo correrlo:** antes de cada PR con UI de listados/detalle, y en CI.
 - **Si falla:** corregir el mapeo/query para exponer `item.id`; no agregar fallbacks. Ver `docs/yiqi-api.md` (regla fuerte de ids).
 
-### `sync-from-www.mjs` — sync del Design System
-- **Tipo:** generación de artefactos. **Sobrescribe** archivos.
-- **Fuente:** carpeta hermana `../www.yiqi` (override con `WWW_YIQI=/ruta`). Si no la encuentra, aborta con código 1.
-- **Qué hace:** toma `ds-styles.css` y `site.css` de la fuente, antepone un header "GENERADO — NO editar a mano" y reescribe `ds-styles.css` (cuerpo canónico) y `styles.css` (tokens base + cuerpo, self-contained para CDN).
-- **Cuándo correrlo:** cada vez que cambian tokens/componentes en `www.yiqi` y hay que propagar al CDN.
-- **Importante:** `ds-styles.css` y `styles.css` son **derivados**. No editarlos: editar la fuente en `www.yiqi` y volver a sincronizar. Ver `LEEME-FUENTE-DS.md`.
+### `sync-to-www.mjs` — propagación del Design System
+- **Tipo:** copia de artefactos. **Sobrescribe** archivos en `../www.yiqi`.
+- **Origen:** este repo (fuente canónica del DS).
+- **Destino:** carpeta hermana `../www.yiqi` (override con `WWW_YIQI=/ruta`). Si no existe, aborta con código 1.
+- **Qué hace:** copia `ds-styles.css` (con header "GENERADO desde yiqi-imagen — NO editar a mano allá") y `yiqi-design.md` hacia `www.yiqi`, para mantener el sitio en sincronía.
+- **Cuándo correrlo:** después de actualizar el DS acá y querer propagar el cambio al sitio.
+- **Importante:** el DS se **edita en este repo** (`ds-styles.css`, `styles.css`, `yiqi-design.md`). En `www.yiqi` esos archivos son la copia recibida; no editarlos allá. El catálogo `yiqi-design-system.html` se reconcilia a mano. Ver `LEEME-FUENTE-DS.md`.
 
 ## Regla para nuevos scripts
 - Una responsabilidad por script; nombre que la describa.

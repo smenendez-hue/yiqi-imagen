@@ -2,7 +2,7 @@
   "scripts": {
     "test:detail-navigation": "node scripts/check-detail-navigation.js",
     "test": "node scripts/check-detail-navigation.js",
-    "sync": "node scripts/sync-from-www.mjs"
+    "sync": "node scripts/sync-to-www.mjs"
   },
   "devDependencies": {
     "@types/node": "^25.7.0",

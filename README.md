@@ -7,7 +7,7 @@ Design System YiQi, más la documentación de componentes y las guías de implem
 ![Status](https://img.shields.io/badge/status-stable-green?style=flat-square)
 ![License](https://img.shields.io/badge/license-proprietary-blue?style=flat-square)
 
-> ⚠️ **Fuente canónica privada del DS:** repositorio **`www.yiqi`** (`diguardia/www.yiqi`) — ver [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md). Ese repositorio es privado y puede no estar disponible para todos los usuarios. Este repo **no es la fuente**: empaqueta y publica al CDN el `styles.css` de consumo. Si no tenés acceso a `www.yiqi`, usá los artefactos publicados y la documentación de este repo; no bloquees la implementación intentando leer la fuente privada.
+> ✅ **Fuente canónica del DS:** este repositorio **`yiqi-imagen`** (`diguardia/yiqi-imagen`) — ver [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md). Acá se editan tokens/componentes/catálogo del Design System. El sitio `www.yiqi` **consume** el `styles.css` publicado al CDN; los cambios se propagan con `npm run sync`.
 
 ---
 
@@ -28,7 +28,7 @@ Design System YiQi, más la documentación de componentes y las guías de implem
 ```
 yiqi-imagen-1/
 ├── README.md                     # Este archivo (puerta de entrada)
-├── LEEME-FUENTE-DS.md            # ⚠️ La fuente del DS es www.yiqi
+├── LEEME-FUENTE-DS.md            # ✅ Este repo es la fuente del DS
 ├── version.json                  # { ds_version: "1.2.7" }
 │
 ├── styles.css                    # ★ Hoja de estilos de consumo (CDN)
