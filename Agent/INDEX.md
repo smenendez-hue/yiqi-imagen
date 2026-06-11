@@ -41,6 +41,7 @@ the task was trivial or file-local.
 | API integration security | `../docs/seguridad-integraciones-api.md` | Unrelated docs |
 | Error handling or messages | `../docs/politica-errores.md` | Unrelated docs |
 | Login or session | `../docs/yiqi-login.md` | Unrelated docs |
+| Login template | `../template/login/README.md`, `../template/INDEX.md` | API docs unless wiring auth behavior |
 | Fixtures or sample data | `../docs/politica-fixtures.md`, `../fixtures/INDEX.md` | Unrelated docs |
 | Dependencies, packages, or audit | `../docs/politica-dependencias.md` | Unrelated docs |
 | Open a PR | `../docs/pr-checklist.md` | Unrelated docs |
@@ -57,6 +58,7 @@ the task was trivial or file-local.
 - Brand assets: `../Fuentes/INDEX.md`
 - Sample data: `../fixtures/INDEX.md`
 - Scripts: `../scripts/INDEX.md`
+- Templates: `../template/INDEX.md`
 - Agent tools: `tools/README.md`
 - Internal summaries: `summaries/README.md`
 - Error memory: `error-memory/errors/INDEX.md`
