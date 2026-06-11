@@ -1,37 +1,69 @@
-# Agent/INDEX.md — Router de documentación
+# Agent/INDEX.md - Documentation router
 
-Leé **solo** las filas que correspondan a tu tarea. Esto evita cargar contexto de más.
+title: Agent documentation router
+tags: agent, llm, routing, context
+description: Routes agents to task-specific documentation while keeping context small.
 
-## 1. Clasificá la tarea
+Read only the rows that match your task.
 
-| Tipo de tarea | Qué leer | Qué NO leer |
+## Golden routing method
+
+The agent must use this router before editing unless the task is a truly trivial
+known-file edit. The goal is not to read more; the goal is to read the right
+small set of docs.
+
+Use a route when:
+- The task touches that domain.
+- The task can break that domain.
+- The task needs a checklist, tool, summary, project rule, or error-memory note.
+
+Do not use a route when:
+- The task does not touch that domain.
+- The user named one exact file and the change is local to that file.
+- Reading the route would only add background context with no decision impact.
+
+Before closing, state the route or checklist used. If none applied, state that
+the task was trivial or file-local.
+
+## 1. Classify the task
+
+| Task type | Read | Do not read |
 |---------------|----------|-------------|
-| Cambio trivial (typo, 1 línea, archivo ya nombrado) | Solo el archivo a editar | Todo lo demás |
-| Elegir checklist según el cambio | `../docs/checklists-por-intencion.md` | — |
-| Tocar estilos / tokens / componentes | `../LEEME-FUENTE-DS.md` primero (la fuente es `www.yiqi`) | — |
-| Implementar UI con el DS | `../yiqi-design.md`, `../execution.md` | Docs de API/login |
-| Integración con API | `../docs/yiqi-api.md` | Docs de DS |
-| Seguridad de integraciones API | `../docs/seguridad-integraciones-api.md` | — |
-| Manejo de errores / mensajes | `../docs/politica-errores.md` | — |
-| Login / sesión | `../docs/yiqi-login.md` | — |
-| Fixtures / datos de ejemplo | `../docs/politica-fixtures.md`, `../fixtures/INDEX.md` | — |
-| Dependencias / paquetes / auditoría | `../docs/politica-dependencias.md` | — |
-| Abrir un PR | `../docs/pr-checklist.md` | — |
-| Testing | `../docs/testing-jest.md` | — |
-| Deploy / Azure | `../docs/azure-nextjs-app-service.md` | — |
-| Scripts del repo | `../scripts/README.md` | — |
-| Convenciones de código | `../docs/application-best-practices.md`, `../docs/copilot-global-guidelines.md` | — |
-| Encoding / estilo de docs | `../docs/convenciones-documentacion.md` | — |
+| Trivial change (typo, one line, named file) | Only the file to edit | Everything else |
+| Choose checklist for a change | `../docs/checklists-por-intencion.md` | Unrelated docs |
+| Close any task | Matching checklist from `../docs/checklists-por-intencion.md`; create a short task-specific checklist if none fits | Unrelated docs |
+| Update internal task memory | `summaries/README.md` | Full source tree |
+| Check project-specific constraints | `project-rules.md` when present | Full source tree |
+| Use or update error memory | `error-memory/errors/INDEX.md` first | Every error file |
+| Styles, tokens, or components | `../LEEME-FUENTE-DS.md` first | API/login docs |
+| Implement UI with the DS | `../yiqi-design.md`, `../execution.md` | API/login docs |
+| API integration | `../docs/yiqi-api.md` | DS docs |
+| API integration security | `../docs/seguridad-integraciones-api.md` | Unrelated docs |
+| Error handling or messages | `../docs/politica-errores.md` | Unrelated docs |
+| Login or session | `../docs/yiqi-login.md` | Unrelated docs |
+| Fixtures or sample data | `../docs/politica-fixtures.md`, `../fixtures/INDEX.md` | Unrelated docs |
+| Dependencies, packages, or audit | `../docs/politica-dependencias.md` | Unrelated docs |
+| Open a PR | `../docs/pr-checklist.md` | Unrelated docs |
+| Testing | Existing repo test commands; `../docs/testing-jest.md` only for Jest-specific work | Jest docs when Jest is not configured |
+| Reusable tools or mechanical repairs | `tools/README.md`, `../scripts/README.md` | Unrelated docs |
+| Deploy or Azure | `../docs/azure-nextjs-app-service.md` | Unrelated docs |
+| Repository scripts | `../scripts/README.md` | Unrelated docs |
+| Code conventions | `../docs/application-best-practices.md`, `../docs/copilot-global-guidelines.md` | Unrelated docs |
+| Encoding or doc style | `../docs/convenciones-documentacion.md` | Unrelated docs |
 
-## 2. Índices por carpeta
+## 2. Folder indexes
 
-- Documentación técnica y políticas: `../docs/INDEX.md`
-- Activos de marca: `../Fuentes/INDEX.md`
-- Datos de ejemplo: `../fixtures/INDEX.md`
+- Technical docs and policies: `../docs/INDEX.md`
+- Brand assets: `../Fuentes/INDEX.md`
+- Sample data: `../fixtures/INDEX.md`
 - Scripts: `../scripts/INDEX.md`
+- Agent tools: `tools/README.md`
+- Internal summaries: `summaries/README.md`
+- Error memory: `error-memory/errors/INDEX.md`
+- Project constraints: `project-rules.md`
 
-## 3. Antes de terminar
+## 3. Before finishing
 
-- Si tu cambio modificó conocimiento reutilizable (una convención, un procedimiento),
-  actualizá el doc correspondiente. Si no, no toques la documentación.
-- Verificá UTF-8/LF según `../docs/convenciones-documentacion.md`.
+- If your change modifies reusable knowledge, update the relevant document.
+- If it does not, do not touch documentation.
+- Verify UTF-8 and LF according to `../docs/convenciones-documentacion.md`.

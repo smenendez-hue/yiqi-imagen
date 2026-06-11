@@ -1,8 +1,12 @@
-# Estandar de Testing con Jest
+# Testing con Jest cuando esta configurado
 
 ## Objetivo
 
-Asegurar regresion controlada y calidad funcional en todas las aplicaciones YiQi.
+Asegurar regresion controlada y calidad funcional en proyectos YiQi que ya usan Jest
+o que lo adoptan explicitamente.
+
+Si el proyecto usa otro runner, seguir el runner existente. No reemplazarlo por Jest
+sin una decision explicita del equipo.
 
 ## Convenciones
 
@@ -32,10 +36,13 @@ Asegurar regresion controlada y calidad funcional en todas las aplicaciones YiQi
 - No testear infraestructura de terceros.
 - Evitar mocks fragiles atados a implementaciones internas.
 
-## Comandos estandar
+## Comandos de referencia
 
 ```bash
 npm test
 npm run test:run
 npm run test:coverage
 ```
+
+Estos comandos son ejemplos. Usar solo los que existan en `package.json` o en la
+documentacion del proyecto.

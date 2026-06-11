@@ -24,6 +24,8 @@ se guarda o se reabre interpretándolo como Latin-1. Para prevenirlo:
 2. Pegar texto desde fuentes UTF-8; si viene de Word/PDF, revisar comillas y guiones.
 3. Para reparaciones masivas de encoding, **usar un script** (`iconv`) y revisar el
    resultado, en lugar de editar a mano archivo por archivo.
+4. Si el script no corrige el caso real, ajustar el script o documentar el caso no
+   cubierto. No repetir el procedimiento manual en cada tarea.
 
 ## Estilo documental
 
@@ -46,3 +48,11 @@ for f in $(git ls-files); do
   head -c3 "$f" | grep -q $'\xef\xbb\xbf' && echo "BOM: $f"
 done
 ```
+
+## Herramientas reutilizables
+
+Documentar herramientas de reparación o verificación en `scripts/README.md` cuando son
+parte del repo, o en `Agent/tools/README.md` cuando son procedimientos para agentes.
+Cada herramienta debe indicar objetivo, entrada, salida, archivos que toca y ejemplo de
+uso. Esto evita que el agente tenga que repensar soluciones para problemas recurrentes
+como mojibake, formato, índices o transformaciones mecánicas.

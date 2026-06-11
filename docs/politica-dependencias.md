@@ -4,6 +4,8 @@
 
 - El gestor oficial es **npm** (existe `package-lock.json` versionado).
 - **No** mezclar con `yarn` ni `pnpm`: generan lockfiles distintos y diffs ruidosos.
+- Mantener un solo lockfile por proyecto. No commitear `pnpm-lock.yaml` ni `yarn.lock` si el proyecto usa npm.
+- En proyectos derivados, declarar `packageManager` en `package.json` cuando el equipo quiera fijar el gestor esperado para CI/deploy.
 - El `package-lock.json` se versiona siempre y se commitea junto al `package.json`.
 - Instalación reproducible en CI: `npm ci` (respeta el lock; falla si está desincronizado).
 
@@ -24,6 +26,7 @@ Los scripts (`scripts/`) usan solo módulos nativos de Node (`node:fs`, `node:pa
 - Fijar rango con `^` salvo que haya razón para fijar versión exacta.
 - Mantener separadas `dependencies` (runtime) de `devDependencies` (build/tooling).
 - Actualizar `package-lock.json` en el mismo commit.
+- Si aparece otro lockfile, tratarlo como señal de mezcla de gestores y resolverlo antes de mergear.
 
 ## Auditoría de seguridad
 

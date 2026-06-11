@@ -195,7 +195,7 @@ Cards de áreas pendientes. **Borderless**, con **pill de estado** (Planeado / E
 ---
 
 ## 4. Versionado y consumo
-- `version.json` + `CHANGELOG.md` en el repo del DS. Cada app fija una versión.
+- `version.json` en el repo del DS. Cada app fija una versión.
 - Futuras apps: `<link>` a `ds-styles.css` + `<script>` a `ds-components.js` + init de los que apliquen
   (`setupSortableTables()`, sparklines, `setupResponsiveTools()`, tooltips "i", colapso).
 - **No copiar** estos archivos a la app. Importar.
