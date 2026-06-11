@@ -4,6 +4,11 @@ Reusable login screen extracted from a real YiQi app and generalized for future
 projects. It keeps the approved visual structure while making app-specific text
 and submit behavior configurable.
 
+Agent rule: copy/paste this template as the first implementation path for a
+Next.js YiQi login. Adapt project copy, redirect, storage key, and `onSubmit`
+integration, but do not rebuild the layout from scratch unless the project has a
+documented reason to diverge.
+
 ## Preview
 
 Desktop, light theme:

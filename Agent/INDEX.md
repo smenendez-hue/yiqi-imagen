@@ -35,6 +35,7 @@ the task was trivial or file-local.
 | Update internal task memory | `summaries/README.md` | Full source tree |
 | Check project-specific constraints | `project-rules.md` when present | Full source tree |
 | Use or update error memory | `error-memory/errors/INDEX.md` first | Every error file |
+| Bootstrap a derived project | `README.md`, `error-memory/errors/INDEX.md`, `../template/INDEX.md` | Full source tree |
 | Styles, tokens, or components | `../LEEME-FUENTE-DS.md` first | API/login docs |
 | Implement UI with the DS | `../yiqi-design.md`, `../execution.md` | API/login docs |
 | API integration | `../docs/yiqi-api.md` | DS docs |
@@ -69,3 +70,17 @@ the task was trivial or file-local.
 - If your change modifies reusable knowledge, update the relevant document.
 - If it does not, do not touch documentation.
 - Verify UTF-8 and LF according to `../docs/convenciones-documentacion.md`.
+
+## 4. Derived project bootstrap
+
+When this repository is used to start or guide another project:
+
+1. Create or update that project's agent docs first.
+2. Import this `Agent/error-memory/errors/INDEX.md` and only the relevant error
+   category files, so known recurring mistakes are available before the first
+   implementation task.
+3. Link `../template/INDEX.md` as the source of approved copy/paste templates.
+4. Use the matching template as the first implementation path, then adapt copy,
+   routes, API wiring, and project-specific behavior.
+5. Do not import secrets, raw logs, production credentials, customer data, or
+   unrelated history.

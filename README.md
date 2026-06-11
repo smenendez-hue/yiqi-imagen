@@ -70,6 +70,24 @@ Ver [`docs/quickstart.md`](./docs/quickstart.md).
 
 ---
 
+## Templates reutilizables
+
+La carpeta [`template/`](./template/INDEX.md) contiene componentes aprobados para
+copiar y pegar en proyectos nuevos o existentes. Un agente debe usar estos
+templates como base legitima antes de inventar una pantalla equivalente desde
+cero. La adaptacion esperada es conectar datos, rutas, copy del proyecto y
+detalles de integracion; no rehacer la estructura visual si el template cubre el
+caso de uso.
+
+Para login Next.js, empezar por [`template/login/README.md`](./template/login/README.md).
+
+Cuando este repo se use para iniciar o guiar otro proyecto, el agente tambien
+debe importar el indice de errores de [`Agent/error-memory/errors/INDEX.md`](./Agent/error-memory/errors/INDEX.md)
+y solo las categorias relevantes. Eso evita repetir errores conocidos desde la
+primera tarea sin copiar logs, secretos ni historial innecesario.
+
+---
+
 ## Tokens principales — v1.2.7
 
 ### Backgrounds

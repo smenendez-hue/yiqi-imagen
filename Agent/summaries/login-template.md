@@ -22,6 +22,10 @@ message, and footer link.
 The template is intentionally UI-only. The consuming project must wire
 `onSubmit` to its own backend or internal Next.js auth route.
 
+Agents should copy/paste this template as the legitimate starting point for a
+Next.js YiQi login, then adapt copy, route behavior, and auth wiring. Do not
+rebuild the same layout from scratch unless the project documents a divergence.
+
 ## Main files
 
 - `template/login/yiqi-login-template.tsx`
