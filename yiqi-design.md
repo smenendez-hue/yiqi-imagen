@@ -26,8 +26,8 @@
 ### Logo
 
 - Siempre como **SVG inline** — nunca `<img src="logo.svg">` ni `<img src="logo.png">`
-- **Dark mode / negativo:** letras `#f2f0ef`, símbolo Q `#00ccff`
-- **Light mode / positivo:** letras `#231f20`, símbolo Q `#009fc7`
+- **Dark mode / negativo:** letras `#f3f5f7` (= `--text` dark), símbolo Q `#00ccff`
+- **Light mode / positivo:** letras `#17191c` (= `--text` light), símbolo Q `#009fc7`
 - **Topbar universal:** letras `var(--text)`, símbolo Q `var(--cyan)`
 - No rotar, deformar, recolorear ni aplicar efectos
 - **Tamaño canónico en topbar:** `height: 39px; width: auto` — nunca tamaño fijo por ancho
