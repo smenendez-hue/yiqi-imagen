@@ -268,6 +268,18 @@ sin borde     → cards, panels, KPIs, badges, tags, nav items, modales, accordi
 .badge { border: 1px solid var(--line); }
 ```
 
+### No permitido — borde de un solo lado
+
+Callouts, notas y cards con borde en **un solo lado** (`border-left` o `border-top` de acento) quedan **prohibidos**: rompen el sistema flat & borderless y combinan mal con esquinas redondeadas. El énfasis se logra con **fondo tonal** (`--amber-soft`, `--cyan-soft`, etc.), nunca con bordes parciales.
+
+```css
+/* ❌ No permitido — acento lateral */
+.callout { border-left: 3px solid var(--amber); border-radius: var(--radius-lg); }
+
+/* ✅ Correcto — fondo tonal borderless */
+.callout { background: var(--amber-soft); border-radius: var(--radius-lg); }
+```
+
 ---
 
 ## 4. Token `--text-cyan-muted` *(nuevo en v1.2.5)*
@@ -1150,7 +1162,68 @@ Variante del motor `YiQiLogo` (§0): animar **solo el flip de la Q y los dos pun
 - Reproduce el flip al cargar y lo repite cada `~1450ms + gap`.
 - Respeta `prefers-reduced-motion` (no loopea).
 
+## 19. Patrón — Aplicaciones (App shell) *(nuevo en v1.2.7)*
+
+Marco común para todas las apps YiQi del marketplace: **topbar + sidebar + área de contenido**. Se toma del DS; cada app solo construye lo de adentro. Las apps comparten tokens, paleta, radios y sombras con la web; lo que cambia es intencional, no deriva.
+
+### Anatomía del shell
+
+| Parte | Clase | Notas |
+|-------|-------|-------|
+| Barra superior | `.topbar` | Sticky, alto 56px, fondo translúcido + `backdrop-filter: blur(16px)`, borde inferior `--line`. |
+| Pill de producto | `.t-pill` | Mono 10px mayúsculas, borde `--line`, fondo `--bg-elev-2`, color `--muted`. |
+| Chip de cuenta | `.account-chip` | Avatar inicial + usuario (`--muted`) + esquema (`--text`) en sans. |
+| Selector de esquema | `.schema-toggle` | Botón `aria-haspopup` con menú de esquemas borderless (apps multi-esquema). |
+| Actualizar | `.btn-refresh` | Botón **solo ícono** (`ph-arrows-clockwise`), pill `--cyan-soft-2`/`--cyan`; re-renderiza la vista. |
+| Cerrar sesión | `.btn-exit` | Pill `--bg-elev-2`/`--muted`; hover `--red`. |
+| Contenedor lateral | `.sidebar` | Sticky, altura `100vh − topbar`, scroll propio, flex column. |
+| Item de navegación | `.nav-item` | Alto 40px, sans 13px. Activo: fondo `--cyan-soft`, texto `--cyan`. |
+
+El área de contenido es lo único propio de cada app. El footer del shell muestra `© <año> YiQi S.A.` y la versión del DS.
+
+## 20. Patrón — Animación de gráficos *(nuevo en v1.2.7)*
+
+Animaciones de entrada consistentes para todos los charts (Chart.js 4.4.0). Los gráficos leen `--cyan` vía `getComputedStyle` y se adaptan al tema.
+
+```js
+// Patrón canónico — pegar en options{} de cualquier chart
+const chartAnim = {
+  duration: 900,               // 900 barras · 1000 línea · 1000 donut
+  easing:   'easeOutQuart'
+};
+
+// Respetar prefers-reduced-motion
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduce) chartAnim.duration = 0;
+
+// Uso en new Chart()
+options: {
+  animation: chartAnim,
+  // ...
+}
+```
+
+Regla: toda animación debe anularse (`duration: 0`) cuando el usuario pidió `prefers-reduced-motion: reduce`.
+
+## 21. Componente — Banner Analytics Pro *(nuevo en v1.2.7)*
+
+Componente promocional **para la web** (no es una app): banner de difusión de Analytics Pro con mock de dashboard (4 KPIs, chart con ejes, top categorías) y una sola CTA. Implementado como web component self-contained.
+
+```html
+<!-- Cargar el componente una vez -->
+<script src="components/analytics-pro-banner.js" defer></script>
+
+<!-- Usar -->
+<analytics-pro-banner base="./"></analytics-pro-banner>
+```
+
+- `base`: prefijo de rutas (por defecto `./`).
+- `preview` (opcional): ruta a un preview; si falta, el banner igual renderiza su mock inline.
+- Centrado, `max-width` ~1240px; el mock no se estira en pantallas anchas.
+- Requiere Chart.js disponible en la página.
+
+
 ---
 
-*YiQi ERP · Design System v1.2.7 · Última actualización: 04/06/2026*
+*YiQi ERP · Design System v1.2.7 · Última actualización: 11/06/2026*
 *Reemplaza todas las versiones anteriores de yiqi-design.md*

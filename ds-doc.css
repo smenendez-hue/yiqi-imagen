@@ -57,7 +57,7 @@ button{font:inherit;cursor:pointer}
   background: var(--bg-elev); border-right: 1px solid var(--line);
 }
 .ds-nav-inner { /* contenedor semántico */ }
-.ds-nav-section { margin-bottom: 22px; }
+.ds-nav-section { display: flex; flex-direction: column; gap: 2px; margin-bottom: 22px; }
 .ds-nav-label {
   font: 700 9px var(--mono); letter-spacing: .15em; text-transform: uppercase;
   color: var(--muted-2); padding: 0 8px 8px; display: block;
@@ -69,6 +69,7 @@ button{font:inherit;cursor:pointer}
 }
 .ds-nav-item:hover { background: var(--bg-soft); color: var(--text); }
 .ds-nav-item.active { background: var(--cyan-soft); color: var(--cyan); }
+.ds-nav-num { display:inline-block; min-width:1.4em; font:600 10px var(--mono); color:var(--muted-2); }
 
 /* ── CONTENT ── */
 .ds-content { padding: 36px 40px 80px; max-width: 1100px; }
