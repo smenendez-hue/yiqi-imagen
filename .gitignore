@@ -5,6 +5,12 @@ node_modules/
 dist/
 build/
 .cache/
+coverage/
+.next/
+deploy/
+.qa-visual/
+.swc/
+tsconfig.tsbuildinfo
 
 # Basura del sistema operativo
 .DS_Store

@@ -7,7 +7,7 @@ Design System YiQi, más la documentación de componentes y las guías de implem
 ![Status](https://img.shields.io/badge/status-stable-green?style=flat-square)
 ![License](https://img.shields.io/badge/license-proprietary-blue?style=flat-square)
 
-> ⚠️ **Fuente canónica del DS:** repositorio **`www.yiqi`** (`diguardia/www.yiqi`) — ver [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md). Este repo **no es la fuente**: empaqueta y publica al CDN el `styles.css` de consumo. Los tokens/componentes se editan en `www.yiqi` y se propagan.
+> ⚠️ **Fuente canónica privada del DS:** repositorio **`www.yiqi`** (`diguardia/www.yiqi`) — ver [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md). Ese repositorio es privado y puede no estar disponible para todos los usuarios. Este repo **no es la fuente**: empaqueta y publica al CDN el `styles.css` de consumo. Si no tenés acceso a `www.yiqi`, usá los artefactos publicados y la documentación de este repo; no bloquees la implementación intentando leer la fuente privada.
 
 ---
 
@@ -15,7 +15,7 @@ Design System YiQi, más la documentación de componentes y las guías de implem
 
 | Si sos… | Empezá por | Para |
 |---------|-----------|------|
-| 🧑‍💻 **Desarrollador que consume el DS** | [Uso rápido](#uso-rápido) + [`styles.css` vía CDN](#1-incorporar-estilos-al-proyecto) | Incorporar estilos a tu app |
+| 🧑‍💻 **Desarrollador que consume el DS** | [`docs/quickstart.md`](./docs/quickstart.md) + `styles.css` vía CDN | Incorporar estilos a tu app |
 | 🎨 **Quien implementa UI con el DS** | [`yiqi-design.md`](./yiqi-design.md) y [`execution.md`](./execution.md) | Componentes, tokens, patrones, checklist |
 | 🤖 **Agente de IA / Copilot** | [`Agent/README.md`](./Agent/README.md) → [`Agent/INDEX.md`](./Agent/INDEX.md) | Router de contexto: leer solo lo necesario |
 | 🛠️ **Mantenedor del repo** | [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md) + [`scripts/INDEX.md`](./scripts/INDEX.md) | Fuente única, sync y publicación |
@@ -29,7 +29,6 @@ Design System YiQi, más la documentación de componentes y las guías de implem
 yiqi-imagen-1/
 ├── README.md                     # Este archivo (puerta de entrada)
 ├── LEEME-FUENTE-DS.md            # ⚠️ La fuente del DS es www.yiqi
-├── CHANGELOG.md                  # Historial de cambios
 ├── version.json                  # { ds_version: "1.2.7" }
 │
 ├── styles.css                    # ★ Hoja de estilos de consumo (CDN)
@@ -58,53 +57,13 @@ Cada carpeta tiene su propio `INDEX.md` con una tabla de contenido legible por h
 | `styles.css` | Desarrollador | Hoja de estilos completa — consumir vía CDN (no copiar) |
 | `yiqi-design.md` | IA / Claude | Guía maestra de componentes y patrones v1.2.7 |
 | `execution.md` | IA / Claude | Checklist de implementación paso a paso |
-| `CHANGELOG.md` | Todos | Historial de cambios por versión |
 | `version.json` | CI / scripts | Versión legible por máquina |
 
 ---
 
 ## Uso rápido
 
-### 1. Incorporar estilos al proyecto
-
-```html
-<link rel="stylesheet" href="https://diguardia.github.io/yiqi-imagen/styles.css">
-
-<!-- Evitar copiar el contenido localmente -->
-```
-
-### 2. Activar tema
-
-```html
-<!-- El tema por defecto es "system" (sigue la preferencia del OS) -->
-<body data-theme="system">
-
-<!-- Forzar dark o light -->
-<body data-theme="dark">
-<body data-theme="light">
-```
-
-El toggle tiene 3 estados: `"dark"` → `"system"` → `"light"`.
-
-### 3. Fondos
-
-**Dashboards y apps** — solo radiales (sin grilla):
-```html
-<body data-theme="system">
-  <!-- El fondo radial se aplica automáticamente desde styles.css -->
-```
-
-**Marketing y landing** — radiales + grilla 52×52px (Variante B):
-```css
-body::after {
-  content: "";
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 52px 52px;
-}
-```
+Ver [`docs/quickstart.md`](./docs/quickstart.md).
 
 ---
 
@@ -174,7 +133,7 @@ border: 1px solid var(--border);
 | `docs/azure-nextjs-app-service.md` | Diagnóstico Azure App Service + Next.js |
 | `docs/copilot-global-guidelines.md` | Guías para IA/Copilot |
 | `docs/pr-checklist.md` | Checklist de Pull Request |
-| `docs/testing-jest.md` | Testing con Jest |
+| `docs/testing-jest.md` | Testing cuando Jest está configurado |
 | `docs/convenciones-documentacion.md` | Encoding (UTF-8/LF) y estilo documental |
 
 ---

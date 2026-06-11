@@ -1,23 +1,65 @@
-# Agent/ — Instrucciones para agentes de IA
+# Agent/ - AI agent instructions
 
-Punto de entrada para Claude, Copilot y cualquier agente que trabaje en este repo.
-Es corto a propósito: leé esto y después enrutá por `INDEX.md`. **No cargues toda la
-documentación por defecto.**
+title: Agent entrypoint
+tags: agent, llm, routing, context
+description: Minimal operating instructions for AI agents working in this repository.
 
-## Qué es este repo (en una línea)
+This directory is for Claude, Copilot, and other agents. It is intentionally
+short: read this file, then route through `INDEX.md`. Do not load the whole
+repository documentation by default.
 
-Repositorio de **empaquetado y publicación al CDN** del Design System YiQi. La
-**fuente canónica del DS es `diguardia/www.yiqi`** (ver `../LEEME-FUENTE-DS.md`). Acá
-no se editan tokens/componentes: se propagan desde `www.yiqi`.
+## Golden rule
 
-## Reglas mínimas
+Before acting, decide what kind of task this is and read the matching route in
+`INDEX.md`. Do not ignore this directory. Do not read everything either.
 
-1. Antes de leer más, **clasificá la tarea** (ver `INDEX.md`).
-2. Para un cambio trivial o en un archivo ya nombrado, leé solo ese archivo. No cargues docs de fondo.
-3. Convención de encoding y estilo: `../docs/convenciones-documentacion.md` (UTF-8, LF).
-4. La marca se escribe **YiQi** (Q mayúscula). Español neutro.
-5. No inventes historial ni guardes secretos/credenciales en la documentación.
+For every task, the agent must answer these four questions before editing:
 
-## Siguiente paso
+1. What is the task type?
+2. Which routed docs apply?
+3. Which routed docs explicitly do not apply?
+4. What checklist, summary, tool, or error-memory step will be needed at the end?
 
-Abrí **`INDEX.md`** y enrutá según la intención de tu tarea.
+If the answer is "none", say why in plain language before closing the task.
+
+This rule is meant to help both the human user and the LLM. The human can see
+what context was used; the LLM avoids guessing, skipping required guidance, or
+loading too much documentation.
+
+## Repository role
+
+This repository packages and publishes the YiQi Design System CDN stylesheet.
+The canonical DS source is the private repository `diguardia/www.yiqi`; see
+`../LEEME-FUENTE-DS.md`. If you do not have access to that private source, use
+the published artifacts and this repository's public documentation. Do not block
+the task trying to read the private source.
+
+## Minimal rules
+
+1. Classify the task before reading more; see `INDEX.md`.
+2. For a trivial change or in a file already named by the user, read only that
+   file plus any directly required route.
+3. For a task touching auth, API, deploy, data contracts, scripts, generated
+   files, agent memory, project rules, or recurring errors, read the matching
+   routed document before editing.
+4. Use `../docs/convenciones-documentacion.md` for UTF-8 and LF rules.
+5. Write the brand as **YiQi**.
+6. Do not invent history or store secrets, credentials, tokens, or passwords.
+7. For derived projects and active app work, apply the matching checklist at the
+   end of every task. In this DS packaging repo, apply it when the task has real
+   implementation impact or reusable knowledge.
+8. Tell the user, in plain language, which checklist was used, what was verified,
+   and what remains risky or unverified.
+9. In derived projects and active apps, when a task touches a relevant page,
+   flow, component group, or topic, create or update a short internal summary in
+   `summaries/` so future agents do not need to reread the same code from
+   scratch.
+10. In derived projects, keep project-specific constraints in `project-rules.md`
+   when they exist: allowed schemas, environments, test credentials policy,
+   external API limits, and actions that require explicit user approval.
+11. For recurring errors, start with `error-memory/errors/INDEX.md`. Do not read
+    every error file by default.
+
+## Next step
+
+Open `INDEX.md` and read only the rows that match your task.

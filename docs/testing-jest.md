@@ -1,16 +1,12 @@
-# Testing (Jest recomendado, runner adaptable)
-
-## Estatus
-
-Jest es el **runner recomendado por defecto**, no el único permitido. Un proyecto puede
-usar **Vitest**, **node:test** u otro runner siempre que cumpla el mismo nivel de testing
-descrito acá. Lo **obligatorio es testear**; el runner es una recomendación adaptable
-(ver `gobernanza-y-alcance.md`).
+# Testing con Jest cuando esta configurado
 
 ## Objetivo
 
-Asegurar regresion controlada y calidad funcional en todas las aplicaciones YiQi,
-independientemente del runner elegido.
+Asegurar regresion controlada y calidad funcional en proyectos YiQi que ya usan Jest
+o que lo adoptan explicitamente.
+
+Si el proyecto usa otro runner, seguir el runner existente. No reemplazarlo por Jest
+sin una decision explicita del equipo.
 
 ## Convenciones
 
@@ -40,9 +36,7 @@ independientemente del runner elegido.
 - No testear infraestructura de terceros.
 - Evitar mocks fragiles atados a implementaciones internas.
 
-## Comandos estandar
-
-El alias `npm test` debe ejecutar la suite, cualquiera sea el runner. Con Jest:
+## Comandos de referencia
 
 ```bash
 npm test
@@ -50,5 +44,5 @@ npm run test:run
 npm run test:coverage
 ```
 
-Si se usa otro runner, mantener los mismos alias (`test`, `test:coverage`) para que CI y
-los checklists no cambien.
+Estos comandos son ejemplos. Usar solo los que existan en `package.json` o en la
+documentacion del proyecto.
