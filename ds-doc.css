@@ -513,6 +513,9 @@ button{font:inherit;cursor:pointer}
 .logo-label { font: 600 10px var(--mono); color: var(--muted-2); text-transform: uppercase; letter-spacing: .12em; }
 .logo-on-dark { padding: 16px 24px; background: #0a0a0b; border-radius: var(--radius); border: none; --cyan: #00ccff; }
 .logo-on-light { padding: 16px 24px; background: #eeece7; border-radius: var(--radius); border: 1px solid rgba(0,0,0,.08); --cyan: #009fc7; }
+/* Letras del wordmark fijas al fondo del wrapper (no siguen el tema de la página) */
+.logo-on-dark .yql  { fill: #f3f5f7; }
+.logo-on-light .yql { fill: #17191c; }
 
 /* divider */
 .ds-divider { height: 1px; background: var(--line); margin: 24px 0; }
