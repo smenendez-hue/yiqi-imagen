@@ -117,12 +117,15 @@
   .page-switch{ display:inline-flex; align-items:center; background:var(--bg-elev-2); border-radius:var(--radius-pill); padding:3px; gap:1px; }
   .ps-opt{ padding:4px 11px; border-radius:var(--radius-pill); font:600 11px var(--sans); color:var(--muted-2); text-decoration:none; white-space:nowrap; transition:background .18s,color .18s; }
   .ps-opt:hover{ color:var(--text); } .ps-opt.active{ background:var(--bg-soft); color:var(--cyan); }
+  .sc-chips{ display:inline-flex; gap:6px; }
+  .sc-chip{ padding:5px 11px; border-radius:var(--radius-pill); border:none; background:var(--bg-elev-2); box-shadow:0 0 0 1px var(--line); color:var(--muted); font:600 11px var(--sans); cursor:pointer; transition:color .15s,background .15s; }
+  .sc-chip:hover{ color:var(--text); } .sc-chip.active{ background:var(--cyan-soft); color:var(--cyan); box-shadow:0 0 0 1px rgba(0,204,255,.28); }
 </style>
 </head>
 <body>
 
 <header class="ds-topbar">
-  <div style="display:flex;align-items:center;gap:12px"><a class="topbar-brand" href="../yiqi-design-system.html" aria-label="YiQi Design System"><svg viewBox="0 0 100 65" role="img" aria-label="YiQi"><path fill="currentColor" d="M20.44,48.34l2.57-6.15-6.79-16.91c-.14-.39.07-.61.46-.61h4.97c.29,0,.57.14.68.43l3.58,10.08,3.61-10.08c.11-.29.39-.43.68-.43h4.97c.39,0,.57.21.43.61l-9.26,23.27c-.11.29-.39.43-.68.43h-4.75c-.43,0-.68-.21-.47-.64Z"/><path fill="currentColor" d="M38.72,25.24c0-.32.25-.57.57-.57h4.89c.32,0,.57.25.57.57v16.24c0,.32-.25.57-.57.57h-4.89c-.32,0-.57-.25-.57-.57v-16.24Z"/><path fill="var(--cyan)" d="M57.91,44.78v-2.66c-2.18-.53-4.21-1.66-5.92-3.36-4.97-4.97-5.09-13.02-.03-18.08,5.09-5.09,13.14-4.97,18.11,0s5.09,13.02,0,18.11c-1.78,1.78-3.94,2.93-6.22,3.46v2.51c0,.35-.18.53-.58.53h-4.82c-.3,0-.55-.2-.55-.5ZM56.28,34.47c.5.5,1.05.9,1.65,1.2v-3.36c0-.35.18-.53.53-.53h4.87c.25,0,.53.18.53.53v3.36c.63-.33,1.23-.78,1.78-1.33,2.73-2.73,2.78-6.75.15-9.38s-6.67-2.61-9.41.13c-2.71,2.71-2.73,6.75-.1,9.38Z"/><path fill="currentColor" d="M77.44,25.24c0-.32.25-.57.57-.57h4.89c.32,0,.57.25.57.57v16.24c0,.32-.25.57-.57.57h-4.89c-.32,0-.57-.25-.57-.57v-16.24Z"/><path fill="currentColor" d="M38.5,18.99c0-1.77,1.35-3.19,3.23-3.19s3.23,1.42,3.23,3.19-1.38,3.23-3.23,3.23-3.23-1.42-3.23-3.23Z"/><path fill="currentColor" d="M77.22,18.99c0-1.77,1.35-3.19,3.23-3.19s3.23,1.42,3.23,3.19-1.38,3.23-3.23,3.23-3.23-1.42-3.23-3.23Z"/></svg></a><div class="page-switch" role="group" aria-label="Cambiar vista"><a class="ps-opt" href="../yiqi-design-system.html">Design System</a><a class="ps-opt active" href="showcase.html">Showcase</a></div></div>
+  <div style="display:flex;align-items:center;gap:12px"><a class="topbar-brand" href="https://yiqi.com.ar" aria-label="Ir a yiqi.com.ar"><svg viewBox="0 0 100 65" role="img" aria-label="YiQi"><path fill="currentColor" d="M20.44,48.34l2.57-6.15-6.79-16.91c-.14-.39.07-.61.46-.61h4.97c.29,0,.57.14.68.43l3.58,10.08,3.61-10.08c.11-.29.39-.43.68-.43h4.97c.39,0,.57.21.43.61l-9.26,23.27c-.11.29-.39.43-.68.43h-4.75c-.43,0-.68-.21-.47-.64Z"/><path fill="currentColor" d="M38.72,25.24c0-.32.25-.57.57-.57h4.89c.32,0,.57.25.57.57v16.24c0,.32-.25.57-.57.57h-4.89c-.32,0-.57-.25-.57-.57v-16.24Z"/><path fill="var(--cyan)" d="M57.91,44.78v-2.66c-2.18-.53-4.21-1.66-5.92-3.36-4.97-4.97-5.09-13.02-.03-18.08,5.09-5.09,13.14-4.97,18.11,0s5.09,13.02,0,18.11c-1.78,1.78-3.94,2.93-6.22,3.46v2.51c0,.35-.18.53-.58.53h-4.82c-.3,0-.55-.2-.55-.5ZM56.28,34.47c.5.5,1.05.9,1.65,1.2v-3.36c0-.35.18-.53.53-.53h4.87c.25,0,.53.18.53.53v3.36c.63-.33,1.23-.78,1.78-1.33,2.73-2.73,2.78-6.75.15-9.38s-6.67-2.61-9.41.13c-2.71,2.71-2.73,6.75-.1,9.38Z"/><path fill="currentColor" d="M77.44,25.24c0-.32.25-.57.57-.57h4.89c.32,0,.57.25.57.57v16.24c0,.32-.25.57-.57.57h-4.89c-.32,0-.57-.25-.57-.57v-16.24Z"/><path fill="currentColor" d="M38.5,18.99c0-1.77,1.35-3.19,3.23-3.19s3.23,1.42,3.23,3.19-1.38,3.23-3.23,3.23-3.23-1.42-3.23-3.23Z"/><path fill="currentColor" d="M77.22,18.99c0-1.77,1.35-3.19,3.23-3.19s3.23,1.42,3.23,3.19-1.38,3.23-3.23,3.23-3.23-1.42-3.23-3.23Z"/></svg></a><div class="page-switch" role="group" aria-label="Cambiar vista"><a class="ps-opt" href="../yiqi-design-system.html">Design System</a><a class="ps-opt active" href="showcase.html">Showcase</a></div></div>
   <div class="topbar-right">
     <a class="sc-toplink" href="../yiqi-design-system.html">Componentes</a>
     <a class="sc-toplink" href="../template/INDEX.md">Templates</a>
@@ -241,13 +244,55 @@
       </div>
     </article>
 
-  </section>
+
+    <!-- ▼ Componentes Analytics Pro ▼ -->
+<article class="sc-card">
+      <div style="font:700 9px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)">Sesión activa</div>
+      <div style="font:700 30px var(--kpi-num,var(--sans));margin-top:6px;letter-spacing:-.01em" id="scClock">--:--</div>
+      <div class="sc-mail sc-muted" id="scDate">—</div>
+    </article>
+<article class="sc-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+        <div><div style="font:700 9px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)">Conversión</div><div class="sc-card-title" style="margin-top:2px">Embudo operativo</div></div>
+        <div class="funnel-total"><div class="funnel-total-val">100%</div><div class="funnel-total-lbl">Entrega a tiempo</div></div>
+      </div>
+      <div class="funnel">
+        <div><div class="funnel-step-top"><span class="funnel-step-name">Pedidos del período</span><span class="funnel-step-count">10.000</span></div><div class="funnel-track"><div class="funnel-fill" style="width:100%"></div></div></div>
+        <div><div class="funnel-step-top"><span class="funnel-step-name">Entregados <span class="funnel-leak">−9</span></span><span class="funnel-step-count">9.991 · 100%</span></div><div class="funnel-track"><div class="funnel-fill" style="width:99.9%"></div></div></div>
+        <div><div class="funnel-step-top"><span class="funnel-step-name">Entregados a tiempo <span class="funnel-leak is-ok">−0</span></span><span class="funnel-step-count">9.991 · 100%</span></div><div class="funnel-track"><div class="funnel-fill is-end" style="width:99.9%"></div></div></div>
+      </div>
+      <p class="funnel-note">9 sin entregar y 0 demorados en el período. Mayor fuga: <strong>cancelados (9)</strong>.</p>
+    </article>
+<article class="sc-card">
+      <div class="sc-card-h"><span class="sc-card-title">Flujo por franja horaria</span><span class="badge" style="font:600 9px var(--mono);color:var(--muted);background:var(--bg-soft)">HOY</span></div>
+      <p class="sc-card-sub">Actividad horaria · pedidos.</p>
+      <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div><span style="font:600 12px var(--sans)">08-10</span> <span class="sc-mail sc-muted">15 pedidos</span></div><span class="sc-mail sc-muted">25% del flujo</span></div><div class="hourly-bar-track"><div class="hourly-bar-fill" style="width:25%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div><span style="font:600 12px var(--sans)">10-12</span> <span class="sc-mail sc-muted">20 pedidos</span></div><span class="sc-mail sc-muted">34% del flujo</span></div><div class="hourly-bar-track"><div class="hourly-bar-fill" style="width:34%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div><span style="font:600 12px var(--sans)">12-14</span> <span class="badge badge-cyan" style="font:600 8px var(--mono)">PICO</span> <span class="sc-mail sc-muted">24 pedidos</span></div><span class="sc-mail sc-muted">41% del flujo</span></div><div class="hourly-bar-track"><div class="hourly-bar-fill" style="width:41%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div><span style="font:600 12px var(--sans)">14-16</span> <span class="sc-mail sc-muted">0 pedidos</span></div><span class="sc-mail sc-muted">0% del flujo</span></div><div class="hourly-bar-track"><div class="hourly-bar-fill" style="width:0%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div><span style="font:600 12px var(--sans)">16-18</span> <span class="sc-mail sc-muted">0 pedidos</span></div><span class="sc-mail sc-muted">0% del flujo</span></div><div class="hourly-bar-track"><div class="hourly-bar-fill" style="width:0%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div><span style="font:600 12px var(--sans)">18-20</span> <span class="sc-mail sc-muted">0 pedidos</span></div><span class="sc-mail sc-muted">0% del flujo</span></div><div class="hourly-bar-track"><div class="hourly-bar-fill" style="width:0%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><div><span style="font:600 12px var(--sans)">20-22</span> <span class="sc-mail sc-muted">0 pedidos</span></div><span class="sc-mail sc-muted">0% del flujo</span></div><div class="hourly-bar-track"><div class="hourly-bar-fill" style="width:0%"></div></div></div>
+    </article>
+<article class="sc-card" style="padding:12px 10px">
+      <div class="sc-card-h" style="padding:0 6px 8px"><span class="sc-card-title" style="font-size:13px">Sidebar de app</span></div>
+      <div class="nav"><span class="nav-lbl">Visión general</span><a class="nav-link" style="text-decoration:none"><span class="n-ico"><i class="ph ph-house"></i></span>Resumen ejecutivo</a><div class="nav-div"></div><span class="nav-lbl">Módulos</span><a class="nav-link is-active" style="text-decoration:none"><span class="n-ico"><i class="ph ph-chart-line-up"></i></span>Ventas</a><a class="nav-link" style="text-decoration:none"><span class="n-ico"><i class="ph ph-globe"></i></span>Canales</a><a class="nav-link" style="text-decoration:none"><span class="n-ico"><i class="ph ph-activity"></i></span>Operación</a><a class="nav-link" style="text-decoration:none"><span class="n-ico"><i class="ph ph-bank"></i></span>Finanzas</a><a class="nav-link" style="text-decoration:none"><span class="n-ico"><i class="ph ph-shield-check"></i></span>Calidad</a><a class="nav-link" style="text-decoration:none"><span class="n-ico"><i class="ph ph-chart-pie"></i></span>Rentabilidad</a><div class="nav-div"></div><span class="nav-lbl">Fuentes YiQi</span><a class="nav-link" style="text-decoration:none"><span class="n-ico"><i class="ph ph-receipt"></i></span>Reporte de ventas</a><a class="nav-link" style="text-decoration:none"><span class="n-ico"><i class="ph ph-package"></i></span>Reporte de pedidos</a><div class="nav-div"></div><span class="nav-lbl">Soporte</span><a class="nav-link" style="text-decoration:none"><span class="n-ico"><i class="ph ph-headset"></i></span>Ayuda ERP</a></div>
+    </article>
+    </section>
 
 <!-- ══════════ CATÁLOGO: GRÁFICOS ══════════ -->
 <section class="sc-section">
   <h2 class="sc-section-h">Gráficos</h2>
   <p class="sc-section-sub">Tipos de gráfico (Chart.js 4.4.0, patrón de animación §20, paleta DS sin <code class="sc-mono">--blue</code>).</p>
-  <div class="sc-chart-grid">
+  <article class="sc-card" style="margin-bottom:16px">
+      <div class="sc-card-h"><span class="sc-card-title">Crecimiento de facturación</span><span class="badge badge-cyan" style="font:600 9px var(--mono)">INFORME</span></div>
+      <p class="sc-card-sub">Evolución mensual · May 2025 → Abr 2026.</p>
+      <div class="sc-chart-box" style="height:200px"><canvas id="scHist" aria-label="Histórico de tickets creados"></canvas></div>
+      <div class="sc-chart-cap" id="capHist">Tocá para ver el detalle</div>
+      <div style="margin-top:12px;padding:11px 13px;background:var(--bg-soft);border-radius:var(--radius);font:400 12px/1.5 var(--sans);color:var(--muted)"><strong style="color:var(--text)">Nota:</strong> el crecimiento sostenido refleja la incorporación de nuevos esquemas y la mayor adopción del ERP. <em>Datos simulados.</em></div>
+    </article>
+    <div class="sc-chart-grid">
+    <article class="sc-card">
+      <div class="sc-card-h"><span class="sc-card-title">Sectores</span><span class="sc-mail sc-muted">Áreas involucradas</span></div>
+      <div class="sc-chart-box"><canvas id="scSectores" aria-label="Donut de sectores"></canvas></div>
+      <div class="sc-chart-cap" id="capSectores">Tocá para ver el detalle</div>
+      <div class="table-wrap" style="margin-top:10px"><table class="data-table"><thead><tr><th>Categoría</th><th class="num">N</th><th class="num">%</th></tr></thead><tbody><tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#00c48c;margin-right:7px;vertical-align:middle"></span>Sucursales</td><td class="num">7</td><td class="num">26%</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#00ccff;margin-right:7px;vertical-align:middle"></span>Administración</td><td class="num">6</td><td class="num">22%</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#a78bfa;margin-right:7px;vertical-align:middle"></span>Compras</td><td class="num">3</td><td class="num">11%</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#f6a623;margin-right:7px;vertical-align:middle"></span>RRHH</td><td class="num">3</td><td class="num">11%</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#f25f5c;margin-right:7px;vertical-align:middle"></span>Servicios</td><td class="num">3</td><td class="num">11%</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#378add;margin-right:7px;vertical-align:middle"></span>Facturación</td><td class="num">2</td><td class="num">7%</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#8a8d94;margin-right:7px;vertical-align:middle"></span>Externo</td><td class="num">1</td><td class="num">4%</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#5a5d66;margin-right:7px;vertical-align:middle"></span>Cobranzas</td><td class="num">1</td><td class="num">4%</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#b4b2a9;margin-right:7px;vertical-align:middle"></span>Comercial</td><td class="num">1</td><td class="num">4%</td></tr></tbody></table></div>
+    </article>
+    
     <article class="sc-card"><div class="sc-card-h"><span class="sc-card-title">Participación por origen</span></div><div class="sc-chart-box"><canvas id="scDonut" aria-label="Donut de participación por origen"></canvas></div><div class="sc-chart-cap" id="capDonut">Tocá el gráfico para ver el detalle</div></article>
     <article class="sc-card"><div class="sc-card-h"><span class="sc-card-title">Gasto por campaña</span></div><div class="sc-chart-box"><canvas id="scBar" aria-label="Barras de gasto por campaña"></canvas></div><div class="sc-chart-cap" id="capBar">Tocá el gráfico para ver el detalle</div></article>
     <article class="sc-card"><div class="sc-card-h"><span class="sc-card-title">Evolución de facturación</span></div><div class="sc-chart-box"><canvas id="scLine" aria-label="Línea de evolución de facturación"></canvas></div><div class="sc-chart-cap" id="capLine">Tocá el gráfico para ver el detalle</div></article>
@@ -264,8 +309,24 @@
 <!-- ══════════ CATÁLOGO: TABLAS ══════════ -->
 <section class="sc-section">
   <h2 class="sc-section-h">Tablas</h2>
-  <p class="sc-section-sub">Tipos de tabla usados en apps e informes (clase <code class="sc-mono">.data-table</code>, headers reales).</p>
+  <p class="sc-section-sub">Tipos de tabla usados en apps e informes (clase <code class="sc-mono">.data-table</code>, headers reales · <strong>datos simulados</strong>). Tocá una fila para ver el detalle.</p>
   <div class="sc-tbl-grid">
+    <article class="sc-card wide">
+      <div class="sc-card-h"><span class="sc-card-title">Backlog · tickets</span><span class="badge badge-amber" style="font:600 9px var(--mono)">INFORME</span></div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
+        <input class="sc-input" id="blSearch" placeholder="Buscar por título, sector, tipo…" style="flex:1;min-width:200px">
+        <div class="sc-chips">
+          <button class="sc-chip active" data-filter="all">Todos (18)</button>
+          <button class="sc-chip" data-filter="ingenieria">Ingeniería (10)</button>
+          <button class="sc-chip" data-filter="soporte">Soporte (8)</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table class="data-table" id="blTable">
+        <thead><tr><th>Título</th><th class="num">Sprint</th><th class="num">BL</th><th>Sector</th><th class="num">Ticket</th><th>Tipo</th><th class="num">Avance</th><th class="num">Esfuerzo</th></tr></thead>
+        <tbody><tr data-cat="ingenieria"><td>Agregar columna en detalle de solicitud de compra</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Compras</td><td class="num">T-1001</td><td><span class="badge badge-cyan" style="font:600 9px var(--mono)">Desarrollo</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span style="color:var(--cyan)">Media</span></td></tr><tr data-cat="ingenieria"><td>Factura cobrada con saldo pendiente</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Cobranzas</td><td class="num">T-1002</td><td><span class="badge badge-amber" style="font:600 9px var(--mono)">Corrección</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="ingenieria"><td>Moneda por defecto en notas de crédito</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Facturación</td><td class="num">T-1003</td><td><span class="badge badge-cyan" style="font:600 9px var(--mono)">Desarrollo</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span style="color:var(--cyan)">Media</span></td></tr><tr data-cat="soporte"><td>Comprobantes sin factura asociada</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Administración</td><td class="num">T-1004</td><td><span class="badge" style="font:600 9px var(--mono);color:var(--muted);background:var(--bg-soft)">Soporte</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="ingenieria"><td>Cuenta corriente de proveedor</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Administración</td><td class="num">T-1005</td><td><span class="badge badge-amber" style="font:600 9px var(--mono)">Corrección</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span style="color:var(--cyan)">Media</span></td></tr><tr data-cat="ingenieria"><td>Modificación de tipo de orden</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Comercial</td><td class="num">T-1006</td><td><span class="badge" style="font:600 9px var(--mono);color:#378add;background:rgba(55,138,221,.12)">Edición de datos</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="soporte"><td>No se ven los cheques en órdenes de pago</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Administración</td><td class="num">T-1007</td><td><span class="badge" style="font:600 9px var(--mono);color:var(--muted);background:var(--bg-soft)">Soporte</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="ingenieria"><td>Actualización por cambio normativo fiscal</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Administración</td><td class="num">T-1008</td><td><span class="badge badge-green" style="font:600 9px var(--mono)">Mejora</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span style="color:var(--amber);font-weight:600">Alta</span></td></tr><tr data-cat="ingenieria"><td>Opciones de esquema en servicios</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Sucursales</td><td class="num">T-1009</td><td><span class="badge" style="font:600 9px var(--mono);color:#378add;background:rgba(55,138,221,.12)">Edición de datos</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="soporte"><td>Nota de crédito sin IVA en PDF</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Administración</td><td class="num">T-1010</td><td><span class="badge" style="font:600 9px var(--mono);color:var(--muted);background:var(--bg-soft)">Soporte</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="soporte"><td>No emite factura</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Sucursales</td><td class="num">T-1011</td><td><span class="badge" style="font:600 9px var(--mono);color:var(--muted);background:var(--bg-soft)">Soporte</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="soporte"><td>Desconfirmar entrega de orden</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Servicios</td><td class="num">T-1012</td><td><span class="badge" style="font:600 9px var(--mono);color:var(--muted);background:var(--bg-soft)">Soporte</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="soporte"><td>Factura sin sucursal asignada</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Sucursales</td><td class="num">T-1013</td><td><span class="badge" style="font:600 9px var(--mono);color:var(--muted);background:var(--bg-soft)">Soporte</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="soporte"><td>Error en reporte de factura</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Facturación</td><td class="num">T-1014</td><td><span class="badge" style="font:600 9px var(--mono);color:var(--muted);background:var(--bg-soft)">Soporte</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="soporte"><td>Error al anular orden de pago</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Administración</td><td class="num">T-1015</td><td><span class="badge" style="font:600 9px var(--mono);color:var(--muted);background:var(--bg-soft)">Soporte</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span class="sc-muted">Baja</span></td></tr><tr data-cat="ingenieria"><td>Pasar a producción ticket de compras</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Compras</td><td class="num">T-1016</td><td><span class="badge" style="font:600 9px var(--mono);color:#a78bfa;background:rgba(167,139,250,.12)">Implementación</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span style="color:var(--cyan)">Media</span></td></tr><tr data-cat="ingenieria"><td>Mejora en lógica de pedido de retiro</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Externo</td><td class="num">T-1017</td><td><span class="badge badge-cyan" style="font:600 9px var(--mono)">Desarrollo</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span style="color:var(--cyan)">Media</span></td></tr><tr data-cat="ingenieria"><td>Desvincular solicitud de orden de compra</td><td class="num sc-muted">—</td><td class="num sc-muted">—</td><td>Compras</td><td class="num">T-1018</td><td><span class="badge badge-green" style="font:600 9px var(--mono)">Mejora</span></td><td class="num"><span class="badge badge-green" style="font:600 9px var(--mono)">100%</span></td><td class="num"><span style="color:var(--cyan)">Media</span></td></tr></tbody>
+      </table></div>
+    </article>
+    
 
     <article class="sc-card">
       <div class="sc-card-h"><span class="sc-card-title">Ranking de productos</span><span class="badge badge-cyan" style="font:600 9px var(--mono)">ANALYTICS</span></div>
@@ -297,10 +358,10 @@
       <div class="table-wrap"><table class="data-table table-sortable">
         <thead><tr><th>Cliente</th><th class="num">Facturación mes</th><th class="num">Pedidos</th><th class="num">Ticket prom.</th><th class="num">Margen</th><th>Estado</th></tr></thead>
         <tbody>
-          <tr><td>Avelia S.A.</td><td class="num">$418.200</td><td class="num">86</td><td class="num">$4.863</td><td class="num">42,1%</td><td><span class="badge badge-green" style="font:600 9px var(--mono)">AL DÍA</span></td></tr>
-          <tr><td>Droguería JAVA</td><td class="num">$311.540</td><td class="num">142</td><td class="num">$2.194</td><td class="num">28,7%</td><td><span class="badge badge-amber" style="font:600 9px var(--mono)">PARCIAL</span></td></tr>
-          <tr><td>MelCity</td><td class="num">$205.900</td><td class="num">53</td><td class="num">$3.885</td><td class="num">35,0%</td><td><span class="badge badge-red" style="font:600 9px var(--mono)">VENCIDO</span></td></tr>
-          <tr><td>ECOSAN</td><td class="num">$162.300</td><td class="num">71</td><td class="num">$2.286</td><td class="num">39,4%</td><td><span class="badge badge-green" style="font:600 9px var(--mono)">AL DÍA</span></td></tr>
+          <tr><td>Comercial Andes SA</td><td class="num">$418.200</td><td class="num">86</td><td class="num">$4.863</td><td class="num">42,1%</td><td><span class="badge badge-green" style="font:600 9px var(--mono)">AL DÍA</span></td></tr>
+          <tr><td>Distribuidora del Plata</td><td class="num">$311.540</td><td class="num">142</td><td class="num">$2.194</td><td class="num">28,7%</td><td><span class="badge badge-amber" style="font:600 9px var(--mono)">PARCIAL</span></td></tr>
+          <tr><td>MetroPlus</td><td class="num">$205.900</td><td class="num">53</td><td class="num">$3.885</td><td class="num">35,0%</td><td><span class="badge badge-red" style="font:600 9px var(--mono)">VENCIDO</span></td></tr>
+          <tr><td>Grupo Vega</td><td class="num">$162.300</td><td class="num">71</td><td class="num">$2.286</td><td class="num">39,4%</td><td><span class="badge badge-green" style="font:600 9px var(--mono)">AL DÍA</span></td></tr>
         </tbody>
       </table></div>
     </article>
@@ -310,9 +371,9 @@
       <div class="table-wrap"><table class="data-table">
         <thead><tr><th>Fecha creación</th><th>Origen</th><th>Empresa</th><th>Título</th></tr></thead>
         <tbody>
-          <tr><td class="num">20/05</td><td>Web</td><td>Tornado SRL</td><td>Consulta ERP</td></tr>
-          <tr><td class="num">19/05</td><td>Referido</td><td>Drubbit</td><td>Demo Analytics</td></tr>
-          <tr><td class="num">18/05</td><td>Ads</td><td>Sell2Ship</td><td>Integración TN</td></tr>
+          <tr><td class="num">20/05</td><td>Web</td><td>Acme SRL</td><td>Consulta ERP</td></tr>
+          <tr><td class="num">19/05</td><td>Referido</td><td>Globex</td><td>Demo Analytics</td></tr>
+          <tr><td class="num">18/05</td><td>Ads</td><td>Initech</td><td>Integración TN</td></tr>
         </tbody>
       </table></div>
     </article>
@@ -322,8 +383,8 @@
       <div class="table-wrap"><table class="data-table">
         <thead><tr><th>Empresa</th><th>Origen</th><th class="num">Importe impl.</th><th class="num">Anticipo</th><th class="num">Concreción</th></tr></thead>
         <tbody>
-          <tr><td>Avelia</td><td>Referido</td><td class="num">$1.2M</td><td class="num">$400K</td><td class="num">12/04</td></tr>
-          <tr><td>MelCity</td><td>Web</td><td class="num">$880K</td><td class="num">$300K</td><td class="num">28/04</td></tr>
+          <tr><td>Comercial Andes</td><td>Referido</td><td class="num">$1.2M</td><td class="num">$400K</td><td class="num">12/04</td></tr>
+          <tr><td>MetroPlus</td><td>Web</td><td class="num">$880K</td><td class="num">$300K</td><td class="num">28/04</td></tr>
         </tbody>
       </table></div>
     </article>
@@ -416,21 +477,24 @@
     scBar:{title:'Gasto por campaña', type:'bar', labels:['ERP','Analytics','Demo','Retarget','Display'], data:[84,42,28,38,12], color:p.cyan, fmt:function(v){return '$'+v+'K';}},
     scLine:{title:'Evolución de facturación', type:'line', labels:['E','F','M','A','M','J','J','A','S','O','N','D'], data:[2.1,2.3,2.2,2.6,2.8,3.0,3.1,3.4,3.2,3.6,3.8,4.2], color:p.cyan, dec:1, fmt:function(v){return '$'+String(v).replace('.',',')+'M';}},
     scFunnel:{title:'Embudo de conversión', type:'bar', horizontal:true, labels:['Visitas','Leads','Demos','Propuestas','Cierres'], data:[12000,3200,860,340,120], colors:[p.cyan,'rgba(0,204,255,.82)','rgba(0,204,255,.60)','rgba(0,204,255,.42)','rgba(0,204,255,.28)'], fmt:function(v){return Math.round(v).toLocaleString('es-AR');}},
-    scSpark:{title:'Facturación · serie diaria', type:'line', spark:true, labels:['D1','D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12','D13','D14'], data:[120,118,126,122,130,128,135,132,140,138,145,142,150,148], color:p.cyan, fmt:function(v){return '$'+Math.round(v)+'K';}}
+    scSpark:{title:'Facturación · serie diaria', type:'line', spark:true, labels:['D1','D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12','D13','D14'], data:[120,118,126,122,130,128,135,132,140,138,145,142,150,148], color:p.cyan, fmt:function(v){return '$'+Math.round(v)+'K';}},
+    scHist:{title:'Crecimiento de facturación', type:'line', labels:['May 25','Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26'], data:[180,205,228,250,277,305,340,372,410,445,488,520], color:p.cyan, fmt:function(v){return '$'+Math.round(v)+'K';}, ext:{labels:['May 24','Jun 24','Jul 24','Ago 24','Sep 24','Oct 24','Nov 24','Dic 24','Ene 25','Feb 25','Mar 25','Abr 25','May 25','Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26'], data:[95,102,110,118,125,132,140,150,160,168,172,176,180,205,228,250,277,305,340,372,410,445,488,520]}},
+    scSectores:{title:'Sectores · áreas involucradas', type:'doughnut', labels:['Sucursales','Administración','Compras','RRHH','Servicios','Facturación','Externo','Cobranzas','Comercial'], data:[7,6,3,3,3,2,1,1,1], colors:[p.green,p.cyan,p.purple,p.amber,'#f25f5c','#378add','#8a8d94','#5a5d66','#b4b2a9'], fmt:function(v){return v;}}
   };}
   function cfg(m, big){
     var p=pal(); var anim={duration:reduce?0:900,easing:'easeOutQuart'}; var ds, opt;
+    var src_l=(big&&m.ext)?m.ext.labels:m.labels, src_d=(big&&m.ext)?m.ext.data:m.data;
     if(m.type==='doughnut'){
-      ds=[{data:m.data,backgroundColor:m.colors,borderWidth:0,hoverOffset:8}];
+      ds=[{data:src_d,backgroundColor:m.colors,borderWidth:0,hoverOffset:8}];
       opt={responsive:true,maintainAspectRatio:false,cutout:big?'60%':'68%',animation:anim,plugins:{legend:{position:'right',labels:{boxWidth:10,boxHeight:10,font:{size:big?12:11}}}}};
     } else if(m.type==='bar'){
-      ds=[{data:m.data,backgroundColor:m.colors||m.color,borderRadius:6,maxBarThickness:m.horizontal?(big?34:22):34}];
+      ds=[{data:src_d,backgroundColor:m.colors||m.color,borderRadius:6,maxBarThickness:m.horizontal?(big?34:22):34}];
       opt={indexAxis:m.horizontal?'y':'x',responsive:true,maintainAspectRatio:false,animation:anim,plugins:{legend:{display:false}},scales:m.horizontal?{x:{grid:{color:p.grid}},y:{grid:{display:false}}}:{x:{grid:{display:false}},y:{grid:{color:p.grid}}}};
     } else {
-      ds=[{data:m.data,borderColor:m.color,backgroundColor:'rgba(0,204,255,.10)',fill:true,tension:.35,pointRadius:m.spark&&!big?0:(big?3:0),pointHitRadius:14,borderWidth:m.spark&&!big?1.5:2}];
+      ds=[{data:src_d,borderColor:m.color,backgroundColor:'rgba(0,204,255,.10)',fill:true,tension:.35,pointRadius:m.spark&&!big?0:(big?2:0),pointHitRadius:14,borderWidth:m.spark&&!big?1.5:2}];
       opt={responsive:true,maintainAspectRatio:false,animation:anim,plugins:{legend:{display:false},tooltip:{enabled:!(m.spark&&!big)}},scales:(m.spark&&!big)?{x:{display:false},y:{display:false}}:{x:{grid:{display:false}},y:{grid:{color:p.grid}}}};
     }
-    return {type:m.type,data:{labels:m.labels,datasets:ds},options:opt};
+    return {type:m.type,data:{labels:src_l,datasets:ds},options:opt};
   }
   function buildCharts(){
     if(!window.Chart) return;
@@ -451,10 +515,11 @@
     document.getElementById('scModalTitle').textContent=m.title;
     if(modalChart){ try{modalChart.destroy();}catch(e){} }
     modalChart=new Chart(document.getElementById('scModalCanvas'), cfg(m,true));
-    var total=m.data.reduce(function(a,b){return a+b;},0), max=Math.max.apply(null,m.data), avg=total/m.data.length;
+    var L=m.ext?m.ext.labels:m.labels, D=m.ext?m.ext.data:m.data;
+    var total=D.reduce(function(a,b){return a+b;},0), max=Math.max.apply(null,D), avg=total/D.length;
     document.getElementById('scModalStats').innerHTML =
-      stat('Total', m.fmt(total)) + stat('Máximo', m.fmt(max)) + stat('Promedio', m.fmt(avg)) + stat('Ítems', m.data.length);
-    var rows=m.labels.map(function(l,i){ var v=m.data[i]; var sh=total?Math.round(v/total*1000)/10:0; return '<tr><td>'+l+'</td><td class="num">'+m.fmt(v)+'</td><td class="num">'+sh+'%</td></tr>'; }).join('');
+      stat('Total', m.fmt(total)) + stat('Máximo', m.fmt(max)) + stat('Promedio', m.fmt(avg)) + stat('Períodos', D.length);
+    var rows=L.map(function(l,i){ var v=D[i]; var sh=total?Math.round(v/total*1000)/10:0; return '<tr><td>'+l+'</td><td class="num">'+m.fmt(v)+'</td><td class="num">'+sh+'%</td></tr>'; }).join('');
     document.getElementById('scModalTable').innerHTML='<thead><tr><th>Ítem</th><th class="num">Valor</th><th class="num">Share</th></tr></thead><tbody>'+rows+'</tbody>';
     modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
   }
@@ -483,5 +548,56 @@
     </div>
   </div>
 </div>
+<script>
+(function(){
+  var search=document.getElementById('blSearch'); var table=document.getElementById('blTable'); if(!search||!table) return;
+  var rows=Array.prototype.slice.call(table.querySelectorAll('tbody tr'));
+  var chips=document.querySelectorAll('.sc-chip'); var cat='all';
+  function apply(){ var q=search.value.toLowerCase().trim();
+    rows.forEach(function(r){ var okC=(cat==='all'||r.dataset.cat===cat); var okQ=(!q||r.textContent.toLowerCase().indexOf(q)>=0); r.style.display=(okC&&okQ)?'':'none'; }); }
+  search.addEventListener('input', apply);
+  chips.forEach(function(c){ c.addEventListener('click', function(){ chips.forEach(function(x){x.classList.remove('active');}); c.classList.add('active'); cat=c.dataset.filter; apply(); }); });
+})();
+</script>
+<div class="sc-modal" id="scRowModal" aria-hidden="true">
+  <div class="sc-modal-card" style="width:min(100%,460px)" role="dialog" aria-modal="true" aria-labelledby="scRowTitle">
+    <div class="sc-modal-head"><div><div class="sc-modal-kicker">Detalle · datos simulados</div><div class="sc-modal-title" id="scRowTitle"></div></div><button class="sc-modal-close" id="scRowClose" aria-label="Cerrar">✕</button></div>
+    <div style="padding:18px 22px;display:grid;gap:2px" id="scRowBody"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var rm=document.getElementById('scRowModal'); if(!rm) return;
+  function close(){ rm.classList.remove('open'); rm.setAttribute('aria-hidden','true'); }
+  document.getElementById('scRowClose').addEventListener('click', close);
+  rm.addEventListener('click', function(e){ if(e.target===rm) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+  document.querySelectorAll('.data-table').forEach(function(t){
+    var ths=Array.prototype.slice.call(t.querySelectorAll('thead th')).map(function(h){return h.textContent.replace(/[\u2195\u2191\u2193]/g,'').trim();});
+    t.querySelectorAll('tbody tr').forEach(function(tr){
+      tr.style.cursor='pointer';
+      tr.addEventListener('click', function(){
+        var tds=tr.querySelectorAll('td');
+        document.getElementById('scRowTitle').textContent=(tds[0]?tds[0].textContent.trim():'Detalle');
+        var html='';
+        for(var i=1;i<tds.length;i++){ var label=ths[i]||(''); var val=tds[i].innerHTML.trim(); if(val==='—'||val==='') continue;
+          html+='<div style="display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid var(--line);padding:8px 0"><span class="sc-mono" style="font-size:10px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em">'+label+'</span><span style="font:500 13px var(--sans);text-align:right">'+val+'</span></div>'; }
+        document.getElementById('scRowBody').innerHTML=html;
+        rm.classList.add('open'); rm.setAttribute('aria-hidden','false');
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var c=document.getElementById('scClock'), d=document.getElementById('scDate'); if(!c) return;
+  var dias=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  var meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  function p2(n){return (n<10?'0':'')+n;}
+  function tick(){ var n=new Date(); c.textContent=p2(n.getHours())+':'+p2(n.getMinutes()); if(d) d.textContent=dias[n.getDay()]+', '+n.getDate()+' de '+meses[n.getMonth()]; }
+  tick(); setInterval(tick, 20000);
+})();
+</script>
 </body>
 </html>
