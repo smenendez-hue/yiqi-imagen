@@ -2,7 +2,6 @@
 
 > Fuente única de verdad para implementación de UI en productos YiQi ERP.
 > Este archivo reemplaza cualquier versión anterior de `yiqi-design.md`.
-> Referencias completas: `YiQi_DS_v1_2_4.md` · `YiQi_DS_v1_2_4_Recipe.md` · `YiQi_DS_v1_2_5_Recipe.md`
 
 ---
 

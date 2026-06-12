@@ -245,7 +245,7 @@ body.preview-open .ds-layout { display: none !important; }
 </g>
 </svg>
 </a>
-<div class="topbar-pill">Design System v1.2.7</div>
+<div class="page-switch" role="group" aria-label="Cambiar vista"><a class="ps-opt active" href="yiqi-design-system.html">Design System</a><a class="ps-opt" href="examples/showcase.html">Showcase</a></div>
 </div>
 <div class="topbar-search-wrap" id="topbar-search-wrap">
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -288,6 +288,7 @@ body.preview-open .ds-layout { display: none !important; }
 <div class="ds-nav-section">
 <span class="ds-nav-label">Versión</span>
 <a class="ds-nav-item active" href="#release-notes"><span class="ds-nav-num">00</span> Novedades</a>
+<a class="ds-nav-item" href="examples/showcase.html" style="color:var(--cyan)"><span class="ds-nav-num"><i class="ph ph-squares-four"></i></span> Showcase de ejemplos <span class="ds-nav-badge">NEW</span></a>
 </div>
 <div class="ds-nav-section">
 <span class="ds-nav-label">Fundamentos</span>
@@ -3099,8 +3100,10 @@ navItems.forEach(item => {
       if (window.innerWidth <= 980) closeNav();
       return;
     }
+    const href = item.getAttribute('href');
+    if (!href || href.charAt(0) !== '#') { if (window.innerWidth <= 980) closeNav(); return; } /* link externo: navegar normal */
     e.preventDefault();
-    const target = document.querySelector(item.getAttribute('href'));
+    const target = document.querySelector(href);
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     if (window.innerWidth <= 980) closeNav();
   });

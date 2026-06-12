@@ -32,7 +32,6 @@ que un proyecto consumidor sepa qué puede usar y qué no debe editar.
 |-----------|--------------------|
 | `scripts/` | Automatizaciones (guard de tests) |
 | `fixtures/` | Datos de ejemplo para desarrollo/test |
-| `Fuentes/archive/` | Versiones históricas (solo referencia) |
 | `Agent/` | Instrucciones para agentes, no para consumidores |
 
 ## Reglas de frontera
