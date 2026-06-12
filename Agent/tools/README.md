@@ -46,7 +46,6 @@ Example:
 | Tool | Location | Use |
 |------|----------|-----|
 | Detail navigation guard | `../scripts/check-detail-navigation.js` | Detects unsafe detail routes such as `undefined`, `item.ID`, or business fields used as ids. |
-| DS sync | `../scripts/sync-to-www.mjs` | Pushes the canonical DS from this repo to the `www.yiqi` site repo. |
 
 ## Mojibake repair guidance
 

@@ -55,8 +55,8 @@ Cuando no usar checklist completo:
 - [ ] Revisión de regresión sobre endpoints ya consumidos, autenticación, schemaId/userId y normalización existente.
 
 ## 4. Cambios de estilos / tokens / componentes del DS
-- [ ] El cambio del DS se hace **acá** (`yiqi-imagen` es la fuente); luego `npm run sync` lo propaga a `www.yiqi` (ver `LEEME-FUENTE-DS.md`).
-- [ ] `styles.css` / `ds-styles.css` se regeneran con `npm run sync` (no editar a mano).
+- [ ] El cambio del DS se hace **acá** (`yiqi-imagen` es la fuente única; ver `LEEME-FUENTE-DS.md`).
+- [ ] `styles.css` / `ds-styles.css` son canónicos en este repo: se editan acá (no se regeneran desde otro lado).
 - [ ] `version.json` coherente con la versión del DS.
 - [ ] Tokens YiQi usados; filosofía borderless respetada.
 - [ ] Revisión de regresión visual en componentes existentes y temas dark/light.

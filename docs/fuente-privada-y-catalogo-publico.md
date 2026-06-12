@@ -7,8 +7,7 @@ que un proyecto consumidor sepa qué puede usar y qué no debe editar.
 
 - **Fuente canónica:** este repo `diguardia/yiqi-imagen`. Acá se editan tokens, componentes,
   catálogo y documentación del DS. Ver `../LEEME-FUENTE-DS.md`.
-- **Sitio `www.yiqi`:** **consume** el DS. Carga `styles.css` desde el CDN y recibe los
-  artefactos sincronizados con `npm run sync` (`scripts/sync-to-www.mjs`). No es la fuente.
+- **Sitio `www.yiqi`:** ya **no** aloja el DS (se quitó el 2026-06-11). Si necesita estilos, consume `styles.css` del CDN. No es la fuente.
 
 ## Clasificación de artefactos
 
@@ -31,17 +30,17 @@ que un proyecto consumidor sepa qué puede usar y qué no debe editar.
 ### Interno — herramientas y soporte
 | Artefacto | Por qué es interno |
 |-----------|--------------------|
-| `scripts/` | Build/sync (incluye `sync-to-www.mjs`) |
+| `scripts/` | Automatizaciones (guard de tests) |
 | `fixtures/` | Datos de ejemplo para desarrollo/test |
 | `Fuentes/archive/` | Versiones históricas (solo referencia) |
 | `Agent/` | Instrucciones para agentes, no para consumidores |
 
 ## Reglas de frontera
 
-- El DS se **edita en este repo**; `www.yiqi` recibe copias sincronizadas y no debe editarlas.
+- El DS se **edita en este repo**; es la casa única. `www.yiqi` ya no tiene copias del DS.
 - Los proyectos consumen `styles.css` por **CDN**; no copian ni forkean los tokens.
 - `styles.css` se publica al CDN desde la raíz de este repo: no mover ese archivo (rompería la URL publicada).
 
-## Pendiente del lado de `www.yiqi`
-- `content/design-system/_FUENTE-CANONICA.md` todavía declara a `www.yiqi` como fuente única
-  (decisión del 2026-06-04, ahora revertida). Debe actualizarse para apuntar a `yiqi-imagen`.
+## Estado de `www.yiqi`
+- El DS se **quitó** de `www.yiqi` el 2026-06-11 (catálogo, `ds-styles.css`, doc, FAB).
+  `content/design-system/_FUENTE-CANONICA.md` quedó como breadcrumb apuntando a `yiqi-imagen`.

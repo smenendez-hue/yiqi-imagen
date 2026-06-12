@@ -28,11 +28,11 @@ loading too much documentation.
 
 ## Repository role
 
-This repository is the **canonical source** of the YiQi Design System (since
-2026-06-11). DS tokens, components, catalog, and docs are edited **here**; see
-`../LEEME-FUENTE-DS.md`. The website repo `diguardia/www.yiqi` **consumes** the DS
-(loads the published `styles.css` from the CDN) and receives synced artifacts via
-`../scripts/sync-to-www.mjs` (`npm run sync`).
+This repository is the **single home** of the YiQi Design System (since
+2026-06-11): tokens, components, catalog, docs, and templates all live **here**; see
+`../LEEME-FUENTE-DS.md`. Apps consume the published `styles.css` from the CDN. The
+`diguardia/www.yiqi` site no longer hosts the DS. The catalog is an internal team
+reference, not a public page.
 
 ## Minimal rules
 

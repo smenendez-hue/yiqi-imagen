@@ -7,7 +7,7 @@ Design System YiQi, más la documentación de componentes y las guías de implem
 ![Status](https://img.shields.io/badge/status-stable-green?style=flat-square)
 ![License](https://img.shields.io/badge/license-proprietary-blue?style=flat-square)
 
-> ✅ **Fuente canónica del DS:** este repositorio **`yiqi-imagen`** (`diguardia/yiqi-imagen`) — ver [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md). Acá se editan tokens/componentes/catálogo del Design System. El sitio `www.yiqi` **consume** el `styles.css` publicado al CDN; los cambios se propagan con `npm run sync`.
+> ✅ **Fuente única del DS:** este repositorio **`yiqi-imagen`** (`diguardia/yiqi-imagen`) — ver [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md). Acá vive **todo** el Design System: tokens, componentes, catálogo, documentación y templates. Las apps consumen `styles.css` desde el CDN publicado. El catálogo es de uso interno del equipo (no es una página pública).
 
 ---
 
@@ -19,7 +19,7 @@ Design System YiQi, más la documentación de componentes y las guías de implem
 | 🎨 **Quien implementa UI con el DS** | [`yiqi-design.md`](./yiqi-design.md) y [`execution.md`](./execution.md) | Componentes, tokens, patrones, checklist |
 | 🧩 **Quien necesita un template** | [`template/INDEX.md`](./template/INDEX.md) | Copiar pantallas o módulos base aprobados |
 | 🤖 **Agente de IA / Copilot** | [`Agent/README.md`](./Agent/README.md) → [`Agent/INDEX.md`](./Agent/INDEX.md) | Router de contexto: leer solo lo necesario |
-| 🛠️ **Mantenedor del repo** | [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md) + [`scripts/INDEX.md`](./scripts/INDEX.md) | Fuente única, sync y publicación |
+| 🛠️ **Mantenedor del repo** | [`LEEME-FUENTE-DS.md`](./LEEME-FUENTE-DS.md) + [`scripts/INDEX.md`](./scripts/INDEX.md) | Fuente única y publicación |
 | 📚 **Buscás un documento puntual** | [`docs/INDEX.md`](./docs/INDEX.md) | Índice de guías técnicas |
 
 ---
@@ -45,7 +45,7 @@ yiqi-imagen-1/
 ├── template/    → template/INDEX.md   # Templates copy/paste para proyectos
 ├── Fuentes/     → Fuentes/INDEX.md    # Logos, íconos y archivo histórico
 ├── fixtures/    → fixtures/INDEX.md   # Datos JSON de ejemplo
-└── scripts/     → scripts/INDEX.md    # Automatizaciones (test, sync)
+└── scripts/     → scripts/INDEX.md    # Automatizaciones (test)
 ```
 
 Cada carpeta tiene su propio `INDEX.md` con una tabla de contenido legible por humanos y agentes.
