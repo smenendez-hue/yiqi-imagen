@@ -324,6 +324,76 @@
 .yqsw-opt:hover{ color:var(--text); }
 .yqsw-opt.active{ background:var(--bg-soft); color:var(--text); }
 </style>
+<style>
+/* ── Mobile: hamburguesa + drawer off-canvas ── */
+.sc-burger{ display:none; align-items:center; justify-content:center; width:38px; height:38px; border:none; border-radius:12px; background:var(--bg-elev-2); box-shadow:var(--shadow-sm); color:var(--text); cursor:pointer; flex-shrink:0; transition:background .15s ease; }
+.sc-burger:hover{ background:var(--bg-soft); }
+.sc-burger:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--cyan-soft); }
+.sc-burger svg{ width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.sc-drawer-ov{ position:fixed; inset:0; z-index:120; background:color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter:blur(2px); opacity:0; transition:opacity .2s ease; }
+.sc-drawer-ov.open{ opacity:1; }
+.sc-drawer{ position:fixed; top:0; right:0; bottom:0; z-index:121; width:min(82vw,320px); display:flex; flex-direction:column; gap:18px; padding:18px 18px 28px; overflow-y:auto; background:var(--bg-elev); border-left:1px solid var(--line); box-shadow:var(--shadow-lg); transform:translateX(100%); transition:transform .25s ease; }
+.sc-drawer.open{ transform:translateX(0); }
+.sc-drawer-head{ display:flex; align-items:center; justify-content:space-between; }
+.sc-drawer-title{ font:700 12px var(--sans); letter-spacing:.04em; text-transform:uppercase; color:var(--muted-2); }
+.sc-drawer-x{ display:flex; align-items:center; justify-content:center; width:32px; height:32px; border:1px solid var(--line); border-radius:8px; background:var(--bg-elev-2); color:var(--text); cursor:pointer; font-size:16px; }
+.sc-drawer-x:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--cyan-soft); }
+.sc-drawer-group{ display:flex; flex-direction:column; gap:6px; }
+.sc-drawer-label{ font:600 11px var(--sans); letter-spacing:.04em; text-transform:uppercase; color:var(--muted); padding:0 4px 2px; }
+.sc-drawer-link{ display:flex; align-items:center; gap:10px; padding:10px 12px; border:none; border-radius:10px; background:transparent; color:var(--text); font:600 14px var(--sans); text-decoration:none; text-align:left; cursor:pointer; width:100%; transition:background .15s ease; }
+.sc-drawer-link i{ font-size:18px; color:var(--muted-2); }
+.sc-drawer-link:hover{ background:var(--bg-soft); }
+.sc-drawer-link:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--cyan-soft); }
+.sc-drawer-link.is-current{ background:var(--cyan-soft); color:var(--cyan); }
+.sc-drawer-link.is-current i{ color:var(--cyan); }
+.sc-drawer .yqsw{ padding:4px; gap:4px; background:var(--bg-elev-2); border:1px solid var(--line); width:max-content; }
+.sc-drawer .yqsw-opt{ width:44px; height:34px; }
+.sc-drawer .yqsw-opt svg{ width:16px; height:16px; }
+@media (max-width:820px){
+  .sc-burger{ display:inline-flex; }
+  .topbar-right > span{ display:none; }
+  .ds-topbar{ padding:0 12px; gap:10px; }
+  .page-switch{ padding:2px; }
+  .ps-opt{ padding:4px 9px; font-size:10.5px; }
+  .topbar-right{ gap:10px; }
+  .topbar-right .yqsw{ display:none; }
+  /* documento en flujo natural: la pagina scrollea */
+  body{ display:block; height:auto; min-height:100vh; overflow:visible; }
+  .sc-split{ flex:none; display:block; }
+  .sc-right{ display:block; }
+  /* el documento es el UNICO scroller: ningun contenedor intermedio atrapa el toque */
+  .sc-split, .sc-right, .sc-hero, .sc-carousel-track,
+  .sc-panel, .sc-panel.is-active,
+  #tab-mockups.is-active, #tab-graficos.is-active, #tab-tablas.is-active, #tab-primitivos.is-active, #tab-iconos.is-active,
+  .sc-grid, .sc-chart-grid, .sc-tbl-grid, .pr-grid, #tab-iconos .ic-grid, #tab-iconos .sc-section{
+    overflow:visible !important; height:auto !important; max-height:none !important; min-height:0 !important;
+    -webkit-overflow-scrolling:auto; touch-action:pan-y; }
+  .sc-split{ overflow:visible; }
+  .sc-hero{ height:auto; overflow:visible; }
+  .sc-right{ height:auto; overflow:visible; scroll-margin-top:56px; }
+  .sc-carousel-track{ flex:none; min-height:0; overflow:visible; }
+  .sc-panel.is-active{ height:auto; overflow:visible; overscroll-behavior:auto; }
+  #tab-mockups.is-active, #tab-graficos.is-active, #tab-tablas.is-active, #tab-primitivos.is-active{ display:block; height:auto; overflow:visible; }
+  /* cards apiladas en bloque: scroll VERTICAL a ancho completo */
+  .sc-grid, .sc-chart-grid, .sc-tbl-grid, .pr-grid,
+  #tab-mockups > .sc-grid, #tab-graficos .sc-chart-grid, #tab-tablas .sc-tbl-grid, #tab-primitivos .pr-grid{
+    display:block; height:auto; min-height:0; overflow:visible; scroll-snap-type:none; scroll-padding:0; padding:18px 14px 8px; }
+  .sc-grid > .sc-card, .sc-chart-grid > .sc-card, .sc-tbl-grid > .sc-card, .pr-grid > .pr-card,
+  #tab-mockups > .sc-grid > .sc-card, #tab-graficos .sc-chart-grid > .sc-card, #tab-tablas .sc-tbl-grid > .sc-card, #tab-primitivos .pr-card{
+    display:block; width:auto; max-width:100%; margin:0 0 16px; scroll-snap-align:none; }
+  .sc-carnav{ display:none; }
+  #tab-iconos.is-active{ height:auto; overflow:visible; }
+  #tab-iconos .sc-section{ height:auto; overflow:visible; }
+  #tab-iconos .ic-grid{ flex:none; min-height:0; overflow:visible; }
+  .sc-noscroll, .sc-noscroll body{ overflow:hidden; }
+}
+@media (max-width:720px){
+  .topbar-brand svg{ width:72px; height:auto; }
+}
+@media (prefers-reduced-motion: reduce){
+  .sc-drawer, .sc-drawer-ov{ transition:none; }
+}
+</style>
 </head>
 <body>
 
@@ -336,8 +406,41 @@
       <button class="yqsw-opt" data-yqsw="system" title="Sistema" aria-label="Modo sistema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
       <button class="yqsw-opt" data-yqsw="light" title="Claro" aria-label="Modo claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
     </div>
+    <button class="sc-burger" id="scBurger" aria-label="Abrir menú" aria-expanded="false" aria-controls="scDrawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div>
 </header>
+
+<!-- Drawer mobile -->
+<div class="sc-drawer-ov" id="scOv" hidden></div>
+<nav class="sc-drawer" id="scDrawer" aria-label="Menú de navegación" aria-hidden="true">
+  <div class="sc-drawer-head">
+    <span class="sc-drawer-title">Menú</span>
+    <button class="sc-drawer-x" id="scDrawerX" aria-label="Cerrar menú"><i class="ph ph-x"></i></button>
+  </div>
+  <div class="sc-drawer-group">
+    <span class="sc-drawer-label">Secciones</span>
+    <button class="sc-drawer-link" data-tab="tab-primitivos"><i class="ph ph-cube"></i> Primitivos</button>
+    <button class="sc-drawer-link" data-tab="tab-mockups"><i class="ph ph-squares-four"></i> Mockups</button>
+    <button class="sc-drawer-link" data-tab="tab-graficos"><i class="ph ph-chart-line"></i> Gráficos</button>
+    <button class="sc-drawer-link" data-tab="tab-tablas"><i class="ph ph-table"></i> Tablas</button>
+    <button class="sc-drawer-link" data-tab="tab-iconos"><i class="ph ph-smiley"></i> Iconos</button>
+  </div>
+  <div class="sc-drawer-group">
+    <span class="sc-drawer-label">Recursos</span>
+    <a class="sc-drawer-link" href="../yiqi-design-system.html"><i class="ph ph-squares-four"></i> Ver componentes</a>
+    <a class="sc-drawer-link" href="../template/INDEX.md"><i class="ph ph-copy"></i> Templates</a>
+    <a class="sc-drawer-link" href="../yiqi-design.md"><i class="ph ph-book-open"></i> Docs</a>
+    <a class="sc-drawer-link" href="https://github.com/diguardia/yiqi-imagen" target="_blank" rel="noopener"><i class="ph ph-github-logo"></i> GitHub</a>
+  </div>
+  <div class="sc-drawer-group">
+    <span class="sc-drawer-label">Apariencia</span>
+    <div class="yqsw" role="group" aria-label="Apariencia">
+      <button class="yqsw-opt" data-yqsw="dark" title="Oscuro" aria-label="Modo oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      <button class="yqsw-opt" data-yqsw="system" title="Sistema" aria-label="Modo sistema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
+      <button class="yqsw-opt" data-yqsw="light" title="Claro" aria-label="Modo claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+    </div>
+  </div>
+</nav>
 
 <div class="sc-split">
   <!-- HERO -->
@@ -1141,6 +1244,7 @@
     next.addEventListener('click', function(){ go(1); });
     // rueda vertical -> scroll horizontal (aunque el cursor este sobre una card)
     track.addEventListener('wheel', function(e){
+      if(window.matchMedia('(max-width:820px)').matches) return; /* mobile: scroll vertical nativo */
       var card=e.target.closest('.sc-card, .pr-card');
       if(card && card.scrollHeight > card.clientHeight){
         var atTop=card.scrollTop<=0, atBot=card.scrollTop+card.clientHeight>=card.scrollHeight-1;
@@ -1339,6 +1443,56 @@
   }
   opts.forEach(function(o){ o.addEventListener('click', function(){ apply(o.dataset.yqsw); }); });
   apply('dark');
+})();
+</script>
+<script>
+/* ── Drawer mobile (hamburguesa) ── */
+(function(){
+  var burger=document.getElementById('scBurger'),
+      drawer=document.getElementById('scDrawer'),
+      ov=document.getElementById('scOv'),
+      x=document.getElementById('scDrawerX');
+  if(!burger||!drawer||!ov) return;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)'), lastFocus=null;
+  function syncCurrent(){
+    var active=document.querySelector('.sc-tab[aria-selected="true"]');
+    drawer.querySelectorAll('.sc-drawer-link[data-tab]').forEach(function(b){
+      b.classList.toggle('is-current', !!active && active.dataset.target===b.dataset.tab);
+    });
+  }
+  function open(){
+    lastFocus=document.activeElement; syncCurrent(); ov.hidden=false;
+    requestAnimationFrame(function(){ ov.classList.add('open'); drawer.classList.add('open'); });
+    drawer.setAttribute('aria-hidden','false'); burger.setAttribute('aria-expanded','true');
+    document.documentElement.classList.add('sc-noscroll'); document.body.style.overflow='hidden';
+    if(x) x.focus();
+    document.addEventListener('keydown', onKey);
+  }
+  function close(){
+    ov.classList.remove('open'); drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden','true'); burger.setAttribute('aria-expanded','false');
+    document.documentElement.classList.remove('sc-noscroll'); document.body.style.overflow='';
+    document.removeEventListener('keydown', onKey);
+    if(reduce.matches){ ov.hidden=true; }
+    else { var done=function(){ ov.hidden=true; drawer.removeEventListener('transitionend', done); };
+      drawer.addEventListener('transitionend', done); }
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function onKey(e){ if(e.key==='Escape') close(); }
+  burger.addEventListener('click', open);
+  if(x) x.addEventListener('click', close);
+  ov.addEventListener('click', close);
+  drawer.querySelectorAll('.sc-drawer-link[data-tab]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t=document.getElementById('sctab-'+b.dataset.tab.replace('tab-',''));
+      if(t) t.click(); close();
+      var right=document.querySelector('.sc-right');
+      if(right) setTimeout(function(){ right.scrollIntoView({ behavior:'smooth', block:'start' }); }, 80);
+    });
+  });
+  drawer.querySelectorAll('a.sc-drawer-link').forEach(function(a){
+    a.addEventListener('click', function(){ close(); });
+  });
 })();
 </script>
 </body>

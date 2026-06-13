@@ -292,6 +292,7 @@ body.preview-open .ds-layout { display: none !important; }
 <!-- NAV -->
 <nav class="ds-nav">
 <div class="ds-nav-inner">
+<button class="ds-nav-x" aria-label="Cerrar menú" onclick="closeNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
 <div class="ds-nav-section">
 <span class="ds-nav-label">Versión</span>
 <a class="ds-nav-item active" href="#release-notes"><span class="ds-nav-num">00</span> Novedades</a>
@@ -342,6 +343,14 @@ body.preview-open .ds-layout { display: none !important; }
 <span class="ds-nav-label">Web</span>
 <a class="ds-nav-item" href="#web-banner"><span class="ds-nav-num">29</span> Banner Analytics Pro</a>
 <a class="ds-nav-item" href="#scrollbars"><span class="ds-nav-num">30</span> Scrollbars <span class="ds-nav-badge">NEW</span></a>
+</div>
+<div class="ds-nav-section ds-nav-appearance">
+<span class="ds-nav-label">Apariencia</span>
+<div class="yqsw" role="group" aria-label="Apariencia">
+<button class="yqsw-opt" data-yqsw="dark" title="Oscuro" aria-label="Modo oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+<button class="yqsw-opt" data-yqsw="system" title="Sistema" aria-label="Modo sistema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
+<button class="yqsw-opt" data-yqsw="light" title="Claro" aria-label="Modo claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+</div>
 </div>
 </nav>
 <!-- CONTENT -->
