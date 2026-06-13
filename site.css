@@ -47,7 +47,7 @@
   --gridline:    rgba(0,204,255,.16);
   /* Semánticos */
   --green:  #15d49c;  --green-soft:  rgba(21,212,156,.10);
-  --amber:  #ffb020;  --amber-soft:  rgba(255,176,32,.10);
+  --amber:  #ffb020;  --amber-soft:  var(--amber-soft);
   --red:    #ff637d;  --red-soft:    rgba(255,99,125,.10);
   --blue:   #7ab7ff;  --blue-soft:   rgba(122,183,255,.10);
   --purple: #a78bfa;  --purple-soft: rgba(167,139,250,.12);
@@ -60,10 +60,10 @@
   --amber-a28: rgba(255, 176, 32, 0.28);
   --cyan-a12: rgba(0, 204, 255, 0.12);
   --cyan-a18: rgba(0, 204, 255, 0.18);
-  --cyan-a22: rgba(0, 204, 255, 0.22);
+  --cyan-a22: var(--cyan-a22);
   --cyan-a24: rgba(0, 204, 255, 0.24);
   --cyan-a25: rgba(0, 204, 255, 0.25);
-  --cyan-a28: rgba(0, 204, 255, 0.28);
+  --cyan-a28: var(--cyan-a28);
   --cyan-a38: rgba(0, 204, 255, 0.38);
   --green-a08: rgba(21, 212, 156, 0.08);
   --green-a12: rgba(21, 212, 156, 0.12);
@@ -74,7 +74,7 @@
   --cyan-chart-bar: rgba(0, 204, 255, 0.55);
   --cyan-chart-line: rgba(0, 204, 255, 0.16);
   /* Efectos — sombras navy/cyan suaves (no negro de desplazamiento) */
-  --glow:      0 0 0 3px rgba(0,204,255,.22);
+  --glow:      0 0 0 3px var(--cyan-a22);
   --shadow-sm: 0 1px 3px rgba(0,18,28,.30);
   --shadow-md: 0 4px 14px rgba(0,20,30,.26);
   --shadow-lg: 0 12px 40px rgba(0,26,40,.34), 0 2px 12px rgba(0,204,255,.06);
@@ -506,7 +506,7 @@ html[data-theme="light"] .topbar-search-kbd {
 .search-input::placeholder { color: var(--muted-2); }
 .search-input:focus {
   background: var(--bg-elev-2);
-  border-color: rgba(0,204,255,.3);
+  border-color: color-mix(in srgb, var(--cyan) 30%, transparent);
   box-shadow: 0 0 0 3px var(--cyan-soft);
 }
 html[data-theme="light"] .search-input { background: var(--bg-elev-2); }

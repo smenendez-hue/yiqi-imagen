@@ -349,6 +349,18 @@ html[data-theme="light"] body {
 ```
 
 
+### Scrollbars *(global)*
+
+Barras de scroll con **track oscuro** y **thumb sutil**, definidas en `styles.css` y `ds-styles.css`. Aplican a toda la página y a cualquier contenedor scrolleable; usan tokens, así que se adaptan a dark/light.
+
+```css
+* { scrollbar-width: thin; scrollbar-color: var(--line-strong) var(--bg); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: var(--radius-pill); border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--muted-2); }
+```
+
 ## 6. Layout shell
 
 ### Estructura base
@@ -1160,6 +1172,16 @@ Variante del motor `YiQiLogo` (§0): animar **solo el flip de la Q y los dos pun
 
 - Reproduce el flip al cargar y lo repite cada `~1450ms + gap`.
 - Respeta `prefers-reduced-motion` (no loopea).
+
+### Tamaño del logo — token `--login-logo-w` *(nuevo en v1.2.7)*
+
+El ancho del logo en la pantalla de acceso es **260px**, tokenizado (no hardcodear el valor):
+
+```css
+.yiqi-login-logo { width: var(--login-logo-w); }   /* --login-logo-w: 260px */
+```
+
+Definido en `styles.css` y `ds-styles.css` junto al resto de tokens `--login-*`.
 
 ## 19. Patrón — Aplicaciones (App shell) *(nuevo en v1.2.7)*
 

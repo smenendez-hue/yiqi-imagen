@@ -4,7 +4,7 @@
    Keep this file small and move reusable visual rules to styles.css. */
 
 .login-brand .yiqi-login-logo {
-  width: 260px;
+  width: var(--login-logo-w, 260px);
   max-width: 100%;
   height: auto;
   color: var(--text);
