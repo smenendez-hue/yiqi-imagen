@@ -38,11 +38,13 @@ the task was trivial or file-local.
 | Bootstrap a derived project | `README.md`, `error-memory/errors/INDEX.md`, `../template/INDEX.md` | Full source tree |
 | Styles, tokens, or components | `../LEEME-FUENTE-DS.md` first | API/login docs |
 | Implement UI with the DS | `../yiqi-design.md`, `../execution.md` | API/login docs |
+| Consume DS styles in another project | `../template/shared/consume-styles.md`, `../LEEME-FUENTE-DS.md` | Full catalog unless changing a visual component |
 | API integration | `../docs/yiqi-api.md` | DS docs |
 | API integration security | `../docs/seguridad-integraciones-api.md` | Unrelated docs |
 | Error handling or messages | `../docs/politica-errores.md` | Unrelated docs |
 | Login or session | `../docs/yiqi-login.md` | Unrelated docs |
-| Login template | `../template/login/README.md`, `../template/INDEX.md` | API docs unless wiring auth behavior |
+| Login template | `../template/login/README.md`, `../template/shared/consume-styles.md`, `../template/INDEX.md` | API docs unless wiring auth behavior |
+| Template extraction or catalog split | `summaries/template-catalog.md`, `../template/INDEX.md`, `../template/shared/consume-styles.md`, `../yiqi-design-system.html` only for the specific component section | Full catalog unless extracting multiple templates |
 | Fixtures or sample data | `../docs/politica-fixtures.md`, `../fixtures/INDEX.md` | Unrelated docs |
 | Dependencies, packages, or audit | `../docs/politica-dependencias.md` | Unrelated docs |
 | Open a PR | `../docs/pr-checklist.md` | Unrelated docs |
@@ -82,5 +84,10 @@ When this repository is used to start or guide another project:
 3. Link `../template/INDEX.md` as the source of approved copy/paste templates.
 4. Use the matching template as the first implementation path, then adapt copy,
    routes, API wiring, and project-specific behavior.
-5. Do not import secrets, raw logs, production credentials, customer data, or
+5. Load the canonical stylesheet from
+   `https://diguardia.github.io/yiqi-imagen/styles.css`; do not copy or fork the
+   full Design System CSS into the derived project.
+6. If the derived project needs a reusable visual rule that is missing from the
+   stylesheet, add it to this repository first and document the template impact.
+7. Do not import secrets, raw logs, production credentials, customer data, or
    unrelated history.
