@@ -2163,3 +2163,49 @@ html[data-theme="light"] .hf-btn-back:hover { color: var(--muted); }
 .nav-link:hover .n-ico { color: var(--text); }
 .nav-link.is-active .n-ico { background: var(--cyan-soft-2); color: var(--cyan); }
 .n-ico svg { width: 13px; height: 13px; }
+/* ── .ds-xref — enlace cruzado meta (catálogo ↔ showcase), distinto de .btn ── */
+.ds-xref{ display:inline-flex; align-items:center; gap:6px; padding:4px 8px; border:none; border-radius:var(--radius); background:transparent; color:var(--muted-2); font:600 11px var(--sans); text-decoration:none; cursor:pointer; transition:background .15s ease, color .15s ease; }
+.ds-xref .ph{ font-size:14px; }
+.ds-xref:hover{ color:var(--cyan); background:var(--cyan-soft); }
+.ds-xref:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--cyan-soft); color:var(--cyan); }
+/* ── Slider (primitivo) — fuente canónica ── */
+.pr-slider{ width:100%; max-width:220px; }
+.pr-slider input[type=range]{ -webkit-appearance:none; appearance:none; width:100%; height:5px; border-radius:var(--radius-pill); background:var(--bg-elev-2); box-shadow:inset 0 0 0 1px var(--line); outline:none; }
+.pr-slider input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:var(--cyan); cursor:pointer; box-shadow:0 0 0 4px var(--cyan-soft); border:none; }
+.pr-slider input[type=range]::-moz-range-thumb{ width:18px; height:18px; border-radius:50%; background:var(--cyan); cursor:pointer; box-shadow:0 0 0 4px var(--cyan-soft); border:none; }
+.pr-slider-val{ font:700 26px var(--kpi-num,var(--sans)); font-variant-numeric:tabular-nums; margin-bottom:8px; }
+/* ── Tabs (primitivo) — fuente canónica ── */
+.pr-tabbar{ display:inline-flex; padding:3px; border-radius:var(--radius-pill); background:var(--bg-elev-2); box-shadow:inset 0 0 0 1px var(--line); }
+.pr-tabbtn{ padding:6px 14px; border:none; cursor:pointer; border-radius:var(--radius-pill); background:transparent; color:var(--muted); font:600 12px var(--sans); transition:.15s; }
+.pr-tabbtn[aria-selected="true"]{ background:var(--bg-elev); color:var(--cyan); box-shadow:var(--shadow-sm); }
+.pr-tabpanel{ margin-top:14px; font:400 12.5px/1.6 var(--sans); color:var(--muted); text-align:center; }
+/* ── Dropdown / Popover (primitivos) — fuente canónica ── */
+.pr-pop-wrap{ position:relative; }
+.pr-menu{ position:absolute; top:calc(100% + 8px); left:0; min-width:184px; z-index:5; padding:6px; border-radius:var(--radius); background:var(--bg-elev); box-shadow:0 0 0 1px var(--line), var(--shadow-lg); opacity:0; transform:translateY(-6px) scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .15s, transform .15s; }
+.pr-menu.open{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+.pr-menu-item{ display:flex; align-items:center; gap:9px; width:100%; padding:8px 10px; border:none; cursor:pointer; border-radius:var(--radius-sm); background:transparent; color:var(--text); font:500 12.5px var(--sans); text-align:left; }
+.pr-menu-item:hover{ background:var(--cyan-soft); color:var(--cyan); }
+.pr-menu-item.danger:hover{ background:var(--red-soft); color:var(--red); }
+.pr-menu-sep{ height:1px; margin:5px 6px; background:var(--line); }
+.pr-menu .ph{ font-size:15px; color:var(--muted); }
+.pr-menu-item:hover .ph{ color:inherit; }
+.pr-pop{ width:230px; padding:14px; text-align:left; transform-origin:top center; }
+.pr-pop h4{ font:700 13px var(--sans); margin:0 0 4px; }
+.pr-pop p{ font:400 12px/1.5 var(--sans); color:var(--muted); margin:0; }
+/* ── Toast (primitivo) — fuente canónica ── */
+.pr-toasts{ position:fixed; right:18px; bottom:18px; z-index:120; display:flex; flex-direction:column; gap:10px; }
+.pr-toast{ display:flex; align-items:center; gap:11px; min-width:240px; padding:12px 14px; border-radius:var(--radius); background:var(--bg-elev); box-shadow:0 0 0 1px var(--line), var(--shadow-lg); transform:translateX(120%); transition:transform .32s cubic-bezier(.2,.9,.3,1); }
+.pr-toast.show{ transform:translateX(0); }
+.pr-toast .ph{ font-size:18px; color:var(--green); }
+.pr-toast strong{ font:600 12.5px var(--sans); color:var(--text); display:block; }
+.pr-toast span{ font:400 11.5px var(--sans); color:var(--muted); }
+
+/* ── Dialog · shell de modal (primitivo) ── */
+.sc-modal{ position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:24px; background:color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter:blur(4px); }
+.sc-modal.open{ display:flex; }
+.sc-modal-card{ width:min(100%,920px); max-height:88vh; display:flex; flex-direction:column; background:var(--bg-elev-2); border:1px solid var(--line-strong); border-radius:var(--radius-xl); box-shadow:var(--shadow-lg); overflow:hidden; }
+.sc-modal-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:18px 22px; border-bottom:1px solid var(--line); }
+.sc-modal-kicker{ font:700 9px var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--cyan); }
+.sc-modal-title{ font:700 17px var(--sans); margin-top:4px; }
+.sc-modal-close{ width:32px; height:32px; flex-shrink:0; border-radius:var(--radius-sm); background:var(--bg-elev); border:1px solid var(--line); color:var(--muted); cursor:pointer; font-size:14px; }
+.sc-modal-close:hover{ background:var(--bg-soft); color:var(--text); }

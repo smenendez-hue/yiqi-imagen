@@ -351,7 +351,7 @@ html[data-theme="light"] body {
 
 ### Scrollbars *(global)*
 
-Barras de scroll con **track oscuro** y **thumb sutil**, definidas en `styles.css` y `ds-styles.css`. Aplican a toda la página y a cualquier contenedor scrolleable; usan tokens, así que se adaptan a dark/light.
+Barras de scroll con **track oscuro** y **thumb sutil**, definidas en `styles.css`. Aplican a toda la página y a cualquier contenedor scrolleable; usan tokens, así que se adaptan a dark/light.
 
 ```css
 * { scrollbar-width: thin; scrollbar-color: var(--line-strong) var(--bg); }
@@ -1181,7 +1181,7 @@ El ancho del logo en la pantalla de acceso es **260px**, tokenizado (no hardcode
 .yiqi-login-logo { width: var(--login-logo-w); }   /* --login-logo-w: 260px */
 ```
 
-Definido en `styles.css` y `ds-styles.css` junto al resto de tokens `--login-*`.
+Definido en `styles.css` junto al resto de tokens `--login-*`.
 
 ## 19. Patrón — Aplicaciones (App shell) *(nuevo en v1.2.7)*
 
@@ -1244,7 +1244,59 @@ Componente promocional **para la web** (no es una app): banner de difusión de A
 - Requiere Chart.js disponible en la página.
 
 
+## 22. Patrón — Enlace cruzado (`ds-xref`) *(nuevo)*
+
+Afordance **meta** para navegar entre el catálogo y el showcase ("Ver fuente" / "Ver en vivo"). Es metalenguaje de documentación, **no** un componente de producto: por eso es deliberadamente distinto del `.btn`.
+
+### Anatomía
+
+- Sin caja: `inline-flex`, `border:none`, `background:transparent`.
+- `font:600 12.5px var(--sans)`, color `var(--muted-2)`, ícono `ph-arrow-square-out` (14px).
+- Hover/focus: color `var(--cyan)` + `background:var(--cyan-soft)`; focus-visible con ring `0 0 0 3px var(--cyan-soft)`.
+
+### Reglas
+
+- Usar **solo** para saltar entre superficies de documentación (catálogo ↔ showcase). Nunca como CTA de producto.
+- Viaja pegado al título del componente; no compite con el contenido.
+- 100% tokens existentes; definido una sola vez en `styles.css` (fuente única).
+- Catálogo: §33. Deep-link al showcase con `?tab=<vista>&card=<id>`.
+
+
+## 23. Primitivos interactivos en el catálogo (§32–§38) *(nuevo)*
+
+Los primitivos que vivían solo en el showcase ahora tienen **fuente canónica** en el catálogo, con demo en vivo y CSS en `styles.css` (fuente única de componentes):
+
+| Primitivo | Sección catálogo | Clases | JS (data-attr) |
+|---|---|---|---|
+| Slider | §32 `#prim-slider` | `.pr-slider`, `.pr-slider-val` | readout por id |
+| Tabs | §34 `#prim-tabs` | `.pr-tabbar`, `.pr-tabbtn`, `.pr-tabpanel` | `[data-pr-tabs]` |
+| Dialog | §35 `#prim-dialog` | `.sc-modal*` | `[data-pr-dialog]` / `[data-pr-dialog-close]` |
+| Dropdown | §36 `#prim-dropdown` | `.pr-pop-wrap`, `.pr-menu*` | `[data-pr-menu]` |
+| Popover | §37 `#prim-popover` | `.pr-menu.pr-pop` | `[data-pr-menu]` |
+| Toast | §38 `#prim-toast` | `.pr-toasts`, `.pr-toast` | `[data-pr-toast]` + host `#prToasts` |
+
+Tres primitivos más se documentan en secciones existentes: **Switch/Check → §10 Inputs**, **Tooltip → §18 Varios**, **Accordion → §13 Navegación**.
+
+### Enlace cruzado
+
+Cada primitivo está unido a su demo con el afordance `.ds-xref` (§22) en los dos sentidos: "Ver fuente" (showcase → catálogo) y "Ver en vivo" (catálogo → showcase, con deep-link `?tab=primitivos&card=<id>` que abre la vista y centra la card).
+
+
+## 24. Aplicaciones — Picking (propuesta) *(nuevo)*
+
+Vocabulario de primitivos para la app de picking (lector de códigos + flujo de depósito). Catálogo **§29 · Aplicaciones** (`#apps-picking`); demo en el showcase (tab Mockups, `#card-picking`); enlazados en ambos sentidos con `.ds-xref`. **Datos simulados**, no toca producción — banner `DATOS SIMULADOS · PROPUESTA · NO MODIFICA YIQI`. 100% tokenizado (`var()` + `color-mix`).
+
+### Primitivos propuestos
+
+- **Flujo**: progress card (barra + % + ítems), status chips (pendiente / en proceso / completado), result state (éxito / error / not-found), key-value list, callout de ubicación.
+- **Escaneo**: scanner viewport (marco `var(--cyan)`, línea de escaneo `var(--red)`), stepper de zoom, input group.
+- **Estructura**: icon buttons, avatar chip, section header + contador, truncate "Leer más", list item card, banner / notice persistente.
+- **Estados**: skeleton, empty state, error de cámara.
+
+Es una **propuesta visual**: nombres de clase, props y JS se formalizan cuando llegue el funcional de la app.
+
+
 ---
 
-*YiQi ERP · Design System v1.2.7 · Última actualización: 11/06/2026*
+*YiQi ERP · Design System v1.2.7 · Última actualización: 14/06/2026*
 *Reemplaza todas las versiones anteriores de yiqi-design.md*

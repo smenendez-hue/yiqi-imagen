@@ -14,8 +14,7 @@ que un proyecto consumidor sepa qué puede usar y qué no debe editar.
 ### Fuente del DS — se edita acá
 | Artefacto | Rol |
 |-----------|-----|
-| `ds-styles.css` | Hoja del DS (componentes + tokens del catálogo) — canónico |
-| `styles.css` | Bundle de consumo publicado al CDN — canónico |
+| `styles.css` | **Fuente única** del DS (tokens + componentes); bundle publicado al CDN — canónico |
 | `yiqi-design.md` | Documentación maestra de diseño |
 | `yiqi-design-system.html` | Catálogo visual |
 | `version.json` | Versión del DS |

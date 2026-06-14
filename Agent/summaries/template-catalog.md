@@ -32,7 +32,7 @@ component classes.
 
 - `yiqi-design-system.html` remains the human visual catalog.
 - `template/` contains smaller copy/paste units extracted from the catalog.
-- Reusable visual CSS belongs in `styles.css` and `ds-styles.css`.
+- Reusable visual CSS belongs in `styles.css` (single source).
 - Template CSS is allowed only for adapter behavior that is not reusable DS
   styling yet.
 - If a template needs a reusable visual rule that is not published yet, add it

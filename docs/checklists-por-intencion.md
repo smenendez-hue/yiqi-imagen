@@ -56,7 +56,7 @@ Cuando no usar checklist completo:
 
 ## 4. Cambios de estilos / tokens / componentes del DS
 - [ ] El cambio del DS se hace **acá** (`yiqi-imagen` es la fuente única; ver `LEEME-FUENTE-DS.md`).
-- [ ] `styles.css` / `ds-styles.css` son canónicos en este repo: se editan acá (no se regeneran desde otro lado).
+- [ ] `styles.css` es canónico en este repo (fuente única de tokens + componentes): se edita acá (no se regenera desde otro lado).
 - [ ] `version.json` coherente con la versión del DS.
 - [ ] Tokens YiQi usados; filosofía borderless respetada.
 - [ ] Revisión de regresión visual en componentes existentes y temas dark/light.

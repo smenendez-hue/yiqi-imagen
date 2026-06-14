@@ -15,7 +15,7 @@ Para reuso real hacen falta **tres capas, en una sola fuente**:
 
 | Capa | Archivo | Qué contiene | Cómo la consume una app |
 |------|---------|--------------|--------------------------|
-| Tokens + CSS de componentes | `ds-styles.css` | colores, tipografía, spacing, y las clases (`kpi-card`, `data-table`, barras, etc.) | `<link rel="stylesheet" href=".../ds-styles.css">` |
+| Tokens + CSS de componentes | `styles.css` | colores, tipografía, spacing, y las clases (`kpi-card`, `data-table`, barras, etc.) | `<link rel="stylesheet" href=".../styles.css">` |
 | Comportamientos (JS) | `ds-components.js` *(a crear)* | tabla sortable, sparkline+toggle, KPI colapsable, modal de comparación, off-canvas, selector de esquema | `<script src=".../ds-components.js">` + init |
 | Documentación viva | `yiqi-design-system.html` | preview + snippet + API de cada componente | consume las dos de arriba |
 
@@ -196,12 +196,12 @@ Cards de áreas pendientes. **Borderless**, con **pill de estado** (Planeado / E
 
 ## 4. Versionado y consumo
 - `version.json` en el repo del DS. Cada app fija una versión.
-- Futuras apps: `<link>` a `ds-styles.css` + `<script>` a `ds-components.js` + init de los que apliquen
+- Futuras apps: `<link>` a `styles.css` (fuente única) + `<script>` a `ds-components.js` + init de los que apliquen
   (`setupSortableTables()`, sparklines, `setupResponsiveTools()`, tooltips "i", colapso).
 - **No copiar** estos archivos a la app. Importar.
 
 ## 5. Pendiente (para completar el reuso)
 - [x] **`ds-components.js` creado** (v1): tooltip "i", tablas sortables, mover-controles-al-drawer. Expone `window.YiQiDS`, auto-init. Falta v2: charts/modal/comparación (dependen de datos → necesitan API de inyección).
-- [ ] Migrar el panel a **importar** `ds-styles.css` (hoy tiene copia en `styles.css`).
+- [ ] Migrar el panel a consumir `styles.css` por CDN (fuente única).
 - [ ] Consolidar hacia la fuente única (**`yiqi-imagen`**) y retirar las copias divergentes (incluida la de `www.yiqi`).
 - [ ] Conectar a datos reales: Embudo operativo y Backlog (hoy hardcodeados).

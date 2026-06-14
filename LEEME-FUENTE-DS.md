@@ -5,8 +5,7 @@ A partir del **2026-06-11**, las actualizaciones del Design System (tokens, comp
 catálogo, documentación, templates) se hacen **acá**. Es la casa única del DS.
 
 Archivos canónicos en este repo:
-- `ds-styles.css` — hoja del DS (componentes + tokens del catálogo).
-- `styles.css` — bundle de consumo publicado al CDN.
+- `styles.css` — **fuente única** del DS (tokens + componentes); el catálogo la usa y se publica al CDN.
 - `yiqi-design.md` — documentación maestra de diseño.
 - `yiqi-design-system.html` — catálogo visual.
 - `version.json` — versión legible por máquina.
