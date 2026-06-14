@@ -2209,3 +2209,10 @@ html[data-theme="light"] .hf-btn-back:hover { color: var(--muted); }
 .sc-modal-title{ font:700 17px var(--sans); margin-top:4px; }
 .sc-modal-close{ width:32px; height:32px; flex-shrink:0; border-radius:var(--radius-sm); background:var(--bg-elev); border:1px solid var(--line); color:var(--muted); cursor:pointer; font-size:14px; }
 .sc-modal-close:hover{ background:var(--bg-soft); color:var(--text); }
+
+
+/* ── Scanner · barrido (estado: escaneando) ── */
+.pk-reticle{ overflow:hidden; }
+.pk-scanline{ position:absolute; left:0; right:0; height:2px; background:var(--red); animation:pk-scan 2.2s ease-in-out infinite alternate; }
+@keyframes pk-scan{ from{ top:6%; } to{ top:94%; } }
+@media (prefers-reduced-motion: reduce){ .pk-scanline{ animation:none; top:50%; } }
