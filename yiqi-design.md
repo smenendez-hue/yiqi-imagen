@@ -443,6 +443,12 @@ html, body { overflow-x: clip; }  /* clip en lugar de hidden — no rompe positi
 img, svg { max-width: 100%; }
 ```
 
+### Menú mobile
+
+El botón hamburguesa (`.mobile-btn`) va **a la derecha** del topbar (`.topbar-r`), nunca a la izquierda. Solo visible en `≤ 960px`; abre el sidebar como drawer off-canvas con backdrop, **desde la derecha** (mismo lado que el botón).
+
+---
+
 ---
 
 ## 8. Componentes clave
@@ -838,6 +844,44 @@ Componente de búsqueda borderless. Implementado en `site.css`.
 - `search-clear` se muestra/oculta con `.visible` según si hay texto
 - `search-kbd` se oculta con `.hidden` cuando el input tiene foco
 - Sin borde por defecto, focus ring cyan
+
+### Selector de período / rango
+
+Filtro de rango temporal del topbar (Analytics Pro y paneles). Input compuesto: un solo botón activo a la vez. Documentado en catálogo §24 (Panel Gerencial) y showcase (Primitivos).
+
+```css
+/* Borderless — cápsula sin borde ni divisores (filosofía §3) */
+.range-filter {
+  display: inline-flex; align-items: center; gap: 2px;
+  padding: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev-2);
+}
+.range-btn {
+  padding: 6px 14px;
+  font: 500 13px var(--sans); color: var(--muted);
+  background: transparent; border: none;
+  border-radius: var(--radius-pill);     /* pill, sin divisores */
+}
+.range-btn:hover         { background: var(--bg-soft); color: var(--text); }
+.range-btn.is-active     { background: var(--cyan-soft); color: var(--cyan); font-weight: 600; }
+.range-btn:focus-visible { outline: 2px solid var(--cyan-a28); outline-offset: -2px; }
+```
+
+```html
+<div class="range-filter" role="group" aria-label="Período de análisis">
+  <button class="range-btn is-active" type="button" data-range="last_7_days">Ult. 7 días</button>
+  <button class="range-btn" type="button" data-range="current_month">Mes en curso</button>
+  <button class="range-btn" type="button" data-range="last_30_days">Ult. 30 días</button>
+</div>
+```
+
+- Un solo `.is-active` a la vez; la app togglea según `data-range`
+- `role="group"` + `aria-label` en el contenedor; cada botón es `type="button"`
+- **Borderless**: sin borde ni divisores; activo como pill `--cyan-soft` (filosofía §3)
+- En el topbar se aplica `flex-wrap:nowrap` para que no rompa en 2 filas
+
+---
 
 ---
 

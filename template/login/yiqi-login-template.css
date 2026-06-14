@@ -24,7 +24,7 @@
 .auth-status[data-state="loading"],
 .auth-status[data-state="info"] {
   color: var(--cyan);
-  border-color: rgba(0, 204, 255, 0.28);
+  border-color: var(--cyan-a28);
 }
 
 .login-password {
