@@ -202,7 +202,7 @@ html[data-theme="light"] {
 
 ### Regla de uso
 
-- **Plus Jakarta Sans (`--display`)** → títulos de página, hero headlines, headings grandes
+- **Greycliff CF Heavy (`--display`)** → títulos de página, hero headlines, headings grandes (fallback: Plus Jakarta Sans)
 - **Inter (`--sans`)** → todo el texto de interfaz: body, labels, botones, nav
 - **IBM Plex Mono (`--mono`)** → tokens, badges, kickers, valores numéricos, IDs, atajos de teclado
 
@@ -1104,7 +1104,7 @@ applyTheme(resolveTheme());
 5. **`data-theme="system"` como default** — nunca `"dark"` ni `"light"` hardcodeado.
 6. **Toggle 3 pasos** — `setTheme(v)` con `"dark" | "system" | "light"`. No `toggleTheme()`.
 7. **`--text-cyan-muted`** — para estados activos y labels con acento. Nunca `var(--cyan)` directo en texto de estado.
-8. **Plus Jakarta Sans** — importar y usar como `var(--display)` en títulos y heroes.
+8. **Greycliff CF Heavy** (`var(--display)`, fallback Plus Jakarta) en títulos y heroes; cifras en `--mono`/`--kpi-num` (IBM Plex Mono).
 9. **SVG inline para íconos** en HTML standalone — no Phosphor CDN sin fallback.
 10. **Spacing múltiplos de 4** — sin valores arbitrarios.
 11. **Archivos self-contained** — fuentes y scripts embebidos o desde CDN confiable.
