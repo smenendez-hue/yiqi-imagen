@@ -1196,7 +1196,7 @@ body.preview-open .ds-layout { display: none !important; }
 </div>
 <div class="alert-badge" style="margin-left:8px">
 <svg viewbox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
-<span class="alert-badge-dot" style="background:var(--amber);color:#1a0d00">!</span>
+<span class="alert-badge-dot" style="background:var(--amber);color:var(--text-on-amber)">!</span>
 </div>
 </div>
 <div class="subsection-title" id="fav-star">Favorito (star toggle)</div>
@@ -1218,30 +1218,26 @@ body.preview-open .ds-layout { display: none !important; }
 <div class="subsection-title">Input text</div>
 <div style="display:grid;gap:10px;max-width:480px;margin-bottom:20px">
 <input class="ds-input" placeholder="Buscar cliente o pedido..." type="text"/>
-<div class="search-wrap">
-<svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-<input class="search-input" placeholder="Buscar en el sistema" type="text"/>
-<kbd class="search-kbd">⌘K</kbd>
+<div class="ds-input-wrap">
+<svg class="ds-input-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+<input class="ds-input" placeholder="Buscar en el sistema" type="text"/>
+<kbd class="ds-input-shortcut">⌘K</kbd>
 </div>
 <input class="ds-input" placeholder="" type="text" value="Empresa de ejemplo S.A."/>
 </div>
-<div class="subsection-title">Search Input — borderless</div>
-<p class="ds-section-sub" style="margin-bottom:14px">Componente canónico para buscadores en landings y páginas internas. Sin borde visible por defecto (borderless). Fondo <code>var(--bg-elev-2)</code>. Focus ring cyan. Clear button opcional. Shortcut <code>⌘K</code> opcional. Clases: <code>.search-wrap</code> · <code>.search-icon</code> · <code>.search-input</code> · <code>.search-clear</code> · <code>.search-kbd</code>.</p>
+<div class="subsection-title">Search Input</div>
+<p class="ds-section-sub" style="margin-bottom:14px">El buscador usa el primitivo canónico: <code>.ds-input-wrap</code> + <code>.ds-input-icon</code> + <code>.ds-input</code>, con <code>.ds-input-shortcut</code> (⌘K) opcional. Borderless, reposo recessed <code>var(--bg)</code>, foco por elevación <code>var(--bg-soft)</code> (sin ring). Las landings de la web usan una variante propia <code>.search-*</code> definida en <code>site.css</code> (capa web).</p>
 <div style="display:grid;gap:12px;max-width:480px;margin-bottom:8px">
-  <!-- Default: con icono + clear -->
-  <div class="search-wrap">
-    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input class="search-input" type="text" placeholder="Buscar en el sistema…" autocomplete="off">
-    <button class="search-clear visible" aria-label="Limpiar"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <div class="ds-input-wrap">
+    <svg class="ds-input-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input class="ds-input" type="text" placeholder="Buscar en el sistema…" autocomplete="off">
   </div>
-  <!-- Con shortcut ⌘K -->
-  <div class="search-wrap">
-    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input class="search-input" type="text" placeholder="Buscar sección…" autocomplete="off">
-    <kbd class="search-kbd">⌘K</kbd>
+  <div class="ds-input-wrap">
+    <svg class="ds-input-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input class="ds-input" type="text" placeholder="Buscar sección…" autocomplete="off">
+    <kbd class="ds-input-shortcut">⌘K</kbd>
   </div>
 </div>
-<p class="swatch-hex" style="margin-bottom:20px">Usado en: <code>faq.html</code> · <code>ayuda-erp.html</code> · topbar del DS (variante compacta <code>.topbar-search-wrap</code>)</p>
 
 <div class="subsection-title">Text area</div>
 <div style="max-width:480px;margin-bottom:20px">
@@ -2820,12 +2816,12 @@ document.querySelectorAll(<span style="color:var(--green)">'.kpi-block'</span>).
         <div class="login-form">
           <label style="display:grid;gap:5px">
             <span class="login-label">Usuario o correo electrónico</span>
-            <input class="login-input" type="text" name="username" autocomplete="username" placeholder="usuario@empresa.com">
+            <input class="ds-input" type="text" name="username" autocomplete="username" placeholder="usuario@empresa.com">
           </label>
           <label style="display:grid;gap:5px">
             <span class="login-label">Contraseña</span>
             <span style="position:relative;display:block">
-              <input class="login-input" id="login-pass" type="password" name="password" autocomplete="current-password" placeholder="Contraseña" style="padding-right:44px">
+              <input class="ds-input" id="login-pass" type="password" name="password" autocomplete="current-password" placeholder="Contraseña" style="padding-right:44px">
               <button type="button" class="login-eye" id="login-eye" aria-label="Mostrar contraseña" aria-pressed="false"><i class="ph ph-eye" aria-hidden="true"></i></button>
             </span>
           </label>
@@ -3141,7 +3137,7 @@ document.body.classList.add(<span style="color:var(--green)">'anim-in'</span>);<
       <button type="button" class="pk-zoom-btn" data-z="1" aria-label="Acercar" style="flex-shrink:0;width:22px;color:var(--text);background:none;border:none;font:700 20px var(--sans);line-height:1;cursor:pointer">+</button>
     </div>
     <div style="flex:1 1 260px;min-width:240px;display:flex;gap:8px;align-items:center">
-      <input placeholder="Código de barras" inputmode="numeric" maxlength="14" aria-label="Código de barras" style="flex:1;min-width:150px;background:var(--bg-elev-2);border:none;border-radius:var(--radius-sm);padding:10px 12px;color:var(--text);font:400 13px var(--mono);letter-spacing:.02em;outline:none">
+      <input class="ds-input" placeholder="Código de barras" inputmode="numeric" maxlength="14" aria-label="Código de barras" style="flex:1;min-width:150px;font-family:var(--mono);letter-spacing:.02em">
       <button class="btn btn-primary" style="flex-shrink:0">Consultar</button>
     </div>
   </div>

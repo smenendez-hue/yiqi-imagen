@@ -25,22 +25,6 @@ button{font:inherit;cursor:pointer}
   text-transform: uppercase; letter-spacing: .12em;
 }
 .topbar-right { display: flex; align-items: center; gap: 10px; }
-.theme-toggle {
-  display: flex; align-items: center;
-  background: var(--bg-elev-2); border-radius: var(--radius-pill);
-  padding: 3px; gap: 1px;
-}
-.theme-opt {
-  display: flex; align-items: center; justify-content: center; gap: 5px;
-  padding: 4px 10px; border: none; border-radius: var(--radius-pill);
-  background: transparent; color: var(--muted-2);
-  font: 500 11px var(--sans); cursor: pointer;
-  transition: background var(--tr), color var(--tr);
-  white-space: nowrap;
-}
-.theme-opt svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
-.theme-opt:hover { color: var(--text); }
-.theme-opt.active { background: var(--bg-soft); color: var(--text); }
 
 /* ── LAYOUT ── */
 .ds-layout { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 56px); min-width: 0; position: relative; }
@@ -165,7 +149,6 @@ button{font:inherit;cursor:pointer}
 .delta-down { color: var(--amber); }
 
 /* KPI mini */
-.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 
 /* Navigation Item */
 .nav-item-demo {
@@ -182,11 +165,6 @@ button{font:inherit;cursor:pointer}
 .nav-item-demo span { font: 600 14px var(--sans); }
 
 /* Module item */
-.module-demo {
-  border: none; border-radius: var(--radius-md);
-  background: var(--bg-elev-2); overflow: hidden;
-}
-.module-demo.open { box-shadow: 0 0 0 1px rgba(0,204,255,.10) inset; }
 .module-head-demo {
   display: flex; align-items: center; gap: 10px; padding: 12px 14px;
 }

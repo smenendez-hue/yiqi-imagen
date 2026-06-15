@@ -1091,6 +1091,8 @@ applyTheme(resolveTheme());
 
 > **Excepción documentada — `--text-white`:** el contador de `.alert-badge-dot` (campanita) usa `color: var(--text-white)` (#ffffff fijo) porque va sobre el rojo sólido y no debe adaptarse al tema. Es la única utilidad de blanco constante; no se usa para texto general.
 
+> **Excepción documentada — `--text-on-amber`:** texto oscuro fijo (`#1a0d00`) para chips/badges ámbar (mejor contraste que blanco sobre ámbar). Constante en ambos temas, igual que `--text-white`.
+
 ---
 
 ## 13. Reglas críticas de implementación
