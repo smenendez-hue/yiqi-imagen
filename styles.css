@@ -1077,6 +1077,73 @@ html[data-theme="light"] .kpi-trend-grid { stroke: rgba(16, 36, 54, 0.12); }
 .auth-status[data-state="success"] { color: var(--green); background: var(--green-soft); }
 .auth-status[data-state="error"]   { color: var(--red);   background: var(--red-soft); }
 
+/* Login — extras (consolidado desde yiqi-login-template.css) */
+.login-brand .yiqi-login-logo {
+  width: var(--login-logo-w, 260px);
+  max-width: 100%;
+  height: auto;
+  color: var(--text);
+}
+.login-brand .yiqi-login-description {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font: 400 12px var(--sans);
+  text-align: center;
+}
+.auth-status[data-state="idle"] { visibility: hidden; }
+.auth-status[data-state="loading"],
+.auth-status[data-state="info"] { color: var(--cyan); background: var(--cyan-soft); }
+.login-password { position: relative; display: block; }
+.login-password .ds-input { padding-right: 44px; }
+.login-eye {
+  position: absolute; top: 50%; right: 8px;
+  display: grid; width: 34px; height: 34px; place-items: center;
+  border: 0; background: transparent; color: var(--muted-2);
+  cursor: pointer; transform: translateY(-50%);
+}
+.login-eye:hover { color: var(--cyan); }
+.login-eye svg,
+.login-spinner {
+  width: 18px; height: 18px; fill: none; stroke: currentColor;
+  stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;
+}
+.login-spinner { animation: yiqi-login-spin 760ms linear infinite; }
+.login-remember {
+  display: flex; align-items: center; gap: 9px;
+  color: var(--muted); cursor: pointer; font: 500 12px var(--sans);
+}
+.login-remember input {
+  appearance: none; -webkit-appearance: none;
+  width: 18px; height: 18px; flex-shrink: 0; margin: 0;
+  border-radius: 6px; border: 1px solid var(--line);
+  background: var(--bg-elev-2); cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+.login-remember input:checked {
+  background-color: var(--cyan-soft);
+  border-color: color-mix(in srgb, var(--cyan) 30%, transparent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300ccff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center;
+}
+.login-remember input:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--cyan-soft); }
+.login-footer {
+  color: var(--muted-2); font: 500 11px var(--mono);
+  text-align: center; text-decoration: none;
+}
+button.login-hint {
+  justify-self: start; border: 0; background: transparent;
+  cursor: pointer; font: inherit; padding: 0; text-align: left;
+}
+.login-screen input:-webkit-autofill,
+.login-screen input:-webkit-autofill:hover,
+.login-screen input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-elev) inset;
+  caret-color: var(--text);
+  transition: background-color 9999s ease-in-out 0s;
+}
+@keyframes yiqi-login-spin { to { transform: rotate(360deg); } }
+
 /* ── 29. PROGRESS BARS ────────────────────────────────────── */
 .progress-row {
   display: grid;

@@ -69,7 +69,7 @@
 
   /* ── Secciones catálogo (tablas y gráficos) ── */
   .sc-section { max-width:1320px; margin:0 auto; padding:26px 20px 4px; }
-  .sc-section-h { font:800 20px var(--sans); letter-spacing:-.01em; margin:0 0 3px; }
+  .sc-section-h { font:800 20px var(--sans); letter-spacing:-.01em; margin:0 0 3px; white-space:nowrap; }
   .sc-section-sub { color:var(--muted); font:400 12.5px var(--sans); margin:0 0 16px; }
   .sc-tbl-grid { display:grid; grid-template-columns:1fr; gap:14px; }
   .sc-tbl-grid .wide { grid-column:1 / -1; }
@@ -318,7 +318,7 @@
   /* el documento es el UNICO scroller: ningun contenedor intermedio atrapa el toque */
   .sc-split, .sc-right, .sc-hero, .sc-carousel-track,
   .sc-panel, .sc-panel.is-active,
-  #tab-mockups.is-active, #tab-graficos.is-active, #tab-tablas.is-active, #tab-primitivos.is-active, #tab-iconos.is-active,
+  #tab-mockups.is-active, #tab-graficos.is-active, #tab-galeria.is-active, #tab-tablas.is-active, #tab-primitivos.is-active, #tab-iconos.is-active,
   .sc-grid, .sc-chart-grid, .sc-tbl-grid, .pr-grid, #tab-iconos .ic-grid, #tab-iconos .sc-section{
     overflow:visible !important; height:auto !important; max-height:none !important; min-height:0 !important;
     -webkit-overflow-scrolling:auto; touch-action:pan-y; }
@@ -327,7 +327,7 @@
   .sc-right{ height:auto; overflow:visible; scroll-margin-top:56px; }
   .sc-carousel-track{ flex:none; min-height:0; overflow:visible; }
   .sc-panel.is-active{ height:auto; overflow:visible; overscroll-behavior:auto; }
-  #tab-mockups.is-active, #tab-graficos.is-active, #tab-tablas.is-active, #tab-primitivos.is-active{ display:block; height:auto; overflow:visible; }
+  #tab-mockups.is-active, #tab-graficos.is-active, #tab-galeria.is-active, #tab-tablas.is-active, #tab-primitivos.is-active{ display:block; height:auto; overflow:visible; }
   /* cards apiladas en bloque: scroll VERTICAL a ancho completo */
   .sc-grid, .sc-chart-grid, .sc-tbl-grid, .pr-grid,
   #tab-mockups > .sc-grid, #tab-graficos .sc-chart-grid, #tab-tablas .sc-tbl-grid, #tab-primitivos .pr-grid{
@@ -381,6 +381,7 @@
     <button class="sc-drawer-link" data-tab="tab-primitivos"><i class="ph ph-cube"></i> Primitivos</button>
     <button class="sc-drawer-link" data-tab="tab-mockups"><i class="ph ph-squares-four"></i> Mockups</button>
     <button class="sc-drawer-link" data-tab="tab-graficos"><i class="ph ph-chart-line"></i> Gráficos</button>
+    <button class="sc-drawer-link" data-tab="tab-galeria"><i class="ph ph-chart-donut"></i> Galería</button>
     <button class="sc-drawer-link" data-tab="tab-tablas"><i class="ph ph-table"></i> Tablas</button>
     <button class="sc-drawer-link" data-tab="tab-iconos"><i class="ph ph-smiley"></i> Iconos</button>
   </div>
@@ -442,6 +443,7 @@
     <button class="sc-tab" role="tab" id="sctab-primitivos" aria-controls="tab-primitivos" data-target="tab-primitivos" aria-selected="false"><i class="ph ph-cube"></i> Primitivos</button>
     <button class="sc-tab" role="tab" id="sctab-mockups" aria-controls="tab-mockups" data-target="tab-mockups" aria-selected="true"><i class="ph ph-squares-four"></i> Mockups</button>
     <button class="sc-tab" role="tab" id="sctab-graficos" aria-controls="tab-graficos" data-target="tab-graficos" aria-selected="false"><i class="ph ph-chart-line"></i> Gráficos</button>
+    <button class="sc-tab" role="tab" id="sctab-galeria" aria-controls="tab-galeria" data-target="tab-galeria" aria-selected="false"><i class="ph ph-chart-donut"></i> Galería</button>
     <button class="sc-tab" role="tab" id="sctab-tablas" aria-controls="tab-tablas" data-target="tab-tablas" aria-selected="false"><i class="ph ph-table"></i> Tablas</button>
     <button class="sc-tab" role="tab" id="sctab-iconos" aria-controls="tab-iconos" data-target="tab-iconos" aria-selected="false"><i class="ph ph-smiley"></i> Iconos</button>
   </div>
@@ -511,8 +513,8 @@
     </div>
   </div>
 <div style="display:flex;flex-direction:column;gap:8px">
-    <div style="background:color-mix(in srgb, var(--amber) 10%, transparent);border:1px solid color-mix(in srgb, var(--amber) 28%, transparent);border-radius:var(--radius-pill);padding:8px 14px;color:var(--amber);font:600 12px var(--mono);letter-spacing:.04em">● Banner / notice persistente (info)</div>
-    <div style="background:color-mix(in srgb, var(--red) 10%, transparent);border:1px solid color-mix(in srgb, var(--red) 28%, transparent);border-radius:var(--radius-pill);padding:8px 14px;color:var(--red);font:600 12px var(--sans)">Sin conexión — los scans se guardan localmente</div>
+    <div style="background:color-mix(in srgb, var(--amber) 10%, transparent);border-radius:var(--radius-pill);padding:8px 14px;color:var(--amber);font:600 12px var(--mono);letter-spacing:.04em">● Banner / notice persistente (info)</div>
+    <div style="background:color-mix(in srgb, var(--red) 10%, transparent);border-radius:var(--radius-pill);padding:8px 14px;color:var(--red);font:600 12px var(--sans)">Sin conexión — los scans se guardan localmente</div>
   </div>
 </div>
 <div style="font:600 11px var(--mono);color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px">Producto encontrado</div>
@@ -557,7 +559,7 @@
     <div style="color:var(--text);font:600 14px var(--sans);margin-top:8px">No hay listas abiertas</div>
     <div style="color:var(--muted-2);font:400 11px var(--mono);margin-top:2px">empty state</div>
   </div>
-<div style="flex:1;min-width:170px;background:var(--bg-elev);border:1px solid color-mix(in srgb, var(--red) 28%, transparent);border-radius:var(--radius);padding:18px 16px;text-align:center">
+<div style="flex:1;min-width:170px;background:var(--bg-elev);border-radius:var(--radius);padding:18px 16px;text-align:center">
     <i class="ph ph-camera-slash" style="font-size:26px;color:var(--red)"></i>
     <div style="color:var(--text);font:600 14px var(--sans);margin-top:8px">Cámara no disponible</div>
     <div style="color:var(--muted-2);font:400 11px var(--mono);margin-top:2px">error de cámara</div>
@@ -616,7 +618,7 @@
           </label>
         </div>
         <label style="display:flex;align-items:center;gap:9px;font:500 12px var(--sans);color:var(--muted);cursor:pointer">
-          <input type="checkbox" name="remember" style="accent-color:var(--cyan);width:15px;height:15px"> Mantener sesión iniciada
+          <input type="checkbox" name="remember"> Mantener sesión iniciada
         </label>
         <button class="btn btn-primary login-submit" type="submit" id="login-submit" style="width:100%">Iniciar sesión</button>
         <a class="login-hint" href="#login" onclick="return false" style="justify-self:start;text-decoration:none">¿Olvidaste tu contraseña?</a>
@@ -830,6 +832,233 @@
 </section>
 
 </div>
+<div class="sc-panel" id="tab-galeria" role="tabpanel" aria-labelledby="sctab-galeria">
+<style id="gx-style">
+#tab-galeria .sc-section{ max-width:1180px; margin:0 auto; padding:28px clamp(20px,4vw,40px) 72px; }
+#tab-galeria .sc-section-h{ white-space:nowrap; }
+#tab-galeria .sec-h{font:800 16px var(--sans);letter-spacing:-.01em;margin:30px 0 4px;white-space:nowrap}
+#tab-galeria .sec-d{color:var(--muted);font-size:13px;margin:0 0 16px}
+#tab-galeria .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+#tab-galeria canvas{max-width:100%}
+#tab-galeria .card{background:var(--card-bg);border-radius:var(--radius-lg);padding:18px 18px 16px;display:flex;flex-direction:column;transition:transform .18s ease;min-width:0}
+#tab-galeria .card:hover{transform:translateY(-2px)}
+#tab-galeria .card.col2{grid-column:1/-1}
+#tab-galeria .card-h{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+#tab-galeria .card-t{font:700 14px var(--sans);color:var(--text)}
+#tab-galeria .pill{font:700 9px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:var(--radius-pill);background:var(--cyan-soft);color:var(--cyan);white-space:nowrap;flex-shrink:0}
+#tab-galeria .pill.gem{background:var(--amber-soft);color:var(--amber)}
+#tab-galeria .card-when{font:400 12px var(--sans);color:var(--muted);margin:4px 0 14px;line-height:1.45}
+#tab-galeria .chart-box{position:relative;height:215px;flex:1;min-width:0}
+#tab-galeria .chart-box.sm{height:160px}
+#tab-galeria .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:14px}
+#tab-galeria .kpi{background:var(--card-bg);border-radius:var(--radius-lg);padding:16px}
+#tab-galeria .kpi-l{font:700 9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+#tab-galeria .kpi-v{font:800 24px var(--kpi-num);font-variant-numeric:tabular-nums;letter-spacing:-.03em;margin:8px 0 2px;color:var(--text)}
+#tab-galeria .kpi-d{font:600 11px var(--mono)}
+#tab-galeria .kpi-d.kpi-up{color:var(--green)} #tab-galeria .kpi-d.kpi-down{color:var(--red)} #tab-galeria .kpi-d.kpi-flat{color:var(--muted)}
+#tab-galeria .kpi-spark{height:34px;margin-top:8px}
+#tab-galeria table{width:100%;border-collapse:collapse;font-size:13px}
+#tab-galeria th{font:700 9px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+#tab-galeria td{padding:10px 6px;border-bottom:1px solid var(--line);color:var(--text)}
+#tab-galeria td.num{text-align:right;font-family:var(--mono);font-weight:600}
+#tab-galeria .tr-up{color:var(--green)} #tab-galeria .tr-down{color:var(--red)}
+#tab-galeria .hm-row{display:grid;grid-template-columns:34px repeat(12,1fr);gap:3px;align-items:center;margin-bottom:3px}
+#tab-galeria .hm-cell{height:18px;border-radius:4px}
+#tab-galeria .hm-lab{font:600 9px var(--mono);color:var(--muted-2)}
+#tab-galeria .hm-x{display:grid;grid-template-columns:34px repeat(12,1fr);gap:3px;margin-top:4px}
+#tab-galeria .hm-x span{font:600 8px var(--mono);color:var(--muted-2);text-align:center}
+#tab-galeria .hm-leg{display:flex;align-items:center;gap:6px;margin-top:10px;font:600 9px var(--mono);color:var(--muted-2)}
+#tab-galeria .hm-leg .bar{height:8px;width:80px;border-radius:4px;background:linear-gradient(90deg,var(--cyan-soft),var(--cyan))}
+#tab-galeria .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:12px}
+#tab-galeria .legend-row{display:inline-flex;align-items:center;gap:6px}
+#tab-galeria .legend-dot{width:9px;height:9px;border-radius:50%}
+#tab-galeria .legend-label{font:400 11px var(--sans);color:var(--muted)}
+#tab-galeria .legend-n{font:600 11px var(--mono)} #tab-galeria .legend-pct{font:400 10px var(--mono);color:var(--muted-2)}
+#tab-galeria .rings{display:flex;justify-content:space-around;align-items:center;height:200px;gap:8px}
+#tab-galeria .ring{position:relative;text-align:center}
+#tab-galeria .ring-v{position:absolute;top:42%;left:0;right:0;transform:translateY(-50%);font:800 17px var(--kpi-num);font-variant-numeric:tabular-nums}
+#tab-galeria .ring-l{font:600 9px var(--mono);color:var(--muted-2);margin-top:6px;text-transform:uppercase;letter-spacing:.05em}
+#tab-galeria .tmap{display:flex;gap:3px;height:215px}
+#tab-galeria .tmap-col{display:flex;flex-direction:column;gap:3px}
+#tab-galeria .tmap-cell{border-radius:5px;padding:7px 8px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:0}
+#tab-galeria .tmap-cell .n{font:600 10px var(--sans);line-height:1.1} #tab-galeria .tmap-cell .v{font:700 9px var(--mono);opacity:.8}
+#tab-galeria .foot{color:var(--muted-2);font:500 11px var(--mono);text-align:center;margin-top:40px}
+#tab-galeria .gx-hero{background:var(--cyan-soft);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:5px}
+#tab-galeria .gx-hero .l{font:700 10px var(--mono);color:var(--cyan);letter-spacing:.08em;text-transform:uppercase}
+#tab-galeria .gx-hero .v{font:800 32px var(--kpi-num);font-variant-numeric:tabular-nums;color:var(--text);letter-spacing:-.03em}
+#tab-galeria .gx-hero .d{font:600 12px var(--mono);color:var(--green)}
+#tab-galeria .gx-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+#tab-galeria .gx-tile{background:var(--bg-soft);border-radius:var(--radius-sm);padding:13px;display:flex;flex-direction:column;gap:4px;min-width:0}
+#tab-galeria .gx-tile i{font-size:17px;color:var(--cyan)}
+#tab-galeria .gx-tile .v{font:800 18px var(--kpi-num);font-variant-numeric:tabular-nums;color:var(--text)}
+#tab-galeria .gx-tile .l{font:600 9px var(--mono);color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em}
+#tab-galeria .gx-tile .d{font:600 10px var(--mono)}
+#tab-galeria .gx-streak{display:flex;justify-content:space-between;gap:6px;margin-top:8px}
+#tab-galeria .gx-day{flex:1;text-align:center;min-width:0}
+#tab-galeria .gx-day .dot{width:34px;height:34px;border-radius:50%;margin:0 auto 7px;display:grid;place-items:center;background:var(--bg-soft);color:var(--muted-2);font-size:15px}
+#tab-galeria .gx-day.done .dot{background:var(--cyan);color:var(--bg-elev-2)}
+#tab-galeria .gx-day.today .dot{background:var(--cyan-soft);color:var(--cyan);box-shadow:0 0 0 2px var(--cyan)}
+#tab-galeria .gx-day .lab{font:600 10px var(--mono);color:var(--muted-2)}
+#tab-galeria .gx-steps{margin-top:10px}
+#tab-galeria .gx-steps .bars{display:flex;gap:6px;margin-bottom:10px}
+#tab-galeria .gx-steps .bars span{flex:1;height:7px;border-radius:var(--radius-pill);background:var(--bg-soft)}
+#tab-galeria .gx-steps .bars span.on{background:var(--cyan)}
+#tab-galeria .gx-steps .lab{font:600 11px var(--mono);color:var(--muted)}
+#tab-galeria .gx-range{display:inline-flex;gap:2px;padding:3px;background:var(--bg-soft);border-radius:var(--radius-pill);flex-wrap:wrap}
+#tab-galeria .gx-range button{border:none;background:transparent;color:var(--muted);font:600 12px var(--sans);padding:6px 13px;border-radius:var(--radius-pill);cursor:pointer;transition:.15s}
+#tab-galeria .gx-range button:hover{color:var(--text)}
+#tab-galeria .gx-range button.active{background:var(--cyan-soft);color:var(--cyan)}
+
+</style>
+<section class="sc-section">
+<h2 class="sc-section-h">Galería de gráficos</h2>
+<p class="sc-section-sub">28 visualizaciones para dashboards y apps — colores desde tokens del DS, dark/light.</p>
+
+
+  <h2 class="sec-h" id="s-kpi">Indicadores</h2>
+  <p class="sec-d">El número primero; la tendencia y el delta dan contexto. Regla 5-3-1: escanear en 5s.</p>
+  <div class="kpis" style="margin-bottom:16px">
+    <div class="kpi"><div class="kpi-l">Facturación MTD</div><div class="kpi-v">$2,84M</div><div class="kpi-d kpi-up">↑ 18,4%</div><div class="kpi-spark"><canvas id="kpi1"></canvas></div></div>
+    <div class="kpi"><div class="kpi-l">Pedidos activos</div><div class="kpi-v">1.247</div><div class="kpi-d kpi-up">↑ 6,2%</div><div class="kpi-spark"><canvas id="kpi2"></canvas></div></div>
+    <div class="kpi"><div class="kpi-l">Cobranzas</div><div class="kpi-v">$1,92M</div><div class="kpi-d kpi-up">↑ 9,1%</div><div class="kpi-spark"><canvas id="kpi3"></canvas></div></div>
+    <div class="kpi"><div class="kpi-l">Margen</div><div class="kpi-v">38,7%</div><div class="kpi-d kpi-down">↓ 1,2%</div><div class="kpi-spark"><canvas id="kpi4"></canvas></div></div>
+  </div>
+
+  <h2 class="sec-h" id="s-tiempo">Tendencia · en el tiempo</h2>
+  <p class="sec-d">Evolución y patrones temporales.</p>
+  <div class="grid">
+    <div class="card"><div class="card-h"><span class="card-t">Línea / área</span><span class="pill">Tiempo</span></div>
+      <div class="card-when">Facturación mensual. El área refuerza el acumulado.</div><div class="chart-box"><canvas id="cLine"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Área apilada</span><span class="pill">Composición temporal</span></div>
+      <div class="card-when">Ventas por canal a lo largo del año: volumen total + mix.</div><div class="chart-box"><canvas id="cStackArea"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Línea escalonada</span><span class="pill">Discreto</span></div>
+      <div class="card-when">Nivel de stock: cambios discretos, no interpolados.</div><div class="chart-box"><canvas id="cStep"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Banda mín-máx + línea</span><span class="pill">Rango</span></div>
+      <div class="card-when">Demanda diaria: banda de variación + promedio.</div><div class="chart-box"><canvas id="cBand"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Combo barra + línea</span><span class="pill gem">Dos métricas</span></div>
+      <div class="card-when">Facturación (barras) + margen % (línea, eje derecho).</div><div class="chart-box"><canvas id="cCombo"></canvas></div></div>
+  </div>
+
+  <h2 class="sec-h" id="s-comparar">Comparación</h2>
+  <p class="sec-d">Valores entre categorías, series o períodos.</p>
+  <div class="grid">
+    <div class="card"><div class="card-h"><span class="card-t">Barra + objetivo</span><span class="pill">Vs target</span></div>
+      <div class="card-when">Ventas por sucursal: verde sobre el objetivo, rojo debajo.</div><div class="chart-box"><canvas id="cBarTarget"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Barras agrupadas</span><span class="pill">Períodos</span></div>
+      <div class="card-when">Este año vs anterior, mes a mes.</div><div class="chart-box"><canvas id="cGrouped"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Ranking horizontal</span><span class="pill">Top N</span></div>
+      <div class="card-when">Productos más vendidos, ordenados.</div><div class="chart-box"><canvas id="cRank"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Barras divergentes</span><span class="pill gem">+ / −</span></div>
+      <div class="card-when">Crecimiento por categoría: positivos y negativos.</div><div class="chart-box"><canvas id="cDiverge"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Radar</span><span class="pill">Perfil</span></div>
+      <div class="card-when">Desempeño por área en varias métricas a la vez.</div><div class="chart-box"><canvas id="cRadar"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">100% apilado</span><span class="pill">Mix %</span></div>
+      <div class="card-when">Participación porcentual por canal, mes a mes.</div><div class="chart-box"><canvas id="cStack100"></canvas></div></div>
+  </div>
+
+  <h2 class="sec-h" id="s-composicion">Composición · parte del todo</h2>
+  <p class="sec-d">Cómo se reparte un total.</p>
+  <div class="grid">
+    <div class="card"><div class="card-h"><span class="card-t">Donut</span><span class="pill">≤5 categorías</span></div>
+      <div class="card-when">Participación por canal, ordenado descendente.</div><div class="chart-box sm"><canvas id="cDonut"></canvas></div><div class="legend" id="donutLegend"></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Donut con KPI central</span><span class="pill">Total + mix</span></div>
+      <div class="card-when">El total al centro, la composición alrededor.</div><div class="chart-box sm"><canvas id="cDonutKpi"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Polar area</span><span class="pill">Magnitud</span></div>
+      <div class="card-when">Como el donut, pero el radio codifica magnitud.</div><div class="chart-box sm"><canvas id="cPolar"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Treemap</span><span class="pill">Jerárquico</span></div>
+      <div class="card-when">Ventas por rubro y subrubro: área = participación.</div><div id="treemap"></div></div>
+    <div class="card col2"><div class="card-h"><span class="card-t">AR aging — cuentas por cobrar</span><span class="pill gem">Cobranzas</span></div>
+      <div class="card-when">Saldo por antigüedad (corriente → 90+), verde a rojo. Riesgo de cobro por trimestre.</div><div class="chart-box"><canvas id="cAging"></canvas></div></div>
+  </div>
+
+  <h2 class="sec-h" id="s-distrib">Distribución · relación</h2>
+  <p class="sec-d">Cómo se distribuyen los datos y cómo se relacionan dos variables.</p>
+  <div class="grid">
+    <div class="card"><div class="card-h"><span class="card-t">Histograma</span><span class="pill">Distribución</span></div>
+      <div class="card-when">Distribución del ticket promedio: dónde se concentran las ventas.</div><div class="chart-box"><canvas id="cHist"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Scatter / bubble</span><span class="pill gem">Correlación</span></div>
+      <div class="card-when">Margen vs volumen por producto; el tamaño = unidades.</div><div class="chart-box"><canvas id="cBubble"></canvas></div></div>
+  </div>
+
+  <h2 class="sec-h" id="s-progreso">Progreso · objetivo</h2>
+  <p class="sec-d">Avance contra una meta o rango.</p>
+  <div class="grid">
+    <div class="card"><div class="card-h"><span class="card-t">Bullet</span><span class="pill gem">Meta compacta</span></div>
+      <div class="card-when">Cuota por vendedor: barra = real, marca = objetivo, bandas = rangos.</div><div class="chart-box"><canvas id="cBullet"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Gauge</span><span class="pill">Indicador</span></div>
+      <div class="card-when">Utilización de capacidad vs su rango. Con moderación.</div><div class="chart-box sm"><canvas id="cGauge"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Anillos de progreso</span><span class="pill">Objetivos</span></div>
+      <div class="card-when">Varios objetivos a la vez en formato compacto.</div><div class="rings" id="rings"></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Embudo</span><span class="pill gem">Conversión</span></div>
+      <div class="card-when">Circuito de comprobantes: caída entre etapas.</div><div class="chart-box"><canvas id="cFunnel"></canvas></div></div>
+  </div>
+
+  <h2 class="sec-h" id="s-finanzas">Finanzas · ERP</h2>
+  <p class="sec-d">Las que más valor agregan en un ERP.</p>
+  <div class="grid">
+    <div class="card"><div class="card-h"><span class="card-t">Waterfall</span><span class="pill gem">De facturación a ganancia</span></div>
+      <div class="card-when">Descompone el total: − COGS − gastos − impuestos = ganancia.</div><div class="chart-box"><canvas id="cWaterfall"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Pareto 80/20</span><span class="pill gem">Priorización</span></div>
+      <div class="card-when">Barras (incidencias por causa) + línea acumulada. El 20% que explica el 80%.</div><div class="chart-box"><canvas id="cPareto"></canvas></div></div>
+  </div>
+
+  <h2 class="sec-h" id="s-apps">Tarjetas &amp; patrones (apps)</h2>
+  <p class="sec-d">Patrones de apps móviles (Mobbin) adaptados al ERP.</p>
+  <div class="grid">
+    <div class="card"><div class="card-h"><span class="card-t">Tarjeta de valor</span><span class="pill">Hero</span></div>
+      <div class="card-when">Métrica principal destacada, estilo balance.</div>
+      <div class="gx-hero"><span class="l">Saldo disponible</span><span class="v">$847.200</span><span class="d">↑ $112.400 esta semana</span></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Tiles de stat</span><span class="pill">Compacto</span></div>
+      <div class="card-when">Mini-indicadores con ícono, número y variación.</div>
+      <div class="gx-tiles">
+        <div class="gx-tile"><i class="ph ph-receipt"></i><span class="v">1.247</span><span class="l">Pedidos</span><span class="d" style="color:var(--green)">↑ 6,2%</span></div>
+        <div class="gx-tile"><i class="ph ph-coins"></i><span class="v">$1,92M</span><span class="l">Cobranzas</span><span class="d" style="color:var(--green)">↑ 9,1%</span></div>
+        <div class="gx-tile"><i class="ph ph-trend-up"></i><span class="v">68,3%</span><span class="l">Conversión</span><span class="d" style="color:var(--red)">↓ 1,2%</span></div>
+      </div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Racha semanal</span><span class="pill gem">Streak</span></div>
+      <div class="card-when">Días con cierre de caja completado. Hábito/cumplimiento.</div>
+      <div class="gx-streak">
+        <div class="gx-day done"><span class="dot"><i class="ph ph-check"></i></span><span class="lab">L</span></div>
+        <div class="gx-day done"><span class="dot"><i class="ph ph-check"></i></span><span class="lab">M</span></div>
+        <div class="gx-day done"><span class="dot"><i class="ph ph-check"></i></span><span class="lab">M</span></div>
+        <div class="gx-day done"><span class="dot"><i class="ph ph-check"></i></span><span class="lab">J</span></div>
+        <div class="gx-day today"><span class="dot"></span><span class="lab">V</span></div>
+        <div class="gx-day"><span class="dot"></span><span class="lab">S</span></div>
+        <div class="gx-day"><span class="dot"></span><span class="lab">D</span></div>
+      </div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Anillo de objetivo</span><span class="pill">Meta</span></div>
+      <div class="card-when">Avance sobre un objetivo con número al centro.</div>
+      <div class="chart-box sm"><canvas id="gxGoal"></canvas></div></div>
+    <div class="card col2"><div class="card-h"><span class="card-t">Distribución · percentil</span><span class="pill gem">Benchmark</span></div>
+      <div class="card-when">"Tu margen está en el top 12%". Posiciona una métrica contra la población (curva normal + marcador).</div>
+      <div class="chart-box"><canvas id="gxBell"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Sparkbars</span><span class="pill">Mini barras</span></div>
+      <div class="card-when">Tendencia compacta en barras (ventas últimos 7 días).</div>
+      <div class="chart-box sm"><canvas id="gxSparkbars"></canvas></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Progreso de setup</span><span class="pill">Onboarding</span></div>
+      <div class="card-when">Pasos completados de una configuración inicial.</div>
+      <div class="gx-steps"><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div><div class="lab">Configuración · 3 de 5 pasos</div></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Selector de período</span><span class="pill">Control</span></div>
+      <div class="card-when">Segmentado de rango temporal (canónico, borderless).</div>
+      <div class="gx-range" onclick="if(event.target.tagName==='BUTTON'){this.querySelectorAll('button').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active')}">
+        <button class="active">1S</button><button>4S</button><button>MTD</button><button>QTD</button><button>YTD</button><button>ALL</button></div></div>
+  </div>
+
+    <h2 class="sec-h" id="s-patrones">Patrones · tabla</h2>
+  <p class="sec-d">Densidad y micro-tendencias.</p>
+  <div class="grid">
+    <div class="card"><div class="card-h"><span class="card-t">Heatmap — ventas hora × día</span><span class="pill gem">Patrones</span></div>
+      <div class="card-when">Densidad por franja y día. Útil para turnos y staffing.</div><div id="heatmap" style="margin-top:6px"></div></div>
+    <div class="card"><div class="card-h"><span class="card-t">Sparklines en tabla</span><span class="pill gem">Tabla viva</span></div>
+      <div class="card-when">Micro-tendencia por sucursal en cada fila.</div>
+      <table><thead><tr><th>Sucursal</th><th style="text-align:right">Facturación</th><th style="text-align:right">Var.</th><th style="width:110px">8 meses</th></tr></thead><tbody id="sparkTable"></tbody></table></div>
+  </div>
+
+  <div class="foot">Datos simulados · Chart.js 4.4.0 · todos los colores desde tokens del DS</div>
+</section>
+
+</div>
+
 <div class="sc-panel" id="tab-tablas" role="tabpanel" aria-labelledby="sctab-tablas">
 <div style="padding:14px 14px 0;display:flex;justify-content:flex-end"><a class="ds-xref" href="../yiqi-design-system.html#tables"><i class="ph ph-anchor-simple"></i> Ver fuente</a></div>
 <!-- ══════════ CATÁLOGO: TABLAS ══════════ -->
@@ -1224,7 +1453,7 @@
     var t = val==='system' ? ((window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light':'dark') : val;
     document.documentElement.setAttribute('data-theme', t);
     opts.forEach(function(o){ o.classList.toggle('active', o.dataset.val===val); });
-    if(window.__buildCharts) window.__buildCharts();
+    if(window.__buildCharts) window.__buildCharts(); if(window.__buildGallery) window.__buildGallery();
   }
   opts.forEach(function(o){ o.addEventListener('click', function(){ applyTheme(o.dataset.val); }); });
   applyTheme('dark');
@@ -1437,9 +1666,11 @@
   var bar=document.getElementById('scTabs'); if(!bar) return;
   var tabs=Array.prototype.slice.call(bar.querySelectorAll('.sc-tab'));
   function select(id){
+    try{localStorage.setItem('yiqi-sc-tab',id);}catch(e){}
     tabs.forEach(function(t){ var on=t.dataset.target===id; t.setAttribute('aria-selected', on?'true':'false');
       var p=document.getElementById(t.dataset.target); if(p) p.classList.toggle('is-active', on); });
     if(id==='tab-graficos' && window.__buildCharts){ requestAnimationFrame(function(){ window.__buildCharts(); }); }
+    if(id==='tab-galeria' && window.__buildGallery){ requestAnimationFrame(function(){ window.__buildGallery(); }); }
   }
   tabs.forEach(function(t){ t.addEventListener('click', function(){ select(t.dataset.target); }); });
   bar.addEventListener('keydown', function(e){
@@ -1448,6 +1679,7 @@
     i = e.key==='ArrowRight' ? Math.min(tabs.length-1,i+1) : Math.max(0,i-1);
     select(tabs[i].dataset.target); tabs[i].focus(); e.preventDefault();
   });
+  window.addEventListener('DOMContentLoaded', function(){ try{ var sv=localStorage.getItem('yiqi-sc-tab'); if(sv && document.getElementById(sv)){ select(sv); } }catch(e){} });
 })();
 
 /* ── Nav del carrusel "de a una" (flechas + contador) ── */
@@ -1668,6 +1900,7 @@
     var t = v==='system' ? ((window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark') : v;
     document.documentElement.setAttribute('data-theme', t);
     opts.forEach(function(o){ o.classList.toggle('active', o.dataset.yqsw===v); });
+    if(window.__buildCharts) window.__buildCharts(); if(window.__buildGallery) window.__buildGallery();
   }
   opts.forEach(function(o){ o.addEventListener('click', function(){ apply(o.dataset.yqsw); }); });
   apply('dark');
@@ -1764,6 +1997,229 @@
       b.setAttribute('aria-pressed', on?'true':'false');
     });
   });
+})();
+</script>
+<script>
+(function(){
+
+function gv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function hexToRgba(h,a){h=h.replace('#','');if(h.length===3)h=h.split('').map(x=>x+x).join('');var n=parseInt(h,16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')';}
+function hexMix(h1,h2,t){var a=parseInt(h1.replace('#',''),16),b=parseInt(h2.replace('#',''),16);
+  return 'rgb('+Math.round((a>>16&255)+((b>>16&255)-(a>>16&255))*t)+','+Math.round((a>>8&255)+((b>>8&255)-(a>>8&255))*t)+','+Math.round((a&255)+((b&255)-(a&255))*t)+')';}
+function warmRamp(t){var g=gv('--green'),a=gv('--amber'),r=gv('--red');return t<.5?hexMix(g,a,t*2):hexMix(a,r,(t-.5)*2);}
+function mono(s){return {family:gv('--mono'),size:s||10};}
+function tt(){return {backgroundColor:gv('--bg-elev-2'),borderColor:gv('--line'),borderWidth:1,titleColor:gv('--text'),bodyColor:gv('--muted'),padding:10,cornerRadius:8,displayColors:false};}
+function axX(grid){return {grid:{display:!!grid,color:gv('--line')},ticks:{color:gv('--muted-2'),font:mono()}};}
+function axY(extra){return Object.assign({grid:{color:gv('--line')},ticks:{color:gv('--muted-2'),font:mono()},beginAtZero:true},extra||{});}
+function legBottom(){return {position:'bottom',labels:{color:gv('--muted'),font:mono(9),usePointStyle:true,pointStyleWidth:8,boxHeight:6,padding:10}};}
+function sortDonutDesc(l,d,c){var i=d.map((_,x)=>x).sort((a,b)=>d[b]-d[a]);return {labels:i.map(x=>l[x]),data:i.map(x=>d[x]),colors:i.map(x=>c[x])};}
+var _charts=[];
+function reg(c){_charts.push(c);return c;}
+
+// plugins
+Chart.register({id:'centerText',afterDraw(c){var t=c.config.options.plugins.centerText;if(!t)return;var a=c.chartArea,x=(a.left+a.right)/2,y=t.half?a.bottom-4:(a.top+a.bottom)/2;
+  c.ctx.save();c.ctx.textAlign='center';c.ctx.fillStyle=gv('--text');c.ctx.font='800 '+(t.size||26)+'px '+gv('--kpi-num');c.ctx.fillText(t.value,x,y);
+  if(t.label){c.ctx.fillStyle=gv('--muted-2');c.ctx.font='600 10px '+gv('--mono');c.ctx.fillText(t.label,x,y+16);}c.ctx.restore();}});
+Chart.register({id:'targetLine',afterDatasetsDraw(c){var cfg=c.config.options.plugins.annotationLine;if(!cfg)return;var a=c.chartArea,y=c.scales.y.getPixelForValue(cfg.value);
+  c.ctx.save();c.ctx.strokeStyle=gv('--amber');c.ctx.lineWidth=2;c.ctx.setLineDash([5,4]);c.ctx.beginPath();c.ctx.moveTo(a.left,y);c.ctx.lineTo(a.right,y);c.ctx.stroke();
+  c.ctx.setLineDash([]);c.ctx.fillStyle=gv('--amber');c.ctx.font='600 9px '+gv('--mono');c.ctx.textAlign='right';c.ctx.fillText('objetivo '+cfg.value,a.right-4,y-4);c.ctx.restore();}});
+Chart.register({id:'bulletP',beforeDatasetsDraw(c){var cfg=c.config.options.plugins.bullet;if(!cfg)return;var a=c.chartArea,xs=c.scales.x;c.ctx.save();
+  cfg.bands.forEach((b,i)=>{var x0=xs.getPixelForValue(i===0?0:cfg.bands[i-1].to),x1=xs.getPixelForValue(b.to);c.ctx.fillStyle=hexToRgba(gv(b.col),.13);c.ctx.fillRect(x0,a.top,x1-x0,a.bottom-a.top);});c.ctx.restore();},
+  afterDatasetsDraw(c){var cfg=c.config.options.plugins.bullet;if(!cfg)return;var xs=c.scales.x,ys=c.scales.y;c.ctx.save();
+  cfg.targets.forEach((t,i)=>{var x=xs.getPixelForValue(t),yc=ys.getPixelForValue(i),h=Math.abs(ys.getPixelForValue(0)-ys.getPixelForValue(1));c.ctx.strokeStyle=gv('--text');c.ctx.lineWidth=2.5;c.ctx.beginPath();c.ctx.moveTo(x,yc-h*.26);c.ctx.lineTo(x,yc+h*.26);c.ctx.stroke();});c.ctx.restore();}});
+Chart.register({id:'wfConnect',afterDatasetsDraw(c){if(!c.config.options.plugins.wfConnect)return;var meta=c.getDatasetMeta(0),ctx=c.ctx;ctx.save();ctx.strokeStyle=gv('--muted-2');ctx.lineWidth=1;ctx.setLineDash([3,3]);
+  for(var i=0;i<meta.data.length-1;i++){var b=meta.data[i],n=meta.data[i+1];var top=Math.min(b.y,b.base);var y=(c.config.data.datasets[0].data[i][1]>=c.config.data.datasets[0].data[i][0])?Math.min(b.y,b.base):Math.max(b.y,b.base);ctx.beginPath();ctx.moveTo(b.x-b.width/2,y);ctx.lineTo(n.x+n.width/2,y);ctx.stroke();}ctx.setLineDash([]);ctx.restore();}});
+
+function spark(id,data,col){return reg(new Chart(document.getElementById(id),{type:'line',
+  data:{labels:data.map((_,i)=>i),datasets:[{data:data,borderColor:gv(col),borderWidth:2,pointRadius:0,tension:.4,fill:false}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}},scales:{x:{display:false},y:{display:false}}}}));}
+
+function buildHeatmap(){var host=document.getElementById('heatmap');var dias=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];var html='';
+  for(var d=0;d<7;d++){html+='<div class="hm-row"><span class="hm-lab">'+dias[d]+'</span>';
+    for(var h=0;h<12;h++){var hour=9+h;var base=Math.exp(-Math.pow(hour-13,2)/14)+0.7*Math.exp(-Math.pow(hour-19,2)/8);if(d>=5)base*=(hour<12?0.5:1.05);
+      var v=Math.min(1,base*(0.85+((d*7+h)%5)*0.06));html+='<div class="hm-cell" title="'+dias[d]+' '+hour+'h" style="background:'+hexToRgba(gv('--cyan'),0.06+v*0.84)+'"></div>';}
+    html+='</div>';}
+  html+='<div class="hm-x"><span></span>';for(var h2=0;h2<12;h2++){html+='<span>'+(9+h2)+'</span>';}html+='</div>';
+  html+='<div class="hm-leg">Menos<span class="bar"></span>Más</div>';host.innerHTML=html;}
+
+function buildSparkTable(){var rows=[['Centro',482900,4.8,[40,42,41,45,47,46,49,52]],['Norte',311500,-2.2,[55,54,52,50,48,49,47,46]],['Sur',591400,7.1,[30,33,36,38,40,44,48,53]],['Oeste',148200,1.4,[22,21,23,22,24,23,25,26]],['Online',214300,12.6,[12,15,18,20,25,30,38,47]]];
+  document.getElementById('sparkTable').innerHTML=rows.map(function(r){var name=r[0],fact=r[1],varp=r[2],series=r[3],up=varp>=0;
+    var mn=Math.min.apply(null,series),mx=Math.max.apply(null,series),W=110,H=28;
+    var pts=series.map(function(v,i){return (i/(series.length-1)*W).toFixed(1)+','+(H-((v-mn)/(mx-mn||1))*(H-4)-2).toFixed(1);}).join(' ');var sc=up?gv('--green'):gv('--red');
+    return '<tr><td>'+name+'</td><td class="num">ARS '+fact.toLocaleString('es-AR')+'</td><td class="num '+(up?'tr-up':'tr-down')+'">'+(up?'↑':'↓')+' '+Math.abs(varp).toFixed(1)+'%</td><td><svg width="'+W+'" height="'+H+'"><polyline points="'+pts+'" fill="none" stroke="'+sc+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td></tr>';}).join('');}
+
+function buildTreemap(){var host=document.getElementById('treemap');
+  var cats=[{n:'Bebidas',c:'--cyan',items:[['Gaseosas',38],['Aguas',16],['Jugos',10]]},{n:'Almacén',c:'--green',items:[['Fideos',18],['Conservas',12],['Aceites',9]]},{n:'Limpieza',c:'--amber',items:[['Lavandina',8],['Detergente',6]]},{n:'Frescos',c:'--indigo',items:[['Lácteos',14],['Fiambres',7]]}];
+  var grand=cats.reduce((s,c)=>s+c.items.reduce((a,i)=>a+i[1],0),0);
+  host.className='tmap';
+  var txt=(document.documentElement.getAttribute('data-theme')==='light')?gv('--text'):'#ffffff';
+  host.innerHTML=cats.map(function(cat){var tot=cat.items.reduce((a,i)=>a+i[1],0);
+    var cells=cat.items.map(function(it,j){var sh=hexMix(gv(cat.c),gv('--bg'),0.12+j*0.16);
+      return '<div class="tmap-cell" style="flex:'+it[1]+';background:'+sh+';color:'+txt+'"><span class="n">'+it[0]+'</span><span class="v">'+it[1]+'%</span></div>';}).join('');
+    return '<div class="tmap-col" style="flex:'+tot+'">'+cells+'</div>';}).join('');}
+
+function buildRings(){var host=document.getElementById('rings');var data=[['Ventas',86,'--cyan'],['Cobranzas',72,'--green'],['Stock',94,'--amber']];
+  host.innerHTML=data.map(function(d,i){return '<div class="ring"><canvas id="ring'+i+'" width="92" height="92"></canvas><div class="ring-v" id="ringv'+i+'">'+d[1]+'%</div><div class="ring-l">'+d[0]+'</div></div>';}).join('');
+  data.forEach(function(d,i){reg(new Chart(document.getElementById('ring'+i),{type:'doughnut',data:{datasets:[{data:[d[1],100-d[1]],backgroundColor:[gv(d[2]),gv('--bg-soft')],borderWidth:0}]},options:{responsive:false,cutout:'74%',plugins:{legend:{display:false},tooltip:{enabled:false}}}}));
+    document.getElementById('ringv'+i).style.color=gv(d[2]);});}
+
+function renderAll(){
+  _charts.forEach(c=>c.destroy());_charts.length=0;
+
+  spark('kpi1',[18,20,19,23,24,26,28,31,30,33,36,38],'--cyan');
+  spark('kpi2',[10,11,10,12,13,13,14,15,14,16,17,18],'--green');
+  spark('kpi3',[12,13,14,13,15,16,17,18,17,19,20,21],'--cyan');
+  spark('kpi4',[42,41,40,41,40,39,39,38,38,39,38,38.7],'--amber');
+
+  var M=['Jul','Ago','Sep','Oct','Nov','Dic','Ene','Feb','Mar','Abr','May','Jun'];
+  // Línea / área
+  reg(new Chart(document.getElementById('cLine'),{type:'line',data:{labels:M,datasets:[{label:'Facturación',data:[1.9,2.0,2.1,2.0,2.3,2.6,2.2,2.4,2.6,2.7,2.8,2.84],borderColor:gv('--cyan'),borderWidth:2,pointRadius:0,pointHoverRadius:4,tension:.4,fill:true,
+    backgroundColor:function(ctx){var g=ctx.chart.ctx.createLinearGradient(0,0,0,215);g.addColorStop(0,gv('--cyan-soft-2'));g.addColorStop(1,hexToRgba(gv('--cyan'),0));return g;}}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:Object.assign(tt(),{callbacks:{label:c=>' $'+c.parsed.y+'M'}})},scales:{x:axX(),y:axY()}}}));
+
+  // Área apilada
+  reg(new Chart(document.getElementById('cStackArea'),{type:'line',data:{labels:M.slice(0,8),datasets:[
+    {label:'POS',data:[8,8.5,9,8.8,10,11,9.5,10.5],backgroundColor:hexToRgba(gv('--cyan'),.5),borderColor:gv('--cyan'),fill:true,tension:.4,pointRadius:0,borderWidth:1},
+    {label:'Web',data:[5,5.5,6,6.2,7,7.5,7,7.8],backgroundColor:hexToRgba(gv('--green'),.5),borderColor:gv('--green'),fill:true,tension:.4,pointRadius:0,borderWidth:1},
+    {label:'App',data:[3,3.2,3.5,3.8,4,4.5,4.2,5],backgroundColor:hexToRgba(gv('--amber'),.5),borderColor:gv('--amber'),fill:true,tension:.4,pointRadius:0,borderWidth:1}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:legBottom(),tooltip:tt()},scales:{x:axX(),y:axY({stacked:true})}}}));
+
+  // Stepped
+  reg(new Chart(document.getElementById('cStep'),{type:'line',data:{labels:M,datasets:[{label:'Stock',data:[120,118,90,140,135,130,80,160,150,145,110,170],borderColor:gv('--indigo'),backgroundColor:hexToRgba(gv('--indigo'),.12),borderWidth:2,stepped:true,fill:true,pointRadius:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt()},scales:{x:axX(),y:axY()}}}));
+
+  // Banda min-max
+  reg(new Chart(document.getElementById('cBand'),{type:'line',data:{labels:M,datasets:[
+    {label:'Máx',data:[2.4,2.5,2.6,2.5,2.8,3.1,2.7,2.9,3.1,3.2,3.3,3.35],borderColor:'transparent',backgroundColor:hexToRgba(gv('--cyan'),.14),fill:'+1',pointRadius:0,tension:.4},
+    {label:'Mín',data:[1.4,1.5,1.6,1.5,1.8,2.0,1.7,1.9,2.0,2.1,2.2,2.3],borderColor:'transparent',backgroundColor:'transparent',fill:false,pointRadius:0,tension:.4},
+    {label:'Promedio',data:[1.9,2.0,2.1,2.0,2.3,2.6,2.2,2.4,2.6,2.7,2.8,2.84],borderColor:gv('--cyan'),borderWidth:2,pointRadius:0,tension:.4,fill:false}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt()},scales:{x:axX(),y:axY()}}}));
+
+  // Combo
+  reg(new Chart(document.getElementById('cCombo'),{type:'bar',data:{labels:M.slice(6),datasets:[
+    {type:'bar',label:'Facturación',data:[2.2,2.4,2.6,2.7,2.8,2.84],backgroundColor:gv('--cyan-soft-2'),borderColor:gv('--cyan'),borderWidth:0,borderRadius:4,borderSkipped:false,yAxisID:'y'},
+    {type:'line',label:'Margen %',data:[39,38.5,38,39,38,38.7],borderColor:gv('--amber'),backgroundColor:gv('--amber'),borderWidth:2,pointRadius:0,pointHoverRadius:4,tension:.4,yAxisID:'y1'}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:legBottom(),tooltip:tt()},
+      scales:{x:axX(),y:{position:'left',grid:{color:gv('--line')},ticks:{color:gv('--muted-2'),font:mono(),callback:v=>'$'+v+'M'}},y1:{position:'right',min:30,max:45,grid:{display:false},ticks:{color:gv('--amber'),font:mono(),callback:v=>v+'%'}}}}}));
+
+  // Barra + objetivo
+  var ventas=[482,311,591,148,214,397],tg=400;
+  reg(new Chart(document.getElementById('cBarTarget'),{type:'bar',data:{labels:['Centro','Norte','Sur','Oeste','Online','Mayor.'],datasets:[{data:ventas,backgroundColor:ventas.map(v=>v>=tg?gv('--green'):gv('--red')),borderRadius:4,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt(),annotationLine:{value:tg}},scales:{x:axX(),y:axY()}}}));
+
+  // Grouped
+  reg(new Chart(document.getElementById('cGrouped'),{type:'bar',data:{labels:M.slice(6),datasets:[
+    {label:'2025',data:[1.8,1.9,2.1,2.2,2.3,2.4],backgroundColor:gv('--muted'),borderRadius:4,borderSkipped:false},
+    {label:'2026',data:[2.2,2.4,2.6,2.7,2.8,2.84],backgroundColor:gv('--cyan'),borderRadius:4,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:legBottom(),tooltip:tt()},scales:{x:axX(),y:axY()}}}));
+
+  // Ranking
+  (function(){var l=['Gaseosa 2L','Agua 1,5L','Fideos','Aceite','Yerba','Arroz'],d=[920,740,610,480,420,330];var s=l.map((_,i)=>i).sort((a,b)=>d[b]-d[a]);
+    reg(new Chart(document.getElementById('cRank'),{type:'bar',data:{labels:s.map(i=>l[i]),datasets:[{data:s.map(i=>d[i]),backgroundColor:s.map((_,i)=>hexMix(gv('--cyan'),gv('--indigo'),i/(s.length-1))),borderRadius:4,borderSkipped:false}]},
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt()},scales:{x:axX(),y:{grid:{display:false},ticks:{color:gv('--muted-2'),font:mono()}}}}}));})();
+
+  // Diverging
+  (function(){var l=['Bebidas','Almacén','Limpieza','Frescos','Bazar','Mascotas'],d=[12,5,-3,8,-7,18];
+    reg(new Chart(document.getElementById('cDiverge'),{type:'bar',data:{labels:l,datasets:[{data:d,backgroundColor:d.map(v=>v>=0?gv('--green'):gv('--red')),borderRadius:4,borderSkipped:false}]},
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:Object.assign(tt(),{callbacks:{label:c=>(c.parsed.x>=0?'+':'')+c.parsed.x+'%'}})},
+        scales:{x:{grid:{color:gv('--line')},ticks:{color:gv('--muted-2'),font:mono(),callback:v=>v+'%'}},y:{grid:{display:false},ticks:{color:gv('--muted-2'),font:mono()}}}}}));})();
+
+  // Radar
+  reg(new Chart(document.getElementById('cRadar'),{type:'radar',data:{labels:['Ventas','Margen','Cobranza','Stock','Satisf.','Velocidad'],datasets:[
+    {label:'Centro',data:[90,75,82,70,88,80],borderColor:gv('--cyan'),backgroundColor:hexToRgba(gv('--cyan'),.15),borderWidth:2,pointRadius:2,pointBackgroundColor:gv('--cyan')},
+    {label:'Sur',data:[70,88,65,90,72,85],borderColor:gv('--amber'),backgroundColor:hexToRgba(gv('--amber'),.12),borderWidth:2,pointRadius:2,pointBackgroundColor:gv('--amber')}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:legBottom(),tooltip:tt()},scales:{r:{angleLines:{color:gv('--line')},grid:{color:gv('--line')},pointLabels:{color:gv('--muted'),font:mono(10)},ticks:{display:false},suggestedMin:0,suggestedMax:100}}}}));
+
+  // 100% stacked
+  (function(){var L=M.slice(6);var pos=[8,8.5,9,8.8,10,11],web=[5,5.5,6,6.2,7,7.5],app=[3,3.2,3.5,3.8,4,4.5];
+    function pct(arr,i){var s=pos[i]+web[i]+app[i];return +(arr[i]/s*100).toFixed(1);}
+    reg(new Chart(document.getElementById('cStack100'),{type:'bar',data:{labels:L,datasets:[
+      {label:'POS',data:L.map((_,i)=>pct(pos,i)),backgroundColor:gv('--cyan'),borderSkipped:false,stack:'p'},
+      {label:'Web',data:L.map((_,i)=>pct(web,i)),backgroundColor:gv('--green'),borderSkipped:false,stack:'p'},
+      {label:'App',data:L.map((_,i)=>pct(app,i)),backgroundColor:gv('--amber'),borderRadius:0,borderSkipped:false,stack:'p'}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:legBottom(),tooltip:Object.assign(tt(),{callbacks:{label:c=>' '+c.dataset.label+': '+c.parsed.y+'%'}})},
+        scales:{x:{stacked:true,grid:{display:false},ticks:{color:gv('--muted-2'),font:mono()}},y:{stacked:true,max:100,grid:{color:gv('--line')},ticks:{color:gv('--muted-2'),font:mono(),callback:v=>v+'%'}}}}}));})();
+
+  // Donut + leyenda
+  (function(){var labels=['POS','Web','App','Mayorista','Otros'],data=[38,27,18,12,5],colors=[gv('--cyan'),gv('--green'),gv('--amber'),gv('--blue'),gv('--muted')];var s=sortDonutDesc(labels,data,colors);
+    reg(new Chart(document.getElementById('cDonut'),{type:'doughnut',data:{labels:s.labels,datasets:[{data:s.data,backgroundColor:s.colors,borderWidth:0,hoverOffset:6}]},
+      options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{display:false},tooltip:Object.assign(tt(),{callbacks:{label:c=>' '+c.label+': '+c.parsed+'%'}})}}}));
+    var tot=data.reduce((a,b)=>a+b,0);document.getElementById('donutLegend').innerHTML=s.labels.map((l,i)=>'<span class="legend-row"><span class="legend-dot" style="background:'+s.colors[i]+'"></span><span class="legend-label">'+l+'</span><span class="legend-n" style="color:'+s.colors[i]+'">'+s.data[i]+'</span><span class="legend-pct">'+(s.data[i]/tot*100).toFixed(0)+'%</span></span>').join('');})();
+
+  // Donut con KPI central
+  (function(){var labels=['Pagado','Pendiente','Vencido'],data=[62,27,11],colors=[gv('--green'),gv('--amber'),gv('--red')];var s=sortDonutDesc(labels,data,colors);
+    reg(new Chart(document.getElementById('cDonutKpi'),{type:'doughnut',data:{labels:s.labels,datasets:[{data:s.data,backgroundColor:s.colors,borderWidth:0,hoverOffset:5}]},
+      options:{responsive:true,maintainAspectRatio:false,cutout:'72%',plugins:{legend:legBottom(),tooltip:Object.assign(tt(),{callbacks:{label:c=>' '+c.label+': '+c.parsed+'%'}}),centerText:{value:'$2,1M',label:'TOTAL',size:22}}}}));})();
+
+  // Polar
+  reg(new Chart(document.getElementById('cPolar'),{type:'polarArea',data:{labels:['Centro','Norte','Sur','Oeste','Online'],datasets:[{data:[48,31,59,15,21],backgroundColor:[hexToRgba(gv('--cyan'),.7),hexToRgba(gv('--green'),.7),hexToRgba(gv('--amber'),.7),hexToRgba(gv('--blue'),.7),hexToRgba(gv('--indigo'),.7)],borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:legBottom(),tooltip:tt()},scales:{r:{grid:{color:gv('--line')},angleLines:{color:gv('--line')},ticks:{display:false}}}}}));
+
+  // AR aging
+  (function(){var q=['Q1','Q2','Q3','Q4'],b=['Corriente','1-30','31-60','61-90','90+'],v=[[820,640,700,910],[210,260,240,300],[120,150,130,170],[60,80,70,95],[40,55,50,70]];var cols=b.map((_,i)=>warmRamp(i/(b.length-1)));
+    reg(new Chart(document.getElementById('cAging'),{type:'bar',data:{labels:q,datasets:b.map((bb,i)=>({label:bb,data:v[i],backgroundColor:cols[i],borderRadius:i===b.length-1?4:0,borderSkipped:false,stack:'ar'}))},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:legBottom(),tooltip:tt()},scales:{x:{stacked:true,grid:{display:false},ticks:{color:gv('--muted-2'),font:mono()}},y:{stacked:true,grid:{color:gv('--line')},ticks:{color:gv('--muted-2'),font:mono()}}}}}));})();
+
+  // Histograma
+  (function(){var bins=['0-2k','2-4k','4-6k','6-8k','8-10k','10-12k','12k+'],d=[42,88,120,95,58,30,14];
+    reg(new Chart(document.getElementById('cHist'),{type:'bar',data:{labels:bins,datasets:[{data:d,backgroundColor:gv('--cyan'),borderRadius:3,borderSkipped:false}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt()},scales:{x:{grid:{display:false},ticks:{color:gv('--muted-2'),font:mono(9)},categoryPercentage:1,barPercentage:.97},y:axY()}}}));})();
+
+  // Bubble
+  (function(){var prods=[[30,8,18,'--cyan'],[55,22,40,'--green'],[70,15,28,'--amber'],[45,35,24,'--blue'],[85,28,52,'--indigo'],[60,12,16,'--red']];
+    reg(new Chart(document.getElementById('cBubble'),{type:'bubble',data:{datasets:prods.map(p=>({data:[{x:p[0],y:p[1],r:p[2]/3}],backgroundColor:hexToRgba(gv(p[3]),.55),borderColor:gv(p[3]),borderWidth:1}))},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:Object.assign(tt(),{callbacks:{label:c=>'vol '+c.parsed.x+' · margen '+c.parsed.y+'%'}})},
+        scales:{x:Object.assign(axX(true),{title:{display:true,text:'Volumen',color:gv('--muted-2'),font:mono(9)}}),y:Object.assign(axY(),{title:{display:true,text:'Margen %',color:gv('--muted-2'),font:mono(9)}})}}}));})();
+
+  // Bullet
+  (function(){var cats=['Ana','Bruno','Carla'],real=[87,64,103],targets=[90,80,95];
+    reg(new Chart(document.getElementById('cBullet'),{type:'bar',data:{labels:cats,datasets:[{data:real,backgroundColor:real.map((v,i)=>v>=targets[i]?gv('--green'):gv('--cyan')),borderRadius:3,borderSkipped:false,barThickness:11}]},
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:Object.assign(tt(),{callbacks:{label:c=>' '+c.parsed.x+'% de cuota'}}),bullet:{bands:[{to:70,col:'--red'},{to:90,col:'--amber'},{to:120,col:'--green'}],targets:targets}},
+        scales:{x:{max:120,grid:{display:false},ticks:{color:gv('--muted-2'),font:mono(),callback:v=>v+'%'}},y:{grid:{display:false},ticks:{color:gv('--text'),font:{family:gv('--sans'),size:12,weight:'600'}}}}}}));})();
+
+  // Gauge
+  reg(new Chart(document.getElementById('cGauge'),{type:'doughnut',data:{datasets:[{data:[73,27],backgroundColor:[gv('--cyan'),gv('--bg-soft')],borderWidth:0,circumference:180,rotation:270}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'74%',plugins:{legend:{display:false},tooltip:{enabled:false},centerText:{value:'73%',label:'UTILIZACIÓN',half:true,size:28}}}}));
+
+  buildRings();
+
+  // Embudo
+  (function(){var et=['Pedidos','Creados','Emitidos','Remitos','Cobranzas'],dv=[2500,1820,1340,720,420];var cols=dv.map((_,i)=>hexMix(gv('--cyan'),gv('--indigo'),i/(dv.length-1)));
+    reg(new Chart(document.getElementById('cFunnel'),{type:'bar',data:{labels:et,datasets:[{data:dv,backgroundColor:cols,borderRadius:4,borderSkipped:false}]},
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt()},scales:{x:axX(),y:{grid:{display:false},ticks:{color:gv('--muted-2'),font:mono()}}}}}));})();
+
+  // Waterfall
+  (function(){var labels=['Facturación','COGS','Gastos op.','Impuestos','Ganancia'],ranges=[[0,2840],[1740,2840],[1260,1740],[1100,1260],[0,1100]],cols=[gv('--cyan'),gv('--red'),gv('--amber'),gv('--red'),gv('--green')];
+    reg(new Chart(document.getElementById('cWaterfall'),{type:'bar',data:{labels:labels,datasets:[{data:ranges,backgroundColor:cols,borderRadius:3,borderSkipped:false}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},wfConnect:true,tooltip:Object.assign(tt(),{callbacks:{label:c=>' $'+Math.abs(c.raw[1]-c.raw[0])+'K'}})},scales:{x:axX(),y:axY()}}}));})();
+
+  // Pareto
+  (function(){var l=['Faltante','Precio','Demora','Calidad','Otro'],d=[120,80,55,30,15];var tot=d.reduce((a,b)=>a+b,0);var cum=[],acc=0;d.forEach(v=>{acc+=v;cum.push(+(acc/tot*100).toFixed(1));});
+    reg(new Chart(document.getElementById('cPareto'),{type:'bar',data:{labels:l,datasets:[
+      {type:'bar',data:d,backgroundColor:gv('--cyan'),borderRadius:3,borderSkipped:false,yAxisID:'y',order:2},
+      {type:'line',data:cum,borderColor:gv('--amber'),backgroundColor:gv('--amber'),borderWidth:2,pointRadius:3,pointBackgroundColor:gv('--amber'),tension:.3,yAxisID:'y1',order:1}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:tt()},scales:{x:{grid:{display:false},ticks:{color:gv('--muted-2'),font:mono(9)}},
+        y:axY(),y1:{position:'right',min:0,max:100,grid:{display:false},ticks:{color:gv('--amber'),font:mono(),callback:v=>v+'%'}}}}}));})();
+
+  // Anillo de objetivo
+  reg(new Chart(document.getElementById('gxGoal'),{type:'doughnut',data:{datasets:[{data:[5,2],backgroundColor:[gv('--cyan'),gv('--bg-soft')],borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'78%',plugins:{legend:{display:false},tooltip:{enabled:false},centerText:{value:'5/7',label:'DÍAS',size:24}}}}));
+  // Distribución / percentil (curva normal + marcador)
+  (function(){var xs=[],ys=[];for(var x=-3.2;x<=3.2;x+=0.1){xs.push(x);ys.push(Math.exp(-x*x/2));}
+    var youX=1.18,yi=0;for(var i=0;i<xs.length;i++){if(Math.abs(xs[i]-youX)<Math.abs(xs[yi]-youX))yi=i;}
+    reg(new Chart(document.getElementById('gxBell'),{type:'line',data:{labels:xs.map(function(v){return v.toFixed(1);}),datasets:[
+      {data:ys,borderColor:gv('--cyan'),fill:true,pointRadius:0,tension:.45,borderWidth:2,
+        backgroundColor:function(ctx){var g=ctx.chart.ctx.createLinearGradient(0,0,0,210);g.addColorStop(0,gv('--cyan-soft-2'));g.addColorStop(1,hexToRgba(gv('--cyan'),0));return g;}},
+      {data:ys.map(function(v,i){return i===yi?v:null;}),borderColor:'transparent',pointRadius:6,pointBackgroundColor:gv('--amber'),pointBorderColor:gv('--bg-elev-2'),pointBorderWidth:2}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}},scales:{x:{display:false},y:{display:false}}}}));})();
+  // Sparkbars
+  reg(new Chart(document.getElementById('gxSparkbars'),{type:'bar',data:{labels:['L','M','M','J','V','S','D'],datasets:[{data:[12,18,15,22,28,19,9],backgroundColor:gv('--cyan'),borderRadius:3,borderSkipped:false}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}},scales:{x:{grid:{display:false},ticks:{color:gv('--muted-2'),font:mono(9)}},y:{display:false}}}}));
+
+  buildHeatmap();buildSparkTable();buildTreemap();
+}
+
+window.__buildGallery=function(){var p=document.getElementById("tab-galeria");if(!p||!p.classList.contains("is-active"))return;renderAll();};
 })();
 </script>
 </body>
