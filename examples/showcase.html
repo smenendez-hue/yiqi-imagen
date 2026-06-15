@@ -750,7 +750,7 @@
       <div class="sc-card-h"><span class="sc-card-title">Notificación · badge</span><a class="ds-xref" href="../yiqi-design-system.html#badges"><i class="ph ph-anchor-simple"></i> Ver fuente</a></div>
       <p class="sc-card-sub">Contador sobre el ícono.</p>
       <div style="display:flex;gap:16px;align-items:center;padding:6px 0">
-        <span style="position:relative;width:40px;height:40px;border-radius:var(--radius);background:var(--bg-elev-2);box-shadow:0 0 0 1px var(--line);display:grid;place-items:center;color:var(--muted);font-size:18px"><i class="ph ph-bell"></i><span style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--red);color:var(--bg);font:700 10px var(--mono);display:grid;place-items:center;padding:0 4px">3</span></span>
+        <span style="position:relative;width:40px;height:40px;border-radius:var(--radius);background:var(--bg-elev-2);box-shadow:0 0 0 1px var(--line);display:grid;place-items:center;color:var(--muted);font-size:18px"><i class="ph ph-bell"></i><span style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--red);color:var(--text-white);font:700 10px var(--mono);display:grid;place-items:center;padding:0 4px">3</span></span>
         <span style="position:relative;width:40px;height:40px;border-radius:var(--radius);background:var(--cyan-soft);color:var(--cyan);display:grid;place-items:center;font-size:18px"><i class="ph ph-chat-circle"></i><span style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--cyan);color:var(--bg);font:700 10px var(--mono);display:grid;place-items:center;padding:0 4px">9</span></span>
         <span style="position:relative;width:40px;height:40px;border-radius:var(--radius);background:var(--bg-soft);color:var(--muted);display:grid;place-items:center;font-size:18px"><i class="ph ph-envelope"></i></span>
       </div>
@@ -1393,6 +1393,7 @@
   var c=document.getElementById('scClock'), dD=document.getElementById('scDateD');
   var dayA=document.getElementById('scDayA'), dateA=document.getElementById('scDateA');
   var H=document.getElementById('scHour'), M=document.getElementById('scMin'), Sg=document.getElementById('scSecG'), ticks=document.getElementById('scTicks');
+  var secDeg=null; // ángulo continuo del segundero (evita el salto 59→0)
   var dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
   var meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   if(ticks && !ticks.childElementCount){
@@ -1409,7 +1410,7 @@
     if(dD) dD.textContent=dia.toLowerCase()+', '+fecha;
     if(dayA) dayA.textContent=dia;
     if(dateA) dateA.textContent=fecha;
-    if(Sg) Sg.style.transform='rotate('+(s*6)+'deg)';
+    if(Sg){ var sd=s*6; if(secDeg===null){ secDeg=sd; } else { while(sd<secDeg) sd+=360; secDeg=sd; } Sg.style.transform='rotate('+secDeg+'deg)'; }
     if(M) M.style.transform='rotate('+(m*6+s*0.1)+'deg)';
     if(H) H.style.transform='rotate('+((hh%12)*30+m*0.5)+'deg)';
   }

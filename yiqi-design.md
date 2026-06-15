@@ -949,7 +949,7 @@ Estrella de favorito **borderless** (`.fav-star`): outline en reposo, **ámbar r
 
 ### Inputs — canónico `.ds-input`
 
-Familia canónica en `styles.css`: `.ds-input`, `.ds-select`, `.ds-textarea`, con `.ds-input-wrap` + `.ds-input-icon` + `.ds-input-shortcut` (⌘K) y estado `.err` (ring `--red-soft`). Borderless, foco ring `--cyan-soft`.
+Familia canónica en `styles.css`: `.ds-input`, `.ds-select`, `.ds-textarea`, con `.ds-input-wrap` + `.ds-input-icon` + `.ds-input-shortcut` (⌘K) y estado `.err` (fondo `--red-soft`). Borderless. Reposo **recessed** (`--bg`, contrasta dentro de cards `bg-elev-2`); **foco** se aclara a `--bg-soft` (sin ring); error con fondo `--red-soft`. Se usa `background-color` (no shorthand) para no pisar el chevron del `.ds-select`.
 
 ```html
 <div class="ds-input-wrap">
@@ -961,6 +961,7 @@ Familia canónica en `styles.css`: `.ds-input`, `.ds-select`, `.ds-textarea`, co
 ```
 
 - Deprecadas: `.input` (estaba en `ds-doc.css`) y `.sc-input` (showcase) — son la misma cosa con otro nombre.
+- El buscador de tablas (`.table-toolbar-search`) usa este primitivo: `.ds-input-wrap` + `.ds-input-icon` + `.ds-input` (solo aporta `min-width`).
 
 ---
 

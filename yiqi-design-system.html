@@ -1312,15 +1312,15 @@ body.preview-open .ds-layout { display: none !important; }
 </div>
 </div>
 <div class="subsection-title">Panel card</div>
-<div class="card" style="margin-bottom:12px">
-<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px">
+<div class="panel" style="margin-bottom:12px">
+<div class="panel-header" style="align-items:flex-start">
 <div>
-<div style="font:700 14px var(--sans)">Flujo de caja proyectado</div>
+<div style="font:700 var(--fs-panel-title) var(--sans);color:var(--text)">Flujo de caja proyectado</div>
 <div style="font:400 12px var(--sans);color:var(--muted);margin-top:4px">Últimos 6 meses</div>
 </div>
 <span class="tag">Real-time</span>
 </div>
-<div style="height:80px;border-radius:10px;background:linear-gradient(90deg,var(--cyan-soft),transparent);border:1px solid var(--line);display:flex;align-items:center;justify-content:center">
+<div style="height:80px;border-radius:var(--radius-sm);background:var(--bg-soft);display:flex;align-items:center;justify-content:center">
 <span style="font:600 11px var(--mono);color:var(--muted-2)">CHART AREA</span>
 </div>
 </div>
@@ -1460,10 +1460,10 @@ body.preview-open .ds-layout { display: none !important; }
 <div class="table-card-title">Ventas / Pedidos recientes</div>
 <div class="table-card-sub">Tabla base reutilizable para módulos operativos</div>
 </div>
-<label class="table-toolbar-search">
-<svg class="il" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.35-4.35"></path></svg>
-<input data-table-search="ds-sortable-table" placeholder="Buscar pedido, cliente o canal" type="text">
-</input></label>
+<div class="ds-input-wrap table-toolbar-search">
+<svg class="ds-input-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.35-4.35"></path></svg>
+<input class="ds-input" data-table-search="ds-sortable-table" placeholder="Buscar pedido, cliente o canal" type="text">
+</div>
 </div>
 <div style="overflow-x:auto">
 <table class="table-demo table-sortable" id="ds-sortable-table">

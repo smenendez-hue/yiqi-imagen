@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input · fondo reposo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0a0b;--bg-elev:#0f1013;--bg-elev-2:#14161b;--bg-soft:#181b21;--text:#f3f5f7;--muted:#908e8e;--muted-2:#7d7c82;--cyan:#00ccff;--radius:14px;--radius-lg:18px;--sans:"Inter",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace;}
+  html[data-theme="light"]{--bg:#eeece7;--bg-elev:#f6f4ef;--bg-elev-2:#fff;--bg-soft:#ece9e2;--text:#17191c;--muted:#5e5a57;--muted-2:#636875;--cyan:#009fc7;}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:400 14px var(--sans);padding:36px 28px;transition:.2s}
+  .wrap{max-width:560px;margin:0 auto}h1{font:700 19px var(--sans);margin:0 0 4px}.sub{color:var(--muted);font-size:13px;margin:0 0 22px}
+  .topbar{display:flex;justify-content:flex-end;margin-bottom:14px}
+  .tbtn{border:none;border-radius:999px;background:var(--bg-elev-2);color:var(--text);font:600 12px var(--sans);padding:8px 14px;cursor:pointer}
+  .card{background:var(--bg-elev-2);border-radius:var(--radius-lg);padding:20px;margin:0 0 16px}
+  .lab{font:700 10px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted-2);margin:0 0 12px}
+  .field{display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:var(--radius);transition:background .18s ease}
+  .field svg{width:16px;height:16px;stroke:var(--muted-2);fill:none;stroke-width:1.8}
+  .field input{border:none;outline:none;background:transparent;color:var(--text);font:inherit;width:100%}
+  .field input::placeholder{color:var(--muted-2)}
+  /* ANTES: reposo = bg-elev-2 (= card) */
+  .old{background:var(--bg-elev-2)} .old:focus-within{background:var(--bg-soft)}
+  /* DESPUÉS: reposo = bg (recessed) */
+  .new{background:var(--bg)} .new:focus-within{background:var(--bg-soft)}
+</style></head>
+<body><div class="wrap">
+  <div class="topbar"><button class="tbtn" id="tg">&#9680;&nbsp;Cambiar tema</button></div>
+  <h1>Fondo del input en reposo</h1>
+  <p class="sub">Click en cada campo para ver el foco. La card es <code>bg-elev-2</code>.</p>
+  <div class="card">
+    <p class="lab" style="color:#ff637d">Antes &mdash; reposo bg-elev-2 (se confunde con la card)</p>
+    <label class="field old"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.35-4.35"></path></svg><input placeholder="Buscar pedido, cliente o canal"></label>
+  </div>
+  <div class="card">
+    <p class="lab" style="color:#15d49c">Después &mdash; reposo bg (recessed, contrasta) · foco bg-soft</p>
+    <label class="field new"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="m20 20-4.35-4.35"></path></svg><input placeholder="Buscar pedido, cliente o canal"></label>
+  </div>
+</div>
+<script>var d=document.documentElement;document.getElementById('tg').onclick=function(){d.setAttribute('data-theme',d.getAttribute('data-theme')==='dark'?'light':'dark')}</script>
+</body></html>
