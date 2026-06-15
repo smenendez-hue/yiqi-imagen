@@ -162,12 +162,12 @@ html[data-theme="light"] {
   --nav-item-active-bg:     rgba(0, 204, 255, 0.16);
   --nav-item-active-border: transparent;
   /* Tokens de componente — Login / Auth (solo doc del DS) */
-  --login-status-bg:     rgba(24, 24, 28, 0.72);
-  --login-status-text:   #908e8e;
-  --login-status-border: rgba(255, 255, 255, 0.08);
-  --login-gate-bg:       linear-gradient(145deg, rgba(24, 24, 28, 0.96), rgba(12, 12, 14, 0.90));
-  --login-card-bg:       rgba(255, 255, 255, 0.03);
-  --login-card-border:   rgba(255, 255, 255, 0.08);
+  --login-status-bg:     var(--bg-elev-2);
+  --login-status-text:   var(--muted);
+  --login-status-border: transparent;
+  --login-gate-bg:       var(--bg-elev);
+  --login-card-bg:       var(--card-bg);
+  --login-card-border:   transparent;
   --login-logo-w:        260px;
 }
 
@@ -183,12 +183,6 @@ html[data-theme="light"] {
   --nav-item-active-text:   #0a0a0b;
   --nav-item-active-bg:     rgba(0, 159, 199, 0.16);
   --nav-item-active-border: transparent;
-  --login-status-bg:     rgba(0, 0, 0, 0.05);
-  --login-status-text:   #17191c;
-  --login-status-border: rgba(0, 0, 0, 0.10);
-  --login-gate-bg:       linear-gradient(145deg, rgba(246, 244, 239, 0.98), rgba(236, 233, 226, 0.95));
-  --login-card-bg:       rgba(255, 255, 255, 0.92);
-  --login-card-border:   rgba(0, 0, 0, 0.08);
 }
 
 /* ── 3. RESET & BASE ──────────────────────────────────────── */
@@ -1041,7 +1035,7 @@ html[data-theme="light"] .kpi-trend-grid { stroke: rgba(16, 36, 54, 0.12); }
 .login-gate {
   display: grid;
   place-items: center;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: var(--radius-xl);
   background: var(--login-gate-bg);
   overflow: hidden;
@@ -1080,8 +1074,8 @@ html[data-theme="light"] .kpi-trend-grid { stroke: rgba(16, 36, 54, 0.12); }
   font-size: 13px;
 }
 
-.auth-status[data-state="success"] { color: var(--green); border-color: rgba(0, 196, 140, 0.28); }
-.auth-status[data-state="error"]   { color: var(--red);   border-color: rgba(242, 95, 92, 0.28); }
+.auth-status[data-state="success"] { color: var(--green); background: var(--green-soft); }
+.auth-status[data-state="error"]   { color: var(--red);   background: var(--red-soft); }
 
 /* ── 29. PROGRESS BARS ────────────────────────────────────── */
 .progress-row {
