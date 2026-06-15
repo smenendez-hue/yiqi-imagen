@@ -883,6 +883,87 @@ Filtro de rango temporal del topbar (Analytics Pro y paneles). Input compuesto: 
 
 ---
 
+### Botón de cerrar / icon button
+
+Botón de ícono **borderless** (`.close-btn`) para cerrar menús, drawers y diálogos. Canónico en `styles.css` (y espejado en `site.css` para la web). Reemplaza las copias locales `.ds-nav-x`, `.sc-drawer-x`, `.mobile-nav-close`.
+
+```css
+.close-btn {
+  display: grid; place-items: center; width: 38px; height: 38px;
+  border: none; border-radius: var(--radius-sm);
+  background: transparent; color: var(--muted); cursor: pointer;
+}
+.close-btn:hover         { color: var(--text); background: var(--bg-soft); }
+.close-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--cyan-soft); }
+```
+
+- Solo apariencia; el **posicionamiento** es contextual (absoluto en el nav, flex-end en el drawer)
+- Documentado en catálogo §08 (Botones) → ancla `#close-btn`
+
+---
+
+### Alert badge
+
+Badge rojo (`.alert-badge-dot`) sobre un ícono contenedor (`.alert-badge`) para notificaciones/alertas. Canónico en `styles.css`. Documentado en catálogo §08 → ancla `#alert-badge`.
+
+```html
+<button class="alert-badge" aria-label="Alertas (3)">
+  <svg>…campana…</svg>
+  <span class="alert-badge-dot">3</span>
+</button>
+```
+
+---
+
+### Favorito (star toggle)
+
+Estrella de favorito **borderless** (`.fav-star`): outline en reposo, **ámbar relleno** al marcar (`.is-active`). No es una alerta — no lleva badge. Canónico en `styles.css`, catálogo §09 → ancla `#fav-star`.
+
+```html
+<button class="fav-star" type="button" aria-pressed="false" aria-label="Marcar como favorito">
+  <svg>…estrella…</svg>
+</button>
+```
+
+- Toggle por JS: alterna `.is-active` + `aria-pressed`
+- Borderless, foco accesible (ring `--cyan-soft`)
+
+---
+
+### Avatar / Tag / Tooltip *(canónicos en styles.css)*
+
+**Avatar** (`.avatar`): círculo con **iniciales multicolor** (`.avatar--cyan|green|amber|red|blue`) y soporte de **imagen** (SVG) que cae a iniciales si falla:
+
+```html
+<span class="avatar avatar--green">
+  <img src="…avatar.svg" alt="" onerror="this.remove()"> LR
+</span>
+```
+
+- Imagen: **DiceBear `notionists`** — SVG vectorial por seed-URL (`api.dicebear.com/9.x/notionists/svg?seed=`). Para self-host real: guardar el `.svg` en `assets/` o inline-arlo en el markup (cero dependencia de CDN).
+- Tamaños: `.avatar--sm` (30px) / base 36px / `.avatar--lg` (44px). Borderless.
+
+**Tag** (`.tag`): pill borderless mono, `--cyan-soft`. **Tooltip** (`.tooltip-box` / `--elev`): caja borderless. Documentados en catálogo §18 → ancla `#avatar`.
+
+---
+
+### Inputs — canónico `.ds-input`
+
+Familia canónica en `styles.css`: `.ds-input`, `.ds-select`, `.ds-textarea`, con `.ds-input-wrap` + `.ds-input-icon` + `.ds-input-shortcut` (⌘K) y estado `.err` (ring `--red-soft`). Borderless, foco ring `--cyan-soft`.
+
+```html
+<div class="ds-input-wrap">
+  <svg class="ds-input-icon">…</svg>
+  <input class="ds-input" placeholder="Buscar…">
+  <kbd class="ds-input-shortcut">⌘K</kbd>
+</div>
+<input class="ds-input err">
+```
+
+- Deprecadas: `.input` (estaba en `ds-doc.css`) y `.sc-input` (showcase) — son la misma cosa con otro nombre.
+
+---
+
 ---
 
 ## 9. Iconografía
@@ -1002,10 +1083,12 @@ applyTheme(resolveTheme());
 | Green | `--green` | Éxito, positivo, incremento |
 | Amber | `--amber` | Advertencia, instalación, acción secundaria |
 | Red | `--red` | Error, peligro, decremento, eliminación |
-| Purple | `--purple` | Acento decorativo secundario |
+| Indigo | `--indigo` | Acento — `created` en barra de coherencia + categorías decorativas (reemplaza al viejo `--purple`) |
 | Muted | `--muted` | Texto secundario, estados neutrales |
 
 **Regla:** el color es semántico, nunca decorativo. No hardcodear hex — siempre tokens.
+
+> **Excepción documentada — `--text-white`:** el contador de `.alert-badge-dot` (campanita) usa `color: var(--text-white)` (#ffffff fijo) porque va sobre el rojo sólido y no debe adaptarse al tema. Es la única utilidad de blanco constante; no se usa para texto general.
 
 ---
 
@@ -1305,6 +1388,12 @@ Afordance **meta** para navegar entre el catálogo y el showcase ("Ver fuente" /
 - 100% tokens existentes; definido una sola vez en `styles.css` (fuente única).
 - Catálogo: §33. Deep-link al showcase con `?tab=<vista>&card=<id>`.
 
+
+## 22b. `ds-doc.css` = solo chrome del catálogo *(limpieza)*
+
+`ds-doc.css` ya **no re-declara** componentes canónicos. Se eliminaron las copias de `.btn`, `.badge`, `.switch-track/thumb/label/text`, `.checkbox*`, `.card-accent` y la familia `.input` (todos viven en `styles.css`). Esto evita *drift* y override accidental — p. ej. el toggle del catálogo recupera su versión borderless.
+
+`ds-doc.css` conserva únicamente lo propio del catálogo: navegación, helpers de demo (`.ph-tag`, `.card-kicker/value/delta`) y posicionamiento de chrome. Regla: si un componente se usa fuera del catálogo, su fuente es `styles.css`; `ds-doc.css` no lo redefine.
 
 ## 23. Primitivos interactivos en el catálogo (§32–§38) *(nuevo)*
 

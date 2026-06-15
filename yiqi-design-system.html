@@ -292,7 +292,7 @@ body.preview-open .ds-layout { display: none !important; }
 <!-- NAV -->
 <nav class="ds-nav">
 <div class="ds-nav-inner">
-<button class="ds-nav-x" aria-label="Cerrar menú" onclick="closeNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+<button class="close-btn" aria-label="Cerrar menú" onclick="closeNav()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
 <div class="ds-nav-section">
 <span class="ds-nav-label">Versión</span>
 <a class="ds-nav-item active" href="#release-notes"><span class="ds-nav-num">00</span> Novedades</a>
@@ -311,7 +311,10 @@ body.preview-open .ds-layout { display: none !important; }
 <div class="ds-nav-section">
 <span class="ds-nav-label">Componentes</span>
 <a class="ds-nav-item" href="#buttons"><span class="ds-nav-num">08</span> Botones</a>
+<a class="ds-nav-item" href="#close-btn" style="padding-left:30px"><span class="ds-nav-num" style="opacity:.55">↳</span> Botón de cerrar</a>
+<a class="ds-nav-item" href="#alert-badge" style="padding-left:30px"><span class="ds-nav-num" style="opacity:.55">↳</span> Alert badge</a>
 <a class="ds-nav-item" href="#badges"><span class="ds-nav-num">09</span> Badges &amp; tags</a>
+<a class="ds-nav-item" href="#fav-star" style="padding-left:30px"><span class="ds-nav-num" style="opacity:.55">↳</span> Favorito (star)</a>
 <a class="ds-nav-item" href="#inputs"><span class="ds-nav-num">10</span> Inputs &amp; formularios</a>
 <a class="ds-nav-item" href="#cards"><span class="ds-nav-num">11</span> Cards &amp; KPIs</a>
 <a class="ds-nav-item" href="#trust"><span class="ds-nav-num">12</span> Trust / Stats <span class="ds-nav-badge">NEW</span></a>
@@ -321,6 +324,7 @@ body.preview-open .ds-layout { display: none !important; }
 <a class="ds-nav-item" href="#counter"><span class="ds-nav-num">16</span> Contador animado <span class="ds-nav-badge">NEW</span></a>
 <a class="ds-nav-item" href="#icons"><span class="ds-nav-num">17</span> Iconografía Phosphor</a>
 <a class="ds-nav-item" href="#misc"><span class="ds-nav-num">18</span> Elementos varios</a>
+<a class="ds-nav-item" href="#avatar" style="padding-left:30px"><span class="ds-nav-num" style="opacity:.55">↳</span> Avatar</a>
 </div>
 <div class="ds-nav-section">
 <span class="ds-nav-label">Layout</span>
@@ -783,15 +787,15 @@ body.preview-open .ds-layout { display: none !important; }
 <div class="swatch-info">
 <div class="swatch-name">Info / Blue</div>
 <div class="swatch-token">--blue</div>
-<div class="swatch-hex">#7ab7ff · #347de6</div>
+<div class="swatch-hex">#4d9fff</div>
 </div>
 </div>
 <div class="swatch-card">
-<div class="swatch-block" style="background:var(--purple)"></div>
+<div class="swatch-block" style="background:var(--indigo)"></div>
 <div class="swatch-info">
-<div class="swatch-name">Accent / Purple</div>
-<div class="swatch-token">--purple</div>
-<div class="swatch-hex">#a78bfa · #7c3aed</div>
+<div class="swatch-name">Accent / Indigo</div>
+<div class="swatch-token">--indigo</div>
+<div class="swatch-hex">#6366f1 · #4f46e5</div>
 </div>
 </div>
 </div>
@@ -1131,6 +1135,21 @@ body.preview-open .ds-layout { display: none !important; }
 <strong>CTA operativo</strong>
         La variante <span class="code-chip">.btn-amber</span> queda reservada para acciones de instalación, descarga o activación. El ícono base es flecha descendente con línea inferior, siempre en SVG inline.
       </div>
+<div class="subsection-title" id="close-btn">Botón de cerrar / icon button</div>
+<p style="font:400 13px/1.6 var(--sans);color:var(--muted);max-width:62ch;margin:-4px 0 16px">Botón de ícono <strong>borderless</strong> para cerrar menús, drawers y diálogos. Fondo transparente, hover <code>--bg-soft</code>, foco accesible. Canónico: <code>.close-btn</code> — reemplaza las copias locales (<code>.ds-nav-x</code>, <code>.sc-drawer-x</code>, <code>.mobile-nav-close</code>).</p>
+<div class="comp-row" style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+<button class="close-btn" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+<span style="font:400 12px var(--sans);color:var(--muted-2)">reposo · hover · foco con teclado</span>
+</div>
+<table class="table-demo" style="max-width:640px;margin-bottom:8px">
+<thead><tr><th>Parte / estado</th><th>Regla</th></tr></thead>
+<tbody>
+<tr><td>Base <code>.close-btn</code></td><td>Borderless, 38px, <code>--radius-sm</code>, color <code>--muted</code>, ícono 20px.</td></tr>
+<tr><td>Hover</td><td>Color <code>--text</code>, fondo <code>--bg-soft</code>.</td></tr>
+<tr><td>Foco</td><td><code>:focus-visible</code> → ring <code>--cyan-soft</code>.</td></tr>
+<tr><td>Posición</td><td>Contextual (absoluta en el nav, flex-end en el drawer). El componente solo aporta apariencia.</td></tr>
+</tbody>
+</table>
 </section>
 <!-- ─── BADGES ─── -->
 <section class="ds-section" id="badges">
@@ -1169,16 +1188,23 @@ body.preview-open .ds-layout { display: none !important; }
 <span class="ph-tag">Exportar</span>
 <span class="ph-tag">Permisos</span>
 </div>
-<div class="subsection-title">Alert badge (sobre íconos)</div>
+<div class="subsection-title" id="alert-badge">Alert badge (sobre íconos)</div>
 <div class="comp-row">
-<div class="alert-badge-demo">
+<div class="alert-badge">
 <svg viewbox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 7 3 9H3c0-2 3-2 3-9"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg>
 <span class="alert-badge-dot">3</span>
 </div>
-<div class="alert-badge-demo" style="margin-left:8px">
-<svg viewbox="0 0 24 24"><path d="m12 3.5 2.7 5.47 6.03.88-4.36 4.25 1.03 6-5.4-2.84-5.4 2.84 1.03-6L3.27 9.85l6.03-.88L12 3.5Z"></path></svg>
+<div class="alert-badge" style="margin-left:8px">
+<svg viewbox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
 <span class="alert-badge-dot" style="background:var(--amber);color:#1a0d00">!</span>
 </div>
+</div>
+<div class="subsection-title" id="fav-star">Favorito (star toggle)</div>
+<p style="font:400 13px/1.6 var(--sans);color:var(--muted);max-width:62ch;margin:-4px 0 14px">Estrella de favorito <strong>borderless</strong>: outline en reposo, <strong>ámbar relleno</strong> al marcar. Click para alternar (no es una alerta, no lleva badge). Canónico: <code>.fav-star</code> / <code>.fav-star.is-active</code>.</p>
+<div class="comp-row">
+<button class="fav-star" type="button" aria-pressed="false" aria-label="Marcar como favorito"><svg viewBox="0 0 24 24"><path d="m12 3.5 2.7 5.47 6.03.88-4.36 4.25 1.03 6-5.4-2.84-5.4 2.84 1.03-6L3.27 9.85l6.03-.88L12 3.5Z"/></svg></button>
+<button class="fav-star is-active" type="button" aria-pressed="true" aria-label="Quitar de favoritos"><svg viewBox="0 0 24 24"><path d="m12 3.5 2.7 5.47 6.03.88-4.36 4.25 1.03 6-5.4-2.84-5.4 2.84 1.03-6L3.27 9.85l6.03-.88L12 3.5Z"/></svg></button>
+<span style="font:400 12px var(--sans);color:var(--muted-2)">reposo · activo (ámbar) · click para alternar</span>
 </div>
 </section>
 <!-- ─── INPUTS ─── -->
@@ -1191,13 +1217,13 @@ body.preview-open .ds-layout { display: none !important; }
 </div>
 <div class="subsection-title">Input text</div>
 <div style="display:grid;gap:10px;max-width:480px;margin-bottom:20px">
-<input class="input" placeholder="Buscar cliente o pedido..." type="text"/>
+<input class="ds-input" placeholder="Buscar cliente o pedido..." type="text"/>
 <div class="search-wrap">
 <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
 <input class="search-input" placeholder="Buscar en el sistema" type="text"/>
 <kbd class="search-kbd">⌘K</kbd>
 </div>
-<input class="input" placeholder="" type="text" value="Empresa de ejemplo S.A."/>
+<input class="ds-input" placeholder="" type="text" value="Empresa de ejemplo S.A."/>
 </div>
 <div class="subsection-title">Search Input — borderless</div>
 <p class="ds-section-sub" style="margin-bottom:14px">Componente canónico para buscadores en landings y páginas internas. Sin borde visible por defecto (borderless). Fondo <code>var(--bg-elev-2)</code>. Focus ring cyan. Clear button opcional. Shortcut <code>⌘K</code> opcional. Clases: <code>.search-wrap</code> · <code>.search-icon</code> · <code>.search-input</code> · <code>.search-clear</code> · <code>.search-kbd</code>.</p>
@@ -1579,10 +1605,13 @@ body.preview-open .ds-layout { display: none !important; }
 <p class="ds-section-sub">Avatar, topbar icons, live indicator, search bar, integration card, tooltip.</p>
 <a class="ds-xref" style="margin-top:12px" href="examples/showcase.html?tab=primitivos&amp;card=card-tooltip"><i class="ph ph-anchor-simple"></i> Ver en vivo</a>
 </div>
-<div class="subsection-title">Avatar &amp; Live indicator</div>
+<div class="subsection-title" id="avatar">Avatar &amp; Live indicator</div>
 <div class="comp-row" style="align-items:center">
-<div class="avatar">SM</div>
-<div class="avatar" style="background:rgba(21,212,156,.1);color:var(--green);border-color:rgba(21,212,156,.24)">JR</div>
+<div class="avatar"><img src="https://api.dicebear.com/9.x/notionists/svg?seed=MQ&amp;backgroundColor=b6e3f4" alt="" onerror="this.remove()">MQ</div>
+<div class="avatar avatar--green">JR</div>
+<div class="avatar avatar--amber">AT</div>
+<div class="avatar avatar--red">LR</div>
+<div class="avatar avatar--blue">PG</div>
 <div style="display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:var(--radius-pill);border:1px solid var(--line);background:var(--bg-elev-2)">
 <div class="live-dot"></div>
 <span style="font:600 11px var(--mono);color:var(--green)">LIVE</span>
@@ -1591,9 +1620,9 @@ body.preview-open .ds-layout { display: none !important; }
 <div class="subsection-title">Topbar icon buttons</div>
 <div class="comp-row">
 <div class="top-icon-demo">
-<svg viewbox="0 0 24 24"><path d="m12 3.5 2.7 5.47 6.03.88-4.36 4.25 1.03 6-5.4-2.84-5.4 2.84 1.03-6L3.27 9.85l6.03-.88L12 3.5Z"></path></svg>
+<svg viewbox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
 </div>
-<div class="alert-badge-demo">
+<div class="alert-badge">
 <svg viewbox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 7 3 9H3c0-2 3-2 3-9"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg>
 <span class="alert-badge-dot">3</span>
 </div>
@@ -2015,17 +2044,17 @@ html[data-theme="light"] .bg-grid-demo-fade {
     <!-- PASO 1 -->
     <div class="hf-step active" id="ds-step-1">
       <div class="hf-field">
-        <input class="input" type="text" id="ds-nombre" placeholder="Nombre" autocomplete="given-name" aria-label="Nombre">
+        <input class="ds-input" type="text" id="ds-nombre" placeholder="Nombre" autocomplete="given-name" aria-label="Nombre">
         <div class="hf-err" id="ds-err-nombre">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           Ingresa tu nombre.
         </div>
       </div>
       <div class="hf-field">
-        <input class="input" type="text" id="ds-apellido" placeholder="Apellido" autocomplete="family-name" aria-label="Apellido">
+        <input class="ds-input" type="text" id="ds-apellido" placeholder="Apellido" autocomplete="family-name" aria-label="Apellido">
       </div>
       <div class="hf-field">
-        <input class="input" type="email" id="ds-email" placeholder="Email de trabajo" autocomplete="email" aria-label="Email">
+        <input class="ds-input" type="email" id="ds-email" placeholder="Email de trabajo" autocomplete="email" aria-label="Email">
         <div class="hf-err" id="ds-err-email">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           Ingresa un email válido.
@@ -2048,10 +2077,10 @@ html[data-theme="light"] .bg-grid-demo-fade {
       <div class="hf-section-label">Datos de contacto</div>
       <div class="hf-row">
         <div class="hf-field">
-          <input class="input" type="tel" id="ds-phone" placeholder="Celular" autocomplete="tel" aria-label="Celular">
+          <input class="ds-input" type="tel" id="ds-phone" placeholder="Celular" autocomplete="tel" aria-label="Celular">
         </div>
         <div class="hf-field">
-          <select class="input" id="ds-country" aria-label="País">
+          <select class="ds-select" id="ds-country" aria-label="País">
             <option value="" disabled selected>País</option>
             <option>Argentina</option><option>Uruguay</option><option>Chile</option>
             <option>Paraguay</option><option>Colombia</option><option>México</option>
@@ -2059,10 +2088,10 @@ html[data-theme="light"] .bg-grid-demo-fade {
         </div>
       </div>
       <div class="hf-field">
-        <input class="input" type="text" id="ds-empresa" placeholder="Empresa" autocomplete="organization" aria-label="Empresa">
+        <input class="ds-input" type="text" id="ds-empresa" placeholder="Empresa" autocomplete="organization" aria-label="Empresa">
       </div>
       <div class="hf-field">
-        <select class="input" id="ds-source" aria-label="¿Cómo nos conociste?">
+        <select class="ds-select" id="ds-source" aria-label="¿Cómo nos conociste?">
           <option value="" disabled selected>¿Cómo nos conociste?</option>
           <option>Google</option><option>LinkedIn</option><option>Recomendación</option><option>Evento</option>
         </select>
@@ -2099,7 +2128,7 @@ html[data-theme="light"] .bg-grid-demo-fade {
         </div>
       </div>
       <div class="hf-field">
-        <textarea class="input" style="height:64px;padding:10px 12px;resize:none;line-height:1.4" placeholder="¿De qué querés hablar en la demo?" aria-label="Mensaje"></textarea>
+        <textarea class="ds-textarea" style="height:64px;padding:10px 12px;resize:none;line-height:1.4" placeholder="¿De qué querés hablar en la demo?" aria-label="Mensaje"></textarea>
       </div>
     </div>
     <div class="hf-divider" id="ds-divider-3" style="display:none"></div>
@@ -2138,7 +2167,7 @@ html[data-theme="light"] .bg-grid-demo-fade {
 
     <div style="background:var(--bg-elev);border-radius:var(--radius);padding:16px">
       <div class="subsection-title" style="margin-bottom:10px">Error inline</div>
-      <input class="input" style="background:var(--bg-elev-2)" placeholder="campo con error">
+      <input class="ds-input" style="background:var(--bg-elev-2)" placeholder="campo con error">
       <div class="hf-err show" style="margin-top:5px">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         Ingresa un valor válido.
@@ -3097,14 +3126,22 @@ document.body.classList.add(<span style="color:var(--green)">'anim-in'</span>);<
     <div style="position:absolute;bottom:10px;left:0;right:0;text-align:center;color:var(--muted);font:400 12px var(--sans)">Scanner viewport · línea var(--red)</div>
   </div>
 <div style="display:flex;gap:14px;flex-wrap:wrap">
-    <div style="flex:1;min-width:220px;display:flex;align-items:center;gap:12px;background:var(--bg-elev-2);border-radius:var(--radius-pill);padding:8px 14px">
-      <span style="color:var(--cyan);font:700 20px var(--sans);line-height:1">−</span>
-      <div style="flex:1;height:4px;border-radius:var(--radius-pill);background:var(--bg);position:relative"><div style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:14px;height:14px;border-radius:50%;background:var(--cyan)"></div></div>
-      <span style="color:var(--cyan);font:700 13px var(--sans)">1×</span>
-      <span style="color:var(--cyan);font:700 20px var(--sans);line-height:1">+</span>
+    <style>
+/* Zoom range — track borderless (sin ring), thumb cian */
+.pk-zoom-range{ -webkit-appearance:none; appearance:none; height:5px; border-radius:var(--radius-pill); background:var(--bg); outline:none; box-shadow:none; border:none; }
+.pk-zoom-range::-webkit-slider-runnable-track{ height:5px; border-radius:var(--radius-pill); background:var(--bg); border:none; box-shadow:none; }
+.pk-zoom-range::-moz-range-track{ height:5px; border-radius:var(--radius-pill); background:var(--bg); border:none; box-shadow:none; }
+.pk-zoom-range::-webkit-slider-thumb{ -webkit-appearance:none; margin-top:-5px; width:15px; height:15px; border-radius:50%; background:var(--cyan); border:none; box-shadow:none; cursor:pointer; }
+.pk-zoom-range::-moz-range-thumb{ width:15px; height:15px; border-radius:50%; background:var(--cyan); border:none; box-shadow:none; cursor:pointer; }
+</style>
+    <div class="pk-zoom" style="flex:1;min-width:200px;display:flex;align-items:center;gap:12px;background:var(--bg-elev-2);border-radius:var(--radius-pill);padding:8px 14px">
+      <button type="button" class="pk-zoom-btn" data-z="-1" aria-label="Alejar" style="flex-shrink:0;width:22px;color:var(--text);background:none;border:none;font:700 20px var(--sans);line-height:1;cursor:pointer">&minus;</button>
+      <input type="range" class="pk-zoom-range" min="1" max="5" step="0.5" value="1" aria-label="Zoom" style="flex:1;min-width:0;cursor:pointer">
+      <span class="pk-zoom-val" style="flex-shrink:0;min-width:30px;text-align:center;color:var(--cyan);font:700 13px var(--sans)">1&times;</span>
+      <button type="button" class="pk-zoom-btn" data-z="1" aria-label="Acercar" style="flex-shrink:0;width:22px;color:var(--text);background:none;border:none;font:700 20px var(--sans);line-height:1;cursor:pointer">+</button>
     </div>
-    <div style="flex:1;min-width:220px;display:flex;gap:8px">
-      <input placeholder="Código de barras" style="flex:1;background:var(--bg-elev-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:10px 12px;color:var(--text);font:400 13px var(--sans);outline:none">
+    <div style="flex:1 1 260px;min-width:240px;display:flex;gap:8px;align-items:center">
+      <input placeholder="Código de barras" inputmode="numeric" maxlength="14" aria-label="Código de barras" style="flex:1;min-width:150px;background:var(--bg-elev-2);border:none;border-radius:var(--radius-sm);padding:10px 12px;color:var(--text);font:400 13px var(--mono);letter-spacing:.02em;outline:none">
       <button class="btn btn-primary" style="flex-shrink:0">Consultar</button>
     </div>
   </div>
@@ -3693,6 +3730,36 @@ document.querySelectorAll('.table-sortable').forEach(table => {
     host.appendChild(el); requestAnimationFrame(function(){ el.classList.add('show'); });
     setTimeout(function(){ el.classList.remove('show'); setTimeout(function(){ el.remove(); },340); }, 3200);
   }); });
+})();
+</script>
+
+<script>
+(function pkZoomInit(){
+  document.querySelectorAll('.pk-zoom').forEach(function(z){
+    var range=z.querySelector('.pk-zoom-range'), val=z.querySelector('.pk-zoom-val');
+    if(!range||!val) return;
+    function fmt(v){ return (Number.isInteger(v)? v : v.toFixed(1).replace('.',',')) + '\u00d7'; }
+    function upd(){ val.textContent=fmt(parseFloat(range.value)); }
+    range.addEventListener('input', upd);
+    z.querySelectorAll('.pk-zoom-btn').forEach(function(b){
+      b.addEventListener('click', function(){
+        var s=parseFloat(b.dataset.z)*parseFloat(range.step);
+        range.value=Math.min(parseFloat(range.max), Math.max(parseFloat(range.min), parseFloat(range.value)+s));
+        upd();
+      });
+    });
+    upd();
+  });
+})();
+</script>
+<script>
+(function favStarInit(){
+  document.querySelectorAll('.fav-star').forEach(function(b){
+    b.addEventListener('click', function(){
+      var on=b.classList.toggle('is-active');
+      b.setAttribute('aria-pressed', on?'true':'false');
+    });
+  });
 })();
 </script>
 </body>
