@@ -95,6 +95,10 @@
   --red-soft:    rgba(255,99,125,.10);
   --purple:      #a78bfa;
   --purple-soft: rgba(167,139,250,.12);
+  /* App brand (Marketplace) — uno por app, NO cyan */
+  --violet:       #8b5cf6;  --violet-soft:  rgba(139,92,246,.12);  --violet-soft-2:  rgba(139,92,246,.18);
+  --orange:       #ff8a3d;  --orange-soft:  rgba(255,138,61,.12);  --orange-soft-2:  rgba(255,138,61,.18);
+  --magenta:      #ff5da2;  --magenta-soft: rgba(255,93,162,.12);  --magenta-soft-2: rgba(255,93,162,.18);
 
   /* Focus glow */
   --glow: 0 0 0 3px rgba(0,204,255,.22);
@@ -180,6 +184,9 @@ html[data-theme="light"] {
   --red-soft:    rgba(212,72,94,.10);
   --purple:      #7c3aed;
   --purple-soft: rgba(124,58,237,.12);
+  --violet:       #7c3aed;  --violet-soft:  rgba(124,58,237,.10);  --violet-soft-2:  rgba(124,58,237,.16);
+  --orange:       #e07628;  --orange-soft:  rgba(224,118,40,.10);  --orange-soft-2:  rgba(224,118,40,.16);
+  --magenta:      #d6336c;  --magenta-soft: rgba(214,51,108,.10);  --magenta-soft-2: rgba(214,51,108,.16);
 
   /* Shadows (más suaves en fondo claro) */
   --shadow-sm: 0 1px 3px rgba(16,36,54,.06);
@@ -967,6 +974,32 @@ Familia canónica en `styles.css`: `.ds-input`, `.ds-select`, `.ds-textarea`, co
 
 ---
 
+### Banner de apps (Marketplace) *(nuevo en v1.2.7)*
+
+Banner promocional por app del Marketplace. Web component `<app-banner app="…">` (`ana | prov | inv | pos | pick | cons`), con variante `variant="vertical"`. Paleta invertida (tarjeta clara) como el banner de Analytics Pro; gradiente sutil con el acento. **El acento es 100% por token, uno por app, NUNCA cyan** (el cyan es la marca madre YiQi, presente solo en el logo del lockup).
+
+| App | Acento (token) | Estado |
+|---|---|---|
+| Analytics Pro | `--violet` | Disponible |
+| Front de Proveedores OCR | `--orange` | En desarrollo |
+| Inventariado Mobile | `--green` | En desarrollo |
+| YiQi POS | `--amber` | Disponible |
+| Picking List | `--magenta` | En desarrollo |
+| Consulta de pedidos | `--blue` | En desarrollo |
+
+```html
+<script src="components/app-banner.js" defer></script>
+<app-banner app="inv"></app-banner>
+<app-banner app="ana" variant="vertical"></app-banner>
+```
+
+Reglas:
+- Acento vía `var(--<token>)`; el logo YiQi usa `var(--cyan)`/`var(--text)` (paleta invertida del banner). Cero color suelto en el componente.
+- **CTA de color de app** (`.mb-cta` / `--accent`): fondo = color de la app; **tinta legible** `--accent-ink` (clara sobre acentos oscuros como violeta, oscura sobre los claros). Aplica a todas las apps (ficha, banner y bundles).
+- Lleva ícono de la app + lockup "Homologado por YiQi" + slot de ilustración (imagen Gemini), a altura completa.
+- Analytics Pro tiene **dos versiones**: el banner premium (`<analytics-pro-banner>`) y esta variante unificada.
+- Catálogo: §30 · Web → "Banners de apps" (`#app-banners`).
+
 ## 9. Iconografía
 
 **HTML standalone:** usar **SVG stroke inline**. El CDN de Phosphor puede fallar offline.
@@ -1405,7 +1438,7 @@ Los primitivos que vivían solo en el showcase ahora tienen **fuente canónica**
 | Primitivo | Sección catálogo | Clases | JS (data-attr) |
 |---|---|---|---|
 | Slider | §32 `#prim-slider` | `.pr-slider`, `.pr-slider-val` | readout por id |
-| Tabs | §34 `#prim-tabs` | `.pr-tabbar`, `.pr-tabbtn`, `.pr-tabpanel` | `[data-pr-tabs]` |
+| Tabs | §34 `#prim-tabs` | `.pr-tabbar`, `.pr-tabbtn`, `.pr-tabpanel`; variante `.pr-tabbar--flat` (estilo Nav item: sin track, `radius-sm`) | `[data-pr-tabs]` |
 | Dialog | §35 `#prim-dialog` | `.sc-modal*` | `[data-pr-dialog]` / `[data-pr-dialog-close]` |
 | Dropdown | §36 `#prim-dropdown` | `.pr-pop-wrap`, `.pr-menu*` | `[data-pr-menu]` |
 | Popover | §37 `#prim-popover` | `.pr-menu.pr-pop` | `[data-pr-menu]` |

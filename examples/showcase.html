@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../styles.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="../ds-components.js" defer></script>
+<script src="../components/app-banner.js" defer></script>
 <style>
   /* ── Layout de la página (solo composición; los estilos de componente vienen del DS) ── */
   body { margin:0; background:var(--bg); color:var(--text); font-family:var(--sans,"Inter",sans-serif); height:100vh; display:flex; flex-direction:column; overflow:hidden; }
@@ -138,14 +139,13 @@
   @media(max-width:760px){ .sc-tl{ grid-template-columns:1fr 1fr; gap:26px; } }
   @media(max-width:480px){ .sc-tl{ grid-template-columns:1fr; gap:18px; } .sc-tl-step:not(:last-child)::after{ display:none; } }
   /* ── Tabs multi-vista ── */
-  .sc-tabs{ z-index:40; display:flex; gap:4px; padding:11px 18px; flex-shrink:0;
-    margin:0; background:var(--bg); flex-wrap:wrap; border-bottom:1px solid var(--line); }
-  .sc-tab{ display:inline-flex; align-items:center; gap:7px; padding:8px 14px; border:none; cursor:pointer;
-    border-radius:var(--radius-pill); background:transparent; color:var(--muted);
+  .sc-tabs{ z-index:40; flex-shrink:0; margin:0; background:var(--bg); border-bottom:1px solid var(--line); }
+  .sc-tabs-inner{ display:flex; gap:4px; flex-wrap:wrap; max-width:780px; margin:0 auto; padding:11px 14px; }
+  .sc-tab{ display:inline-flex; align-items:center; gap:7px; padding:8px 12px; border:none; cursor:pointer;
+    border-radius:var(--radius-sm); background:transparent; color:var(--muted);
     font:600 12.5px var(--sans); transition:background .16s,color .16s; }
   .sc-tab:hover{ color:var(--text); background:var(--bg-soft); }
-  .sc-tab[aria-selected="true"]{ color:var(--cyan); background:var(--cyan-soft);
-    box-shadow:inset 0 0 0 1px var(--cyan-a28); }
+  .sc-tab[aria-selected="true"]{ color:var(--cyan); background:var(--cyan-soft); }
   .sc-tab .ph{ font-size:15px; }
   .sc-tab .sc-tab-n{ font:600 10px var(--mono); color:var(--muted-2); }
   .sc-tab[aria-selected="true"] .sc-tab-n{ color:var(--cyan); }
@@ -439,17 +439,26 @@
 
   <div class="sc-right">
   <div class="sc-tabs" id="scTabs" role="tablist" aria-label="Vistas del showcase">
+    <div class="sc-tabs-inner">
     <button class="sc-tab" role="tab" id="sctab-primitivos" aria-controls="tab-primitivos" data-target="tab-primitivos" aria-selected="false"><i class="ph ph-cube"></i> Primitivos</button>
     <button class="sc-tab" role="tab" id="sctab-mockups" aria-controls="tab-mockups" data-target="tab-mockups" aria-selected="true"><i class="ph ph-squares-four"></i> Mockups</button>
     <button class="sc-tab" role="tab" id="sctab-graficos" aria-controls="tab-graficos" data-target="tab-graficos" aria-selected="false"><i class="ph ph-chart-line"></i> Gráficos</button>
     <button class="sc-tab" role="tab" id="sctab-galeria" aria-controls="tab-galeria" data-target="tab-galeria" aria-selected="false"><i class="ph ph-chart-donut"></i> Galería</button>
     <button class="sc-tab" role="tab" id="sctab-tablas" aria-controls="tab-tablas" data-target="tab-tablas" aria-selected="false"><i class="ph ph-table"></i> Tablas</button>
     <button class="sc-tab" role="tab" id="sctab-iconos" aria-controls="tab-iconos" data-target="tab-iconos" aria-selected="false"><i class="ph ph-smiley"></i> Iconos</button>
+    </div>
   </div>
   <div class="sc-carousel-track" id="scTrack">
   <div class="sc-panel is-active" id="tab-mockups" role="tabpanel" aria-labelledby="sctab-mockups">
   <!-- GRILLA DE MOCKUPS -->
   <section class="sc-grid">
+
+    <!-- Banners de apps (Marketplace) -->
+    <article class="sc-card" id="card-app-banner" style="grid-column:1/-1">
+      <div class="sc-card-h"><span style="display:inline-flex;align-items:center;gap:8px"><span class="sc-card-title">Banners de apps</span><span class="badge badge-cyan" style="font:600 9px var(--mono)">NEW</span></span><a class="ds-xref" href="../yiqi-design-system.html#app-banners"><i class="ph ph-anchor-simple"></i> Ver fuente</a></div>
+      <p class="sc-card-sub">Banner promocional por app del Marketplace. Acento por token (uno por app, nunca cyan). <code>&lt;app-banner app="…"&gt;</code></p>
+      <app-banner app="inv"></app-banner>
+    </article>
 
     <!-- Picking · primitivos (app nueva) -->
     <article class="sc-card" id="card-picking">
@@ -1376,6 +1385,25 @@
         </div>
       </div>
       <div class="pr-code">role="tablist" · aria-selected</div>
+    </article>
+
+    <!-- Tabs planos (estilo Nav item) -->
+    <article class="sc-card pr-card" id="card-tabs-flat">
+      <div class="sc-card-h"><span style="display:inline-flex;align-items:center;gap:8px"><span class="sc-card-title">Tabs planos</span><span class="pr-tag">Nav item</span></span><a class="ds-xref" href="../yiqi-design-system.html#prim-tabs"><i class="ph ph-anchor-simple"></i> Ver fuente</a></div>
+      <p class="sc-card-sub">Variante <code>--flat</code>: sin track segmentado, plano estilo Nav item. Usada en el header de este showcase.</p>
+      <div class="pr-stage" style="flex-direction:column">
+        <div class="pr-tabbar pr-tabbar--flat" role="tablist" data-pr-tabs>
+          <button class="pr-tabbtn" role="tab" aria-selected="true">Resumen</button>
+          <button class="pr-tabbtn" role="tab" aria-selected="false">Detalle</button>
+          <button class="pr-tabbtn" role="tab" aria-selected="false">Notas</button>
+        </div>
+        <div class="pr-tabpanel" data-pr-tabpanels>
+          <div>Vista general del esquema y sus indicadores.</div>
+          <div hidden>Desglose línea por línea de cada operación.</div>
+          <div hidden>Comentarios del equipo sobre el período.</div>
+        </div>
+      </div>
+      <div class="pr-code">.pr-tabbar.pr-tabbar--flat · .pr-tabbtn</div>
     </article>
 
     <!-- Accordion -->

@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="ds-doc.css">
 <script src="components/analytics-pro-banner.js" defer></script>
+<script src="components/app-banner.js" defer></script>
+<script src="components/carousel.js" defer></script>
 <script src="components/llm-fab.js" defer></script>
 <style>
 /* ─── DS v1.2.7 ─────────────────────────────────────────── */
@@ -350,6 +352,18 @@ body.preview-open .ds-layout { display: none !important; }
 <span class="ds-nav-label">Web</span>
 <a class="ds-nav-item" href="#web-banner"><span class="ds-nav-num">30</span> Banner Analytics Pro</a>
 <a class="ds-nav-item" href="#scrollbars"><span class="ds-nav-num">31</span> Scrollbars <span class="ds-nav-badge">NEW</span></a>
+</div>
+<div class="ds-nav-section">
+<span class="ds-nav-label">Marketplace</span>
+<a class="ds-nav-item" href="#mb-fhead"><span class="ds-nav-num">M1</span> Header de ficha <span class="ds-nav-badge">NEW</span></a>
+<a class="ds-nav-item" href="#mb-price"><span class="ds-nav-num">M2</span> Card de pricing <span class="ds-nav-badge">NEW</span></a>
+<a class="ds-nav-item" href="#mb-details"><span class="ds-nav-num">M3</span> Card de detalles <span class="ds-nav-badge">NEW</span></a>
+<a class="ds-nav-item" href="#mb-dev"><span class="ds-nav-num">M4</span> Card de desarrollador <span class="ds-nav-badge">NEW</span></a>
+<a class="ds-nav-item" href="#mb-share"><span class="ds-nav-num">M5</span> Menú de compartir <span class="ds-nav-badge">NEW</span></a>
+<a class="ds-nav-item" href="#mb-appcard"><span class="ds-nav-num">M6</span> Card de catálogo <span class="ds-nav-badge">NEW</span></a>
+<a class="ds-nav-item" href="#mb-reviews"><span class="ds-nav-num">M7</span> Reseñas <span class="ds-nav-badge">NEW</span></a>
+<a class="ds-nav-item" href="#mb-homo"><span class="ds-nav-num">M8</span> Homologación <span class="ds-nav-badge">NEW</span></a>
+<a class="ds-nav-item" href="#app-banners"><span class="ds-nav-num">M9</span> Banners de apps <span class="ds-nav-badge">NEW</span></a>
 </div>
 <div class="ds-nav-section">
 <span class="ds-nav-label">Primitivos</span>
@@ -3225,6 +3239,184 @@ document.body.classList.add(<span style="color:var(--green)">'anim-in'</span>);<
 </div>
 </div>
 </section>
+<section class="ds-section" id="app-banners">
+<div class="ds-section-header">
+<div class="ds-section-kicker">M9 · Marketplace</div>
+<h2 class="ds-section-title">Banners de apps</h2>
+<p class="ds-section-sub">Banner promocional por app del Marketplace. Web component <code>&lt;app-banner app="…"&gt;</code>. Acento <strong>100%% por token</strong> (uno por app, nunca cyan); paleta invertida y gradiente como el banner de Analytics Pro. Cada banner lleva <strong>ícono de la app + logo YiQi</strong> (homologación) y un <strong>slot de ilustración</strong>. Analytics Pro tiene <strong>dos versiones</strong>: el premium (§30) y esta variante unificada.</p>
+</div>
+<app-banner app="prov"></app-banner>
+<app-banner app="inv"></app-banner>
+<app-banner app="pos"></app-banner>
+<app-banner app="pick"></app-banner>
+<app-banner app="cons"></app-banner>
+<app-banner app="ana"></app-banner>
+<div class="ds-section-kicker" style="margin-top:36px">Versión vertical</div>
+<p class="ds-section-sub" style="margin-bottom:16px">Mismo componente con <code>variant="vertical"</code>: ilustración arriba, formato retrato para sidebars, mobile o módulos angostos.</p>
+<div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-bottom:8px">
+<app-banner app="ana" variant="vertical"></app-banner>
+<app-banner app="prov" variant="vertical"></app-banner>
+<app-banner app="inv" variant="vertical"></app-banner>
+<app-banner app="pos" variant="vertical"></app-banner>
+<app-banner app="pick" variant="vertical"></app-banner>
+<app-banner app="cons" variant="vertical"></app-banner>
+</div>
+<div class="token-grid-2" style="margin-top:24px">
+<div class="card">
+<div class="card-kicker">Apps · token de acento · estado</div>
+<table style="width:100%%;border-collapse:collapse;margin-top:10px;font:400 12.5px/1.6 var(--sans);color:var(--text)">
+<tr style="color:var(--muted-2);text-align:left;font:600 11px var(--mono)"><th style="padding:4px 0">app</th><th>nombre</th><th>acento</th><th>estado</th></tr>
+<tr><td><code>ana</code></td><td>YiQi Analytics Pro</td><td><code>var(--violet)</code></td><td>Disponible</td></tr><tr><td><code>prov</code></td><td>Front de Proveedores OCR</td><td><code>var(--orange)</code></td><td>En desarrollo</td></tr><tr><td><code>inv</code></td><td>Inventariado Mobile</td><td><code>var(--green)</code></td><td>En desarrollo</td></tr><tr><td><code>pos</code></td><td>YiQi POS</td><td><code>var(--amber)</code></td><td>Disponible</td></tr><tr><td><code>pick</code></td><td>Picking List</td><td><code>var(--magenta)</code></td><td>En desarrollo</td></tr><tr><td><code>cons</code></td><td>Consulta de pedidos</td><td><code>var(--blue)</code></td><td>En desarrollo</td></tr>
+</table>
+</div>
+<div class="card">
+<div class="card-kicker">Markup</div>
+<pre style="margin-top:12px;background:var(--bg-elev-2);border-radius:var(--radius-md);padding:16px 18px;font:12px/1.8 var(--mono);color:var(--muted);overflow-x:auto">&lt;app-banner <span style="color:var(--cyan)">app</span>=<span style="color:var(--green)">"inv"</span>&gt;&lt;/app-banner&gt;
+
+<span style="color:var(--muted-2)">// valores de app:</span>
+ana · prov · inv · pos · pick · cons
+
+<span style="color:var(--muted-2)">// versión vertical:</span>
+&lt;app-banner app="ana" <span style="color:var(--cyan)">variant</span>=<span style="color:var(--green)">"vertical"</span>&gt;&lt;/app-banner&gt;</pre>
+</div>
+</div>
+</section>
+<section class="ds-section" id="mb-fhead">
+<div class="ds-section-header">
+<div class="ds-section-kicker">M1 · Marketplace</div>
+<h2 class="ds-section-title">Header de ficha</h2>
+<p class="ds-section-sub">Encabezado de la ficha de app. Compone <code>.btn</code> + <code>.badge</code> + estructura <code>.mb-fhead</code>. Ícono de app, categoría, nombre, proveedor, badge de homologación y rating. <strong>CTA de color de app</strong> (<code>.mb-cta</code>): fondo <code>var(--accent)</code> con <strong>tinta legible</strong> <code>var(--accent-ink)</code> — clara sobre acentos oscuros (violeta), oscura sobre los claros.</p>
+</div>
+<div class="mb-fhead">
+<div class="mb-ficon"><i class="ph ph-package"></i></div>
+<div>
+<div class="mb-fcat">Inventario</div>
+<div class="mb-fname">Inventariado Mobile</div>
+<div class="mb-fby"><span>por <b>iAready</b></span><span class="badge badge-green"><i class="ph ph-check"></i> Homologado por YiQi</span><span class="mb-stars">★ 4.6</span><span style="color:var(--muted-2);font-size:12px">(124)</span></div>
+</div>
+</div>
+<p class="mb-tagline">Relevá y controlá el stock de tus depósitos desde el celular, sincronizado con YiQi en tiempo real.</p>
+<div class="mb-cta-row"><button class="mb-cta" style="--accent:var(--green);--accent-ink:#ffffff">Probar gratis</button><button class="btn btn-ghost">Pedir asesoramiento</button><button class="btn btn-ghost" aria-label="Compartir"><i class="ph ph-share-network"></i></button></div>
+<div class="mb-trust-row"><span class="mb-trust-item"><i class="ph ph-shield-check"></i>Homologado · 12/05/2026</span><span class="mb-trust-item"><i class="ph ph-headset"></i>Soporte por iAready</span><span class="mb-trust-item"><i class="ph ph-plugs-connected"></i>Compatible con YiQi ERP</span></div>
+</section>
+<section class="ds-section" id="mb-price">
+<div class="ds-section-header">
+<div class="ds-section-kicker">M2 · Marketplace</div>
+<h2 class="ds-section-title">Card de pricing + estimador</h2>
+<p class="ds-section-sub">Bloque comercial de la ficha. Trial, filas Activación/Abono, <strong>estimador</strong> con el primitivo <em>Slider</em> (§32) y output, CTAs (<code>.btn</code>) y nota de consulta gratis / operación paga.</p>
+</div>
+<div class="mb-card mb-stack">
+<span class="mb-trial"><i class="ph ph-clock"></i> Prueba gratis 30 días · sin tarjeta</span>
+<div>
+<div class="mb-pline"><span>Activación (única vez)</span><b>Financiable en cuotas</b></div>
+<div class="mb-pline"><span>Abono mensual</span><b>Según uso</b></div>
+</div>
+<div>
+<div class="mb-k">Estimá tu abono</div>
+<div class="mb-est-lab">Módulos activos <b>3</b></div>
+<div class="pr-slider"><input type="range" min="1" max="10" value="3" aria-label="Módulos activos"></div>
+<div class="mb-est-lab">Usuarios activos <b>8</b></div>
+<div class="pr-slider"><input type="range" min="1" max="50" value="8" aria-label="Usuarios activos"></div>
+<div class="mb-est-out"><div class="n">$ 65.000</div><div class="l">por mes (estimado)</div></div>
+</div>
+<div style="display:grid;gap:10px"><button class="mb-cta" style="--accent:var(--green);--accent-ink:#ffffff">Probar gratis</button><button class="btn btn-ghost">Pedir asesoramiento</button></div>
+<div class="mb-note"><i class="ph ph-info"></i><span>Consultar el stock es gratis; se cobra la operación (ajustes y sincronización).</span></div>
+</div>
+</section>
+<section class="ds-section" id="mb-details">
+<div class="ds-section-header">
+<div class="ds-section-kicker">M3 · Marketplace</div>
+<h2 class="ds-section-title">Card de detalles</h2>
+<p class="ds-section-sub">Ficha técnica de la app: lista de pares clave-valor (<code>.mb-meta-row</code>).</p>
+</div>
+<div class="mb-card" style="max-width:360px">
+<div class="mb-k">Detalles</div>
+<div class="mb-meta-row"><span>Categoría</span><span>Inventario</span></div>
+<div class="mb-meta-row"><span>Tipo</span><span>App operativa</span></div>
+<div class="mb-meta-row"><span>Compatible con</span><span>YiQi ERP v1.9+</span></div>
+<div class="mb-meta-row"><span>Integraciones</span><span>Stock · Compras</span></div>
+<div class="mb-meta-row"><span>Plataforma</span><span>Android · iOS</span></div>
+<div class="mb-meta-row"><span>Idioma</span><span>Español</span></div>
+<div class="mb-meta-row"><span>Versión</span><span>2.3.1</span></div>
+<div class="mb-meta-row"><span>Actualizada</span><span>10/06/2026</span></div>
+</div>
+</section>
+<section class="ds-section" id="mb-dev">
+<div class="ds-section-header">
+<div class="ds-section-kicker">M4 · Marketplace</div>
+<h2 class="ds-section-title">Card de desarrollador</h2>
+<p class="ds-section-sub">Identidad del proveedor + acción de compartir. Usa el lockup de proveedor y un <code>.btn</code>.</p>
+</div>
+<div class="mb-card" style="max-width:360px">
+<div class="mb-k">Desarrollador</div>
+<div class="mb-prov"><div class="mb-prov-box"><i class="ph ph-stack"></i></div><div><div style="font:600 13px var(--sans);color:var(--text)">iAready</div><div class="mb-prov-sub">Partner homologado · 9 apps</div></div></div>
+<button class="btn btn-ghost" style="width:100%;margin-top:14px"><i class="ph ph-share-network"></i> Compartir / recomendar</button>
+</div>
+</section>
+<section class="ds-section" id="mb-share">
+<div class="ds-section-header">
+<div class="ds-section-kicker">M5 · Marketplace</div>
+<h2 class="ds-section-title">Menú de compartir</h2>
+<p class="ds-section-sub">Menú enriquecido de compartir (instancia del primitivo <em>Popover</em>): compartir nativo, copiar enlace y redes.</p>
+</div>
+<div class="mb-share">
+<div class="mb-share-head">Compartir</div>
+<button class="mb-share-opt"><i class="ph ph-share-network"></i>Compartir…</button>
+<button class="mb-share-opt"><i class="ph ph-copy"></i>Copiar enlace</button>
+<div class="mb-share-sep"></div>
+<a class="mb-share-opt"><i class="ph ph-whatsapp-logo"></i>WhatsApp</a>
+<a class="mb-share-opt"><i class="ph ph-envelope-simple"></i>Email</a>
+<a class="mb-share-opt"><i class="ph ph-linkedin-logo"></i>LinkedIn</a>
+<a class="mb-share-opt"><i class="ph ph-x-logo"></i>X</a>
+<a class="mb-share-opt"><i class="ph ph-telegram-logo"></i>Telegram</a>
+<a class="mb-share-opt"><i class="ph ph-facebook-logo"></i>Facebook</a>
+</div>
+</section>
+<section class="ds-section" id="mb-appcard">
+<div class="ds-section-header">
+<div class="ds-section-kicker">M6 · Marketplace</div>
+<h2 class="ds-section-title">Card de catálogo</h2>
+<p class="ds-section-sub">Card del catálogo del Marketplace. Thumb con ícono en el color de la app + badge de estado, categoría, nombre, descripción y pie (Ver app + proveedor). El acento se mapea al token de la app (acá <code>--green</code>).</p>
+</div>
+<div class="mb-appcard">
+<div class="mb-thumb"><span class="mb-state">En desarrollo</span><div class="mb-thumb-ico"><i class="ph ph-package"></i></div></div>
+<div class="mb-abody">
+<div class="mb-acat">Inventario</div>
+<div class="mb-aname">Inventariado Mobile</div>
+<div class="mb-adesc">Relevamiento y control de stock desde el celular, sincronizado con YiQi en tiempo real.</div>
+<div class="mb-afoot"><span class="mb-install">Ver app</span><span class="mb-prov-t">por iAready</span></div>
+</div>
+</div>
+</section>
+<section class="ds-section" id="mb-reviews">
+<div class="ds-section-header">
+<div class="ds-section-kicker">M7 · Marketplace</div>
+<h2 class="ds-section-title">Reseñas</h2>
+<p class="ds-section-sub">Resumen de rating + reseñas con badge <strong>Cliente verificado</strong>. Solo de clientes que usan la app.</p>
+</div>
+<div style="max-width:560px">
+<div class="mb-rev-sum"><div class="mb-rev-big">4.6</div><div><div class="mb-stars" style="font-size:16px">★★★★★</div><div class="mb-rev-meta">124 reseñas · solo de clientes que la usan</div></div></div>
+<div class="mb-rev"><div class="mb-rev-top"><b>Distribuidora del Sur</b><span class="mb-rev-ver">Cliente verificado</span><span class="mb-stars">★ 5.0</span></div><p>Bajamos el inventario anual de 3 días a 1. El escaneo con el celular nos ahorró comprar lectoras.</p></div>
+<div class="mb-rev"><div class="mb-rev-top"><b>Importadora Pampa</b><span class="mb-rev-ver">Cliente verificado</span><span class="mb-stars">★ 4.0</span></div><p>Muy útil para conteos cíclicos. Nos gustaría que sume conteo por lote, pero el soporte respondió rápido.</p></div>
+</div>
+</section>
+<section class="ds-section" id="mb-homo">
+<div class="ds-section-header">
+<div class="ds-section-kicker">M8 · Marketplace</div>
+<h2 class="ds-section-title">Bloque de homologación</h2>
+<p class="ds-section-sub">Sello de homologación + datos de seguridad/acceso (clave-valor). Central al concepto de homologación del Marketplace.</p>
+</div>
+<div class="mb-homo">
+<div class="mb-seal"><i class="ph ph-shield-check"></i><b>Homologada por YiQi</b></div>
+<dl class="mb-kv">
+<dt>Estado de homologación</dt><dd style="color:var(--green)">Aprobada</dd>
+<dt>Fecha de homologación</dt><dd>12/05/2026</dd>
+<dt>Acceso a datos</dt><dd>Stock y productos (lectura/escritura)</dd>
+<dt>Autenticación</dt><dd>OAuth 2.0 · usuario YiQi</dd>
+<dt>Alojamiento de datos</dt><dd>Infraestructura YiQi (Argentina)</dd>
+</dl>
+</div>
+</section>
 <section class="ds-section" id="prim-slider">
 <div class="ds-section-header">
 <div class="ds-section-kicker">32 · Slider</div>
@@ -3262,6 +3454,19 @@ document.body.classList.add(<span style="color:var(--green)">'anim-in'</span>);<
 </div>
 <div style="display:flex;flex-direction:column;align-items:flex-start">
 <div class="pr-tabbar" role="tablist" data-pr-tabs>
+<button class="pr-tabbtn" role="tab" aria-selected="true">Resumen</button>
+<button class="pr-tabbtn" role="tab" aria-selected="false">Detalle</button>
+<button class="pr-tabbtn" role="tab" aria-selected="false">Notas</button>
+</div>
+<div class="pr-tabpanel" data-pr-tabpanels>
+<div>Vista general del esquema y sus indicadores.</div>
+<div hidden>Desglose línea por línea de cada operación.</div>
+<div hidden>Comentarios del equipo sobre el período.</div>
+</div>
+</div>
+<p class="ds-section-sub" style="margin-top:22px">Variante <code>--flat</code> · estilo Nav item: sin track segmentado, plano, <code>radius-sm</code>. Misma pill activa en <code>--cyan-soft</code>. Para barras de navegación entre vistas (ej. el header del showcase).</p>
+<div style="display:flex;flex-direction:column;align-items:flex-start;margin-top:10px">
+<div class="pr-tabbar pr-tabbar--flat" role="tablist" data-pr-tabs>
 <button class="pr-tabbtn" role="tab" aria-selected="true">Resumen</button>
 <button class="pr-tabbtn" role="tab" aria-selected="false">Detalle</button>
 <button class="pr-tabbtn" role="tab" aria-selected="false">Notas</button>
