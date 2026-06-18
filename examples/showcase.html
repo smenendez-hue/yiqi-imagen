@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="../styles.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="../ds-components.js" defer></script>
-<script src="../components/app-banner.js" defer></script>
 <style>
   /* ── Layout de la página (solo composición; los estilos de componente vienen del DS) ── */
   body { margin:0; background:var(--bg); color:var(--text); font-family:var(--sans,"Inter",sans-serif); height:100vh; display:flex; flex-direction:column; overflow:hidden; }
@@ -452,13 +451,6 @@
   <div class="sc-panel is-active" id="tab-mockups" role="tabpanel" aria-labelledby="sctab-mockups">
   <!-- GRILLA DE MOCKUPS -->
   <section class="sc-grid">
-
-    <!-- Banners de apps (Marketplace) -->
-    <article class="sc-card" id="card-app-banner" style="grid-column:1/-1">
-      <div class="sc-card-h"><span style="display:inline-flex;align-items:center;gap:8px"><span class="sc-card-title">Banners de apps</span><span class="badge badge-cyan" style="font:600 9px var(--mono)">NEW</span></span><a class="ds-xref" href="../yiqi-design-system.html#app-banners"><i class="ph ph-anchor-simple"></i> Ver fuente</a></div>
-      <p class="sc-card-sub">Banner promocional por app del Marketplace. Acento por token (uno por app, nunca cyan). <code>&lt;app-banner app="…"&gt;</code></p>
-      <app-banner app="inv"></app-banner>
-    </article>
 
     <!-- Picking · primitivos (app nueva) -->
     <article class="sc-card" id="card-picking">

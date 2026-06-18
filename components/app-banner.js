@@ -76,8 +76,9 @@ html[data-theme="light"] .ab-illus{background:linear-gradient(135deg,var(--accen
 .ab-illus-wm{width:118px;height:118px;color:var(--accent);opacity:.30}
 .ab-illus-tag{position:absolute;bottom:16px;font:500 11px var(--mono);color:var(--muted-2);text-align:center;line-height:1.6}
 .ab-illus-tag b{color:var(--accent);font-weight:700}
-app-banner[variant="vertical"]{max-width:420px;padding-inline:0;margin:0}
-.ab-vertical .ab-grid{grid-template-columns:1fr;gap:22px;padding:54px 30px 30px}
+app-banner[variant="vertical"]{max-width:420px;padding-inline:0;margin:0;display:flex}
+app-banner[variant="vertical"] .ab-shell{width:100%;display:flex;flex-direction:column}
+.ab-vertical .ab-grid{grid-template-columns:1fr;gap:22px;padding:54px 30px 30px;flex:1;align-content:start}
 .ab-vertical .ab-illus{order:-1;aspect-ratio:16/10;min-height:0;align-self:auto}
 .ab-vertical .ab-title{font-size:30px}
 .ab-vertical .ab-sub{max-width:none}
