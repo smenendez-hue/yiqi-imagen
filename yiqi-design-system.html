@@ -409,6 +409,12 @@ body.preview-open .ds-layout { display: none !important; }
 <div style="margin-top:10px;font-size:13px;color:var(--muted);line-height:1.7">Los elementos van sin borde siempre que sea posible. La profundidad se construye con elevación de fondo y <code>box-shadow</code>. Inputs y controles compuestos son la excepción.</div>
 </div>
 </div>
+<style>
+#ds-changelog tbody tr:nth-child(n+4){ display:none; }
+#ds-changelog.show-all tbody tr:nth-child(n+4){ display:table-row; }
+.ds-changelog-more{ display:inline-flex; align-items:center; gap:6px; margin-top:12px; border:none; background:var(--bg-soft); color:var(--cyan); font:600 12px var(--sans); padding:9px 16px; border-radius:var(--radius-pill); cursor:pointer; }
+.ds-changelog-more:hover{ background:var(--cyan-soft); }
+</style>
 <div class="subsection-title">Cambios de esta versión</div>
 <div class="card">
 <table class="table-demo" id="ds-changelog">
@@ -567,7 +573,10 @@ body.preview-open .ds-layout { display: none !important; }
 </tr>
 </tbody>
 </table>
+<button class="ds-changelog-more" id="dsChangelogMore" type="button" aria-expanded="false"></button>
 </div>
+<script>(function(){var b=document.getElementById('dsChangelogMore'),t=document.getElementById('ds-changelog');if(!b||!t)return;var n=t.querySelectorAll('tbody tr').length;function lbl(o){b.innerHTML=o?'Ver menos <i class="ph ph-caret-up"></i>':'Ver todos los cambios ('+n+') <i class="ph ph-caret-down"></i>';}lbl(false);b.addEventListener('click',function(){var o=t.classList.toggle('show-all');b.setAttribute('aria-expanded',o?'true':'false');lbl(o);});})();</script>
+
 </section>
 <!-- ─── BRAND ─── -->
 <section class="ds-section" id="brand">
