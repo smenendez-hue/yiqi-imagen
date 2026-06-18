@@ -140,9 +140,7 @@
   @media(max-width:480px){ .sc-tl{ grid-template-columns:1fr; gap:18px; } .sc-tl-step:not(:last-child)::after{ display:none; } }
   /* ── Tabs multi-vista ── */
   .sc-tabs{ z-index:40; flex-shrink:0; margin:0; background:var(--bg); border-bottom:1px solid var(--line); }
-  .sc-tabs-inner{ display:flex; gap:4px; flex-wrap:nowrap; overflow-x:auto; max-width:780px; margin:0 auto; padding:11px 14px; scrollbar-width:none; -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity; }
-  .sc-tabs-inner::-webkit-scrollbar{ display:none; }
-  .sc-tab{ flex-shrink:0; scroll-snap-align:start; }
+  .sc-tabs-inner{ display:flex; gap:4px; flex-wrap:wrap; max-width:780px; margin:0 auto; padding:11px 14px; }
   .sc-tab{ display:inline-flex; align-items:center; gap:7px; padding:8px 12px; border:none; cursor:pointer;
     border-radius:var(--radius-sm); background:transparent; color:var(--muted);
     font:600 12.5px var(--sans); transition:background .16s,color .16s; }
@@ -1712,7 +1710,7 @@
   function select(id){
     try{localStorage.setItem('yiqi-sc-tab',id);}catch(e){}
     tabs.forEach(function(t){ var on=t.dataset.target===id; t.setAttribute('aria-selected', on?'true':'false');
-      var p=document.getElementById(t.dataset.target); if(p) p.classList.toggle('is-active', on); if(on)try{t.scrollIntoView({inline:'center',block:'nearest'});}catch(e){} });
+      var p=document.getElementById(t.dataset.target); if(p) p.classList.toggle('is-active', on); });
     if(id==='tab-graficos' && window.__buildCharts){ requestAnimationFrame(function(){ window.__buildCharts(); }); }
     if(id==='tab-galeria' && window.__buildGallery){ requestAnimationFrame(function(){ window.__buildGallery(); }); }
   }
@@ -1724,6 +1722,11 @@
     select(tabs[i].dataset.target); tabs[i].focus(); e.preventDefault();
   });
   window.addEventListener('DOMContentLoaded', function(){ try{ var sv=localStorage.getItem('yiqi-sc-tab'); if(sv && document.getElementById(sv)){ select(sv); } }catch(e){} });
+  /* Swipe horizontal en el contenido para cambiar de pestaña (mobile) */
+  var _sx=0,_sy=0,_tr=false, _area=document.querySelector('.sc-right')||document.body;
+  function _hscroll(el){ while(el&&el!==_area){ if(el.scrollWidth-el.clientWidth>4){ var ox=getComputedStyle(el).overflowX; if(ox==='auto'||ox==='scroll') return true; } el=el.parentElement; } return false; }
+  _area.addEventListener('touchstart',function(e){ if(e.touches.length!==1||_hscroll(e.target)){ _tr=false; return; } _sx=e.touches[0].clientX; _sy=e.touches[0].clientY; _tr=true; },{passive:true});
+  _area.addEventListener('touchend',function(e){ if(!_tr) return; _tr=false; var t=e.changedTouches[0], dx=t.clientX-_sx, dy=t.clientY-_sy; if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.5) return; var i=0; tabs.forEach(function(tb,k){ if(tb.getAttribute('aria-selected')==='true') i=k; }); var ni=dx<0?Math.min(tabs.length-1,i+1):Math.max(0,i-1); if(ni!==i) select(tabs[ni].dataset.target); },{passive:true});
 })();
 
 /* ── Nav del carrusel "de a una" (flechas + contador) ── */
