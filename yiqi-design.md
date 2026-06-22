@@ -1,6 +1,6 @@
 # YiQi Design System — Guía maestra v1.2.7
 
-> Fuente única de verdad para implementación de UI en productos YiQi ERP.
+> Guía de referencia para implementación de UI en productos YiQi ERP. **Deriva de** la fuente única `www.yiqi/site.css` (tokens) + `www.yiqi/yiqi-design-system.html` (catálogo). Este repo (`yiqi-imagen`) es downstream: empaqueta y publica al CDN; NO es canónico.
 > Este archivo reemplaza cualquier versión anterior de `yiqi-design.md`.
 
 ---
